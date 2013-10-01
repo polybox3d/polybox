@@ -13,8 +13,33 @@ TEMPLATE = app
 
 
 SOURCES += main.cpp\
-        MainWindow.cpp
+        MainWindow.cpp \
+        OpenPage.cpp \
+        Updater.cpp \
+        ModulePage.cpp \
+        HelpPage.cpp \
+    Warning.cpp \
+    HomeButton.cpp \
+    LabViewPage.cpp \
+    LabViewModule.cpp
 
-HEADERS  += MainWindow.h
+HEADERS  += MainWindow.h \
+        OpenPage.h \
+        Updater.h \
+        ModulePage.h \
+        HelpPage.h \
+        pageState.h \
+    Warning.h \
+    HomeButton.h \
+    LabViewPage.h \
+    LabViewModule.h
 
-FORMS    += MainWindow.ui
+FORMS    += MainWindow.ui \
+        OpenPage.ui \
+        ModulePage.ui \
+        HelpPage.ui \
+    Warning.ui \
+    LabViewPage.ui
+
+RESOURCES += \
+    ressources.qrc
