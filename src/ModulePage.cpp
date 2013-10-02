@@ -53,3 +53,19 @@ void ModulePage::on_labviewButton_clicked()
 {
     CHANGE_PAGE( LabView );
 }
+
+
+void ModulePage::on_printerButton_clicked()
+{
+    CHANGE_PAGE( Printer );
+}
+
+void ModulePage::on_cncButton_clicked()
+{
+    DialogCNC dialog((QWidget*)this->parent());
+    int value_ret = dialog.exec();
+    if ( value_ret != 0 )
+    {
+        CHANGE_PAGE( static_cast<PageState>(value_ret) );
+    }
+}

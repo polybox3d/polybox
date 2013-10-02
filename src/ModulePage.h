@@ -6,6 +6,7 @@
 
 #include "pageState.h"
 #include "MainWindow.h"
+#include "DialogCNC.h"
 
 using namespace std;
 
@@ -24,6 +25,10 @@ public:
 private slots:
     void on_labviewButton_clicked();
 
+    void on_printerButton_clicked();
+
+    void on_cncButton_clicked();
+
 private:
     Ui::ModulePage *ui;
     bool eventFilter(QObject *obj, QEvent *event);
@@ -31,3 +36,4 @@ private:
 };
 
 #endif // MODULEPAGE_H
+

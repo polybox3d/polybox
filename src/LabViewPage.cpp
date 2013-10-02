@@ -9,12 +9,14 @@ LabViewPage::LabViewPage(QWidget *parent) :
     _mediaPlayer = NULL;
     _currentProfile = NULL;
     _currentColor.setRgb( 0, 0, 0 );
+    _selectedCamera="video0";
 
     HomeButton* hb = new HomeButton( 50,50, this );
     hb->setGeometry( this->width()-hb->width()-10,
                      this->height()-hb->height(),
                      hb->width(), hb->height());
     connect( hb, SIGNAL(clicked()), (MainWindow*)(parent), SLOT(backToModulePage()));
+    connect( ui->backToHelp, SIGNAL(clicked()), (MainWindow*)(parent), SLOT(backToHelpPage()));
 }
 
 LabViewPage::~LabViewPage()
@@ -33,9 +35,34 @@ void LabViewPage::on_startVisu_clicked()
 
     QString command = "vlc";
     QStringList parameters;
-    parameters << "v4l2:///dev/video0" ;
+    parameters << "v4l2:///dev/"+_selectedCamera ;
     _mediaPlayer = new QProcess( this );
     _mediaPlayer->start( command, parameters );
+}
+
+
+void LabViewPage::on_startRecording_clicked()
+{
+    // is an already starting mediaplayer process ? If yes, we kill him
+    //It's better, especially since the user can kill the process without Qt App
+    if ( _mediaPlayer != NULL )
+    {
+        _mediaPlayer->kill();
+    }
+
+    //  Get output filename
+    QString fileName = QFileDialog::getSaveFileName(this,
+                                                    tr("Vidéo de sortie"),
+                                                    "./output_video.ps");
+    //start Recording
+
+    QString command = "vlc";
+    QStringList parameters;
+    parameters << "v4l2:///dev/"+_selectedCamera<<"--file-logging"<<"--logfile=vlc-log.txt"
+               <<"--sout=#transcode{vcodec=h264,vb=0,scale=0,acodec=mpga,ab=128,channels=2,samplerate=44100}:std{access=file,mux=mp4,dst='"+fileName+"'}";
+    _mediaPlayer = new QProcess( this );
+    _mediaPlayer->start( command, parameters );
+
 }
 
 void LabViewPage::on_loadProfil_clicked()
@@ -117,3 +144,4 @@ void LabViewPage::on_intensiteSpin_valueChanged(int arg1)
 {
     _currentColor.setAlpha( arg1 );
 }
+

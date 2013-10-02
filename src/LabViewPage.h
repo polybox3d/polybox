@@ -48,11 +48,14 @@ private slots:
 
     void on_intensiteSpin_valueChanged(int arg1);
 
+    void on_startRecording_clicked();
+
 private:
     Ui::LabViewPage *ui;
     QProcess* _mediaPlayer;
     QFile* _currentProfile;
     QColor _currentColor;
+    QString _selectedCamera;
 };
 
 #endif // LABVIEW_H

@@ -40,6 +40,15 @@ void MainWindow::updateStatePage()
     case LabView :
         this->setCentralWidget( new LabViewPage( this ) );
         break;
+    case Printer :
+        this->setCentralWidget( new PrinterPage( this ) );
+        break;
+    case CNC :
+        this->setCentralWidget( new CNCPage( this ) );
+        break;
+    case ConfigurCNC :
+        this->setCentralWidget( new ConfigCNCPage( this ) );
+        break;
     default:
         break;
 
@@ -50,4 +59,9 @@ void MainWindow::updateStatePage()
 void MainWindow::backToModulePage()
 {
     changeStatePage( Module );
+}
+
+void MainWindow::backToHelpPage()
+{
+    changeStatePage( Help );
 }

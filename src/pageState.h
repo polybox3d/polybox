@@ -4,7 +4,7 @@
 
 enum PageState
 {
-    Start, Help, Module, Warning, LabView, CNC, Printer, Scanner
+    Start, Help, Module, Warning, LabView, CNC, Printer, Scanner, ConfigurCNC
 };
 
 

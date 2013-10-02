@@ -6,6 +6,9 @@
 #include "HelpPage.h"
 #include "ModulePage.h"
 #include "LabViewPage.h"
+#include "PrinterPage.h"
+#include "CNCPage.h"
+#include "ConfigCNCPage.h"
 
 #include "pageState.h"
 
@@ -25,6 +28,7 @@ public:
 public slots:
     void changeStatePage( PageState new_state );
     void backToModulePage();
+    void backToHelpPage();
 
 private:
     void updateStatePage();
