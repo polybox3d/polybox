@@ -3,6 +3,9 @@
 
 #include <QWidget>
 
+#include "MainWindow.h"
+#include "pageState.h"
+
 namespace Ui {
 class ConfigCNCPage;
 }

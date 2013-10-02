@@ -13,6 +13,10 @@
   <property name="windowTitle">
    <string>Information sur le module CNC</string>
   </property>
+  <property name="windowIcon">
+   <iconset resource="ressources.qrc">
+    <normaloff>:/img/img/conf.png</normaloff>:/img/img/conf.png</iconset>
+  </property>
   <property name="styleSheet">
    <string notr="true"/>
   </property>
@@ -26,10 +30,7 @@
     </rect>
    </property>
    <property name="text">
-    <string>Différentes actions sont possibles sur le module CNC
-
-Il est très fortement conseillé de vérifier le paramétrage de votre machine et son bon fonctionnement avant la première utilisation réel.
- Different outils et aide vous sont disponible pour une meilleur prise en main du module</string>
+    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Différentes actions sont possibles sur le module CNC.&lt;/p&gt;&lt;p&gt;Il est très fortement conseillé de vérifier le paramétrage de votre machine et son bon fonctionnement avant sa première utilisation. Différent outils et aides vous sont disponibles pour une meilleur prise en main du module&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
    </property>
    <property name="textFormat">
     <enum>Qt::AutoText</enum>
@@ -38,7 +39,7 @@ Il est très fortement conseillé de vérifier le paramétrage de votre machine 
     <bool>true</bool>
    </property>
   </widget>
-  <widget class="QWidget" name="">
+  <widget class="QWidget" name="layoutWidget">
    <property name="geometry">
     <rect>
      <x>10</x>

@@ -57,15 +57,75 @@ void ModulePage::on_labviewButton_clicked()
 
 void ModulePage::on_printerButton_clicked()
 {
-    CHANGE_PAGE( Printer );
+    bool printer_ok = false;
+    if ( printer_ok )
+    {
+        CHANGE_PAGE( Printer );
+    }
+    else
+    {
+        CheckerModele* checker = new CheckerModele((QWidget*)this->parent());
+
+        checker->setWindowTitle("Etat de l'imprimante");
+        checker->setContentWidget( new PrinterChecker(checker));
+        int value_ret = checker->exec();
+        if ( value_ret != 0 )
+        {
+            CHANGE_PAGE( static_cast<PageState>(value_ret) );
+        }
+    }
 }
 
 void ModulePage::on_cncButton_clicked()
 {
-    DialogCNC dialog((QWidget*)this->parent());
-    int value_ret = dialog.exec();
-    if ( value_ret != 0 )
+    bool cnc_ok = false;
+    if ( cnc_ok )
     {
-        CHANGE_PAGE( static_cast<PageState>(value_ret) );
+        DialogCNC dialog((QWidget*)this->parent());
+        int value_ret = dialog.exec();
+        if ( value_ret != 0 )
+        {
+            CHANGE_PAGE( static_cast<PageState>(value_ret) );
+        }
+    }
+    else
+    {
+        CheckerModele* checker = new CheckerModele((QWidget*)this->parent());
+
+
+        checker->setWindowTitle("Etat de la CN");
+        checker->setContentWidget( new CNCChecker(checker));
+        int value_ret = checker->exec();
+        if ( value_ret != 0 )
+        {
+            CHANGE_PAGE( static_cast<PageState>(value_ret) );
+        }
+
+    }
+}
+
+void ModulePage::on_scannerButton_clicked()
+{
+    bool scanner_ok = false;
+    if ( scanner_ok )
+    {
+        DialogScanner dialog((QWidget*)this->parent());
+        int value_ret = dialog.exec();
+        if ( value_ret != 0 )
+        {
+            CHANGE_PAGE( static_cast<PageState>(value_ret) );
+        }
+    }
+    else
+    {
+        CheckerModele* checker = new CheckerModele((QWidget*)this->parent());
+
+        checker->setWindowTitle("Etat du Scanner");
+        checker->setContentWidget( new SCannerChecker(checker));
+        int value_ret = checker->exec();
+        if ( value_ret != 0 )
+        {
+            CHANGE_PAGE( static_cast<PageState>(value_ret) );
+        }
     }
 }

@@ -13,7 +13,32 @@
   <property name="windowTitle">
    <string>Form</string>
   </property>
+  <widget class="Led" name="label">
+   <property name="geometry">
+    <rect>
+     <x>40</x>
+     <y>130</y>
+     <width>20</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="pixmap">
+    <pixmap resource="ressources.qrc">:/img/img/led_off_red.png</pixmap>
+   </property>
+  </widget>
  </widget>
- <resources/>
+ <customwidgets>
+  <customwidget>
+   <class>Led</class>
+   <extends>QLabel</extends>
+   <header>Led.h</header>
+  </customwidget>
+ </customwidgets>
+ <resources>
+  <include location="ressources.qrc"/>
+ </resources>
  <connections/>
 </ui>

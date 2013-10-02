@@ -7,6 +7,11 @@
 #include "pageState.h"
 #include "MainWindow.h"
 #include "DialogCNC.h"
+#include "DialogScanner.h"
+#include "CheckerModele.h"
+#include "CNCChecker.h"
+#include "PrinterChecker.h"
+#include "SCannerChecker.h"
 
 using namespace std;
 
@@ -29,6 +34,8 @@ private slots:
 
     void on_cncButton_clicked();
 
+    void on_scannerButton_clicked();
+
 private:
     Ui::ModulePage *ui;
     bool eventFilter(QObject *obj, QEvent *event);
@@ -36,4 +43,6 @@ private:
 };
 
 #endif // MODULEPAGE_H
+
+
 
