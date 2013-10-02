@@ -25,7 +25,14 @@ SOURCES += main.cpp\
     PrinterPage.cpp \
     DialogCNC.cpp \
     CNCPage.cpp \
-    ConfigCNCPage.cpp
+    ConfigCNCPage.cpp \
+    DialogScanner.cpp \
+    Led.cpp \
+    CNCChecker.cpp \
+    CheckerModele.cpp \
+    CNCModule.cpp \
+    SCannerChecker.cpp \
+    PrinterChecker.cpp
 
 HEADERS  += MainWindow.h \
         OpenPage.h \
@@ -40,7 +47,14 @@ HEADERS  += MainWindow.h \
     PrinterPage.h \
     DialogCNC.h \
     CNCPage.h \
-    ConfigCNCPage.h
+    ConfigCNCPage.h \
+    DialogScanner.h \
+    Led.h \
+    CNCChecker.h \
+    CheckerModele.h \
+    CNCModule.h \
+    SCannerChecker.h \
+    PrinterChecker.h
 
 FORMS    += MainWindow.ui \
         OpenPage.ui \
@@ -51,7 +65,12 @@ FORMS    += MainWindow.ui \
     PrinterPage.ui \
     DialogCNC.ui \
     CNCPage.ui \
-    ConfigCNCPage.ui
+    ConfigCNCPage.ui \
+    DialogScanner.ui \
+    CNCChecker.ui \
+    CheckerModele.ui \
+    SCannerChecker.ui \
+    PrinterChecker.ui
 
 RESOURCES += \
     ressources.qrc

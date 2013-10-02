@@ -57,7 +57,7 @@ void ModulePage::on_labviewButton_clicked()
 
 void ModulePage::on_printerButton_clicked()
 {
-    bool printer_ok = false;
+    bool printer_ok = true;
     if ( printer_ok )
     {
         CHANGE_PAGE( Printer );
