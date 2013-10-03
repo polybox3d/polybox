@@ -37,6 +37,9 @@ void MainWindow::updateStatePage()
     case Help :
         this->setCentralWidget( new HelpPage( this ) );
         break;
+    case Warning :
+        this->setCentralWidget( new WarningPage( this ) );
+        break;
     case LabView :
         this->setCentralWidget( new LabViewPage( this ) );
         break;
@@ -48,6 +51,9 @@ void MainWindow::updateStatePage()
         break;
     case ConfigurCNC :
         this->setCentralWidget( new ConfigCNCPage( this ) );
+        break;
+    case DynamicTest :
+        this->setCentralWidget( new DynamicTestPage( this ) );
         break;
     default:
         break;

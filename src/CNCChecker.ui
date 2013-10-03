@@ -7,30 +7,17 @@
     <x>0</x>
     <y>0</y>
     <width>400</width>
-    <height>220</height>
+    <height>250</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Form</string>
   </property>
-  <widget class="QLabel" name="label_3">
-   <property name="geometry">
-    <rect>
-     <x>31</x>
-     <y>0</y>
-     <width>291</width>
-     <height>31</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>Vérification des branchements pour le module CN</string>
-   </property>
-  </widget>
   <widget class="QLabel" name="label_8">
    <property name="geometry">
     <rect>
-     <x>180</x>
-     <y>30</y>
+     <x>200</x>
+     <y>0</y>
      <width>171</width>
      <height>21</height>
     </rect>
@@ -42,8 +29,8 @@
   <widget class="Led" name="cncReadyLed">
    <property name="geometry">
     <rect>
-     <x>360</x>
-     <y>33</y>
+     <x>380</x>
+     <y>0</y>
      <width>15</width>
      <height>15</height>
     </rect>
@@ -62,7 +49,7 @@
    <property name="geometry">
     <rect>
      <x>20</x>
-     <y>50</y>
+     <y>20</y>
      <width>341</width>
      <height>161</height>
     </rect>
@@ -198,7 +185,7 @@
      <string>Module d'aspiration</string>
     </property>
    </widget>
-   <widget class="QWidget" name="">
+   <widget class="QWidget" name="layoutWidget">
     <property name="geometry">
      <rect>
       <x>80</x>

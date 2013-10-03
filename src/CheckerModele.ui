@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>400</width>
-    <height>275</height>
+    <height>300</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -19,7 +19,7 @@
      <x>0</x>
      <y>0</y>
      <width>400</width>
-     <height>230</height>
+     <height>250</height>
     </rect>
    </property>
    <property name="autoFillBackground">
@@ -30,7 +30,7 @@
    <property name="geometry">
     <rect>
      <x>30</x>
-     <y>240</y>
+     <y>260</y>
      <width>331</width>
      <height>27</height>
     </rect>

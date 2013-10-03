@@ -42,7 +42,7 @@
     </rect>
    </property>
    <property name="text">
-    <string>Mentions Légale</string>
+    <string>Configuration</string>
    </property>
   </widget>
   <widget class="QPushButton" name="module">

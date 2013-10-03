@@ -24,3 +24,8 @@ void OpenPage::on_help_clicked()
 {
     ((MainWindow*)this->parent())->changeStatePage( Help );
 }
+
+void OpenPage::on_warning_clicked()
+{
+    ((MainWindow*)this->parent())->changeStatePage( Warning );
+}

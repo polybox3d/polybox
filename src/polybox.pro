@@ -18,7 +18,6 @@ SOURCES += main.cpp\
         Updater.cpp \
         ModulePage.cpp \
         HelpPage.cpp \
-    Warning.cpp \
     HomeButton.cpp \
     LabViewPage.cpp \
     LabViewModule.cpp \
@@ -32,7 +31,11 @@ SOURCES += main.cpp\
     CheckerModele.cpp \
     CNCModule.cpp \
     SCannerChecker.cpp \
-    PrinterChecker.cpp
+    PrinterChecker.cpp \
+    WarningPage.cpp \
+    GlobalChecker.cpp \
+    DialogConfigSoft.cpp \
+    DynamicTestPage.cpp
 
 HEADERS  += MainWindow.h \
         OpenPage.h \
@@ -40,7 +43,6 @@ HEADERS  += MainWindow.h \
         ModulePage.h \
         HelpPage.h \
         pageState.h \
-    Warning.h \
     HomeButton.h \
     LabViewPage.h \
     LabViewModule.h \
@@ -54,13 +56,16 @@ HEADERS  += MainWindow.h \
     CheckerModele.h \
     CNCModule.h \
     SCannerChecker.h \
-    PrinterChecker.h
+    PrinterChecker.h \
+    WarningPage.h \
+    GlobalChecker.h \
+    DialogConfigSoft.h \
+    DynamicTestPage.h
 
 FORMS    += MainWindow.ui \
         OpenPage.ui \
         ModulePage.ui \
         HelpPage.ui \
-    Warning.ui \
     LabViewPage.ui \
     PrinterPage.ui \
     DialogCNC.ui \
@@ -70,7 +75,11 @@ FORMS    += MainWindow.ui \
     CNCChecker.ui \
     CheckerModele.ui \
     SCannerChecker.ui \
-    PrinterChecker.ui
+    PrinterChecker.ui \
+    WarningPage.ui \
+    GlobalChecker.ui \
+    DialogConfigSoft.ui \
+    DynamicTestPage.ui
 
 RESOURCES += \
     ressources.qrc

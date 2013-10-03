@@ -9,6 +9,8 @@
 #include "PrinterPage.h"
 #include "CNCPage.h"
 #include "ConfigCNCPage.h"
+#include "WarningPage.h"
+#include "DynamicTestPage.h"
 
 #include "pageState.h"
 

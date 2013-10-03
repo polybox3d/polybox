@@ -26,6 +26,8 @@ private slots:
 
     void on_help_clicked();
 
+    void on_warning_clicked();
+
 private:
     Ui::OpenPage *ui;
 };

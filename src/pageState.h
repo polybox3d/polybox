@@ -4,9 +4,12 @@
 
 enum PageState
 {
-    Start, Help, Module, Warning, LabView, CNC, Printer, ScannerLaser, ScannerPrimesense, ConfigurCNC
+    Start, Help, Module, Warning, LabView, CNC, Printer, ScannerLaser, ScannerPrimesense, ConfigurCNC, DynamicTest
 };
 
-
+enum ReturnDialog
+{
+    Close, Save
+};
 
 #endif // PAGESTATE_H
