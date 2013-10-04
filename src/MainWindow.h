@@ -11,6 +11,7 @@
 #include "ConfigCNCPage.h"
 #include "WarningPage.h"
 #include "DynamicTestPage.h"
+#include "PolyboxModule.h"
 
 #include "pageState.h"
 
@@ -37,6 +38,7 @@ private:
 
     Ui::MainWindow *ui;
     PageState _currentState;
+    PolyboxModule* _polybox;
 
 };
 

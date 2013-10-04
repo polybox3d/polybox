@@ -19,7 +19,7 @@
      <x>200</x>
      <y>20</y>
      <width>191</width>
-     <height>191</height>
+     <height>211</height>
     </rect>
    </property>
    <property name="title">
@@ -35,10 +35,10 @@
      </rect>
     </property>
     <property name="text">
-     <string>Arduino mère connecté</string>
+     <string>Arduino mère connectée</string>
     </property>
    </widget>
-   <widget class="Led" name="led_14">
+   <widget class="Led" name="arduino2Led">
     <property name="geometry">
      <rect>
       <x>10</x>
@@ -67,10 +67,10 @@
      </rect>
     </property>
     <property name="text">
-     <string>Arduino #3 connecté</string>
+     <string>Arduino #3 connectée</string>
     </property>
    </widget>
-   <widget class="Led" name="led_13">
+   <widget class="Led" name="arduino1Led">
     <property name="geometry">
      <rect>
       <x>10</x>
@@ -99,14 +99,14 @@
      </rect>
     </property>
     <property name="text">
-     <string>Arduino #2 connecté</string>
+     <string>Arduino #2 connectée</string>
     </property>
    </widget>
-   <widget class="Led" name="led_15">
+   <widget class="Led" name="webcamPluggedLed">
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>100</y>
+      <y>130</y>
       <width>15</width>
       <height>15</height>
      </rect>
@@ -121,7 +121,7 @@
      <bool>true</bool>
     </property>
    </widget>
-   <widget class="Led" name="led_12">
+   <widget class="Led" name="arduino3Led">
     <property name="geometry">
      <rect>
       <x>10</x>
@@ -144,7 +144,7 @@
     <property name="geometry">
      <rect>
       <x>40</x>
-      <y>90</y>
+      <y>120</y>
       <width>201</width>
       <height>31</height>
      </rect>
@@ -161,7 +161,7 @@
     <property name="geometry">
      <rect>
       <x>40</x>
-      <y>160</y>
+      <y>190</y>
       <width>121</width>
       <height>16</height>
      </rect>
@@ -170,11 +170,11 @@
      <string>Etat de la puissance</string>
     </property>
    </widget>
-   <widget class="Led" name="led_10">
+   <widget class="Led" name="powerLed">
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>160</y>
+      <y>190</y>
       <width>15</width>
       <height>15</height>
      </rect>
@@ -189,11 +189,11 @@
      <bool>true</bool>
     </property>
    </widget>
-   <widget class="Led" name="led_9">
+   <widget class="Led" name="commandLed">
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>130</y>
+      <y>160</y>
       <width>15</width>
       <height>15</height>
      </rect>
@@ -212,13 +212,45 @@
     <property name="geometry">
      <rect>
       <x>40</x>
-      <y>130</y>
+      <y>160</y>
       <width>141</width>
       <height>16</height>
      </rect>
     </property>
     <property name="text">
      <string>Etat des commande</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_12">
+    <property name="geometry">
+     <rect>
+      <x>40</x>
+      <y>90</y>
+      <width>171</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Arduino #4 connectée</string>
+    </property>
+   </widget>
+   <widget class="Led" name="arduino4Led">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>90</y>
+      <width>15</width>
+      <height>15</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="pixmap">
+     <pixmap resource="ressources.qrc">:/img/img/led_off_red.png</pixmap>
+    </property>
+    <property name="scaledContents">
+     <bool>true</bool>
     </property>
    </widget>
   </widget>
@@ -228,7 +260,7 @@
      <x>10</x>
      <y>20</y>
      <width>181</width>
-     <height>191</height>
+     <height>211</height>
     </rect>
    </property>
    <property name="title">
@@ -247,7 +279,7 @@
      <string>Boitier ouvert</string>
     </property>
    </widget>
-   <widget class="Led" name="led_11">
+   <widget class="Led" name="boxOpenLed">
     <property name="geometry">
      <rect>
       <x>15</x>
@@ -279,7 +311,7 @@
      <string>ATU</string>
     </property>
    </widget>
-   <widget class="Led" name="led_8">
+   <widget class="Led" name="tempICLed">
     <property name="geometry">
      <rect>
       <x>15</x>
@@ -312,7 +344,7 @@
 carte électronique</string>
     </property>
    </widget>
-   <widget class="Led" name="led_7">
+   <widget class="Led" name="ATULed">
     <property name="geometry">
      <rect>
       <x>15</x>
@@ -358,7 +390,7 @@ carte électronique</string>
     <string>&lt;b&gt;Polybox prête à l'emploi : &lt;/b&gt;</string>
    </property>
   </widget>
-  <widget class="Led" name="led_16">
+  <widget class="Led" name="polyboxReadyLed">
    <property name="geometry">
     <rect>
      <x>380</x>

@@ -35,7 +35,12 @@ SOURCES += main.cpp\
     WarningPage.cpp \
     GlobalChecker.cpp \
     DialogConfigSoft.cpp \
-    DynamicTestPage.cpp
+    DynamicTestPage.cpp \
+    PolyboxModule.cpp \
+    PrinterModule.cpp \
+    ScannerModule.cpp \
+    AbstractChecker.cpp \
+    AbstractModule.cpp
 
 HEADERS  += MainWindow.h \
         OpenPage.h \
@@ -60,7 +65,12 @@ HEADERS  += MainWindow.h \
     WarningPage.h \
     GlobalChecker.h \
     DialogConfigSoft.h \
-    DynamicTestPage.h
+    DynamicTestPage.h \
+    PolyboxModule.h \
+    PrinterModule.h \
+    ScannerModule.h \
+    AbstractChecker.h \
+    AbstractModule.h
 
 FORMS    += MainWindow.ui \
         OpenPage.ui \

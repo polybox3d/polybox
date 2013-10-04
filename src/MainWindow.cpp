@@ -5,6 +5,7 @@ MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
 {
+    _polybox = new PolyboxModule( this );
     ui->setupUi(this);
 
     changeStatePage( Start );
@@ -32,7 +33,7 @@ void MainWindow::updateStatePage()
         this->setCentralWidget( new OpenPage( this ) );
         break;
     case Module :
-        this->setCentralWidget( new ModulePage( this ) );
+        this->setCentralWidget( new ModulePage( _polybox, this ) );
         break;
     case Help :
         this->setCentralWidget( new HelpPage( this ) );

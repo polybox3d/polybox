@@ -1,18 +1,59 @@
 #include "ModulePage.h"
 #include "ui_ModulePage.h"
 
-ModulePage::ModulePage(QWidget *parent) :
+ModulePage::ModulePage(PolyboxModule* poly, QWidget *parent) :
     QWidget(parent),
     ui(new Ui::ModulePage)
 {
+    if ( _polybox != NULL )
+    {
+        _polybox = poly;
+    }
+    else
+    {
+        qApp->exit( 42 );
+    }
     _base_scaling_size = 10;
     ui->setupUi(this);
     ui->homeButton->installEventFilter( this );
+
 }
 
 ModulePage::~ModulePage()
 {
     delete ui;
+}
+
+void ModulePage::paintEvent(QPaintEvent *)
+{
+    // CNC
+    if ( _polybox->isCncReady() )
+    {
+        ui->cncButton->setStyleSheet( QString("background-color: ")+DEFAULT_CNC_BUTTON+";" );
+    }
+    else
+    {
+        ui->cncButton->setStyleSheet( QString("background-color: ")+DEFAULT_DISABLE_BUTTON+";" );
+    }
+    // SCANNER
+    if ( _polybox->isScannerReady() )
+    {
+        ui->scannerButton->setStyleSheet(  QString("background-color: ")+DEFAULT_SCANNER_BUTTON+";" );
+    }
+    else
+    {
+        ui->scannerButton->setStyleSheet(  QString("background-color: ")+DEFAULT_DISABLE_BUTTON+";" );
+    }
+    // PRINTER
+    if ( _polybox->isPrinterReady() )
+    {
+        ui->printerButton->setStyleSheet(  QString("background-color: ")+DEFAULT_PRINTER_BUTTON+";" );
+    }
+    else
+    {
+        ui->printerButton->setStyleSheet(  QString("background-color: ")+DEFAULT_DISABLE_BUTTON+";" );
+    }
+
 }
 
 bool ModulePage::eventFilter(QObject *obj, QEvent *event)
@@ -57,7 +98,7 @@ void ModulePage::on_labviewButton_clicked()
 
 void ModulePage::on_printerButton_clicked()
 {
-    bool printer_ok = true;
+    bool printer_ok = _polybox->isPrinterReady();
     if ( printer_ok )
     {
         CHANGE_PAGE( Printer );
@@ -67,7 +108,7 @@ void ModulePage::on_printerButton_clicked()
         CheckerModele* checker = new CheckerModele((QWidget*)this->parent());
 
         checker->setWindowTitle("Etat de l'imprimante");
-        checker->setContentWidget( new PrinterChecker(checker));
+        checker->setContentWidget( new PrinterChecker( _polybox->printerModule(), checker));
         int value_ret = checker->exec();
         if ( value_ret != 0 )
         {
@@ -78,7 +119,7 @@ void ModulePage::on_printerButton_clicked()
 
 void ModulePage::on_cncButton_clicked()
 {
-    bool cnc_ok = false;
+    bool cnc_ok = _polybox->isCncReady();
     if ( cnc_ok )
     {
         DialogCNC dialog((QWidget*)this->parent());
@@ -94,7 +135,7 @@ void ModulePage::on_cncButton_clicked()
 
 
         checker->setWindowTitle("Etat de la CN");
-        checker->setContentWidget( new CNCChecker(checker));
+        checker->setContentWidget( new CNCChecker( _polybox->cncModule(), checker));
         int value_ret = checker->exec();
         if ( value_ret != 0 )
         {
@@ -106,7 +147,7 @@ void ModulePage::on_cncButton_clicked()
 
 void ModulePage::on_scannerButton_clicked()
 {
-    bool scanner_ok = false;
+    bool scanner_ok = _polybox->isScannerReady();
     if ( scanner_ok )
     {
         DialogScanner dialog((QWidget*)this->parent());
@@ -121,7 +162,7 @@ void ModulePage::on_scannerButton_clicked()
         CheckerModele* checker = new CheckerModele((QWidget*)this->parent());
 
         checker->setWindowTitle("Etat du Scanner");
-        checker->setContentWidget( new SCannerChecker(checker));
+        checker->setContentWidget( new SCannerChecker( _polybox->scannerModule(), checker));
         int value_ret = checker->exec();
         if ( value_ret != 0 )
         {
