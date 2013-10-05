@@ -4,6 +4,7 @@
 #include <QWidget>
 
 #include "PrinterModule.h"
+#include "Temperature.h"
 
 namespace Ui {
 class PrinterChecker;

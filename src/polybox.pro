@@ -40,7 +40,8 @@ SOURCES += main.cpp\
     PrinterModule.cpp \
     ScannerModule.cpp \
     AbstractChecker.cpp \
-    AbstractModule.cpp
+    AbstractModule.cpp \
+    Temperature.cpp
 
 HEADERS  += MainWindow.h \
         OpenPage.h \
@@ -70,7 +71,8 @@ HEADERS  += MainWindow.h \
     PrinterModule.h \
     ScannerModule.h \
     AbstractChecker.h \
-    AbstractModule.h
+    AbstractModule.h \
+    Temperature.h
 
 FORMS    += MainWindow.ui \
         OpenPage.ui \
