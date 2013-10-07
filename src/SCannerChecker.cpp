@@ -2,7 +2,7 @@
 #include "ui_SCannerChecker.h"
 
 SCannerChecker::SCannerChecker(QWidget *parent) :
-    QWidget(parent), AbstractChecker( NULL ),
+    AbstractChecker(parent),
     ui(new Ui::SCannerChecker)
 {
     _scanner = NULL;
@@ -11,10 +11,10 @@ SCannerChecker::SCannerChecker(QWidget *parent) :
 }
 
 SCannerChecker::SCannerChecker(ScannerModule* scanner, QWidget *parent) :
-    QWidget(parent),
-    AbstractChecker(scanner),
+    AbstractChecker(parent),
     ui(new Ui::SCannerChecker)
 {
+    setModule( scanner );
     _scanner = scanner;
     ui->setupUi(this);
 }

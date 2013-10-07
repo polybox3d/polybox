@@ -10,7 +10,7 @@ namespace Ui {
 class GlobalChecker;
 }
 
-class GlobalChecker : public QWidget, public AbstractChecker
+class GlobalChecker : public AbstractChecker
 {
     Q_OBJECT
 
@@ -21,7 +21,7 @@ public:
     virtual void setModule( GlobalModule* module );
     virtual void updateModuleValues();
 
-    ~GlobalChecker();
+    virtual ~GlobalChecker();
 protected:
     void paintEvent(QPaintEvent *);
 

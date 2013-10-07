@@ -11,7 +11,7 @@ namespace Ui {
 class CNCChecker;
 }
 
-class CNCChecker : public QWidget, public AbstractChecker
+class CNCChecker : public AbstractChecker
 {
     Q_OBJECT
 

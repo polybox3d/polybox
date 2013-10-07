@@ -3,7 +3,7 @@
 
 
 GlobalChecker::GlobalChecker(QWidget *parent) :
-    QWidget(parent), AbstractChecker( NULL ),
+    AbstractChecker(parent),
     ui(new Ui::GlobalChecker)
 {
     _global = NULL;
@@ -13,9 +13,10 @@ GlobalChecker::GlobalChecker(QWidget *parent) :
 
 
 GlobalChecker::GlobalChecker(GlobalModule *global, QWidget *parent) :
-    QWidget(parent), AbstractChecker( global ),
+    AbstractChecker(parent),
     ui(new Ui::GlobalChecker)
 {
+    setModule( global );
     _global = global;
 
     ui->setupUi(this);

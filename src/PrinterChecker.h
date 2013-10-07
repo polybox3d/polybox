@@ -11,7 +11,7 @@ namespace Ui {
 class PrinterChecker;
 }
 
-class PrinterChecker : public QWidget, public AbstractChecker
+class PrinterChecker : public AbstractChecker
 {
     Q_OBJECT
 

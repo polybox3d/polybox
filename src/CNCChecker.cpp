@@ -2,7 +2,7 @@
 #include "ui_CNCChecker.h"
 
 CNCChecker::CNCChecker( QWidget *parent):
-    QWidget(parent),
+    AbstractChecker(parent),
     ui(new Ui::CNCChecker)
 {
     _cnc = NULL;
@@ -10,7 +10,7 @@ CNCChecker::CNCChecker( QWidget *parent):
 }
 
 CNCChecker::CNCChecker(CNCModule* cnc, QWidget *parent):
-    QWidget(parent), AbstractChecker(),
+    AbstractChecker(parent),
     ui(new Ui::CNCChecker)
 {
     _cnc = cnc;

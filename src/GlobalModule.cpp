@@ -26,8 +26,6 @@ bool GlobalModule::isReady() const
 
 void GlobalModule::updateComponents()
 {
-    std::cout<<"**"<<std::endl;
-
     _arduino1 = _polybox->port()->connectToSerialPort();
 }
 

@@ -35,6 +35,5 @@ void CheckerModele::on_help_clicked()
 void CheckerModele::on_pushButton_clicked()
 {
 
-    ((GlobalChecker*)(ui->contentWidget))->updateModuleValues();
- //   ((AbstractChecker*)(ui->contentWidget))->updateModuleValues();
+    ((AbstractChecker*)(ui->contentWidget))->updateModuleValues();
 }

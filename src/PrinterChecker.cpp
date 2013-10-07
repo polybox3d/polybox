@@ -4,7 +4,7 @@
 using namespace std;
 
 PrinterChecker::PrinterChecker(QWidget *parent) :
-    QWidget(parent),
+    AbstractChecker(parent),
     ui(new Ui::PrinterChecker)
 {
     _printer = NULL;
@@ -12,11 +12,11 @@ PrinterChecker::PrinterChecker(QWidget *parent) :
 }
 
 PrinterChecker::PrinterChecker(PrinterModule* printer, QWidget *parent) :
-    QWidget(parent),
+    AbstractChecker(parent),
     ui(new Ui::PrinterChecker)
 {
     _printer = printer;
-    _currentModule = printer;
+    setModule(printer);
     ui->setupUi(this);
 }
 
