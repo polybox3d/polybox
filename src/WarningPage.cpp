@@ -1,11 +1,12 @@
 #include "WarningPage.h"
 #include "ui_WarningPage.h"
 
-WarningPage::WarningPage(QWidget *parent) :
+WarningPage::WarningPage(PolyboxModule *polybox, QWidget *parent) :
     QWidget(parent),
     ui(new Ui::WarningPage)
 {
     ui->setupUi(this);
+    _polybox = polybox;
 
     HomeButton* hb = new HomeButton( 50,50, this );
     hb->setGeometry( this->width()-hb->width()-10,
@@ -13,7 +14,12 @@ WarningPage::WarningPage(QWidget *parent) :
                      hb->width(), hb->height());
     connect( hb, SIGNAL(clicked()), this, SLOT(goBack()));
 
-   /* ui->cncWidget = new CNCChecker( this );
+    ui->generalWidget->setModule( _polybox->globalModule() );
+    ui->scannerWidget->setModule( _polybox->scannerModule() );
+    ui->cncWidget->setModule( _polybox->cncModule() );
+    ui->printerWidget->setModule( _polybox->printerModule() );
+
+    /* ui->cncWidget = new CNCChecker( this );
     ui->cncWidget->setGeometry( this->width()/2, this->height()/2, 400, 250);
 
     ui->scannerWidget = new SCannerChecker( this );
@@ -49,5 +55,5 @@ void WarningPage::on_configuration_clicked()
 
 void WarningPage::on_dynamicTest_clicked()
 {
-     CHANGE_PAGE( DynamicTest );
+    CHANGE_PAGE( DynamicTest );
 }

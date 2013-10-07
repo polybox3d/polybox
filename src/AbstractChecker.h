@@ -11,6 +11,9 @@ class AbstractChecker
 public:
     AbstractChecker( AbstractModule* module=NULL ){ _currentModule = module; }
     virtual ~AbstractChecker(){}
+    virtual void setModule( AbstractModule* module ){
+        _currentModule = module;
+    }
 
     void updateModuleValues(){
 

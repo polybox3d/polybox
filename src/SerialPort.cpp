@@ -1,7 +1,7 @@
 #include "SerialPort.h"
 
 SerialPort::SerialPort(QObject *parent) :
-    QextSerialPort("/dev/USB0", QextSerialPort::EventDriven, parent)
+    QextSerialPort("/dev/ttyACM0", QextSerialPort::EventDriven, parent)
 {
 }
 

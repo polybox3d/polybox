@@ -24,9 +24,9 @@ bool GlobalModule::isReady() const
     return !boxOpen() && ATUok() && arduino1() && arduino2() && arduino3() && arduino4() && power() && webcamPlugged() && command() && !(_tempIC.isDefault());
 }
 
-void GlobalModule::updateComponents() const
+void GlobalModule::updateComponents()
 {
-
+    _arduino1 = _polybox->port()->isOpen();
 }
 
 

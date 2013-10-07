@@ -14,7 +14,7 @@ public:
     virtual ~AbstractModule(){ }
 
     virtual bool isReady() const = 0;
-    virtual void updateComponents()const { }
+    virtual void updateComponents()const {}
 
 protected:
     virtual void initAll(){ }

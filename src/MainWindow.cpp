@@ -39,7 +39,7 @@ void MainWindow::updateStatePage()
         this->setCentralWidget( new HelpPage( this ) );
         break;
     case Warning :
-        this->setCentralWidget( new WarningPage( this ) );
+        this->setCentralWidget( new WarningPage( _polybox, this ) );
         break;
     case LabView :
         this->setCentralWidget( new LabViewPage( this ) );

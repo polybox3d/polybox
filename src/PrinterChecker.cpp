@@ -20,6 +20,12 @@ PrinterChecker::PrinterChecker(PrinterModule* printer, QWidget *parent) :
     ui->setupUi(this);
 }
 
+void PrinterChecker::setModule(PrinterModule *module)
+{
+    AbstractChecker::setModule( module );
+    _printer = module;
+}
+
 void PrinterChecker::paintEvent(QPaintEvent *)
 {
     if ( _printer == NULL )

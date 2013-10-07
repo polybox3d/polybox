@@ -18,7 +18,8 @@ PolyboxModule::PolyboxModule(QObject *parent) :
     _global = new GlobalModule( this, this );
 
     _port = new SerialPort();
-    _connected = _port->connectToSerialPort();
+    _port->connectToSerialPort();
+    _connected = _port->isOpen();
 }
 
 SerialPort* PolyboxModule::port()

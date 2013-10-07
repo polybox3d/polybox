@@ -11,7 +11,7 @@ PrinterModule::PrinterModule(PolyboxModule* polybox,QObject *parent) :
 void PrinterModule::initAll()
 {
     _printerPlugged = false;
-    _detectPlastic = false;
+    _detectPlastic = true;
     _bedPlugged = false;
 }
 

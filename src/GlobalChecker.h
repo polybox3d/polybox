@@ -17,6 +17,8 @@ class GlobalChecker : public QWidget, public AbstractChecker
 public:
     explicit GlobalChecker(QWidget *parent = 0);
     explicit GlobalChecker(GlobalModule* global, QWidget *parent = 0);
+
+    virtual void setModule( GlobalModule* module );
     ~GlobalChecker();
 protected:
     void paintEvent(QPaintEvent *);

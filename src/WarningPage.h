@@ -11,6 +11,8 @@
 #include "HomeButton.h"
 #include "DialogConfigSoft.h"
 
+#include "PolyboxModule.h"
+
 namespace Ui {
 class WarningPage;
 }
@@ -20,7 +22,7 @@ class WarningPage : public QWidget
     Q_OBJECT
 
 public:
-    explicit WarningPage(QWidget *parent = 0);
+    explicit WarningPage(PolyboxModule* polybox, QWidget *parent = 0);
     ~WarningPage();
 
 public slots:
@@ -36,6 +38,7 @@ private slots:
 
 private:
     Ui::WarningPage *ui;
+    PolyboxModule* _polybox;
 };
 
 #endif // WARNING_H

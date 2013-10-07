@@ -18,6 +18,8 @@ class PrinterChecker : public QWidget, public AbstractChecker
 public:
     explicit PrinterChecker(QWidget *parent = 0);
     PrinterChecker(PrinterModule* printer, QWidget *parent = 0);
+    void setModule(PrinterModule *module);
+
     ~PrinterChecker();
 
 protected:

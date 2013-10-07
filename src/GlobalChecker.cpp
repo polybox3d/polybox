@@ -21,6 +21,12 @@ GlobalChecker::GlobalChecker(GlobalModule *global, QWidget *parent) :
     ui->setupUi(this);
 }
 
+void GlobalChecker::setModule(GlobalModule *module)
+{
+    AbstractChecker::setModule( module );
+    _global = module;
+}
+
 GlobalChecker::~GlobalChecker()
 {
     delete ui;

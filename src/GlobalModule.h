@@ -14,7 +14,7 @@ public:
     explicit GlobalModule(PolyboxModule* polybox, QObject *parent = 0);
 
     virtual bool isReady() const ;
-    virtual void updateComponents() const;
+    virtual void updateComponents();
 
 
     bool boxOpen() const;

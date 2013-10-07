@@ -19,6 +19,11 @@ SCannerChecker::SCannerChecker(ScannerModule* scanner, QWidget *parent) :
     ui->setupUi(this);
 }
 
+void SCannerChecker::setModule(ScannerModule* module)
+{
+    AbstractChecker::setModule( module );
+    _scanner = module;
+}
 
 void SCannerChecker::paintEvent(QPaintEvent *)
 {

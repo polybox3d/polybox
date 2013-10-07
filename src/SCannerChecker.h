@@ -18,6 +18,8 @@ class SCannerChecker : public QWidget, public AbstractChecker
 public:
     explicit SCannerChecker(QWidget *parent = 0);
     SCannerChecker(ScannerModule* scanner, QWidget *parent = 0);
+    void setModule(ScannerModule* module);
+
     ~SCannerChecker();
 
 protected:

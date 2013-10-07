@@ -18,6 +18,12 @@ CNCChecker::CNCChecker(CNCModule* cnc, QWidget *parent):
     ui->setupUi(this);
 }
 
+void CNCChecker::setModule(CNCModule *module)
+{
+    AbstractChecker::setModule( module );
+    _cnc = module;
+}
+
 CNCChecker::~CNCChecker()
 {
     delete ui;
