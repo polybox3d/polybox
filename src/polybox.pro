@@ -44,7 +44,9 @@ SOURCES += main.cpp\
     AbstractChecker.cpp \
     AbstractModule.cpp \
     Temperature.cpp \
-    SerialPort.cpp
+    SerialPort.cpp \
+    Config.cpp \
+    GlobalModule.cpp
 
 HEADERS  += MainWindow.h \
         OpenPage.h \
@@ -77,7 +79,9 @@ HEADERS  += MainWindow.h \
     AbstractModule.h \
     Temperature.h \
     SerialPort.h \
-    mcode.h
+    mcode.h \
+    Config.h \
+    GlobalModule.h
 
 FORMS    += MainWindow.ui \
         OpenPage.ui \

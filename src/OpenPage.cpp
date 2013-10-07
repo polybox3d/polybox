@@ -36,7 +36,7 @@ void OpenPage::on_module_clicked()
 
 
         checker->setWindowTitle("Etat de la machine");
-        checker->setContentWidget( new GlobalChecker( checker));
+        checker->setContentWidget( new GlobalChecker( _polybox->globalModule(),  checker));
         int value_ret = checker->exec();
         if ( value_ret != 0 )
         {

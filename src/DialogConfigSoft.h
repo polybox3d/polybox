@@ -3,6 +3,8 @@
 
 #include <QDialog>
 
+#include "MainWindow.h"
+
 namespace Ui {
 class DialogConfigSoft;
 }
@@ -14,6 +16,7 @@ class DialogConfigSoft : public QDialog
 public:
     explicit DialogConfigSoft(QWidget *parent = 0);
     ~DialogConfigSoft();
+    void updateValues();
 
 private slots:
 

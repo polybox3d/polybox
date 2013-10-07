@@ -15,7 +15,7 @@ void ScannerModule::initAll()
 
 void ScannerModule::updateComponents()const
 {
-    return;
+//    _polybox->port()->isOpen();
     //_polybox->port();
 
 }

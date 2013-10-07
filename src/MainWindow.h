@@ -2,6 +2,9 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+
+#include "Config.h"
+
 #include "OpenPage.h"
 #include "HelpPage.h"
 #include "ModulePage.h"

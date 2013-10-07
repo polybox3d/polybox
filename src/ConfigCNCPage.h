@@ -19,7 +19,7 @@ class ConfigCNCPage : public QWidget
 {
     Q_OBJECT
 
-#define DEFAULT_PATH_LINUXCNC "/home/poly/linuxcnc"
+
 
 public:
     explicit ConfigCNCPage(QWidget *parent = 0);
@@ -40,7 +40,6 @@ private slots:
 
 private:
     Ui::ConfigCNCPage *ui;
-    QString _linuxcncPath;
     QMessageBox* _message;
     QProcess* _script;
 };

@@ -2,19 +2,20 @@
 #include "ui_SCannerChecker.h"
 
 SCannerChecker::SCannerChecker(QWidget *parent) :
-    QWidget(parent),
+    QWidget(parent), AbstractChecker( NULL ),
     ui(new Ui::SCannerChecker)
 {
     _scanner = NULL;
+    _currentModule = NULL;
     ui->setupUi(this);
 }
 
 SCannerChecker::SCannerChecker(ScannerModule* scanner, QWidget *parent) :
     QWidget(parent),
+    AbstractChecker(scanner),
     ui(new Ui::SCannerChecker)
 {
     _scanner = scanner;
-    _currentModule = scanner;
     ui->setupUi(this);
 }
 

@@ -5,6 +5,7 @@
 #include "CNCModule.h"
 #include "ScannerModule.h"
 #include "PrinterModule.h"
+#include "GlobalModule.h"
 
 PolyboxModule::PolyboxModule(QObject *parent) :
     QObject(parent)
@@ -14,6 +15,7 @@ PolyboxModule::PolyboxModule(QObject *parent) :
     _labview = new LabViewModule( this );
     _printer = new PrinterModule( this, this );
     _scanner = new ScannerModule( this, this );
+    _global = new GlobalModule( this, this );
 
     _port = new SerialPort();
     _connected = _port->connectToSerialPort();
@@ -24,6 +26,10 @@ SerialPort* PolyboxModule::port()
     return _port;
 }
 
+GlobalModule* PolyboxModule::globalModule()
+{
+    return _global;
+}
 LabViewModule* PolyboxModule::labView()
 {
     return _labview;
@@ -48,7 +54,7 @@ bool PolyboxModule::isConnected()
 
 bool PolyboxModule::isCommonReady()
 {
-    return true;
+    return _global->isReady();
 }
 
 bool PolyboxModule::isCncReady()

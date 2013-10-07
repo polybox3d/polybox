@@ -17,6 +17,7 @@ class CNCModule;
 class LabViewModule;
 class PrinterModule;
 class ScannerModule;
+class GlobalModule;
 
 class PolyboxModule : public QObject
 {
@@ -28,6 +29,7 @@ public:
     bool isCncReady();
     bool isPrinterReady();
     bool isScannerReady();
+    GlobalModule* globalModule();
     CNCModule* cncModule();
     LabViewModule* labView();
     ScannerModule* scannerModule();
@@ -41,6 +43,7 @@ public slots:
 private:
     bool _connected;
 
+    GlobalModule* _global;
     CNCModule* _cnc;
     LabViewModule* _labview;
     ScannerModule* _scanner;

@@ -9,10 +9,11 @@
 class AbstractChecker
 {
 public:
-    AbstractChecker(){ _currentModule = NULL;}
+    AbstractChecker( AbstractModule* module=NULL ){ _currentModule = module; }
     virtual ~AbstractChecker(){}
 
     void updateModuleValues(){
+
     }
 
 protected:

@@ -6,9 +6,18 @@ CNCPage::CNCPage(QWidget *parent) :
     ui(new Ui::CNCPage)
 {
     ui->setupUi(this);
+
+    startLinuxCNC();
 }
 
 CNCPage::~CNCPage()
 {
     delete ui;
+}
+
+void CNCPage::startLinuxCNC()
+{
+    QString command = Config::linuxCNCCommand;
+    _linuxcnc = new QProcess( this );
+    _linuxcnc->start( command);
 }
