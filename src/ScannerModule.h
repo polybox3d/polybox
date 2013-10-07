@@ -5,15 +5,17 @@
 
 
 #include "AbstractModule.h"
+#include "PolyboxModule.h"
+#include "mcode.h"
 
-class ScannerModule : public QObject, AbstractModule
+class ScannerModule : public QObject, public AbstractModule
 {
     Q_OBJECT
 public:
-    explicit ScannerModule(QObject *parent = 0);
+    explicit ScannerModule(PolyboxModule* polybox, QObject *parent = 0);
 
     virtual bool isReady() const ;
-    virtual void updateValues();
+    virtual void updateComponents()const;
 
     bool webcamPlugged() const ;
     bool primesensePlugged() const;

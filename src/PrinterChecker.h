@@ -5,12 +5,13 @@
 
 #include "PrinterModule.h"
 #include "Temperature.h"
+#include "AbstractChecker.h"
 
 namespace Ui {
 class PrinterChecker;
 }
 
-class PrinterChecker : public QWidget
+class PrinterChecker : public QWidget, public AbstractChecker
 {
     Q_OBJECT
 

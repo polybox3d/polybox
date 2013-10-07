@@ -5,12 +5,13 @@
 #include <QPaintEvent>
 
 #include "ScannerModule.h"
+#include "AbstractChecker.h"
 
 namespace Ui {
 class SCannerChecker;
 }
 
-class SCannerChecker : public QWidget
+class SCannerChecker : public QWidget, public AbstractChecker
 {
     Q_OBJECT
 

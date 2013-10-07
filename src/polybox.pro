@@ -11,6 +11,8 @@ greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 TARGET = polybox
 TEMPLATE = app
 
+#UART Lib
+include(../externals/qextserialport/src/qextserialport.pri)
 
 SOURCES += main.cpp\
         MainWindow.cpp \
@@ -41,7 +43,8 @@ SOURCES += main.cpp\
     ScannerModule.cpp \
     AbstractChecker.cpp \
     AbstractModule.cpp \
-    Temperature.cpp
+    Temperature.cpp \
+    SerialPort.cpp
 
 HEADERS  += MainWindow.h \
         OpenPage.h \
@@ -72,7 +75,9 @@ HEADERS  += MainWindow.h \
     ScannerModule.h \
     AbstractChecker.h \
     AbstractModule.h \
-    Temperature.h
+    Temperature.h \
+    SerialPort.h \
+    mcode.h
 
 FORMS    += MainWindow.ui \
         OpenPage.ui \

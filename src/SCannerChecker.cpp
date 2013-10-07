@@ -14,6 +14,7 @@ SCannerChecker::SCannerChecker(ScannerModule* scanner, QWidget *parent) :
     ui(new Ui::SCannerChecker)
 {
     _scanner = scanner;
+    _currentModule = scanner;
     ui->setupUi(this);
 }
 

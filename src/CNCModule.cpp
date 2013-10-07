@@ -1,7 +1,7 @@
 #include "CNCModule.h"
 
-CNCModule::CNCModule(QObject *parent) :
-    QObject(parent)
+CNCModule::CNCModule(PolyboxModule *polybox, QObject *parent) :
+    QObject(parent), AbstractModule(polybox)
 {
     initAll();
 }
@@ -26,9 +26,10 @@ void CNCModule::initAll()
     _cncType = Noone;
 }
 
-void CNCModule::updateValues()
+void CNCModule::updateComponents() const
 {
-
+    return;
+   // _polybox->port()->sendMCode( MCode::ASK_CNC_UPDATE );
 }
 
 bool CNCModule::cncPlugged()

@@ -1,14 +1,27 @@
 #include "PolyboxModule.h"
 
+//Breaking circles references
+#include "LabViewModule.h"
+#include "CNCModule.h"
+#include "ScannerModule.h"
+#include "PrinterModule.h"
+
 PolyboxModule::PolyboxModule(QObject *parent) :
     QObject(parent)
 {
 
-    _cnc = new CNCModule( this );
+    _cnc = new CNCModule( this, this );
     _labview = new LabViewModule( this );
-    _printer = new PrinterModule( this );
-    _scanner = new ScannerModule( this );
-    _connected = false;
+    _printer = new PrinterModule( this, this );
+    _scanner = new ScannerModule( this, this );
+
+    _port = new SerialPort();
+    _connected = _port->connectToSerialPort();
+}
+
+SerialPort* PolyboxModule::port()
+{
+    return _port;
 }
 
 LabViewModule* PolyboxModule::labView()
@@ -45,12 +58,12 @@ bool PolyboxModule::isCncReady()
 
 bool PolyboxModule::isPrinterReady()
 {
-    return ( true && this->isConnected() && this->isCommonReady() );
+    return ( _printer->isReady() && this->isConnected() && this->isCommonReady() );
     //return ( ->isReady() && this->isConnected() && this->isCommonReady() );
 }
 
 bool PolyboxModule::isScannerReady()
 {
-    return ( true && this->isConnected() && this->isCommonReady() );
+    return ( _scanner->isReady() && this->isConnected() && this->isCommonReady() );
     //return ( _la->isReady() && this->isConnected() && this->isCommonReady() );
 }

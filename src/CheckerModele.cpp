@@ -1,12 +1,12 @@
 #include "CheckerModele.h"
 #include "ui_CheckerModele.h"
 
-CheckerModele::CheckerModele(QWidget *parent) :
+CheckerModele::CheckerModele( QWidget *parent) :
     QDialog(parent),
     ui(new Ui::CheckerModele)
 {
     ui->setupUi(this);
-   /* this->setWindowModality( Qt::ApplicationModal );
+    /* this->setWindowModality( Qt::ApplicationModal );
     this->setWindowFlags( Qt::Dialog );*/
 }
 void CheckerModele::setContentWidget(QWidget *content)
@@ -30,4 +30,9 @@ void CheckerModele::on_close_clicked()
 void CheckerModele::on_help_clicked()
 {
     this->done( Help );
+}
+
+void CheckerModele::on_pushButton_clicked()
+{
+    ((AbstractChecker*)(ui->contentWidget))->updateModuleValues();
 }

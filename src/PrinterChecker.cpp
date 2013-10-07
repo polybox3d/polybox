@@ -16,6 +16,7 @@ PrinterChecker::PrinterChecker(PrinterModule* printer, QWidget *parent) :
     ui(new Ui::PrinterChecker)
 {
     _printer = printer;
+    _currentModule = printer;
     ui->setupUi(this);
 }
 

@@ -1,8 +1,8 @@
 #include "PrinterModule.h"
 
 
-PrinterModule::PrinterModule(QObject *parent) :
-    QObject(parent)
+PrinterModule::PrinterModule(PolyboxModule* polybox,QObject *parent) :
+    QObject(parent), AbstractModule(polybox)
 {
     initAll();
 }
@@ -15,10 +15,9 @@ void PrinterModule::initAll()
     _bedPlugged = false;
 }
 
-void PrinterModule::updateValues()
+void PrinterModule::updateComponents() const
 {
-
-
+    _polybox->port()->sendMCode( MCode::ASK_PRINTER_UPDATE );
 }
 
 bool PrinterModule::isReady() const

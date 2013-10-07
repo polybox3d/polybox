@@ -4,6 +4,7 @@
 #include <QObject>
 
 #include "AbstractModule.h"
+#include "mcode.h"
 
 enum CNCType
 {
@@ -13,15 +14,15 @@ enum CNCType
 
 #define DEFAULT_LEVEL_LUB -42.42
 
-class CNCModule : public QObject, AbstractModule
+class CNCModule : public QObject, public AbstractModule
 {
     Q_OBJECT
 public:
-    explicit CNCModule(QObject *parent = 0);
+    explicit CNCModule(PolyboxModule* polybox, QObject *parent = 0);
     ~CNCModule();
 
     virtual bool isReady() const;
-    virtual void updateValues();
+    virtual void updateComponents()const;
 
     bool cncPlugged();
     bool motorLubPlugged();

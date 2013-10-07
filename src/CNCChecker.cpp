@@ -10,10 +10,11 @@ CNCChecker::CNCChecker( QWidget *parent):
 }
 
 CNCChecker::CNCChecker(CNCModule* cnc, QWidget *parent):
-    QWidget(parent),
+    QWidget(parent), AbstractChecker(),
     ui(new Ui::CNCChecker)
 {
     _cnc = cnc;
+    _currentModule = cnc;
     ui->setupUi(this);
 }
 

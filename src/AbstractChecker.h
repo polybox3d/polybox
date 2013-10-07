@@ -1,14 +1,22 @@
 #ifndef ABSTRACTCHECKER_H
 #define ABSTRACTCHECKER_H
 
-#include "PolyboxModule.h"
+#include "AbstractModule.h"
+#include "ScannerModule.h"
+#include "CNCModule.h"
+#include <iostream>
 
 class AbstractChecker
 {
 public:
-    AbstractChecker();
+    AbstractChecker(){ _currentModule = NULL;}
+    virtual ~AbstractChecker(){}
+
+    void updateModuleValues(){
+    }
+
 protected:
-    PolyboxModule* _polybox;
+    AbstractModule* _currentModule;
 };
 
 #endif // ABSTRACTCHECKER_H

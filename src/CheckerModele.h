@@ -5,6 +5,8 @@
 #include <QDialog>
 
 #include "pageState.h"
+#include "AbstractChecker.h"
+
 
 namespace Ui {
 class CheckerModele;
@@ -25,8 +27,11 @@ private slots:
 
     void on_help_clicked();
 
+    void on_pushButton_clicked();
+
 private:
     Ui::CheckerModele *ui;
 };
 
 #endif // CHECKERMODELE_H
+

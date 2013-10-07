@@ -1,7 +1,7 @@
 #include "ScannerModule.h"
 
-ScannerModule::ScannerModule(QObject *parent) :
-    QObject(parent), AbstractModule()
+ScannerModule::ScannerModule(PolyboxModule *polybox, QObject *parent) :
+    QObject(parent), AbstractModule(polybox)
 {
     initAll();
 }
@@ -13,8 +13,10 @@ void ScannerModule::initAll()
     _primesencePlugged = false;
 }
 
-void ScannerModule::updateValues()
+void ScannerModule::updateComponents()const
 {
+    return;
+    //_polybox->port();
 
 }
 

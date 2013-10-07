@@ -6,14 +6,16 @@
 #include "AbstractModule.h"
 #include "Temperature.h"
 
+#include "PolyboxModule.h"
+#include "mcode.h"
 
-class PrinterModule : public QObject, AbstractModule
+class PrinterModule : public QObject, public AbstractModule
 {
     Q_OBJECT
 public:
-    explicit PrinterModule(QObject *parent = 0);
+    explicit PrinterModule(PolyboxModule* polybox, QObject *parent = 0);
     virtual bool isReady() const;
-    virtual void updateValues();
+    virtual void updateComponents()const;
 
     Temperature tempTopBuse1();
     Temperature tempBotBuse1();

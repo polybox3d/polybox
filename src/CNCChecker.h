@@ -5,12 +5,13 @@
 #include <QPaintEvent>
 
 #include "CNCModule.h"
+#include "AbstractChecker.h"
 
 namespace Ui {
 class CNCChecker;
 }
 
-class CNCChecker : public QWidget
+class CNCChecker : public QWidget, public AbstractChecker
 {
     Q_OBJECT
 

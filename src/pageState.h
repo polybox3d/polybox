@@ -4,7 +4,7 @@
 
 enum PageState
 {
-    Start, Help, Module, Warning, LabView, CNC, Printer, ScannerLaser, ScannerPrimesense, ConfigurCNC, DynamicTest
+    Start, Help, Module, Warning, LabView, CNC, Printer, ScannerLaser, ScannerPrimesense, ConfigurCNC, DynamicTest, Update
 };
 
 enum ReturnDialog

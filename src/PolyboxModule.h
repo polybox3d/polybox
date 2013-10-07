@@ -3,10 +3,20 @@
 
 #include <QObject>
 
-#include "LabViewModule.h"
+#include "mcode.h"
+#include "SerialPort.h"
+
+/*#include "LabViewModule.h"
 #include "CNCModule.h"
 #include "ScannerModule.h"
 #include "PrinterModule.h"
+*/
+
+
+class CNCModule;
+class LabViewModule;
+class PrinterModule;
+class ScannerModule;
 
 class PolyboxModule : public QObject
 {
@@ -22,6 +32,7 @@ public:
     LabViewModule* labView();
     ScannerModule* scannerModule();
     PrinterModule* printerModule();
+    SerialPort* port();
 
 signals:
 
@@ -34,6 +45,7 @@ private:
     LabViewModule* _labview;
     ScannerModule* _scanner;
     PrinterModule* _printer;
+    SerialPort * _port;
 
 };
 

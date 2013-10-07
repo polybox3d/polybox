@@ -3,11 +3,13 @@
 
 #include <QWidget>
 
+#include "AbstractChecker.h"
+
 namespace Ui {
 class GlobalChecker;
 }
 
-class GlobalChecker : public QWidget
+class GlobalChecker : public QWidget, AbstractChecker
 {
     Q_OBJECT
 
