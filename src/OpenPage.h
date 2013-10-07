@@ -9,6 +9,8 @@
 #include "MainWindow.h"
 #include "pageState.h"
 
+#include "PolyboxModule.h"
+
 namespace Ui {
 class OpenPage;
 }
@@ -18,7 +20,7 @@ class OpenPage : public QWidget
     Q_OBJECT
 
 public:
-    explicit OpenPage(QWidget *parent );
+    explicit OpenPage(PolyboxModule *poly, QWidget *parent );
     ~OpenPage();
 
 private slots:
@@ -30,6 +32,7 @@ private slots:
 
 private:
     Ui::OpenPage *ui;
+    PolyboxModule* _polybox;
 };
 
 #endif // OPENPAGE_H

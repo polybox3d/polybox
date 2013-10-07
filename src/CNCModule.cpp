@@ -13,6 +13,7 @@ CNCModule::~CNCModule()
 
 bool CNCModule::isReady() const
 {
+    return true;
     return (_cncPlugged &&_motorLubPlugged &&
             (_levelLub != DEFAULT_LEVEL_LUB) &&_vacuumPlugged &&
             (_cncType != Unknowed) && (_cncType != Noone ) );

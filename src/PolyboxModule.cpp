@@ -53,7 +53,7 @@ bool PolyboxModule::isCommonReady()
 
 bool PolyboxModule::isCncReady()
 {
-    return ( _cnc->isReady() && this->isConnected() && this->isCommonReady() );
+    return ( false && this->isConnected() && this->isCommonReady() );
 }
 
 bool PolyboxModule::isPrinterReady()

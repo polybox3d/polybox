@@ -30,7 +30,7 @@ void MainWindow::updateStatePage()
     switch ( _currentState )
     {
     case Start:
-        this->setCentralWidget( new OpenPage( this ) );
+        this->setCentralWidget( new OpenPage( _polybox, this ) );
         break;
     case Module :
         this->setCentralWidget( new ModulePage( _polybox, this ) );

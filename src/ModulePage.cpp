@@ -5,7 +5,7 @@ ModulePage::ModulePage(PolyboxModule* poly, QWidget *parent) :
     QWidget(parent),
     ui(new Ui::ModulePage)
 {
-    if ( _polybox != NULL )
+    if ( poly != NULL )
     {
         _polybox = poly;
     }

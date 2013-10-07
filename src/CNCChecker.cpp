@@ -31,7 +31,8 @@ void CNCChecker::paintEvent(QPaintEvent *)
     }
     else
     {
-        ui->cncPlugLed->setActivated( _cnc->isReady() );
+        ui->cncReadyLed->setActivated( _cnc->isReady() );
+        ui->cncPlugLed->setActivated( _cnc->cncPlugged() );
         ui->motorLubLed->setActivated( _cnc->motorLubPlugged() );
         ui->levelLubLed->setActivated( _cnc->levelLub() );
         ui->vacuumLed->setActivated( _cnc->vacuumPlugged() );
