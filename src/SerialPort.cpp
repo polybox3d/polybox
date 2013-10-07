@@ -1,4 +1,5 @@
 #include "SerialPort.h"
+#include <QDebug>
 
 SerialPort::SerialPort(QObject *parent) :
     QextSerialPort("/dev/ttyACM0", QextSerialPort::EventDriven, parent)
@@ -8,24 +9,34 @@ SerialPort::SerialPort(QObject *parent) :
 
 bool SerialPort::connectToSerialPort()
 {
-    setBaudRate(BAUD9600);
+    if ( isOpen() )
+    {
+        this->close();
+
+    }
+
+
+    setBaudRate( (BaudRateType)(Config::motherboardBaudrate) );
     setFlowControl(FLOW_OFF);
     setParity(PAR_NONE);
     setDataBits(DATA_8);
-    setStopBits(STOP_2);
+    setStopBits(STOP_1);
 
-    if ( open(QIODevice::ReadWrite) == true) {
-//        connect(this, SIGNAL(readyRead()), this, SLOT(onReadyRead()) );
-  //      connect(this, SIGNAL(dsrChanged(bool)), this, SLOT(onDsrChanged(bool)) );
-        if (!(lineStatus() & LS_DSR)){
-            //qDebug() << "warning: device is not turned on";
+    if ( open(QIODevice::ReadWrite) == true)
+    {
+        //        connect(this, SIGNAL(readyRead()), this, SLOT(onReadyRead()) );
+        //      connect(this, SIGNAL(dsrChanged(bool)), this, SLOT(onDsrChanged(bool)) );
+     /*   if (!(lineStatus() & LS_DSR)){
+            qDebug() << "warning: device is not turned on"<<lineStatus();
             return false;
-        }
-        //qDebug() << "listening for data on" << serialPort->portName();
+        }*/
+        qDebug() << "listening for data on" << this->portName();
         return true;
-    }else{
-        //qDebug() << "device failed to open:" << serialPort->errorString();
-        return true;
+    }
+    else
+    {
+        qDebug() << "device failed to open:" << this->errorString();
+        return false;
     }
 
 }

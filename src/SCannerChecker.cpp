@@ -25,6 +25,11 @@ void SCannerChecker::setModule(ScannerModule* module)
     _scanner = module;
 }
 
+void SCannerChecker::updateModuleValues()
+{
+    _scanner->updateComponents();
+}
+
 void SCannerChecker::paintEvent(QPaintEvent *)
 {
     if ( _scanner == NULL )

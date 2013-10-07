@@ -2,6 +2,7 @@
 #define SERIALPORT_H
 
 #include "qextserialport.h"
+#include "Config.h"
 
 class SerialPort : public QextSerialPort
 {

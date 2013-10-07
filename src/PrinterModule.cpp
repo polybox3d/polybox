@@ -15,7 +15,7 @@ void PrinterModule::initAll()
     _bedPlugged = false;
 }
 
-void PrinterModule::updateComponents() const
+void PrinterModule::updateComponents()
 {
     _polybox->port()->sendMCode( MCode::ASK_PRINTER_UPDATE );
 }

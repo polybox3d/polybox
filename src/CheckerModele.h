@@ -6,6 +6,7 @@
 
 #include "pageState.h"
 #include "AbstractChecker.h"
+#include "GlobalChecker.h"
 
 
 namespace Ui {

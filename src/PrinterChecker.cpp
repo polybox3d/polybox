@@ -26,6 +26,11 @@ void PrinterChecker::setModule(PrinterModule *module)
     _printer = module;
 }
 
+void PrinterChecker::updateModuleValues()
+{
+    _printer->updateComponents();
+}
+
 void PrinterChecker::paintEvent(QPaintEvent *)
 {
     if ( _printer == NULL )

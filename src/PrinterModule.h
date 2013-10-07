@@ -15,7 +15,7 @@ class PrinterModule : public QObject, public AbstractModule
 public:
     explicit PrinterModule(PolyboxModule* polybox, QObject *parent = 0);
     virtual bool isReady() const;
-    virtual void updateComponents()const;
+    virtual void updateComponents();
 
     Temperature tempTopBuse1();
     Temperature tempBotBuse1();

@@ -15,9 +15,7 @@ public:
         _currentModule = module;
     }
 
-    void updateModuleValues(){
-
-    }
+    virtual void updateModuleValues() = 0;
 
 protected:
     AbstractModule* _currentModule;

@@ -14,6 +14,7 @@ public:
     static QString webcamName;
 
     static QString linuxCNCCommand;
+    static int motherboardBaudrate;
 };
 
 #endif // CONFIG_H

@@ -21,6 +21,7 @@ void DialogConfigSoft::updateValues()
     ui->pathDev->setText( Config::pathToWebcamDevice);
     ui->homeDirectory->setText( Config::pathToHomeDirectory);
     ui->webcamName->setText( Config::webcamName);
+    ui->baudrate->setText( QString::number(Config::motherboardBaudrate) );
 }
 
 void DialogConfigSoft::on_close_clicked()

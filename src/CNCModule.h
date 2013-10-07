@@ -22,7 +22,7 @@ public:
     ~CNCModule();
 
     virtual bool isReady() const;
-    virtual void updateComponents()const;
+    virtual void updateComponents();
 
     bool cncPlugged();
     bool motorLubPlugged();

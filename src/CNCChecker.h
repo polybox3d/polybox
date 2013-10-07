@@ -19,6 +19,7 @@ public:
     explicit CNCChecker(QWidget *parent = 0);
     CNCChecker(CNCModule* cnc, QWidget *parent = 0);
     void setModule(CNCModule *module);
+    void updateModuleValues();
 
     ~CNCChecker();
 protected:

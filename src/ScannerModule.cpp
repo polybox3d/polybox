@@ -13,7 +13,7 @@ void ScannerModule::initAll()
     _primesencePlugged = false;
 }
 
-void ScannerModule::updateComponents()const
+void ScannerModule::updateComponents()
 {
 //    _polybox->port()->isOpen();
     //_polybox->port();

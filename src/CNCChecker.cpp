@@ -24,6 +24,11 @@ void CNCChecker::setModule(CNCModule *module)
     _cnc = module;
 }
 
+void CNCChecker::updateModuleValues()
+{
+    _cnc->updateComponents();
+}
+
 CNCChecker::~CNCChecker()
 {
     delete ui;

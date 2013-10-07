@@ -19,6 +19,8 @@ public:
     explicit GlobalChecker(GlobalModule* global, QWidget *parent = 0);
 
     virtual void setModule( GlobalModule* module );
+    virtual void updateModuleValues();
+
     ~GlobalChecker();
 protected:
     void paintEvent(QPaintEvent *);

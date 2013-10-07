@@ -15,7 +15,7 @@ public:
     explicit ScannerModule(PolyboxModule* polybox, QObject *parent = 0);
 
     virtual bool isReady() const ;
-    virtual void updateComponents()const;
+    virtual void updateComponents();
 
     bool webcamPlugged() const ;
     bool primesensePlugged() const;

@@ -26,6 +26,10 @@ void GlobalChecker::setModule(GlobalModule *module)
     AbstractChecker::setModule( module );
     _global = module;
 }
+void GlobalChecker::updateModuleValues()
+{
+    _global->updateComponents();
+}
 
 GlobalChecker::~GlobalChecker()
 {

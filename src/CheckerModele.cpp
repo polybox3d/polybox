@@ -12,7 +12,7 @@ CheckerModele::CheckerModele( QWidget *parent) :
 void CheckerModele::setContentWidget(QWidget *content)
 {
     this->ui->contentWidget = content;
-    content->show();
+    //content->show();
     update();
 
 }
@@ -34,5 +34,7 @@ void CheckerModele::on_help_clicked()
 
 void CheckerModele::on_pushButton_clicked()
 {
-    ((AbstractChecker*)(ui->contentWidget))->updateModuleValues();
+
+    ((GlobalChecker*)(ui->contentWidget))->updateModuleValues();
+ //   ((AbstractChecker*)(ui->contentWidget))->updateModuleValues();
 }

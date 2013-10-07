@@ -27,7 +27,7 @@ void CNCModule::initAll()
     _cncType = Noone;
 }
 
-void CNCModule::updateComponents() const
+void CNCModule::updateComponents()
 {
     return;
    // _polybox->port()->sendMCode( MCode::ASK_CNC_UPDATE );
