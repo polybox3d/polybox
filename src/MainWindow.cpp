@@ -56,6 +56,12 @@ void MainWindow::updateStatePage()
     case DynamicTest :
         this->setCentralWidget( new DynamicTestPage( this ) );
         break;
+    case ScannerLaser :
+    {
+        QProcess* laser = new QProcess(this);
+        laser->start( Config::scannerLaserPath );
+        break;
+    }
     default:
         break;
 

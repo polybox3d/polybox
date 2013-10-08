@@ -3,21 +3,37 @@
 
 #include <QObject>
 #include <QString>
-
+/**
+ * @brief The Mode enum Degree unit, Celcius ? Kelvin ? Banana ? Pony ? ....
+ */
 enum Mode{
     Celcius, Kelvin
 };
 
 #define DEFAULT_TEMP_VALUE -42.42
 #define EPSYLON 0.01
-
+/**
+ * @brief The Temperature class Provide a Class to store Temperature data and utilities functions. Can retrveive a  -ready-to-printer String (value+DegreeUnit) or just the value.
+ */
 class Temperature
 {
 public:
     explicit Temperature();
+    /**
+     * @brief getValue Current stored temperature as a float.
+     * @return temperature as float
+     */
     float getValue() const;
+    /**
+     * @brief str Return a ready-to-print QString. The string is value+unitMode
+     * @return
+     */
     QString str();
 
+    /**
+     * @brief isDefault Return True if the current stored value is the default value. Usefull, for example, to know if a captor is working or no.
+     * @return
+     */
     bool isDefault() const;
 
 private:
