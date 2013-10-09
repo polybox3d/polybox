@@ -36,16 +36,15 @@ public:
     Led *turntableLed;
     QLabel *label_2;
     QLabel *label_6;
-    QLabel *label_7;
 
     void setupUi(QWidget *SCannerChecker)
     {
         if (SCannerChecker->objectName().isEmpty())
             SCannerChecker->setObjectName(QStringLiteral("SCannerChecker"));
-        SCannerChecker->resize(400, 230);
+        SCannerChecker->resize(400, 250);
         groupBox = new QGroupBox(SCannerChecker);
         groupBox->setObjectName(QStringLiteral("groupBox"));
-        groupBox->setGeometry(QRect(10, 70, 181, 131));
+        groupBox->setGeometry(QRect(10, 20, 181, 131));
         groupBox->setFlat(false);
         groupBox->setCheckable(false);
         turntableLed_2 = new Led(groupBox);
@@ -71,7 +70,7 @@ public:
         label_5->setScaledContents(true);
         groupBox_2 = new QGroupBox(SCannerChecker);
         groupBox_2->setObjectName(QStringLiteral("groupBox_2"));
-        groupBox_2->setGeometry(QRect(210, 70, 181, 131));
+        groupBox_2->setGeometry(QRect(210, 20, 181, 131));
         primesencePlugLed = new Led(groupBox_2);
         primesencePlugLed->setObjectName(QStringLiteral("primesencePlugLed"));
         primesencePlugLed->setGeometry(QRect(10, 50, 18, 18));
@@ -90,16 +89,9 @@ public:
         label_2->setGeometry(QRect(40, 80, 111, 21));
         label_6 = new QLabel(groupBox_2);
         label_6->setObjectName(QStringLiteral("label_6"));
-        label_6->setGeometry(QRect(80, -5, 31, 31));
+        label_6->setGeometry(QRect(150, -5, 31, 31));
         label_6->setPixmap(QPixmap(QString::fromUtf8(":/img/img/primesense.png")));
         label_6->setScaledContents(true);
-        label_7 = new QLabel(SCannerChecker);
-        label_7->setObjectName(QStringLiteral("label_7"));
-        label_7->setGeometry(QRect(10, 20, 321, 31));
-        groupBox->raise();
-        groupBox_2->raise();
-        label_2->raise();
-        label_7->raise();
 
         retranslateUi(SCannerChecker);
 
@@ -121,7 +113,6 @@ public:
         turntableLed->setText(QString());
         label_2->setText(QApplication::translate("SCannerChecker", "Plateau tournant", 0));
         label_6->setText(QString());
-        label_7->setText(QApplication::translate("SCannerChecker", "V\303\251rification des branchements pour le module Scanner", 0));
     } // retranslateUi
 
 };

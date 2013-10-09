@@ -42,9 +42,11 @@ public:
         homeButton->setScaledContents(true);
         printerButton = new QPushButton(ModulePage);
         printerButton->setObjectName(QStringLiteral("printerButton"));
+        printerButton->setEnabled(true);
         printerButton->setGeometry(QRect(620, 70, 121, 91));
         printerButton->setStyleSheet(QStringLiteral("background-color: rgb(255, 190, 190);"));
         printerButton->setCheckable(false);
+        printerButton->setFlat(false);
         cncButton = new QPushButton(ModulePage);
         cncButton->setObjectName(QStringLiteral("cncButton"));
         cncButton->setGeometry(QRect(50, 70, 121, 91));

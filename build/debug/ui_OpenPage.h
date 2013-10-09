@@ -63,7 +63,7 @@ public:
     {
         OpenPage->setWindowTitle(QApplication::translate("OpenPage", "Form", 0));
         label->setText(QApplication::translate("OpenPage", "<html><head/><body><p><span style=\" font-size:xx-large; font-weight:600;\">Bienvenue !</span></p><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent convallis porttitor orci ut tincidunt. Sed lorem urna, convallis vel tincidunt non, pretium in risus. Donec ac erat semper, eleifend sem vel, ornare mauris. Integer quis est nisi. Curabitur volutpat nulla sed vestibulum tincidunt. </p></body></html>", 0));
-        warning->setText(QApplication::translate("OpenPage", "Mentions L\303\251gale", 0));
+        warning->setText(QApplication::translate("OpenPage", "Configuration", 0));
         module->setText(QApplication::translate("OpenPage", "Commencez", 0));
         help->setText(QApplication::translate("OpenPage", "Aide", 0));
         logo->setText(QString());

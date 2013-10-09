@@ -34,14 +34,14 @@ public:
     {
         if (CheckerModele->objectName().isEmpty())
             CheckerModele->setObjectName(QStringLiteral("CheckerModele"));
-        CheckerModele->resize(400, 275);
+        CheckerModele->resize(400, 300);
         contentWidget = new QWidget(CheckerModele);
         contentWidget->setObjectName(QStringLiteral("contentWidget"));
-        contentWidget->setGeometry(QRect(0, 0, 400, 230));
+        contentWidget->setGeometry(QRect(0, 0, 400, 250));
         contentWidget->setAutoFillBackground(false);
         layoutWidget = new QWidget(CheckerModele);
         layoutWidget->setObjectName(QStringLiteral("layoutWidget"));
-        layoutWidget->setGeometry(QRect(30, 240, 331, 27));
+        layoutWidget->setGeometry(QRect(30, 260, 331, 27));
         horizontalLayout = new QHBoxLayout(layoutWidget);
         horizontalLayout->setObjectName(QStringLiteral("horizontalLayout"));
         horizontalLayout->setContentsMargins(0, 0, 0, 0);

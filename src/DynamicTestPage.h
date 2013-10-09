@@ -9,7 +9,9 @@
 namespace Ui {
 class DynamicTestPage;
 }
-
+/**
+ * @brief The DynamicTestPage class A QWidget page for dynamic test. User can start test such as home-endstop, motors test, extruder test etc...
+ */
 class DynamicTestPage : public QWidget
 {
     Q_OBJECT

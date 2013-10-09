@@ -26,7 +26,6 @@ QT_BEGIN_NAMESPACE
 class Ui_CNCChecker
 {
 public:
-    QLabel *label_3;
     QLabel *label_8;
     Led *cncReadyLed;
     QGroupBox *groupBox;
@@ -38,7 +37,7 @@ public:
     Led *cncPlugLed;
     QLabel *label;
     QLabel *label_5;
-    QWidget *widget;
+    QWidget *layoutWidget;
     QHBoxLayout *horizontalLayout;
     QRadioButton *proxonRadio;
     QRadioButton *manuelRadio;
@@ -47,21 +46,18 @@ public:
     {
         if (CNCChecker->objectName().isEmpty())
             CNCChecker->setObjectName(QStringLiteral("CNCChecker"));
-        CNCChecker->resize(400, 220);
-        label_3 = new QLabel(CNCChecker);
-        label_3->setObjectName(QStringLiteral("label_3"));
-        label_3->setGeometry(QRect(31, 0, 291, 31));
+        CNCChecker->resize(400, 250);
         label_8 = new QLabel(CNCChecker);
         label_8->setObjectName(QStringLiteral("label_8"));
-        label_8->setGeometry(QRect(180, 30, 171, 21));
+        label_8->setGeometry(QRect(200, 0, 171, 21));
         cncReadyLed = new Led(CNCChecker);
         cncReadyLed->setObjectName(QStringLiteral("cncReadyLed"));
-        cncReadyLed->setGeometry(QRect(360, 33, 15, 15));
+        cncReadyLed->setGeometry(QRect(380, 0, 15, 15));
         cncReadyLed->setPixmap(QPixmap(QString::fromUtf8(":/img/img/led_off_red.png")));
         cncReadyLed->setScaledContents(true);
         groupBox = new QGroupBox(CNCChecker);
         groupBox->setObjectName(QStringLiteral("groupBox"));
-        groupBox->setGeometry(QRect(20, 50, 341, 161));
+        groupBox->setGeometry(QRect(20, 20, 341, 161));
         levelLubLed = new Led(groupBox);
         levelLubLed->setObjectName(QStringLiteral("levelLubLed"));
         levelLubLed->setGeometry(QRect(10, 103, 15, 15));
@@ -94,20 +90,20 @@ public:
         label_5 = new QLabel(groupBox);
         label_5->setObjectName(QStringLiteral("label_5"));
         label_5->setGeometry(QRect(40, 130, 119, 17));
-        widget = new QWidget(groupBox);
-        widget->setObjectName(QStringLiteral("widget"));
-        widget->setGeometry(QRect(80, 50, 206, 25));
-        horizontalLayout = new QHBoxLayout(widget);
+        layoutWidget = new QWidget(groupBox);
+        layoutWidget->setObjectName(QStringLiteral("layoutWidget"));
+        layoutWidget->setGeometry(QRect(80, 50, 206, 25));
+        horizontalLayout = new QHBoxLayout(layoutWidget);
         horizontalLayout->setObjectName(QStringLiteral("horizontalLayout"));
         horizontalLayout->setContentsMargins(0, 0, 0, 0);
-        proxonRadio = new QRadioButton(widget);
+        proxonRadio = new QRadioButton(layoutWidget);
         proxonRadio->setObjectName(QStringLiteral("proxonRadio"));
         proxonRadio->setEnabled(false);
         proxonRadio->setCheckable(true);
 
         horizontalLayout->addWidget(proxonRadio);
 
-        manuelRadio = new QRadioButton(widget);
+        manuelRadio = new QRadioButton(layoutWidget);
         manuelRadio->setObjectName(QStringLiteral("manuelRadio"));
         manuelRadio->setEnabled(false);
         manuelRadio->setCheckable(true);
@@ -123,7 +119,6 @@ public:
     void retranslateUi(QWidget *CNCChecker)
     {
         CNCChecker->setWindowTitle(QApplication::translate("CNCChecker", "Form", 0));
-        label_3->setText(QApplication::translate("CNCChecker", "V\303\251rification des branchements pour le module CN", 0));
         label_8->setText(QApplication::translate("CNCChecker", "<html><head/><body><p><span style=\" font-weight:600;\">Module CN pr\303\252t \303\240 l'emploi :</span></p></body></html>", 0));
         cncReadyLed->setText(QString());
         groupBox->setTitle(QApplication::translate("CNCChecker", "D\303\251tails", 0));

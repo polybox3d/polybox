@@ -9,7 +9,9 @@
 namespace Ui {
 class HelpPage;
 }
-
+/**
+ * @brief The HelpPage class QWidget page showing help for user. Links, text, video, etc..
+ */
 class HelpPage : public QWidget
 {
     Q_OBJECT
@@ -20,6 +22,9 @@ public:
 public slots:
     void backPage();
 private:
+    /**
+     * @brief ui Graphical layer.
+     */
     Ui::HelpPage *ui;
 };
 

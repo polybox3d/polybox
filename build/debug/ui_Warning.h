@@ -21,12 +21,28 @@ QT_BEGIN_NAMESPACE
 class Ui_Warning
 {
 public:
+    QWidget *generalWidget;
+    QWidget *scannerWidget;
+    QWidget *printerWidget;
+    QWidget *cncWidget;
 
     void setupUi(QWidget *Warning)
     {
         if (Warning->objectName().isEmpty())
             Warning->setObjectName(QStringLiteral("Warning"));
-        Warning->resize(400, 300);
+        Warning->resize(800, 550);
+        generalWidget = new QWidget(Warning);
+        generalWidget->setObjectName(QStringLiteral("generalWidget"));
+        generalWidget->setGeometry(QRect(0, 0, 400, 250));
+        scannerWidget = new QWidget(Warning);
+        scannerWidget->setObjectName(QStringLiteral("scannerWidget"));
+        scannerWidget->setGeometry(QRect(400, 0, 400, 250));
+        printerWidget = new QWidget(Warning);
+        printerWidget->setObjectName(QStringLiteral("printerWidget"));
+        printerWidget->setGeometry(QRect(0, 250, 400, 250));
+        cncWidget = new QWidget(Warning);
+        cncWidget->setObjectName(QStringLiteral("cncWidget"));
+        cncWidget->setGeometry(QRect(400, 250, 400, 250));
 
         retranslateUi(Warning);
 
