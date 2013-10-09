@@ -17,7 +17,15 @@ public:
      * @return
      */
     bool connectToSerialPort();
+    /**
+     * @brief sendMCode Send code string added by a M letter at the beggining, to the device connected.
+     * @param code
+     */
     void sendMCode(QString code);
+    /**
+     * @brief sendMCode Send code value as M Code to the device connected.
+     * @param code
+     */
     void sendMCode(int code);
 
 signals:
