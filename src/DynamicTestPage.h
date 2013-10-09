@@ -21,7 +21,9 @@ public:
     ~DynamicTestPage();
 
 public slots:
-
+    /**
+     * @brief backToConfiguration Go back to the previous page.
+     */
     void backToConfiguration();
 
 private:

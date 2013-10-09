@@ -3,6 +3,9 @@
 
 #include <QPushButton>
 
+/**
+ * @brief The HomeButton class Cosntruct the Home button using the logo. Th size can be updated.
+ */
 class HomeButton : public QPushButton
 {
     Q_OBJECT

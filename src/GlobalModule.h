@@ -6,7 +6,9 @@
 #include "MainWindow.h"
 #include "AbstractModule.h"
 #include "Temperature.h"
-
+/**
+ * @brief The GlobalModule class Inheriterd from AbstractModule. Handle all global i/o, like ATU, arudino connected etc...
+ */
 class GlobalModule : public QObject, public AbstractModule
 {
     Q_OBJECT
