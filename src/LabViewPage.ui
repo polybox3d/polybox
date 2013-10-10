@@ -28,24 +28,11 @@
    <widget class="QComboBox" name="selectAmb">
     <property name="geometry">
      <rect>
-      <x>10</x>
+      <x>40</x>
       <y>30</y>
-      <width>211</width>
+      <width>261</width>
       <height>25</height>
      </rect>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="validAmb">
-    <property name="geometry">
-     <rect>
-      <x>240</x>
-      <y>30</y>
-      <width>80</width>
-      <height>25</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Sélectionner</string>
     </property>
    </widget>
   </widget>

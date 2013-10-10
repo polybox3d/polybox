@@ -2,6 +2,7 @@
 #define CONFIG_H
 
 #include <QString>
+#include <QColor>
 /**
  * @brief The Config class Store Polybox config and constants, such as program path, command, driver.
  */
@@ -38,6 +39,19 @@ public:
      * @brief motherboardBaudrate Default baudrate between software and Polybox.
      */
     static int motherboardBaudrate;
+    /**
+     * @brief bypassCheck disable check, so the user can acces to everything, withotu printer/cnc controle (atu, NTC, etc...)
+     */
+    static bool bypassCheck;
+
+    /**
+     * @brief colorLabviewFaceSelected Color used when a face is selected in the labview module.
+     */
+    static QColor colorLabviewFaceSelected;
+    /**
+     * @brief ambiancePathFolder Path to the default ambiance directory. Ambiances are XML files for labview profiles.
+     */
+    static QString ambiancePathFolder;
 };
 
 #endif // CONFIG_H

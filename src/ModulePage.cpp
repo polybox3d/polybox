@@ -99,7 +99,7 @@ void ModulePage::on_labviewButton_clicked()
 void ModulePage::on_printerButton_clicked()
 {
     bool printer_ok = _polybox->isPrinterReady();
-    if ( printer_ok )
+    if ( printer_ok || Config::bypassCheck )
     {
         CHANGE_PAGE( Printer );
     }
@@ -120,7 +120,7 @@ void ModulePage::on_printerButton_clicked()
 void ModulePage::on_cncButton_clicked()
 {
     bool cnc_ok = _polybox->isCncReady();
-    if ( cnc_ok )
+    if ( cnc_ok || Config::bypassCheck )
     {
         DialogCNC dialog((QWidget*)this->parent());
         int value_ret = dialog.exec();
@@ -148,7 +148,7 @@ void ModulePage::on_cncButton_clicked()
 void ModulePage::on_scannerButton_clicked()
 {
     bool scanner_ok = _polybox->isScannerReady();
-    if ( scanner_ok )
+    if ( scanner_ok || Config::bypassCheck )
     {
         DialogScanner dialog((QWidget*)this->parent());
         int value_ret = dialog.exec();

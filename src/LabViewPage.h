@@ -5,11 +5,17 @@
 
 #include "MainWindow.h"
 #include "HomeButton.h"
+#include "Face.h"
 
 #include <QProcess>
 #include <QFile>
 #include <QColor>
 #include <QFileDialog>
+#include <QXmlStreamReader>
+#include <QXmlStreamWriter>
+
+#include <iostream>
+using namespace std;
 
 namespace Ui {
 class LabViewPage;
@@ -22,6 +28,17 @@ class LabViewPage : public QWidget
 public:
     explicit LabViewPage(QWidget *parent = 0);
     ~LabViewPage();
+
+    void setAllFacesLight(int light, bool horizontale = true, bool verticale = true);
+    void setSelectedFacesLight(int light, bool horizontale = true, bool verticale = true);
+    void saveToXmlFile( QString filename );
+    void importFromXmlFile(QString filename );
+    void loadDefaultAmbiances( QString folder_path );
+
+#define BASE_STYLESHEET_FACE_BUTTON "background-image: url("
+#define QRC_STYLESHEET_FACE_BUTTON ":/img/img/"
+
+
 protected:
     void paintEvent(QPaintEvent *);
 
@@ -50,12 +67,57 @@ private slots:
 
     void on_startRecording_clicked();
 
+    void on_intensite_2_valueChanged(int value);
+
+    void on_intensite_3_valueChanged(int value);
+
+    void on_intensiteSpin_2_valueChanged(int arg1);
+
+    void on_intensiteSpin_3_valueChanged(int arg1);
+
+    void on_backFace_clicked();
+
+    void on_rightFace_clicked();
+
+    void on_leftFace_clicked();
+
+    void on_topFace_clicked();
+
+    void on_bottomFace_clicked();
+
+    void on_frontFace_clicked();
+
+    void on_globalLightRadio_clicked();
+
+    void on_individualLightRadio_clicked();
+
+    void on_selectAmb_currentIndexChanged(int index);
+
 private:
+    void initFaceClass();
+    void setLight(int light, bool horizontale=true, bool verticale=true);
+    void processFaceClick(Face* face, QPushButton* face_button, QString base_name);
+    void setActivateLightControl( bool activated );
+
+    void exportXmlAllFaces( QXmlStreamWriter* xml );
+    void parseGlobalcolor( QXmlStreamReader* xml );
+    void parseFace( QXmlStreamReader* xml );
+    void setFaceLight( QString face_name, int horizontale, int verticale );
+
     Ui::LabViewPage *ui;
     QProcess* _mediaPlayer;
     QFile* _currentProfile;
     QColor _currentColor;
+
+    Face _left;
+    Face _right;
+    Face _top;
+    Face _bot;
+    Face _front;
+    Face _back;
+
     QString _selectedCamera;
+    QVector<Face*> _selectedFaces;
 };
 
 #endif // LABVIEW_H

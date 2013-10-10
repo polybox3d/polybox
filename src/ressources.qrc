@@ -22,5 +22,16 @@
         <file>img/update.png</file>
         <file>img/test.png</file>
         <file>img/validate.png</file>
+        <file>img/pattern_r_s.png</file>
+        <file>img/pattern_b_s.png</file>
+        <file>img/pattern_back_s.png</file>
+        <file>img/pattern_f_s.png</file>
+        <file>img/pattern_l_s.png</file>
+        <file>img/pattern_t_s.png</file>
+    </qresource>
+    <qresource prefix="/xml">
+        <file>ambiances/Autumn.xml</file>
+        <file>ambiances/PolyBox.xml</file>
+        <file>ambiances/Sand.xml</file>
     </qresource>
 </RCC>
