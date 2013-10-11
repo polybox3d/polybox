@@ -32,6 +32,7 @@ signals:
 
 public slots:
 
+
 };
 
 #endif // SERIALPORT_H

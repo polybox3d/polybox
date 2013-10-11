@@ -9,6 +9,8 @@
 
 #include <QProcess>
 #include <QFile>
+#include <QString>
+#include <QStringList>
 #include <QColor>
 #include <QFileDialog>
 #include <QXmlStreamReader>
@@ -93,11 +95,14 @@ private slots:
 
     void on_selectAmb_currentIndexChanged(int index);
 
+    void on_cameraSelector_currentIndexChanged(int index);
+
 private:
     void initFaceClass();
     void setLight(int light, bool horizontale=true, bool verticale=true);
     void processFaceClick(Face* face, QPushButton* face_button, QString base_name);
     void setActivateLightControl( bool activated );
+    QStringList getAllCamera(QString path_directory);
 
     void exportXmlAllFaces( QXmlStreamWriter* xml );
     void parseGlobalcolor( QXmlStreamReader* xml );

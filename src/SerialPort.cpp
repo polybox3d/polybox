@@ -24,7 +24,7 @@ bool SerialPort::connectToSerialPort()
 
     if ( open(QIODevice::ReadWrite) == true)
     {
-        //        connect(this, SIGNAL(readyRead()), this, SLOT(onReadyRead()) );
+        connect(this, SIGNAL(readyRead()), this, SLOT(onReadyRead()) );
         //      connect(this, SIGNAL(dsrChanged(bool)), this, SLOT(onDsrChanged(bool)) );
      /*   if (!(lineStatus() & LS_DSR)){
             qDebug() << "warning: device is not turned on"<<lineStatus();
@@ -40,6 +40,7 @@ bool SerialPort::connectToSerialPort()
     }
 
 }
+
 
 void SerialPort::sendMCode(int code)
 {

@@ -20,6 +20,19 @@ PolyboxModule::PolyboxModule(QObject *parent) :
     _port = new SerialPort();
     _port->connectToSerialPort();
     _connected = _port->isOpen();
+    if ( _connected )
+    {
+        connect ( _port, SIGNAL(readyRead()), this, SLOT(parseSerialDatas()) );
+    }
+}
+
+void PolyboxModule::parseSerialDatas()
+{
+    QByteArray bytes;
+    int a = _port->bytesAvailable();
+    bytes.resize(a);
+    _port->read(bytes.data(), bytes.size());
+   // qDebug() << "#"<<bytes.size() <<"bytes=" << bytes.data();
 }
 
 SerialPort* PolyboxModule::port()

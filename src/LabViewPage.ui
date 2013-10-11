@@ -270,6 +270,9 @@ selection-color: rgb(255, 0, 4);</string>
      </item>
     </layout>
    </widget>
+   <zorder>layoutWidget</zorder>
+   <zorder>layoutWidget</zorder>
+   <zorder>groupBox_2</zorder>
   </widget>
   <widget class="QGroupBox" name="profilBox">
    <property name="geometry">
@@ -463,6 +466,9 @@ selection-color: rgb(255, 0, 4);</string>
    </widget>
   </widget>
   <widget class="QPushButton" name="startVisu">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
    <property name="geometry">
     <rect>
      <x>380</x>
@@ -478,8 +484,17 @@ selection-color: rgb(255, 0, 4);</string>
     <iconset resource="ressources.qrc">
      <normaloff>:/img/img/play_green.png</normaloff>:/img/img/play_green.png</iconset>
    </property>
+   <property name="checkable">
+    <bool>false</bool>
+   </property>
+   <property name="flat">
+    <bool>false</bool>
+   </property>
   </widget>
   <widget class="QPushButton" name="startRecording">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
    <property name="geometry">
     <rect>
      <x>490</x>
@@ -494,6 +509,12 @@ selection-color: rgb(255, 0, 4);</string>
    <property name="icon">
     <iconset resource="ressources.qrc">
      <normaloff>:/img/img/record.png</normaloff>:/img/img/record.png</iconset>
+   </property>
+   <property name="checkable">
+    <bool>false</bool>
+   </property>
+   <property name="flat">
+    <bool>false</bool>
    </property>
   </widget>
   <widget class="QPushButton" name="backToHelp">
@@ -511,6 +532,35 @@ selection-color: rgb(255, 0, 4);</string>
    <property name="icon">
     <iconset resource="ressources.qrc">
      <normaloff>:/img/img/help.png</normaloff>:/img/img/help.png</iconset>
+   </property>
+   <property name="checkable">
+    <bool>false</bool>
+   </property>
+   <property name="flat">
+    <bool>false</bool>
+   </property>
+  </widget>
+  <widget class="QComboBox" name="cameraSelector">
+   <property name="geometry">
+    <rect>
+     <x>140</x>
+     <y>500</y>
+     <width>221</width>
+     <height>41</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label">
+   <property name="geometry">
+    <rect>
+     <x>30</x>
+     <y>510</y>
+     <width>101</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Camera : </string>
    </property>
   </widget>
  </widget>

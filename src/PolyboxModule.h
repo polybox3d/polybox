@@ -39,6 +39,7 @@ public:
 signals:
 
 public slots:
+    void parseSerialDatas();
 
 private:
     bool _connected;

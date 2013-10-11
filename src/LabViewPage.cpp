@@ -9,7 +9,16 @@ LabViewPage::LabViewPage(QWidget *parent) :
     _mediaPlayer = NULL;
     _currentProfile = NULL;
     _currentColor.setRgb( 0, 0, 0 );
-    _selectedCamera="video0";
+
+    ui->cameraSelector->addItems( getAllCamera( Config::pathToWebcamDevice ) );
+    //1 or more camera detected, we setup UI
+    if ( ui->cameraSelector->count() > 0 )
+    {
+        _selectedCamera = ui->cameraSelector->currentText();
+        ui->startRecording->setEnabled( true );
+        ui->startVisu->setEnabled( true );
+    }
+
 
     initFaceClass();
     loadDefaultAmbiances( Config::ambiancePathFolder );
@@ -35,6 +44,12 @@ void LabViewPage::initFaceClass()
     _right.name="right";
     _back.name="back";
     _front.name="front";
+}
+
+QStringList LabViewPage::getAllCamera(QString path_directory)
+{
+    QDir cameras_dir(path_directory);
+    return cameras_dir.entryList(QStringList("video*"),QDir::System, QDir::Name) ;
 }
 
 void LabViewPage::on_startVisu_clicked()
@@ -527,4 +542,9 @@ void LabViewPage::on_selectAmb_currentIndexChanged(int index)
         importFromXmlFile( filename );
         ui->currentProfil->setText( ui->selectAmb->itemText( index ) );
     }
+}
+
+void LabViewPage::on_cameraSelector_currentIndexChanged(int index)
+{
+    _selectedCamera = ui->cameraSelector->itemText( index );
 }
