@@ -10,15 +10,17 @@ enum Mode{
     Celcius, Kelvin
 };
 
-#define DEFAULT_TEMP_VALUE -42.42
-#define EPSYLON 0.01
+
 /**
  * @brief The Temperature class Provide a Class to store Temperature data and utilities functions. Can retrveive a  -ready-to-printer String (value+DegreeUnit) or just the value.
  */
 class Temperature
 {
 public:
+#define DEFAULT_TEMP_VALUE -42.42
+#define EPSYLON 0.01
     explicit Temperature();
+    explicit Temperature(float temp);
     /**
      * @brief getValue Current stored temperature as a float.
      * @return temperature as float
@@ -28,6 +30,8 @@ public:
      * @brief str Return a ready-to-print QString. The string is value+unitMode
      * @return
      */
+    void setValue(float temp);
+
     QString str();
 
     /**

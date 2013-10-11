@@ -13,11 +13,21 @@ void PrinterModule::initAll()
     _printerPlugged = false;
     _detectPlastic = true;
     _bedPlugged = false;
+    _selectedBed = BED_1 & BED_2 & BED_3 & BED_4;
 }
 
 void PrinterModule::updateComponents()
 {
     _polybox->port()->sendMCode( MCode::ASK_PRINTER_UPDATE );
+}
+
+void PrinterModule::activateAllBed(bool activated)
+{
+    _selectedBed = 0;
+    if ( activated )
+    {
+        _selectedBed = BED_1 & BED_2 & BED_3 & BED_4;
+    }
 }
 
 bool PrinterModule::isReady() const
@@ -41,6 +51,34 @@ bool PrinterModule::isReady() const
             _printerPlugged && _detectPlastic && _bedPlugged;
 }
 
+void PrinterModule::addSupprBed(int bed_mask)
+{
+    _selectedBed= _selectedBed ^ bed_mask;
+}
+
+int PrinterModule::getSelectedBed()
+{
+    return _selectedBed;
+}
+
+void PrinterModule::setTargetBedTemp(const Temperature &temp)
+{
+    _targetBedTemp = temp;
+}
+Temperature PrinterModule::getTargetBedTemp()
+{
+    return _targetBedTemp;
+}
+
+void PrinterModule::setTargetChamberTemp(const Temperature &temp)
+{
+    _targetChamberTemp = temp;
+}
+
+Temperature PrinterModule::getTargetChamberTemp()
+{
+    return _targetChamberTemp;
+}
 
 Temperature PrinterModule::tempTopBuse1()
 {

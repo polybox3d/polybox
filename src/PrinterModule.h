@@ -13,9 +13,22 @@ class PrinterModule : public QObject, public AbstractModule
 {
     Q_OBJECT
 public:
+#define BED_1 1
+#define BED_2 2
+#define BED_3 4
+#define BED_4 8
     explicit PrinterModule(PolyboxModule* polybox, QObject *parent = 0);
     virtual bool isReady() const;
     virtual void updateComponents();
+
+    void setTargetBedTemp( const Temperature &temp);
+    Temperature getTargetBedTemp();
+
+    void setTargetChamberTemp( const Temperature &temp );
+    Temperature getTargetChamberTemp();
+    int getSelectedBed();
+    void addSupprBed( int bed_mask );
+    void activateAllBed( bool activated );
 
     Temperature tempTopBuse1();
     Temperature tempBotBuse1();
@@ -46,6 +59,9 @@ signals:
 public slots:
 private:
     virtual void initAll();
+    Temperature _targetBedTemp;
+    Temperature _targetChamberTemp;
+
     Temperature _tempTopBuse1;
     Temperature _tempBotBuse1;
     Temperature _tempTopBuse2;
@@ -69,7 +85,7 @@ private:
     bool _printerPlugged;
     bool _detectPlastic;
     bool _bedPlugged;
-
+    int _selectedBed;
 
 };
 

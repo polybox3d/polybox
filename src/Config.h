@@ -52,6 +52,12 @@ public:
      * @brief ambiancePathFolder Path to the default ambiance directory. Ambiances are XML files for labview profiles.
      */
     static QString ambiancePathFolder;
+
+    static float bedTempPla;
+    static float bedTempAbs;
+    static float bedTempNylon;
+
+
 };
 
 #endif // CONFIG_H

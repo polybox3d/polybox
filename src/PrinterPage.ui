@@ -29,7 +29,7 @@
     <property name="geometry">
      <rect>
       <x>30</x>
-      <y>160</y>
+      <y>170</y>
       <width>111</width>
       <height>111</height>
      </rect>
@@ -41,6 +41,9 @@
      <string/>
     </property>
     <property name="checkable">
+     <bool>true</bool>
+    </property>
+    <property name="checked">
      <bool>true</bool>
     </property>
    </widget>
@@ -48,7 +51,7 @@
     <property name="geometry">
      <rect>
       <x>30</x>
-      <y>40</y>
+      <y>50</y>
       <width>111</width>
       <height>111</height>
      </rect>
@@ -62,12 +65,15 @@
     <property name="checkable">
      <bool>true</bool>
     </property>
+    <property name="checked">
+     <bool>true</bool>
+    </property>
    </widget>
    <widget class="QPushButton" name="bed_fr">
     <property name="geometry">
      <rect>
       <x>160</x>
-      <y>160</y>
+      <y>170</y>
       <width>111</width>
       <height>111</height>
      </rect>
@@ -79,6 +85,9 @@
      <string/>
     </property>
     <property name="checkable">
+     <bool>true</bool>
+    </property>
+    <property name="checked">
      <bool>true</bool>
     </property>
     <property name="flat">
@@ -89,7 +98,7 @@
     <property name="geometry">
      <rect>
       <x>160</x>
-      <y>40</y>
+      <y>50</y>
       <width>111</width>
       <height>111</height>
      </rect>
@@ -103,6 +112,38 @@
     <property name="checkable">
      <bool>true</bool>
     </property>
+    <property name="checked">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QWidget" name="">
+    <property name="geometry">
+     <rect>
+      <x>30</x>
+      <y>20</y>
+      <width>195</width>
+      <height>25</height>
+     </rect>
+    </property>
+    <layout class="QHBoxLayout" name="horizontalLayout_3">
+     <item>
+      <widget class="QRadioButton" name="selectAllBed">
+       <property name="text">
+        <string>Selectionner tout</string>
+       </property>
+       <property name="checked">
+        <bool>true</bool>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QRadioButton" name="selectNoBed">
+       <property name="text">
+        <string>Aucun</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
    </widget>
   </widget>
   <widget class="QGroupBox" name="bedBox">
@@ -167,7 +208,7 @@
      </item>
     </layout>
    </widget>
-   <widget class="QWidget" name="">
+   <widget class="QWidget" name="layoutWidget">
     <property name="geometry">
      <rect>
       <x>10</x>
@@ -179,6 +220,12 @@
     <layout class="QHBoxLayout" name="bedtempSliderLayer">
      <item>
       <widget class="QSlider" name="bedTempSlider">
+       <property name="minimum">
+        <number>20</number>
+       </property>
+       <property name="maximum">
+        <number>90</number>
+       </property>
        <property name="orientation">
         <enum>Qt::Horizontal</enum>
        </property>
@@ -187,7 +234,7 @@
      <item>
       <widget class="QSpinBox" name="bedtempSpin">
        <property name="minimum">
-        <number>40</number>
+        <number>20</number>
        </property>
        <property name="maximum">
         <number>90</number>
@@ -216,7 +263,7 @@
    <property name="title">
     <string>Temperature du boitier</string>
    </property>
-   <widget class="QWidget" name="">
+   <widget class="QWidget" name="layoutWidget">
     <property name="geometry">
      <rect>
       <x>10</x>
@@ -228,6 +275,9 @@
     <layout class="QHBoxLayout" name="horizontalLayout">
      <item>
       <widget class="QSlider" name="boxTempSlider">
+       <property name="minimum">
+        <number>20</number>
+       </property>
        <property name="orientation">
         <enum>Qt::Horizontal</enum>
        </property>
@@ -235,8 +285,11 @@
      </item>
      <item>
       <widget class="QSpinBox" name="boxTempSpin">
+       <property name="minimum">
+        <number>20</number>
+       </property>
        <property name="maximum">
-        <number>100</number>
+        <number>90</number>
        </property>
       </widget>
      </item>
@@ -249,7 +302,7 @@
      </item>
     </layout>
    </widget>
-   <widget class="QWidget" name="">
+   <widget class="QWidget" name="layoutWidget">
     <property name="geometry">
      <rect>
       <x>10</x>
@@ -327,7 +380,25 @@
      <normaloff>:/img/img/help.png</normaloff>:/img/img/help.png</iconset>
    </property>
   </widget>
+  <widget class="PrinterSmallUI" name="tempWidget" native="true">
+   <property name="geometry">
+    <rect>
+     <x>40</x>
+     <y>30</y>
+     <width>221</width>
+     <height>60</height>
+    </rect>
+   </property>
+  </widget>
  </widget>
+ <customwidgets>
+  <customwidget>
+   <class>PrinterSmallUI</class>
+   <extends>QWidget</extends>
+   <header>PrinterSmallUI.h</header>
+   <container>1</container>
+  </customwidget>
+ </customwidgets>
  <resources>
   <include location="ressources.qrc"/>
  </resources>

@@ -7,10 +7,10 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     _polybox = new PolyboxModule( this );
     ui->setupUi(this);
-
+    
     changeStatePage( Start );
-
-
+    
+    
 }
 
 MainWindow::~MainWindow()
@@ -45,7 +45,7 @@ void MainWindow::updateStatePage()
         this->setCentralWidget( new LabViewPage( this ) );
         break;
     case Printer :
-        this->setCentralWidget( new PrinterPage( this ) );
+        this->setCentralWidget( new PrinterPage( _polybox->printerModule(), this ) );
         break;
     case CNC :
         this->setCentralWidget( new CNCPage( this ) );
@@ -64,9 +64,9 @@ void MainWindow::updateStatePage()
     }
     default:
         break;
-
+        
     }
-
+    
 }
 
 void MainWindow::backToModulePage()

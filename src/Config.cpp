@@ -14,3 +14,7 @@ int Config::motherboardBaudrate=115200;
 bool Config::bypassCheck = true ;
 QColor Config::colorLabviewFaceSelected = QColor( 70, 230, 255 );
 QString Config::ambiancePathFolder=":/xml/ambiances";
+
+float Config::bedTempPla=60;
+float Config::bedTempAbs=75;
+float Config::bedTempNylon=70;

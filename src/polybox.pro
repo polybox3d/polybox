@@ -4,7 +4,7 @@
 #
 #-------------------------------------------------
 
-QT       += core gui
+QT       += core gui xml
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -46,7 +46,9 @@ SOURCES += main.cpp\
     Temperature.cpp \
     SerialPort.cpp \
     Config.cpp \
-    GlobalModule.cpp
+    GlobalModule.cpp \
+    Face.cpp \
+    PrinterSmallUI.cpp
 
 HEADERS  += MainWindow.h \
         OpenPage.h \
@@ -81,7 +83,9 @@ HEADERS  += MainWindow.h \
     SerialPort.h \
     mcode.h \
     Config.h \
-    GlobalModule.h
+    GlobalModule.h \
+    Face.h \
+    PrinterSmallUI.h
 
 FORMS    += MainWindow.ui \
         OpenPage.ui \
@@ -100,7 +104,8 @@ FORMS    += MainWindow.ui \
     WarningPage.ui \
     GlobalChecker.ui \
     DialogConfigSoft.ui \
-    DynamicTestPage.ui
+    DynamicTestPage.ui \
+    PrinterSmallUI.ui
 
 RESOURCES += \
     ressources.qrc

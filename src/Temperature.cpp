@@ -5,7 +5,16 @@ Temperature::Temperature()
     _value = DEFAULT_TEMP_VALUE;
     _mode = Celcius;
 }
+Temperature::Temperature(float temp)
+{
+    _value = temp;
+    _mode = Celcius;
+}
 
+void Temperature::setValue(float temp)
+{
+    _value = temp;
+}
 
 bool Temperature::isDefault() const
 {
