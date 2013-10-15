@@ -3,6 +3,14 @@
 
 #include <QString>
 #include <QColor>
+
+#include <QFile>
+#include <QMessageBox>
+#include <QFileDialog>
+#include <QXmlStreamReader>
+#include <QXmlStreamWriter>
+#include <QMap>
+
 /**
  * @brief The Config class Store Polybox config and constants, such as program path, command, driver.
  */
@@ -10,7 +18,7 @@ class Config
 {
 public:
     Config();
-
+#define INITIAL_CONFIG_FILE ":/xml/config/.initialConfig.xml"
     /**
      * @brief pathToHomeDirectory Full path to the main user home directory (/home/<user>/)
      */
@@ -23,6 +31,10 @@ public:
      * @brief pathToWebcamDevice Full path to the device directory. Something like /dev/tty for linux
      */
     static QString pathToWebcamDevice;
+
+    static QString pathToSerialDevice;
+
+    static QString serialPortName;
     /**
      * @brief webcamName id for webcam (video0)
      */
@@ -53,9 +65,19 @@ public:
      */
     static QString ambiancePathFolder;
 
+    static QString defaultConfigFileName;
+
     static float bedTempPla;
     static float bedTempAbs;
     static float bedTempNylon;
+
+    static void init();
+
+    static void importFromXmlFile( QString filename );
+    static void saveToXmlFile( QString filename );
+    static void parseGeneral(QXmlStreamReader *xml);
+    static void parseCNC(QXmlStreamReader *xml);
+    static void parseWebcam(QXmlStreamReader *xml);
 
 
 };

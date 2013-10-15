@@ -1,12 +1,16 @@
 #ifndef SERIALPORT_H
 #define SERIALPORT_H
 
+#include <QProcess>
+#include <QDir>
+#include <QStringList>
+
 #include "qextserialport.h"
 #include "Config.h"
 /**
  * @brief The SerialPort class Constructs a classs based of QextSerialPort. Provides an overlay for Serial Communication through USB/COM
  */
-class SerialPort : public QextSerialPort
+class SerialPort : public QObject
 {
     Q_OBJECT
 public:
@@ -27,10 +31,22 @@ public:
      * @param code
      */
     void sendMCode(int code);
+    void startVirtualCOMProcess();
+
+    static QStringList getDevicesNames( QString path )
+    {
+        QDir device_dir( path );
+        return device_dir.entryList(QStringList("*"),QDir::System, QDir::Name) ;
+    }
 
 signals:
 
 public slots:
+    void parseSerialDatas();
+
+private:
+    QextSerialPort* _port;
+    QProcess* _printerCOM;
 
 
 };

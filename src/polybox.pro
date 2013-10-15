@@ -11,6 +11,13 @@ greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 TARGET = polybox
 TEMPLATE = app
 
+CONFIG(release, debug|release)
+{
+DEFINES += QT_NO_DEBUG_OUTPUT
+DEFINES += BYPASS_CHECK
+QMAKE_CXXFLAGS_DEBUG +=  -O3 -Ofast
+}
+
 #UART Lib
 include(../externals/qextserialport/src/qextserialport.pri)
 

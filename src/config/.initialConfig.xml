@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+    <name>config</name>
+    <general>
+        <home_directory>/home/poly/</home_directory>
+        <device_path>/dev/</device_path>
+        <device_name>ttyVIRT</device_name>
+        <baudrate>115200</baudrate>
+    </general>
+    <webcam>
+        <directory>/dev/</directory>
+        <device_name>video0</device_name>
+    </webcam>
+    <cnc>
+        <directory>/home/poly/linuxcnc/</directory>
+        <bin_command>linuxcnc</bin_command>
+    </cnc>
+</config>

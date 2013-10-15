@@ -2,43 +2,66 @@
 #include <QDebug>
 
 SerialPort::SerialPort(QObject *parent) :
-    QextSerialPort("/dev/ttyACM0", QextSerialPort::EventDriven, parent)
+    QObject(parent)
+  //QextSerialPort("/dev/ttyACM0", QextSerialPort::EventDriven, parent)
 {
+    _port = NULL;
+    _printerCOM = NULL;
+    startVirtualCOMProcess();
 }
 
+void SerialPort::startVirtualCOMProcess()
+{
+//    _printerCOM = new QProcess( this );
+  //  QStringList parameters;
+ //   parameters<<" PTY,link=COM8 PTY,link=COM9";
+//_printerCOM->start( "socat PTY,link=COM8 PTY,link=COM9", parameters );
+}
 
 bool SerialPort::connectToSerialPort()
 {
-    if ( isOpen() )
+    if ( _port != NULL && _port->isOpen() )
     {
-        this->close();
-
+        _port->close();
     }
+    _port = new QextSerialPort(Config::pathToSerialDevice+Config::serialPortName, QextSerialPort::EventDriven);
 
 
-    setBaudRate( (BaudRateType)(Config::motherboardBaudrate) );
-    setFlowControl(FLOW_OFF);
-    setParity(PAR_NONE);
-    setDataBits(DATA_8);
-    setStopBits(STOP_1);
+    _port->setBaudRate( (BaudRateType)(Config::motherboardBaudrate) );
+    _port->setFlowControl(FLOW_OFF);
+    _port->setParity(PAR_NONE);
+    _port->setDataBits(DATA_8);
+    _port->setStopBits(STOP_1);
 
-    if ( open(QIODevice::ReadWrite) == true)
+    if ( _port->open(QIODevice::ReadWrite) == true)
     {
-        connect(this, SIGNAL(readyRead()), this, SLOT(onReadyRead()) );
+        //connect(this, SIGNAL(readyRead()), this, SLOT(onReadyRead()) );
         //      connect(this, SIGNAL(dsrChanged(bool)), this, SLOT(onDsrChanged(bool)) );
      /*   if (!(lineStatus() & LS_DSR)){
             qDebug() << "warning: device is not turned on"<<lineStatus();
             return false;
         }*/
-        qDebug() << "listening for data on" << this->portName();
+        qDebug() << "listening for data on" << _port->portName();
+        qDebug() << "Ok connected";
+        connect ( _port, SIGNAL(readyRead()), this, SLOT(parseSerialDatas()) );
+        _port->write("totot\n");
         return true;
     }
     else
     {
-        qDebug() << "device failed to open:" << this->errorString();
+        qDebug() << "device failed to open:" << _port->errorString();
         return false;
     }
 
+}
+
+void SerialPort::parseSerialDatas()
+{
+    QByteArray bytes;
+    int a = _port->bytesAvailable();
+    bytes.resize(a);
+    _port->read(bytes.data(), bytes.size());
+    qDebug() << "#"<<bytes.size() <<"bytes=" << bytes.data();
 }
 
 
@@ -49,9 +72,9 @@ void SerialPort::sendMCode(int code)
 void SerialPort::sendMCode(QString code)
 {
     code = "M"+code;
-    if ( isWritable() && isOpen() )
+    if ( _port->isWritable() && _port->isOpen() )
     {
-        this->write( code.toStdString().c_str() );
+        _port->write( code.toStdString().c_str() );
     }
 
 }

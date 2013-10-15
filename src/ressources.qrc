@@ -33,5 +33,6 @@
         <file>ambiances/Autumn.xml</file>
         <file>ambiances/PolyBox.xml</file>
         <file>ambiances/Sand.xml</file>
+        <file>config/.initialConfig.xml</file>
     </qresource>
 </RCC>

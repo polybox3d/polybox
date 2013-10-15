@@ -6,11 +6,12 @@
 #include "ScannerModule.h"
 #include "PrinterModule.h"
 #include "GlobalModule.h"
+#include <QDebug>
 
 PolyboxModule::PolyboxModule(QObject *parent) :
     QObject(parent)
 {
-
+    Config::init();
     _cnc = new CNCModule( this, this );
     _labview = new LabViewModule( this );
     _printer = new PrinterModule( this, this );
@@ -18,21 +19,9 @@ PolyboxModule::PolyboxModule(QObject *parent) :
     _global = new GlobalModule( this, this );
 
     _port = new SerialPort();
-    _port->connectToSerialPort();
-    _connected = _port->isOpen();
-    if ( _connected )
-    {
-        connect ( _port, SIGNAL(readyRead()), this, SLOT(parseSerialDatas()) );
-    }
-}
 
-void PolyboxModule::parseSerialDatas()
-{
-    QByteArray bytes;
-    int a = _port->bytesAvailable();
-    bytes.resize(a);
-    _port->read(bytes.data(), bytes.size());
-   // qDebug() << "#"<<bytes.size() <<"bytes=" << bytes.data();
+    _connected = _port->connectToSerialPort();
+
 }
 
 SerialPort* PolyboxModule::port()

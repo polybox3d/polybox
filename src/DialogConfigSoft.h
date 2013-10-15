@@ -4,6 +4,7 @@
 #include <QDialog>
 
 #include "MainWindow.h"
+#include "PolyboxModule.h"
 
 namespace Ui {
 class DialogConfigSoft;
@@ -20,10 +21,11 @@ public:
      * @brief DialogConfigSoft Constrcuts a QDialog with a parent.
      * @param parent
      */
-    explicit DialogConfigSoft(QWidget *parent = 0);
+    explicit DialogConfigSoft(PolyboxModule* poly, QWidget *parent = 0);
     ~DialogConfigSoft();
 
     void updateValues();
+    void saveValue();
 
 private slots:
 
@@ -33,11 +35,20 @@ private slots:
      */
     void on_validate_clicked();
 
+    void on_pushButton_clicked();
+
+    void on_pushButton_2_clicked();
+
+    void on_saveAsDefault_clicked();
+
+    void on_loadFactoryValue_clicked();
+
 private:
     /**
      * @brief ui Graphical layer.
      */
     Ui::DialogConfigSoft *ui;
+    PolyboxModule* _poly;
 };
 
 #endif // DIALOGCONFIGSOFT_H
