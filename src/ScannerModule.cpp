@@ -15,9 +15,18 @@ void ScannerModule::initAll()
 
 void ScannerModule::updateComponents()
 {
-//    _polybox->port()->isOpen();
-    //_polybox->port();
+    updateGlobalStatus();
+    updateTurntablePlugged();
 
+}
+void ScannerModule::updateGlobalStatus()
+{
+    _polybox->port()->sendMCode( 610 );
+}
+
+void ScannerModule::updateTurntablePlugged()
+{
+    _polybox->port()->sendMCode( 611 );
 }
 
 bool ScannerModule::isReady() const

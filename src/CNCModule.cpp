@@ -27,10 +27,33 @@ void CNCModule::initAll()
     _cncType = Noone;
 }
 
+void CNCModule::updateGlobalStatus()
+{
+   _polybox->port()->sendMCode( 600 );
+}
+
+void CNCModule::updateToolPlugged()
+{
+   _polybox->port()->sendMCode( 601 );
+}
+
+void CNCModule::updateLubricantLevel()
+{
+    _polybox->port()->sendMCode( 603 );
+}
+
+void CNCModule::updateVacummPlugged()
+{
+    _polybox->port()->sendMCode( 604 );
+}
+
+
 void CNCModule::updateComponents()
 {
-    return;
-   // _polybox->port()->sendMCode( MCode::ASK_CNC_UPDATE );
+    updateGlobalStatus();
+    updateLubricantLevel();
+    updateToolPlugged();
+    updateVacummPlugged();
 }
 
 bool CNCModule::cncPlugged()

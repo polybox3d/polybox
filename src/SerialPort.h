@@ -31,7 +31,6 @@ public:
      * @param code
      */
     void sendMCode(int code);
-    void startVirtualCOMProcess();
 
     static QStringList getDevicesNames( QString path )
     {

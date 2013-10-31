@@ -10,14 +10,6 @@ SerialPort::SerialPort(QObject *parent) :
     startVirtualCOMProcess();
 }
 
-void SerialPort::startVirtualCOMProcess()
-{
-//    _printerCOM = new QProcess( this );
-  //  QStringList parameters;
- //   parameters<<" PTY,link=COM8 PTY,link=COM9";
-//_printerCOM->start( "socat PTY,link=COM8 PTY,link=COM9", parameters );
-}
-
 bool SerialPort::connectToSerialPort()
 {
     if ( _port != NULL && _port->isOpen() )

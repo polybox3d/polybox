@@ -37,6 +37,8 @@ public:
     void importFromXmlFile(QString filename );
     void loadDefaultAmbiances( QString folder_path );
 
+
+
 #define BASE_STYLESHEET_FACE_BUTTON "background-image: url("
 #define QRC_STYLESHEET_FACE_BUTTON ":/img/img/"
 

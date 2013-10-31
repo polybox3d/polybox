@@ -66,6 +66,11 @@ public:
      */
     CNCType cncType();
 
+    void updateGlobalStatus();
+    void updateToolPlugged();
+    void updateLubricantLevel();
+    void updateVacummPlugged();
+
 signals:
 
 public slots:

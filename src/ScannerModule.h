@@ -48,6 +48,9 @@ public:
      */
     bool turntablePlugged() const;
 
+    void updateGlobalStatus();
+    void updateTurntablePlugged();
+
 protected:
     virtual void initAll();
 
