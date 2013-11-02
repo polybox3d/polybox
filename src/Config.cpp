@@ -113,7 +113,7 @@ void Config::parseGeneral(QXmlStreamReader *xml)
             if(xml->name() == "baudrate")
             {
                 xml->readNext();
-                Config::motherboardBaudrate = xml->text().toInt();
+                Config::motherboardBaudrate = xml->text().toString().toInt();
             }
         }
         xml->readNext();
