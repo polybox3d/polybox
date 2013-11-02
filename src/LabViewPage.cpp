@@ -152,12 +152,12 @@ void LabViewPage::parseFace(QXmlStreamReader *xml)
             if(xml->name() == "horizontale")
             {
                 xml->readNext();
-                h = xml->text().toInt() ;
+                h = xml->text().toString().toInt() ;
             }
             if(xml->name() == "verticale")
             {
                 xml->readNext();
-                v = xml->text().toInt() ;
+                v = xml->text().toString().toInt() ;
             }
         }
         xml->readNext();
@@ -207,22 +207,22 @@ void LabViewPage::parseGlobalcolor(QXmlStreamReader *xml)
             if(xml->name() == "red")
             {
                 xml->readNext();
-                _currentColor.setRed( xml->text().toInt() );
+                _currentColor.setRed( xml->text().toString().toInt() );
             }
             if(xml->name() == "green")
             {
                 xml->readNext();
-                _currentColor.setGreen( xml->text().toInt() );
+                _currentColor.setGreen( xml->text().toString().toInt() );
             }
             if(xml->name() == "blu")
             {
                 xml->readNext();
-                _currentColor.setBlue( xml->text().toInt() );
+                _currentColor.setBlue( xml->text().toString().toInt() );
             }
             if(xml->name() == "intensity")
             {
                 xml->readNext();
-                _currentColor.setAlpha( xml->text().toInt() );
+                _currentColor.setAlpha( xml->text().toString().toInt() );
             }
         }
         xml->readNext();
