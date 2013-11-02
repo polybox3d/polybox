@@ -7,7 +7,6 @@ SerialPort::SerialPort(QObject *parent) :
 {
     _port = NULL;
     _printerCOM = NULL;
-    startVirtualCOMProcess();
 }
 
 bool SerialPort::connectToSerialPort()
@@ -36,7 +35,6 @@ bool SerialPort::connectToSerialPort()
         qDebug() << "listening for data on" << _port->portName();
         qDebug() << "Ok connected";
         connect ( _port, SIGNAL(readyRead()), this, SLOT(parseSerialDatas()) );
-        _port->write("totot\n");
         return true;
     }
     else
@@ -49,11 +47,11 @@ bool SerialPort::connectToSerialPort()
 
 void SerialPort::parseSerialDatas()
 {
-    QByteArray bytes;
     int a = _port->bytesAvailable();
-    bytes.resize(a);
-    _port->read(bytes.data(), bytes.size());
-    qDebug() << "#"<<bytes.size() <<"bytes=" << bytes.data();
+    _datas.resize(a);
+    _port->read( _datas.data(), _datas.size() );
+    emit dataReady();
+    //qDebug() << "#"<<bytes.size() <<"bytes=" << bytes.data();
 }
 
 

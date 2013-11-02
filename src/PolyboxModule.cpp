@@ -21,6 +21,28 @@ PolyboxModule::PolyboxModule(QObject *parent) :
     _port = new SerialPort();
 
     _connected = _port->connectToSerialPort();
+    if ( _connected )
+    {
+        connect ( _port, SIGNAL(dataReady()), this, SIGNAL(parseData()) );
+    }
+
+}
+
+void PolyboxModule::parseData()
+{
+    QByteArray datas = _port->datas();
+    QString d = datas.data();
+    int idx = d.indexOf('M') ;
+    if ( idx != -1 ) // M Code find
+    {
+        /*switch (control) {
+        case value:
+
+            break;
+        default:
+            break;
+        }*/
+    }
 
 }
 

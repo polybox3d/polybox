@@ -2,6 +2,7 @@
 #define POLYBOXMODULE_H
 
 #include <QObject>
+#include <QByteArray>
 
 #include "mcode.h"
 #include "SerialPort.h"
@@ -37,6 +38,9 @@ public:
     SerialPort* port();
 
 signals:
+
+public slots:
+    void parseData();
 
 
 private:

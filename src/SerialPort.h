@@ -32,6 +32,8 @@ public:
      */
     void sendMCode(int code);
 
+    QByteArray datas(){ return _datas; }
+
     static QStringList getDevicesNames( QString path )
     {
         QDir device_dir( path );
@@ -39,6 +41,7 @@ public:
     }
 
 signals:
+    void dataReady();
 
 public slots:
     void parseSerialDatas();
@@ -46,7 +49,7 @@ public slots:
 private:
     QextSerialPort* _port;
     QProcess* _printerCOM;
-
+    QByteArray _datas;
 
 };
 
