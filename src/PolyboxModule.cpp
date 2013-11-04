@@ -19,11 +19,10 @@ PolyboxModule::PolyboxModule(QObject *parent) :
     _global = new GlobalModule( this, this );
 
     _port = new SerialPort();
-
     _connected = _port->connectToSerialPort();
     if ( _connected )
     {
-        connect ( _port, SIGNAL(dataReady()), this, SIGNAL(parseData()) );
+        connect ( _port, SIGNAL(dataReady()), this, SLOT(parseData()) );
     }
 
 }
@@ -31,17 +30,15 @@ PolyboxModule::PolyboxModule(QObject *parent) :
 void PolyboxModule::parseData()
 {
     QByteArray datas = _port->datas();
-    QString d = datas.data();
-    int idx = d.indexOf('M') ;
+    QString str(datas);
+    int idx = str.indexOf('M') ;
     if ( idx != -1 ) // M Code find
     {
-        /*switch (control) {
-        case value:
-
-            break;
-        default:
-            break;
-        }*/
+        cout<<"#Code:"<<str.toStdString()<<endl;
+         _cnc->parseMCode( &str.toStdString().c_str()[idx+1] );
+         _global->parseMCode( &str.toStdString().c_str()[idx+1] );
+         _scanner->parseMCode( &str.toStdString().c_str()[idx+1] );
+         _printer->parseMCode( &str.toStdString().c_str()[idx+1] );
     }
 
 }

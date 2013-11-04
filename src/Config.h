@@ -19,6 +19,7 @@ class Config
 public:
     Config();
 #define INITIAL_CONFIG_FILE ":/xml/config/.initialConfig.xml"
+
     /**
      * @brief pathToHomeDirectory Full path to the main user home directory (/home/<user>/)
      */

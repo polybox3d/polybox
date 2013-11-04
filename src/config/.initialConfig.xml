@@ -4,7 +4,7 @@
     <general>
         <home_directory>/home/poly/</home_directory>
         <device_path>/dev/</device_path>
-        <device_name>ttyVIRT</device_name>
+        <device_name>ttyVIRT1</device_name>
         <baudrate>115200</baudrate>
     </general>
     <webcam>

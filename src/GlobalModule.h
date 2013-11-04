@@ -31,7 +31,10 @@ public:
 
     Temperature tempIC();
 
+    virtual void parseMCode(QByteArray stream);
+
 signals:
+    void updateUI();
 
 public slots:
 

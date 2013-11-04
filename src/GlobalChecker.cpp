@@ -26,6 +26,7 @@ void GlobalChecker::setModule(GlobalModule *module)
 {
     AbstractChecker::setModule( module );
     _global = module;
+    connect( _global , SIGNAL(updateUI()), this, SLOT(updateUI()));
 }
 void GlobalChecker::updateModuleValues()
 {
@@ -37,7 +38,7 @@ GlobalChecker::~GlobalChecker()
     delete ui;
 }
 
-void GlobalChecker::paintEvent(QPaintEvent *)
+void GlobalChecker::updateUI()
 {
     if ( _global == NULL )
     {

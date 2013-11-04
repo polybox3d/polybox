@@ -12,6 +12,7 @@ using namespace std;
  */
 class AbstractModule
 {
+
 public:
     /**
      * @brief AbstractModule Constructs an abstract module with a PolyboxModule as parameter.
@@ -28,6 +29,7 @@ public:
      */
     virtual bool isReady() const = 0;
     virtual void updateComponents() =0;
+    virtual void parseMCode(QByteArray stream)=0;
 
 
 protected:

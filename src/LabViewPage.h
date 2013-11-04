@@ -15,6 +15,7 @@
 #include <QFileDialog>
 #include <QXmlStreamReader>
 #include <QXmlStreamWriter>
+#include <QDataStream>
 
 #include <iostream>
 using namespace std;
@@ -36,15 +37,17 @@ public:
     void saveToXmlFile( QString filename );
     void importFromXmlFile(QString filename );
     void loadDefaultAmbiances( QString folder_path );
-
+    void parseMCode(QByteArray stream);
 
 
 #define BASE_STYLESHEET_FACE_BUTTON "background-image: url("
 #define QRC_STYLESHEET_FACE_BUTTON ":/img/img/"
 
 
-protected:
-    void paintEvent(QPaintEvent *);
+
+public slots:
+    void updateUI();
+
 
 private slots:
     void on_startVisu_clicked();

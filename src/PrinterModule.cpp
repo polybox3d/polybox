@@ -16,6 +16,134 @@ void PrinterModule::initAll()
     _selectedBed = BED_1 & BED_2 & BED_3 & BED_4;
 }
 
+void PrinterModule::parseMCode(QByteArray stream)
+{
+    QString str(stream);
+    long value = SerialPort::embeddedstr2l( str, 0 );
+    int idx = 0;
+    int size = str.size();
+    switch ( value )
+    {
+    case 631:
+    {
+        SerialPort::nextField( str, idx);
+        SerialPort::parseTrueFalse( &_printerPlugged, str[idx] );
+    }
+        break;
+    case 632:
+    {
+        SerialPort::nextField( str, idx);
+        SerialPort::parseTrueFalse( &_detectPlastic, str[idx] );
+    }
+        break;
+    case 633:
+    {
+        SerialPort::nextField( str, idx);
+        SerialPort::parseTrueFalse( &_bedPlugged, str[idx] );
+    }
+        break;
+    case 634:
+    {
+        while ( idx < size )
+        {
+            SerialPort::nextField( str, idx);
+            if ( str[idx] == 'Z')
+            {
+                if ( str[idx+1]=='1')
+                {
+                    SerialPort::nextValue( str, idx);
+                    _coldBox1.setState( SerialPort::embeddedstr2l( str, idx ) );
+                }
+                else if ( str[idx+1]=='2')
+                {
+                    SerialPort::nextValue( str, idx);
+                    _coldBox2.setState( SerialPort::embeddedstr2l( str, idx ) );
+                }
+                else if ( str[idx+1]=='3')
+                {
+                    SerialPort::nextValue( str, idx);
+                    _coldBox3.setState( SerialPort::embeddedstr2l( str, idx ) );
+                }
+                else if ( str[idx+1]=='4')
+                {
+                    SerialPort::nextValue( str, idx);
+                    _coldBox4.setState( SerialPort::embeddedstr2l( str, idx ) );
+                }
+            }
+        }
+    }
+        break;
+    case 635:
+    {
+        while ( idx < size )
+        {
+            SerialPort::nextField( str, idx);
+            if ( str[idx] == 'B')
+            {
+                if ( str[idx+1]=='1')
+                {
+                    SerialPort::nextValue( str, idx);
+                    _coldBuse1.setState( SerialPort::embeddedstr2l( str, idx ) );
+                }
+                else if ( str[idx+1]=='2')
+                {
+                    SerialPort::nextValue( str, idx);
+                    _coldBuse2.setState( SerialPort::embeddedstr2l( str, idx ) );
+                }
+            }
+        }
+    }
+        break;
+    case 636:
+    {
+        while ( idx < size )
+        {
+            SerialPort::nextField( str, idx);
+            if ( str[idx] == 'B')
+            {
+                if ( str[idx+1]=='1')
+                {
+                    SerialPort::nextValue( str, idx);
+                    _tempBedMid.setValue( SerialPort::embeddedstr2l( str, idx ) );
+                }
+                else if ( str[idx+1]=='2')
+                {
+                    SerialPort::nextValue( str, idx);
+                    _tempBedExt.setValue( SerialPort::embeddedstr2l( str, idx ) );
+                }
+            }
+        }
+    }
+        break;
+    case 640:
+    {
+        while ( idx < size )
+        {
+            SerialPort::nextField( str, idx);
+            if ( str[idx] == 'A')
+            {
+                    SerialPort::nextValue( str, idx);
+                    _tempBoxTop.setValue( SerialPort::embeddedstr2l( str, idx ) );
+                    cout<<"#"<<idx<<" "<<str.toStdString()<<endl;
+            }
+            if ( str[idx] == 'B')
+            {
+                    SerialPort::nextValue( str, idx);
+                    _tempBoxMiddle.setValue( SerialPort::embeddedstr2l( str, idx ) );
+            }
+            if ( str[idx] == 'C')
+            {
+                    SerialPort::nextValue( str, idx);
+                    _tempBoxBot.setValue( SerialPort::embeddedstr2l( str, idx ) );
+            }
+        }
+    }
+        break;
+    default:
+        break;
+    }
+}
+
 void PrinterModule::updateComponents()
 {
     _polybox->port()->sendMCode( MCode::ASK_PRINTER_UPDATE );

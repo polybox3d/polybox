@@ -22,19 +22,10 @@ void CNCChecker::setModule(CNCModule *module)
 {
     AbstractChecker::setModule( module );
     _cnc = module;
+    updateUI();
+    connect( _cnc , SIGNAL(updateUI()), this, SLOT(updateUI()));
 }
-
-void CNCChecker::updateModuleValues()
-{
-    _cnc->updateComponents();
-}
-
-CNCChecker::~CNCChecker()
-{
-    delete ui;
-}
-
-void CNCChecker::paintEvent(QPaintEvent *)
+void CNCChecker::updateUI()
 {
     if ( _cnc == NULL)
     {
@@ -49,3 +40,14 @@ void CNCChecker::paintEvent(QPaintEvent *)
         ui->vacuumLed->setActivated( _cnc->vacuumPlugged() );
     }
 }
+
+void CNCChecker::updateModuleValues()
+{
+    _cnc->updateComponents();
+}
+
+CNCChecker::~CNCChecker()
+{
+    delete ui;
+}
+

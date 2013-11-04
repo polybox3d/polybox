@@ -54,7 +54,10 @@ public:
     bool detectPlastic() const;
     bool bedPlugged() const;
 
+    virtual void parseMCode(QByteArray stream);
+
 signals:
+    void updateUI();
 
 public slots:
 private:

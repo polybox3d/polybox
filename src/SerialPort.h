@@ -39,6 +39,30 @@ public:
         QDir device_dir( path );
         return device_dir.entryList(QStringList("*"),QDir::System, QDir::Name) ;
     }
+    static long embeddedstr2l(QString str, int idx )
+    {
+        return strtol(&str.toStdString().c_str()[idx], NULL, 10);
+    }
+    static void nextField(QString &str, int &idx)
+    {
+        while( str[idx]!=' ' && str[idx]!='\0') idx++; // search next whitespace
+        if ( str[idx]=='\0' )
+            return;
+        while(str[idx]==' ' && str[idx]!='\0') idx++; // skip leading whitespace
+    }
+    static void nextValue(QString &str, int &idx)
+    {
+        while( str[idx]!=':' && str[idx]!='\0') idx++; // search next whitespace
+        if ( str[idx]=='\0' )
+            return;
+        else
+            idx++;
+    }
+    static void parseTrueFalse( bool* item, QCharRef code ){
+        if ( code == '1' ) *item= true;
+        else if ( code == '0' ) *item = false;
+        else *item = false;
+    }
 
 signals:
     void dataReady();
@@ -50,6 +74,7 @@ private:
     QextSerialPort* _port;
     QProcess* _printerCOM;
     QByteArray _datas;
+    QByteArray _rcp_datas;
 
 };
 

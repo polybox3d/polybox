@@ -22,9 +22,8 @@ public:
     void updateModuleValues();
 
     ~SCannerChecker();
-
-protected:
-    void paintEvent(QPaintEvent *);
+public slots:
+    void updateUI();
 
 private:
     Ui::SCannerChecker *ui;

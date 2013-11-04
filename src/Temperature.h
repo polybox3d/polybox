@@ -26,11 +26,10 @@ public:
      * @return temperature as float
      */
     float getValue() const;
-    /**
-     * @brief str Return a ready-to-print QString. The string is value+unitMode
-     * @return
-     */
+
     void setValue(float temp);
+
+    void setState( bool state);
 
     QString str();
 
@@ -39,6 +38,7 @@ public:
      * @return
      */
     bool isDefault() const;
+
 
 private:
     float _value;

@@ -13,6 +13,30 @@ void ScannerModule::initAll()
     _primesencePlugged = false;
 }
 
+void ScannerModule::parseMCode(QByteArray stream)
+{
+    QString str(stream);
+    long value = SerialPort::embeddedstr2l( str, 0 );
+    int idx = 0;
+    switch ( value )
+    {
+    case 611:
+    {
+        SerialPort::nextField( str, idx);
+        SerialPort::parseTrueFalse( &_turntablePlugged, str[idx] );
+    }
+        break;
+    case 614:
+    {
+        /*SerialPort::nextField( str, idx);
+        SerialPort::parseTrueFalse( &_, str[idx] );*/
+    }
+        break;
+    default:
+        break;
+    }
+}
+
 void ScannerModule::updateComponents()
 {
     updateGlobalStatus();

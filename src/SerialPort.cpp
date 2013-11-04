@@ -1,5 +1,9 @@
 #include "SerialPort.h"
 #include <QDebug>
+#include <string.h>
+#include <iostream>
+
+using namespace std;
 
 SerialPort::SerialPort(QObject *parent) :
     QObject(parent)
@@ -13,10 +17,13 @@ bool SerialPort::connectToSerialPort()
 {
     if ( _port != NULL && _port->isOpen() )
     {
+        cout<<"close"<<endl;
         _port->close();
     }
+    cout<<"start"<<endl;
     _port = new QextSerialPort(Config::pathToSerialDevice+Config::serialPortName, QextSerialPort::EventDriven);
 
+    cout<<Config::pathToSerialDevice.toStdString()+Config::serialPortName.toStdString()<<endl;
 
     _port->setBaudRate( (BaudRateType)(Config::motherboardBaudrate) );
     _port->setFlowControl(FLOW_OFF);
@@ -26,6 +33,7 @@ bool SerialPort::connectToSerialPort()
 
     if ( _port->open(QIODevice::ReadWrite) == true)
     {
+        cout<<"ok!"<<endl;
         //connect(this, SIGNAL(readyRead()), this, SLOT(onReadyRead()) );
         //      connect(this, SIGNAL(dsrChanged(bool)), this, SLOT(onDsrChanged(bool)) );
      /*   if (!(lineStatus() & LS_DSR)){
@@ -47,11 +55,21 @@ bool SerialPort::connectToSerialPort()
 
 void SerialPort::parseSerialDatas()
 {
+    QByteArray tmp;
     int a = _port->bytesAvailable();
-    _datas.resize(a);
-    _port->read( _datas.data(), _datas.size() );
-    emit dataReady();
-    //qDebug() << "#"<<bytes.size() <<"bytes=" << bytes.data();
+    tmp.resize(a);
+    _port->read( tmp.data(), tmp.size() );
+
+    int c_size = _rcp_datas.size();
+    _rcp_datas.resize(  c_size + tmp.size() );
+    strcat( _rcp_datas.data(), tmp.data() );
+    // end of line/command
+    if ( QString(tmp).contains("*"))
+    {
+        _datas = _rcp_datas;
+        _rcp_datas.clear();
+        emit dataReady();
+    }
 }
 
 

@@ -41,11 +41,9 @@ public:
     void updateModuleValues();
 
     ~CNCChecker();
-protected:
-    /**
-     * @brief paintEvent repaint the ui contents based on CNCModule linked. Set led to off or on, or temp value for example.
-     */
-    void paintEvent(QPaintEvent *);
+
+public slots:
+    virtual void updateUI();
 private:
     /**
      * @brief ui Graphical overlay

@@ -23,6 +23,7 @@ void SCannerChecker::setModule(ScannerModule* module)
 {
     AbstractChecker::setModule( module );
     _scanner = module;
+    connect( _scanner , SIGNAL(updateUI()), this, SLOT(updateUI()));
 }
 
 void SCannerChecker::updateModuleValues()
@@ -30,7 +31,7 @@ void SCannerChecker::updateModuleValues()
     _scanner->updateComponents();
 }
 
-void SCannerChecker::paintEvent(QPaintEvent *)
+void SCannerChecker::updateUI()
 {
     if ( _scanner == NULL )
     {

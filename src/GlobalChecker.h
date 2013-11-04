@@ -33,9 +33,9 @@ public:
     virtual void updateModuleValues();
 
     virtual ~GlobalChecker();
-protected:
-    void paintEvent(QPaintEvent *);
 
+public slots:
+    void updateUI();
 private:
     /**
      * @brief ui Graphical layer.

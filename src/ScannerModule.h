@@ -51,9 +51,13 @@ public:
     void updateGlobalStatus();
     void updateTurntablePlugged();
 
+    virtual void parseMCode(QByteArray stream);
+
 protected:
     virtual void initAll();
 
+signals:
+    void updateUI();
 private:
 
     bool _webcamPlugged;

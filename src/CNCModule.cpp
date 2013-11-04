@@ -27,14 +27,81 @@ void CNCModule::initAll()
     _cncType = Noone;
 }
 
+
+void CNCModule::parseMCode(QByteArray stream)
+{
+    QString str(stream);
+    long value = SerialPort::embeddedstr2l( str, 0 );
+    int idx = 0;
+
+    switch ( value )
+    {
+    case 600:
+    {
+
+    }
+        break;
+    case 601:
+    {
+        SerialPort::nextField( str, idx);
+        if (str[idx] == 'H' )
+        {
+            _cncPlugged = true;
+            _cncType = Manual;
+        }
+        else if( str[idx] =='P' )
+        {
+            _cncPlugged = true;
+            _cncType = Proxxon;
+        }
+        else if( str[idx] == 'O' )
+        {
+            _cncPlugged = false;
+            _cncType = Proxxon;
+        }
+
+    }
+        break;
+    case 602:
+    {
+        SerialPort::nextField( str, idx);
+        SerialPort::parseTrueFalse( &_motorLubPlugged, str[idx] );
+    }
+        break;
+    case 603:
+    {
+        SerialPort::nextField( str, idx);
+        long c_value = SerialPort::embeddedstr2l( str, idx );
+
+        _levelLub = c_value;
+        if ( _levelLub < 0)
+        {
+            _levelLub = 0;
+        }
+
+    }
+        break;
+    case 604:
+    {
+        SerialPort::nextField( str, idx);
+        SerialPort::parseTrueFalse( &_vacuumPlugged, str[idx] );
+    }
+        break;
+    default:
+        break;
+    }
+    emit updateUI();
+
+}
+
 void CNCModule::updateGlobalStatus()
 {
-   _polybox->port()->sendMCode( 600 );
+    _polybox->port()->sendMCode( 600 );
 }
 
 void CNCModule::updateToolPlugged()
 {
-   _polybox->port()->sendMCode( 601 );
+    _polybox->port()->sendMCode( 601 );
 }
 
 void CNCModule::updateLubricantLevel()

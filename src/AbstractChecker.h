@@ -34,7 +34,8 @@ public:
      * @brief updateModuleValues virtual class. It's update the stored AbstractModule. Should be implemented by herited sub-class.
      */
     virtual void updateModuleValues() {}
-
+public slots:
+    virtual void updateUI(){std::cout<<"aaaa"<<std::endl;}
 protected:
     /**
      * @brief _currentModule , actually, a bit useless due some co(s)mics reasons.

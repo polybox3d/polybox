@@ -23,9 +23,8 @@ public:
 
     ~PrinterChecker();
 
-protected:
-    void paintEvent(QPaintEvent *);
-
+public slots:
+    void updateUI();
 private:
     Ui::PrinterChecker *ui;
 

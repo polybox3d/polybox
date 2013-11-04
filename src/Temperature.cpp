@@ -16,6 +16,18 @@ void Temperature::setValue(float temp)
     _value = temp;
 }
 
+void Temperature::setState( bool state )
+{
+    if ( !state )
+    {
+        _value = DEFAULT_TEMP_VALUE;
+    }
+    else
+    {
+        _value = 1;
+    }
+}
+
 bool Temperature::isDefault() const
 {
     return (_value >= DEFAULT_TEMP_VALUE-EPSYLON && _value <= DEFAULT_TEMP_VALUE+EPSYLON);

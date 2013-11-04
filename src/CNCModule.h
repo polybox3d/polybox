@@ -10,7 +10,7 @@
  */
 enum CNCType
 {
-    Noone, Proxxon, Manuel, Unknowed
+    Noone, Proxxon, Manual, Unknowed
 };
 
 
@@ -66,15 +66,16 @@ public:
      */
     CNCType cncType();
 
+    virtual void parseMCode(QByteArray stream);
+
+
     void updateGlobalStatus();
     void updateToolPlugged();
     void updateLubricantLevel();
     void updateVacummPlugged();
 
 signals:
-
-public slots:
-
+    void updateUI();
 
 private:
     /**

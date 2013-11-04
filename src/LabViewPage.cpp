@@ -294,6 +294,30 @@ void LabViewPage::on_saveProfil_clicked()
         ui->selectAmb->setCurrentIndex( 0 );
     }
 }
+void LabViewPage::parseMCode(QByteArray stream)
+{
+    QString str(stream);
+    long value = SerialPort::embeddedstr2l( str, 0 );
+    int idx = 0;
+    switch ( value )
+    {
+    case 611:
+    {
+  /*      SerialPort::nextField( str, idx);
+        SerialPort::parseTrueFalse( &_turntablePlugged, str[idx] );*/
+    }
+        break;
+    case 614:
+    {
+        /*SerialPort::nextField( str, idx);
+        SerialPort::parseTrueFalse( &_, str[idx] );*/
+    }
+        break;
+    default:
+        break;
+    }
+    updateUI();
+}
 
 void LabViewPage::loadDefaultAmbiances(QString folder_path)
 {
@@ -307,7 +331,7 @@ void LabViewPage::loadDefaultAmbiances(QString folder_path)
 }
 
 //Update graphicals composants.
-void LabViewPage::paintEvent(QPaintEvent *)
+void LabViewPage::updateUI()
 {
     //  QPainter paint(this);
     //sliders

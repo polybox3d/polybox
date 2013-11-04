@@ -24,6 +24,7 @@ void PrinterChecker::setModule(PrinterModule *module)
 {
     AbstractChecker::setModule( module );
     _printer = module;
+    connect( _printer , SIGNAL(updateUI()), this, SLOT(updateUI()));
 }
 
 void PrinterChecker::updateModuleValues()
@@ -31,7 +32,7 @@ void PrinterChecker::updateModuleValues()
     _printer->updateComponents();
 }
 
-void PrinterChecker::paintEvent(QPaintEvent *)
+void PrinterChecker::updateUI()
 {
     if ( _printer == NULL )
     {
