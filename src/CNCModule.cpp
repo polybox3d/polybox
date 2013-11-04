@@ -54,10 +54,10 @@ void CNCModule::parseMCode(QByteArray stream)
             _cncPlugged = true;
             _cncType = Proxxon;
         }
-        else if( str[idx] == 'O' )
+        else if( str[idx] == '0' )
         {
             _cncPlugged = false;
-            _cncType = Proxxon;
+            _cncType = Noone;
         }
 
     }

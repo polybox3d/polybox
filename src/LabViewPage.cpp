@@ -299,12 +299,36 @@ void LabViewPage::parseMCode(QByteArray stream)
     QString str(stream);
     long value = SerialPort::embeddedstr2l( str, 0 );
     int idx = 0;
+    int size = str.size();
     switch ( value )
     {
-    case 611:
+    case 621:
     {
-  /*      SerialPort::nextField( str, idx);
-        SerialPort::parseTrueFalse( &_turntablePlugged, str[idx] );*/
+        SerialPort::nextField( str, idx);
+        while ( idx < size )
+        {
+            if ( str[idx] == 'R' )
+            {
+                SerialPort::nextValue( str, idx);
+                _currentColor.setRed( SerialPort::embeddedstr2l( str, idx ) );
+            }
+            if ( str[idx] == 'E' )
+            {
+                SerialPort::nextValue( str, idx);
+                _currentColor.setGreen( SerialPort::embeddedstr2l( str, idx ) );
+            }
+            if ( str[idx] == 'B' )
+            {
+                SerialPort::nextValue( str, idx);
+                _currentColor.setBlue( SerialPort::embeddedstr2l( str, idx ) );
+            }
+            if ( str[idx] == 'I' )
+            {
+                SerialPort::nextValue( str, idx);
+                _currentColor.setAlpha( SerialPort::embeddedstr2l( str, idx ) );
+            }
+            SerialPort::nextField( str, idx);
+        }
     }
         break;
     case 614:

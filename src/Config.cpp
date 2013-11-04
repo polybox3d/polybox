@@ -19,7 +19,7 @@ QString Config::scannerLaserPath=Config::pathToHomeDirectory+"/fabscan100/qtTest
 QString Config::defaultConfigFileName="./config.xml";
 
 int Config::motherboardBaudrate=115200;
-bool Config::bypassCheck = 0 ;
+bool Config::bypassCheck = true ;
 QColor Config::colorLabviewFaceSelected = QColor( 70, 230, 255 );
 QString Config::ambiancePathFolder=":/xml/ambiances";
 

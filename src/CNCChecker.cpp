@@ -38,6 +38,23 @@ void CNCChecker::updateUI()
         ui->motorLubLed->setActivated( _cnc->motorLubPlugged() );
         ui->levelLubLed->setActivated( _cnc->levelLub() );
         ui->vacuumLed->setActivated( _cnc->vacuumPlugged() );
+        if ( _cnc->cncType() == Proxxon )
+        {
+            ui->proxonRadio->setEnabled( true );
+            ui->proxonRadio->setChecked( true );
+        }
+        else if( _cnc->cncType() == Manual )
+        {
+            ui->manuelRadio->setEnabled( true );
+            ui->manuelRadio->setChecked( true );
+        }
+        else
+        {
+            ui->proxonRadio->setEnabled( false );
+            ui->proxonRadio->setChecked( false );
+            ui->manuelRadio->setEnabled( false );
+            ui->manuelRadio->setChecked( false );
+        }
     }
 }
 
