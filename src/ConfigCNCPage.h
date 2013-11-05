@@ -55,6 +55,8 @@ private slots:
      */
     void on_stressCNC_clicked();
 
+    void on_startJoypadOverlay_clicked();
+
 private:
     Ui::ConfigCNCPage *ui;
     QMessageBox* _message;

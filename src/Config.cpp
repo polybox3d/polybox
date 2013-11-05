@@ -27,6 +27,8 @@ float Config::bedTempPla=60;
 float Config::bedTempAbs=75;
 float Config::bedTempNylon=70;
 
+QString Config::pathToJoypadOverlay=Config::pathToHomeDirectory+"joypadoverlay/src/JoypadOverlay";
+
 
 
 

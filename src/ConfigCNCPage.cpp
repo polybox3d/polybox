@@ -64,3 +64,10 @@ void ConfigCNCPage::outputReady()
 {
     _message->setText( "Done." );
 }
+
+void ConfigCNCPage::on_startJoypadOverlay_clicked()
+{
+    QString command = Config::pathToJoypadOverlay;
+    QProcess* simple = new QProcess( this );
+    simple->start( command );
+}

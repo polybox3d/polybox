@@ -68,6 +68,8 @@ public:
 
     static QString defaultConfigFileName;
 
+    static QString pathToJoypadOverlay;
+
     static float bedTempPla;
     static float bedTempAbs;
     static float bedTempNylon;
