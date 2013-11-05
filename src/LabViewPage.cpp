@@ -1,26 +1,27 @@
 #include "LabViewPage.h"
 #include "ui_LabViewPage.h"
 
-LabViewPage::LabViewPage(QWidget *parent) :
+LabViewPage::LabViewPage(LabViewModule* labview, QWidget *parent) :
     QWidget(parent),
     ui(new Ui::LabViewPage)
 {
+    _labview = labview;
+    connect( _labview , SIGNAL(updateUI()), this, SLOT(updateUI()));
     ui->setupUi(this);
-    _mediaPlayer = NULL;
+
+
     _currentProfile = NULL;
-    _currentColor.setRgb( 0, 0, 0 );
+
 
     ui->cameraSelector->addItems( getAllCamera( Config::pathToWebcamDevice ) );
     //1 or more camera detected, we setup UI
     if ( ui->cameraSelector->count() > 0 )
     {
-        _selectedCamera = ui->cameraSelector->currentText();
+        _labview->setCamera( ui->cameraSelector->currentText() );
         ui->startRecording->setEnabled( true );
         ui->startVisu->setEnabled( true );
     }
 
-
-    initFaceClass();
     loadDefaultAmbiances( Config::ambiancePathFolder );
 
     HomeButton* hb = new HomeButton( 50,50, this );
@@ -36,15 +37,6 @@ LabViewPage::~LabViewPage()
     delete ui;
 }
 
-void LabViewPage::initFaceClass()
-{
-    _top.name="top";
-    _bot.name="bot";
-    _left.name="left";
-    _right.name="right";
-    _back.name="back";
-    _front.name="front";
-}
 
 QStringList LabViewPage::getAllCamera(QString path_directory)
 {
@@ -54,43 +46,13 @@ QStringList LabViewPage::getAllCamera(QString path_directory)
 
 void LabViewPage::on_startVisu_clicked()
 {
-    // is an already starting mediaplayer process ? If yes, we kill him
-    //It's better, especially since the user can kill the process without Qt App
-    if ( _mediaPlayer != NULL )
-    {
-        _mediaPlayer->kill();
-    }
-
-    QString command = "vlc";
-    QStringList parameters;
-    parameters << "v4l2:///dev/"+_selectedCamera ;
-    _mediaPlayer = new QProcess( this );
-    _mediaPlayer->start( command, parameters );
+    _labview->startCamera();
 }
 
 
 void LabViewPage::on_startRecording_clicked()
 {
-    // is an already starting mediaplayer process ? If yes, we kill him
-    //It's better, especially since the user can kill the process without Qt App
-    if ( _mediaPlayer != NULL )
-    {
-        _mediaPlayer->kill();
-    }
-
-    //  Get output filename
-    QString fileName = QFileDialog::getSaveFileName(this,
-                                                    tr("Vidéo de sortie"),
-                                                    "./output_video.ps");
-    //start Recording
-
-    QString command = "vlc";
-    QStringList parameters;
-    parameters << "v4l2:///dev/"+_selectedCamera<<"--file-logging"<<"--logfile=vlc-log.txt"
-               <<"--sout=#transcode{vcodec=h264,vb=0,scale=0,acodec=mpga,ab=128,channels=2,samplerate=44100}:std{access=file,mux=mp4,dst='"+fileName+"'}";
-    _mediaPlayer = new QProcess( this );
-    _mediaPlayer->start( command, parameters );
-
+    _labview->startRecording();
 }
 
 
@@ -124,7 +86,7 @@ void LabViewPage::importFromXmlFile(QString filename)
                 }
                 if(xml.name() == "globalcolor")
                 {
-                    parseGlobalcolor( &xml );
+                    _labview->parseGlobalcolor( &xml );
                 }
                 if(xml.name() == "face") {
                     parseFace( &xml );
@@ -162,112 +124,9 @@ void LabViewPage::parseFace(QXmlStreamReader *xml)
         }
         xml->readNext();
     }
-    setFaceLight( facename, h, v );
-}
-void LabViewPage::setFaceLight(QString face_name, int horizontale, int verticale)
-{
-    if ( face_name == "top" )
-    {
-        _top.h = horizontale;
-        _top.v = verticale;
-    }
-    if ( face_name == "bot" )
-    {
-        _bot.h = horizontale;
-        _bot.v = verticale;
-    }
-    if ( face_name == "left" )
-    {
-         _left.h = horizontale;
-         _left.v = verticale;
-    }
-    if ( face_name == "right" )
-    {
-         _right.h = horizontale;
-         _right.v = verticale;
-    }
-    if ( face_name == "back" )
-    {
-         _back.h = horizontale;
-         _back.v = verticale;
-    }
-    if ( face_name == "front" )
-    {
-         _front.h = horizontale;
-         _front.v = verticale;
-    }
+    _labview->setFaceLight( facename, h, v );
 }
 
-void LabViewPage::parseGlobalcolor(QXmlStreamReader *xml)
-{
-    while(!(xml->tokenType() == QXmlStreamReader::EndElement && xml->name() == "globalcolor"))
-    {
-        if(xml->tokenType() == QXmlStreamReader::StartElement)
-        {
-            if(xml->name() == "red")
-            {
-                xml->readNext();
-                _currentColor.setRed( xml->text().toString().toInt() );
-            }
-            if(xml->name() == "green")
-            {
-                xml->readNext();
-                _currentColor.setGreen( xml->text().toString().toInt() );
-            }
-            if(xml->name() == "blu")
-            {
-                xml->readNext();
-                _currentColor.setBlue( xml->text().toString().toInt() );
-            }
-            if(xml->name() == "intensity")
-            {
-                xml->readNext();
-                _currentColor.setAlpha( xml->text().toString().toInt() );
-            }
-        }
-        xml->readNext();
-    }
-}
-
-void LabViewPage::saveToXmlFile(QString filename)
-{
-    QFile* file = new QFile(filename);
-    if (!file->open(QIODevice::WriteOnly | QIODevice::Text)) {
-        QMessageBox::critical(this,
-                              "Save to XML file",
-                              "Couldn't write to "+filename,
-                              QMessageBox::Ok);
-        return;
-    }
-    QXmlStreamWriter xml(file);
-    xml.setAutoFormatting(true);
-    xml.writeStartDocument();
-
-    xml.writeStartElement("profile");
-    xml.writeTextElement("name", filename.split("/").last().split(".").first());
-    //COLOR
-    xml.writeStartElement("globalcolor");
-    xml.writeTextElement("red", QString::number(_currentColor.red()));
-    xml.writeTextElement("green", QString::number(_currentColor.green()) );
-    xml.writeTextElement("blu", QString::number(_currentColor.blue()) );
-    xml.writeTextElement("intensity", QString::number(_currentColor.alpha()) );
-    xml.writeEndElement();//color
-
-    exportXmlAllFaces( &xml );
-
-    xml.writeEndElement();//profile
-    xml.writeEndDocument();
-    file->close();
-}
-void LabViewPage::exportXmlAllFaces(QXmlStreamWriter *xml)
-{
-    _top.toXml( xml );
-    _bot.toXml( xml );
-    _left.toXml( xml );
-    _right.toXml( xml );
-    _back.toXml( xml );
-    _front.toXml( xml );
-}
 
 void LabViewPage::on_loadProfil_clicked()
 {
@@ -279,6 +138,7 @@ void LabViewPage::on_loadProfil_clicked()
        ui->currentProfil->setText( fileName.split("/").last().split(".").first() );
        ui->selectAmb->setCurrentIndex( 0 );
     }
+    updateUI();
 }
 
 void LabViewPage::on_saveProfil_clicked()
@@ -289,59 +149,13 @@ void LabViewPage::on_saveProfil_clicked()
                                                     tr("Profile File (*.xml)"));
     if ( fileName != NULL && ! fileName.isEmpty() )
     {
-        saveToXmlFile( fileName );
+        _labview->saveToXmlFile( fileName );
         ui->currentProfil->setText( fileName.split("/").last().split(".").first() );
         ui->selectAmb->setCurrentIndex( 0 );
     }
-}
-void LabViewPage::parseMCode(QByteArray stream)
-{
-    QString str(stream);
-    long value = SerialPort::embeddedstr2l( str, 0 );
-    int idx = 0;
-    int size = str.size();
-    switch ( value )
-    {
-    case 621:
-    {
-        SerialPort::nextField( str, idx);
-        while ( idx < size )
-        {
-            if ( str[idx] == 'R' )
-            {
-                SerialPort::nextValue( str, idx);
-                _currentColor.setRed( SerialPort::embeddedstr2l( str, idx ) );
-            }
-            if ( str[idx] == 'E' )
-            {
-                SerialPort::nextValue( str, idx);
-                _currentColor.setGreen( SerialPort::embeddedstr2l( str, idx ) );
-            }
-            if ( str[idx] == 'B' )
-            {
-                SerialPort::nextValue( str, idx);
-                _currentColor.setBlue( SerialPort::embeddedstr2l( str, idx ) );
-            }
-            if ( str[idx] == 'I' )
-            {
-                SerialPort::nextValue( str, idx);
-                _currentColor.setAlpha( SerialPort::embeddedstr2l( str, idx ) );
-            }
-            SerialPort::nextField( str, idx);
-        }
-    }
-        break;
-    case 614:
-    {
-        /*SerialPort::nextField( str, idx);
-        SerialPort::parseTrueFalse( &_, str[idx] );*/
-    }
-        break;
-    default:
-        break;
-    }
     updateUI();
 }
+
 
 void LabViewPage::loadDefaultAmbiances(QString folder_path)
 {
@@ -352,6 +166,7 @@ void LabViewPage::loadDefaultAmbiances(QString folder_path)
     {
         ui->selectAmb->addItem(file.split(".").first(),file);
     }
+    updateUI();
 }
 
 //Update graphicals composants.
@@ -359,29 +174,31 @@ void LabViewPage::updateUI()
 {
     //  QPainter paint(this);
     //sliders
-    ui->r->setValue( _currentColor.red());
-    ui->g->setValue( _currentColor.green());
-    ui->b->setValue( _currentColor.blue());
-    ui->intensite->setValue( _currentColor.alpha());
+    ui->r->setValue( _labview->currentColor()->red());
+    ui->g->setValue( _labview->currentColor()->green());
+    ui->b->setValue( _labview->currentColor()->blue());
+    ui->intensite->setValue( _labview->currentColor()->alpha());
 
     //Spin edit box
-    ui->rSpin->setValue( _currentColor.red());
-    ui->gSpin->setValue( _currentColor.green());
-    ui->bSpin->setValue( _currentColor.blue());
-    ui->intensiteSpin->setValue( _currentColor.alpha());
+    ui->rSpin->setValue( _labview->currentColor()->red());
+    ui->gSpin->setValue( _labview->currentColor()->green());
+    ui->bSpin->setValue( _labview->currentColor()->blue());
+    ui->intensiteSpin->setValue( _labview->currentColor()->alpha());
 
     ui->showColor->setStyleSheet("border-color: rgb(0, 0, 0);\nbackground-color: rgba("+
-                                 QString::number(_currentColor.red())+", "+
-                                 QString::number(_currentColor.green())+","+
-                                 QString::number(_currentColor.blue())+","+
-                                 QString::number(_currentColor.alpha())+");\nselection-color: rgb(255, 0, 4);");
+                                 QString::number(_labview->currentColor()->red())+", "+
+                                 QString::number(_labview->currentColor()->green())+","+
+                                 QString::number(_labview->currentColor()->blue())+","+
+                                 QString::number(_labview->currentColor()->alpha())+");\nselection-color: rgb(255, 0, 4);");
 
     if ( ui->globalLightRadio->isChecked() )
     {
-        ui->intensite_2->setValue( _top.v );
-        ui->intensite_3->setValue( _top.h );
-        ui->intensiteSpin_2->setValue( _top.v );
-        ui->intensiteSpin_3->setValue( _top.h );
+        int hi = _labview->getGlobalIntensityH();
+        int vi = _labview->getGlobalIntensityV();
+        ui->intensite_2->setValue( vi );
+        ui->intensite_3->setValue( hi );
+        ui->intensiteSpin_2->setValue( vi );
+        ui->intensiteSpin_3->setValue( hi );
     }
     if ( ui->individualLightRadio->isChecked() )
     {
@@ -397,17 +214,6 @@ void LabViewPage::updateUI()
     }
 }
 
-void LabViewPage::setAllFacesLight(int light, bool horizontale, bool verticale)
-{
-    if ( horizontale )
-    {
-        _left.h = _right.h = _top.h = _bot.h = _back.h = _front.h = light;
-    }
-    if ( verticale)
-    {
-        _left.v = _right.v = _top.v = _bot.v = _back.v = _front.v = light;
-    }
-}
 void LabViewPage::setSelectedFacesLight(int light, bool horizontale, bool verticale)
 {
     Face* current_face;
@@ -422,6 +228,7 @@ void LabViewPage::setSelectedFacesLight(int light, bool horizontale, bool vertic
             current_face->v = light;
         }
     }
+    updateUI();
 }
 
 void LabViewPage::setLight(int light, bool horizontale, bool verticale)
@@ -429,12 +236,13 @@ void LabViewPage::setLight(int light, bool horizontale, bool verticale)
     // user select global control
     if ( ui->globalLightRadio->isChecked() )
     {
-        setAllFacesLight( light, horizontale, verticale );
+        _labview->setAllFacesLight( light, horizontale, verticale );
     }
     if ( ui->individualLightRadio->isChecked() )
     {
         setSelectedFacesLight( light, horizontale, verticale );
     }
+    updateUI();
 }
 
 
@@ -473,41 +281,43 @@ void LabViewPage::processFaceClick(Face *face, QPushButton *face_button, QString
             setActivateLightControl( false );
         }
     }
+    updateUI();
 }
 
 void LabViewPage::on_backFace_clicked()
 {
-    processFaceClick( &_back, ui->backFace, "pattern_back");
+    processFaceClick( &_labview->_back, ui->backFace, "pattern_back");
 }
 
 void LabViewPage::on_rightFace_clicked()
 {
-    processFaceClick( &_right, ui->rightFace, "pattern_r");
+    processFaceClick( &_labview->_right, ui->rightFace, "pattern_r");
 }
 
 void LabViewPage::on_leftFace_clicked()
 {
-    processFaceClick( &_left, ui->leftFace, "pattern_l");
+    processFaceClick( &_labview->_left, ui->leftFace, "pattern_l");
 }
 
 void LabViewPage::on_topFace_clicked()
 {
-    processFaceClick( &_top, ui->topFace, "pattern_t");
+    processFaceClick( &_labview->_top, ui->topFace, "pattern_t");
 }
 
 void LabViewPage::on_bottomFace_clicked()
 {
-    processFaceClick( &_bot, ui->bottomFace, "pattern_b");
+    processFaceClick( &_labview->_bot, ui->bottomFace, "pattern_b");
 }
 
 void LabViewPage::on_frontFace_clicked()
 {
-    processFaceClick( &_front, ui->frontFace, "pattern_f");
+    processFaceClick( &_labview->_front, ui->frontFace, "pattern_f");
 }
 
 void LabViewPage::on_globalLightRadio_clicked()
 {
     setActivateLightControl( true );
+    updateUI();
 }
 
 void LabViewPage::on_individualLightRadio_clicked()
@@ -520,6 +330,7 @@ void LabViewPage::on_individualLightRadio_clicked()
     {
         setActivateLightControl( true );
     }
+    updateUI();
 }
 
 void LabViewPage::on_intensite_2_valueChanged(int value)
@@ -544,42 +355,50 @@ void LabViewPage::on_intensiteSpin_3_valueChanged(int arg1)
 
 void LabViewPage::on_r_valueChanged(int value)
 {
-    _currentColor.setRed( value );
+    _labview->currentColor()->setRed( value );
+    updateUI();
 }
 
 void LabViewPage::on_g_valueChanged(int value)
 {
-    _currentColor.setGreen( value );
+    _labview->currentColor()->setGreen( value );
+    updateUI();
 }
 
 void LabViewPage::on_b_valueChanged(int value)
 {
-    _currentColor.setBlue( value );
+    _labview->currentColor()->setBlue( value );
+    updateUI();
 }
 
 void LabViewPage::on_rSpin_valueChanged(int arg1)
 {
-    _currentColor.setRed( arg1 );
+    _labview->currentColor()->setRed( arg1 );
+    updateUI();
 }
 
 void LabViewPage::on_gSpin_valueChanged(int arg1)
 {
-    _currentColor.setGreen( arg1 );
+    _labview->currentColor()->setGreen( arg1 );
+    updateUI();
 }
 
 void LabViewPage::on_bSpin_valueChanged(int arg1)
 {
-    _currentColor.setBlue( arg1 );
+    _labview->currentColor()->setBlue( arg1 );
+    updateUI();
 }
 
 void LabViewPage::on_intensite_valueChanged(int value)
 {
-    _currentColor.setAlpha( value );
+    _labview->currentColor()->setAlpha( value );
+    updateUI();
 }
 
 void LabViewPage::on_intensiteSpin_valueChanged(int arg1)
 {
-    _currentColor.setAlpha( arg1 );
+    _labview->currentColor()->setAlpha( arg1 );
+    updateUI();
 }
 
 void LabViewPage::on_selectAmb_currentIndexChanged(int index)
@@ -590,9 +409,11 @@ void LabViewPage::on_selectAmb_currentIndexChanged(int index)
         importFromXmlFile( filename );
         ui->currentProfil->setText( ui->selectAmb->itemText( index ) );
     }
+    updateUI();
 }
 
 void LabViewPage::on_cameraSelector_currentIndexChanged(int index)
 {
-    _selectedCamera = ui->cameraSelector->itemText( index );
+    _labview->setCamera( ui->cameraSelector->itemText( index ) );
+    updateUI();
 }

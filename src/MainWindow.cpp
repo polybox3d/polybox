@@ -42,7 +42,7 @@ void MainWindow::updateStatePage()
         this->setCentralWidget( new WarningPage( _polybox, this ) );
         break;
     case LabView :
-        this->setCentralWidget( new LabViewPage( this ) );
+        this->setCentralWidget( new LabViewPage( _polybox->labViewModule(), this ) );
         break;
     case Printer :
         this->setCentralWidget( new PrinterPage( _polybox->printerModule(), this ) );

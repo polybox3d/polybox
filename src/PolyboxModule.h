@@ -32,7 +32,7 @@ public:
     bool isScannerReady();
     GlobalModule* globalModule();
     CNCModule* cncModule();
-    LabViewModule* labView();
+    LabViewModule* labViewModule();
     ScannerModule* scannerModule();
     PrinterModule* printerModule();
     SerialPort* port();

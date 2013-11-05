@@ -18,6 +18,9 @@
 #include <QDataStream>
 
 #include <iostream>
+
+#include "LabViewModule.h"
+
 using namespace std;
 
 namespace Ui {
@@ -29,15 +32,12 @@ class LabViewPage : public QWidget
     Q_OBJECT
 
 public:
-    explicit LabViewPage(QWidget *parent = 0);
+    explicit LabViewPage(LabViewModule* labview, QWidget *parent = 0);
     ~LabViewPage();
 
-    void setAllFacesLight(int light, bool horizontale = true, bool verticale = true);
     void setSelectedFacesLight(int light, bool horizontale = true, bool verticale = true);
-    void saveToXmlFile( QString filename );
     void importFromXmlFile(QString filename );
     void loadDefaultAmbiances( QString folder_path );
-    void parseMCode(QByteArray stream);
 
 
 #define BASE_STYLESHEET_FACE_BUTTON "background-image: url("
@@ -103,30 +103,18 @@ private slots:
     void on_cameraSelector_currentIndexChanged(int index);
 
 private:
-    void initFaceClass();
     void setLight(int light, bool horizontale=true, bool verticale=true);
     void processFaceClick(Face* face, QPushButton* face_button, QString base_name);
     void setActivateLightControl( bool activated );
     QStringList getAllCamera(QString path_directory);
 
-    void exportXmlAllFaces( QXmlStreamWriter* xml );
-    void parseGlobalcolor( QXmlStreamReader* xml );
     void parseFace( QXmlStreamReader* xml );
-    void setFaceLight( QString face_name, int horizontale, int verticale );
 
     Ui::LabViewPage *ui;
-    QProcess* _mediaPlayer;
+    LabViewModule* _labview;
+
     QFile* _currentProfile;
-    QColor _currentColor;
 
-    Face _left;
-    Face _right;
-    Face _top;
-    Face _bot;
-    Face _front;
-    Face _back;
-
-    QString _selectedCamera;
     QVector<Face*> _selectedFaces;
 };
 

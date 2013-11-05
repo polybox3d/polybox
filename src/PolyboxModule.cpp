@@ -52,7 +52,7 @@ GlobalModule* PolyboxModule::globalModule()
 {
     return _global;
 }
-LabViewModule* PolyboxModule::labView()
+LabViewModule* PolyboxModule::labViewModule()
 {
     return _labview;
 }
