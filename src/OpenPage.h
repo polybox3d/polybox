@@ -8,6 +8,7 @@
 #include "ModulePage.h"
 #include "MainWindow.h"
 #include "pageState.h"
+#include "OpenPageJPH.h"
 
 #include "PolyboxModule.h"
 
@@ -30,7 +31,11 @@ public:
     explicit OpenPage(PolyboxModule *poly, QWidget *parent );
     ~OpenPage();
 
-private slots:
+public slots:
+
+    void setJoypad( QJoystick* joypad );
+    void disableJoypad();
+
     /**
      * @brief on_module_clicked Open the main page if everything is okay. If the Box is not ready to use, this function call GlobalChecker and display what is wrong to the user (something not plugged, ATU on etc...)
      */
@@ -50,6 +55,7 @@ private:
      */
     Ui::OpenPage *ui;
     PolyboxModule* _polybox;
+    OpenPageJPH* _handler;
 };
 
 #endif // OPENPAGE_H

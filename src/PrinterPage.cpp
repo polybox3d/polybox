@@ -58,6 +58,7 @@ void PrinterPage::on_inactifBed_clicked()
     setBedActivated(false);
     repaintComponents();
 }
+
 void PrinterPage::setBedActivated(bool activated)
 {
     ui->bedTempSlider->setEnabled( activated );

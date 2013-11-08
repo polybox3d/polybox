@@ -37,6 +37,16 @@ LabViewPage::~LabViewPage()
     delete ui;
 }
 
+void LabViewPage::setJoypad(QJoystick *joypad)
+{
+    _handler = new LabViewJPH( _labview, joypad, this);
+}
+void LabViewPage::disableJoypad()
+{
+    _handler->deleteLater();
+    _handler = NULL;
+}
+
 
 QStringList LabViewPage::getAllCamera(QString path_directory)
 {

@@ -5,6 +5,7 @@
 using namespace std;
 
 #include "PolyboxModule.h"
+#include "JoypadHandler.h"
 
 /**
  * @brief The AbstractModule class is an Abstract class for module sub-class.
@@ -31,7 +32,6 @@ public:
     virtual void updateComponents() =0;
     virtual void parseMCode(QByteArray stream)=0;
 
-
 protected:
     /**
      * @brief initAll initialize all components with default values (false for bolean)
@@ -42,7 +42,6 @@ protected:
      */
     PolyboxModule* _polybox;
 private:
-
 };
 
 #endif // ABSTRACTMODULE_H

@@ -54,6 +54,8 @@ public:
     bool detectPlastic() const;
     bool bedPlugged() const;
 
+    PolyboxModule* getPolybox(){ return _polybox; }
+
     virtual void parseMCode(QByteArray stream);
 
 signals:

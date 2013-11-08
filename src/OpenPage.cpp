@@ -22,6 +22,17 @@ OpenPage::~OpenPage()
 }
 
 
+void OpenPage::setJoypad(QJoystick *joypad)
+{
+    _handler = new OpenPageJPH( this, joypad, this);
+}
+void OpenPage::disableJoypad()
+{
+    _handler->deleteLater();
+    _handler = NULL;
+}
+
+
 void OpenPage::on_module_clicked()
 {
 

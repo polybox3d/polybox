@@ -20,6 +20,7 @@
 #include <iostream>
 
 #include "LabViewModule.h"
+#include "LabViewJPH.h"
 
 using namespace std;
 
@@ -47,6 +48,8 @@ public:
 
 public slots:
     void updateUI();
+    void setJoypad( QJoystick* joypad );
+    void disableJoypad();
 
 
 private slots:
@@ -116,6 +119,7 @@ private:
     QFile* _currentProfile;
 
     QVector<Face*> _selectedFaces;
+    LabViewJPH* _handler;
 };
 
 #endif // LABVIEW_H

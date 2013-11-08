@@ -8,6 +8,8 @@
 #include "GlobalModule.h"
 #include <QDebug>
 
+QJoystick* PolyboxModule::_joypad=NULL;
+
 PolyboxModule::PolyboxModule(QObject *parent) :
     QObject(parent)
 {
@@ -41,6 +43,31 @@ void PolyboxModule::parseData()
          _printer->parseMCode( &str.toStdString().c_str()[idx+1] );
     }
 
+}
+
+void PolyboxModule::loadJoypad()
+{
+    if ( _joypad == NULL )
+    {
+        _joypad = QJoystickEnumerator::enumerate("/dev/input/");
+    }
+}
+void PolyboxModule::unloadJoypad()
+{
+    if ( _joypad != NULL)
+    {
+        //_joypad->deleteLater();
+        //_joypad = NULL;
+    }
+}
+QJoystick* PolyboxModule::getJoypad()
+{
+    return _joypad;
+}
+
+void PolyboxModule::setJoypad( QJoystick* joypad )
+{
+    _joypad = joypad;
 }
 
 SerialPort* PolyboxModule::port()

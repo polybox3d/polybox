@@ -35,7 +35,7 @@ public:
      */
     virtual void updateModuleValues() {}
 public slots:
-    virtual void updateUI(){std::cout<<"aaaa"<<std::endl;}
+    virtual void updateUI(){}
 protected:
     /**
      * @brief _currentModule , actually, a bit useless due some co(s)mics reasons.

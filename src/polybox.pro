@@ -55,7 +55,14 @@ SOURCES += main.cpp\
     Config.cpp \
     GlobalModule.cpp \
     Face.cpp \
-    PrinterSmallUI.cpp
+    PrinterSmallUI.cpp \
+    Qjoystick.cpp \
+    qjoystickenumerator.cpp \
+    JoypadHandler.cpp \
+    PrinterJPH.cpp \
+    ModulePageJPH.cpp \
+    LabViewJPH.cpp \
+    OpenPageJPH.cpp
 
 HEADERS  += MainWindow.h \
         OpenPage.h \
@@ -92,7 +99,14 @@ HEADERS  += MainWindow.h \
     Config.h \
     GlobalModule.h \
     Face.h \
-    PrinterSmallUI.h
+    PrinterSmallUI.h \
+    Qjoystick.h \
+    qjoystickenumerator.h \
+    JoypadHandler.h \
+    PrinterJPH.h \
+    ModulePageJPH.h \
+    LabViewJPH.h \
+    OpenPageJPH.h
 
 FORMS    += MainWindow.ui \
         OpenPage.ui \
@@ -112,7 +126,8 @@ FORMS    += MainWindow.ui \
     GlobalChecker.ui \
     DialogConfigSoft.ui \
     DynamicTestPage.ui \
-    PrinterSmallUI.ui
+    PrinterSmallUI.ui \
+    qjoystickenumerator.ui
 
 RESOURCES += \
     ressources.qrc

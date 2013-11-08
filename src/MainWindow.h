@@ -2,6 +2,7 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include <QTranslator>
 
 #include "Config.h"
 
@@ -36,13 +37,29 @@ public slots:
     void backToModulePage();
     void backToHelpPage();
 
+signals:
+    void joypadOff();
+    void joypadOn(QJoystick* jopypad);
+private slots:
+    void on_actionCNC_triggered();
+
+    void on_actionImprimante_triggered();
+
+    void on_actionScanner_triggered();
+
+    void on_actionLabView_triggered();
+
+    void on_actionActiver_Manette_triggered();
+
 private:
     void updateStatePage();
 
     Ui::MainWindow *ui;
     PageState _currentState;
     PolyboxModule* _polybox;
+    bool _joypadActivated;
 
 };
 
 #endif // MAINWINDOW_H
+

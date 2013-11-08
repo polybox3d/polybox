@@ -24,6 +24,21 @@ ModulePage::~ModulePage()
     delete ui;
 }
 
+void ModulePage::back()
+{
+    ((MainWindow*)this->parent())->changeStatePage( Start );
+}
+
+void ModulePage::setJoypad(QJoystick *joypad)
+{
+    _handler = new ModulePageJPH( this, joypad, this);
+}
+void ModulePage::disableJoypad()
+{
+    _handler->deleteLater();
+    _handler = NULL;
+}
+
 void ModulePage::paintEvent(QPaintEvent *)
 {
     // CNC
@@ -70,7 +85,7 @@ bool ModulePage::eventFilter(QObject *obj, QEvent *event)
         }
         else if ( event->type() == QEvent::MouseButtonRelease )
         {
-            ((MainWindow*)this->parent())->changeStatePage( Start );
+            back();
             return true;
         }
         else if ( event->type() == QEvent::Leave )
@@ -98,75 +113,15 @@ void ModulePage::on_labviewButton_clicked()
 
 void ModulePage::on_printerButton_clicked()
 {
-    bool printer_ok = _polybox->isPrinterReady();
-    if ( printer_ok || Config::bypassCheck )
-    {
-        CHANGE_PAGE( Printer );
-    }
-    else
-    {
-        CheckerModele* checker = new CheckerModele((QWidget*)this->parent());
-
-        checker->setWindowTitle("Etat de l'imprimante");
-        checker->setContentWidget( new PrinterChecker( _polybox->printerModule(), checker));
-        int value_ret = checker->exec();
-        if ( value_ret != 0 )
-        {
-            CHANGE_PAGE( static_cast<PageState>(value_ret) );
-        }
-    }
+    CHANGE_PAGE( Printer );
 }
 
 void ModulePage::on_cncButton_clicked()
 {
-    bool cnc_ok = _polybox->isCncReady();
-    if ( cnc_ok || Config::bypassCheck )
-    {
-        DialogCNC dialog((QWidget*)this->parent());
-        int value_ret = dialog.exec();
-        if ( value_ret != 0 )
-        {
-            CHANGE_PAGE( static_cast<PageState>(value_ret) );
-        }
-    }
-    else
-    {
-        CheckerModele* checker = new CheckerModele((QWidget*)this->parent());
-
-
-        checker->setWindowTitle("Etat de la CN");
-        checker->setContentWidget( new CNCChecker( _polybox->cncModule(), checker));
-        int value_ret = checker->exec();
-        if ( value_ret != 0 )
-        {
-            CHANGE_PAGE( static_cast<PageState>(value_ret) );
-        }
-
-    }
+    CHANGE_PAGE( CNC );
 }
 
 void ModulePage::on_scannerButton_clicked()
 {
-    bool scanner_ok = _polybox->isScannerReady();
-    if ( scanner_ok || Config::bypassCheck )
-    {
-        DialogScanner dialog((QWidget*)this->parent());
-        int value_ret = dialog.exec();
-        if ( value_ret != 0 )
-        {
-            CHANGE_PAGE( static_cast<PageState>(value_ret) );
-        }
-    }
-    else
-    {
-        CheckerModele* checker = new CheckerModele((QWidget*)this->parent());
-
-        checker->setWindowTitle("Etat du Scanner");
-        checker->setContentWidget( new SCannerChecker( _polybox->scannerModule(), checker));
-        int value_ret = checker->exec();
-        if ( value_ret != 0 )
-        {
-            CHANGE_PAGE( static_cast<PageState>(value_ret) );
-        }
-    }
+    CHANGE_PAGE( Scanner );
 }

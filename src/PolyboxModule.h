@@ -13,6 +13,8 @@
 #include "PrinterModule.h"
 */
 
+#include "Qjoystick.h"
+#include "qjoystickenumerator.h"
 
 class CNCModule;
 class LabViewModule;
@@ -36,6 +38,10 @@ public:
     ScannerModule* scannerModule();
     PrinterModule* printerModule();
     SerialPort* port();
+    static void setJoypad( QJoystick* joypad );
+    static QJoystick* getJoypad();
+    static void loadJoypad();
+    static void unloadJoypad();
 
 signals:
 
@@ -52,6 +58,7 @@ private:
     ScannerModule* _scanner;
     PrinterModule* _printer;
     SerialPort * _port;
+    static QJoystick* _joypad;
 
 };
 

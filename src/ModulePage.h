@@ -15,6 +15,8 @@
 #include "SCannerChecker.h"
 #include "PolyboxModule.h"
 
+#include "ModulePageJPH.h"
+
 
 using namespace std;
 
@@ -39,10 +41,15 @@ class ModulePage : public QWidget
 public:
     explicit ModulePage(PolyboxModule* poly, QWidget *parent );
     ~ModulePage();
+    void back();
+
 protected:
     void paintEvent(QPaintEvent *);
 
-private slots:
+public slots:
+    void setJoypad( QJoystick* joypad );
+    void disableJoypad();
+
     void on_labviewButton_clicked();
 
     void on_printerButton_clicked();
@@ -57,6 +64,7 @@ private:
     float _base_scaling_size;
 
     PolyboxModule* _polybox;
+    ModulePageJPH* _handler;
 };
 
 #endif // MODULEPAGE_H
