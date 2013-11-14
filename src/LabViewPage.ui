@@ -10,6 +10,12 @@
     <height>550</height>
    </rect>
   </property>
+  <property name="minimumSize">
+   <size>
+    <width>800</width>
+    <height>550</height>
+   </size>
+  </property>
   <property name="windowTitle">
    <string>Form</string>
   </property>
@@ -270,9 +276,6 @@ selection-color: rgb(255, 0, 4);</string>
      </item>
     </layout>
    </widget>
-   <zorder>layoutWidget</zorder>
-   <zorder>layoutWidget</zorder>
-   <zorder>groupBox_2</zorder>
   </widget>
   <widget class="QGroupBox" name="profilBox">
    <property name="geometry">

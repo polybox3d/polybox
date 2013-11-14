@@ -14,6 +14,7 @@ OpenPage::OpenPage(PolyboxModule* poly,QWidget *parent) :
         qApp->exit( 42 );
     }
     ui->setupUi(this);
+    _handler = NULL;
 }
 
 OpenPage::~OpenPage()

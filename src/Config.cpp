@@ -26,8 +26,10 @@ QString Config::ambiancePathFolder=":/xml/ambiances";
 float Config::bedTempPla=60;
 float Config::bedTempAbs=75;
 float Config::bedTempNylon=70;
+int Config::hardwareTimer=3000; // ms
 
 QString Config::pathToJoypadOverlay=Config::pathToHomeDirectory+"joypadoverlay/src/JoypadOverlay";
+
 
 
 

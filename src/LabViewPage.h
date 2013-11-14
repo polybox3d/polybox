@@ -33,7 +33,7 @@ class LabViewPage : public QWidget
     Q_OBJECT
 
 public:
-    explicit LabViewPage(LabViewModule* labview, QWidget *parent = 0);
+    explicit LabViewPage(LabViewModule* labview, QWidget *parent = 0, bool small_ui=false);
     ~LabViewPage();
 
     void setSelectedFacesLight(int light, bool horizontale = true, bool verticale = true);
@@ -109,7 +109,6 @@ private:
     void setLight(int light, bool horizontale=true, bool verticale=true);
     void processFaceClick(Face* face, QPushButton* face_button, QString base_name);
     void setActivateLightControl( bool activated );
-    QStringList getAllCamera(QString path_directory);
 
     void parseFace( QXmlStreamReader* xml );
 

@@ -34,10 +34,10 @@ public:
 
     QByteArray datas(){ return _datas; }
 
-    static QStringList getDevicesNames( QString path )
+    static QStringList getDevicesNames( QString path, QString pattern="*" )
     {
         QDir device_dir( path );
-        return device_dir.entryList(QStringList("*"),QDir::System, QDir::Name) ;
+        return device_dir.entryList(QStringList( pattern ),QDir::System, QDir::Name) ;
     }
     static long embeddedstr2l(QString str, int idx )
     {

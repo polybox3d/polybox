@@ -20,6 +20,9 @@ PolyboxModule::PolyboxModule(QObject *parent) :
     _scanner = new ScannerModule( this, this );
     _global = new GlobalModule( this, this );
 
+    _hardwareTimer.start( Config::hardwareTimer );
+    connect( &_hardwareTimer, SIGNAL(timeout()), this, SLOT(hardwareTimerTimeout()));
+
     _port = new SerialPort();
     _connected = _port->connectToSerialPort();
     if ( _connected )
@@ -27,6 +30,12 @@ PolyboxModule::PolyboxModule(QObject *parent) :
         connect ( _port, SIGNAL(dataReady()), this, SLOT(parseData()) );
     }
 
+}
+
+void PolyboxModule::hardwareTimerTimeout()
+{
+    emit updateHardware();
+    //    _cnc->updateComponents();
 }
 
 void PolyboxModule::parseData()
@@ -45,12 +54,13 @@ void PolyboxModule::parseData()
 
 }
 
-void PolyboxModule::loadJoypad()
+bool PolyboxModule::loadJoypad()
 {
     if ( _joypad == NULL )
     {
         _joypad = QJoystickEnumerator::enumerate("/dev/input/");
     }
+    return   ( _joypad != NULL);
 }
 void PolyboxModule::unloadJoypad()
 {

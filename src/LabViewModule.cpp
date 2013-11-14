@@ -14,6 +14,12 @@ void LabViewModule::initAll()
     initFaceClass();
 }
 
+QStringList LabViewModule::getAllCamera(QString path_directory)
+{
+    QDir cameras_dir(path_directory);
+    return cameras_dir.entryList(QStringList("video*"),QDir::System, QDir::Name) ;
+}
+
 QStringList LabViewModule::getConnectedCameraPath()
 {
     QString command = "ls";
@@ -44,20 +50,24 @@ void LabViewModule::setCamera(QString cam)
     _selectedCamera = cam;
 }
 
-void LabViewModule::startCamera()
+QProcess* LabViewModule::startCamera(QProcess* process, QString camera)
 {
-    // is an already starting mediaplayer process ? If yes, we kill him
-    //It's better, especially since the user can kill the process without Qt App
-    if ( _mediaPlayer != NULL )
+    if ( process != NULL )
     {
-        _mediaPlayer->kill();
+        process->kill();
     }
 
     QString command = "vlc";
     QStringList parameters;
-    parameters << "v4l2:///dev/"+_selectedCamera ;
-    _mediaPlayer = new QProcess( this );
-    _mediaPlayer->start( command, parameters );
+    parameters << "v4l2:///dev/"+camera ;
+    process = new QProcess( );
+    process->start( command, parameters );
+    return process;
+}
+
+void LabViewModule::startCamera()
+{
+    _mediaPlayer = startCamera( _mediaPlayer, _selectedCamera );
 }
 
 void LabViewModule::startRecording()

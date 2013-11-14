@@ -3,6 +3,7 @@
 
 #include <QObject>
 #include <QByteArray>
+#include <QTimer>
 
 #include "mcode.h"
 #include "SerialPort.h"
@@ -40,13 +41,15 @@ public:
     SerialPort* port();
     static void setJoypad( QJoystick* joypad );
     static QJoystick* getJoypad();
-    static void loadJoypad();
+    static bool loadJoypad();
     static void unloadJoypad();
 
 signals:
+    void updateHardware();
 
 public slots:
     void parseData();
+    void hardwareTimerTimeout();
 
 
 private:
@@ -59,6 +62,7 @@ private:
     PrinterModule* _printer;
     SerialPort * _port;
     static QJoystick* _joypad;
+    QTimer _hardwareTimer;
 
 };
 

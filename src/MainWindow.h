@@ -3,6 +3,7 @@
 
 #include <QMainWindow>
 #include <QTranslator>
+#include <QDockWidget>
 
 #include "Config.h"
 
@@ -23,7 +24,8 @@ namespace Ui {
 class MainWindow;
 }
 
-#define CHANGE_PAGE ((MainWindow*)this->parent())->changeStatePage
+#define CHANGE_PAGE MainWindow::getMainWindow()->changeStatePage
+
 
 class MainWindow : public QMainWindow
 {
@@ -31,11 +33,16 @@ class MainWindow : public QMainWindow
 
 public:
     explicit MainWindow(QWidget *parent = 0);
+
+    static MainWindow* getMainWindow();
+
     ~MainWindow();
 public slots:
     void changeStatePage( PageState new_state );
     void backToModulePage();
     void backToHelpPage();
+    void startCamera();
+    void updateHardware();
 
 signals:
     void joypadOff();
@@ -51,13 +58,19 @@ private slots:
 
     void on_actionActiver_Manette_triggered();
 
+    void on_actionLabView_dock_triggered();
+
 private:
     void updateStatePage();
+    void setupWebcamMenu();
+    void setupSerialMenu();
+    static MainWindow* mainwindow;
 
     Ui::MainWindow *ui;
     PageState _currentState;
     PolyboxModule* _polybox;
     bool _joypadActivated;
+    QProcess* _webcam;
 
 };
 

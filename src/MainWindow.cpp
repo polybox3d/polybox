@@ -1,22 +1,77 @@
 #include "MainWindow.h"
 #include "ui_MainWindow.h"
 
+MainWindow* MainWindow::mainwindow=NULL;
+
+MainWindow* MainWindow::getMainWindow(){
+    return mainwindow;
+}
+
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
 {
+    mainwindow = this;
+
     _polybox = new PolyboxModule( this );
+    connect(_polybox, SIGNAL(updateHardware()),this,SLOT(updateHardware()));
     ui->setupUi(this);
     _joypadActivated = false;
+    _webcam = NULL;
 
     changeStatePage( Start );
     
-    
+
+    setupWebcamMenu();
+    setupSerialMenu();
 }
 
 MainWindow::~MainWindow()
 {
     delete ui;
+}
+void MainWindow::setupSerialMenu()
+{
+    ui->menuConnexion->clear();
+    foreach ( QString serial, SerialPort::getDevicesNames(Config::pathToSerialDevice, "tty*"))
+    {
+        if ( serial.startsWith("tty"))
+        {
+            if ( ! serial.startsWith( "ttyS" ))
+            {
+                if ( serial.startsWith("ttyACM") || serial.startsWith("ttyVIRT") || serial.startsWith("ttyUSB") )
+                {
+                    ui->menuConnexion->addAction( serial );
+                }
+            }
+        }
+    }
+
+}
+
+void MainWindow::setupWebcamMenu()
+{
+    // We add all camera available
+    ui->menuVisualiser->clear();
+    QAction* act;
+    foreach ( QString camera, LabViewModule::getAllCamera( Config::pathToWebcamDevice ))
+    {
+        act = ui->menuVisualiser->addAction( camera );
+        connect( act, SIGNAL(triggered()),this,SLOT(startCamera()) );
+    }
+}
+
+void MainWindow::startCamera()
+{
+    if ( QAction* act = dynamic_cast<QAction*>(sender()) )
+    {
+        _webcam = LabViewModule::startCamera( _webcam, act->text());
+    }
+}
+void MainWindow::updateHardware()
+{
+    setupSerialMenu();
+    setupWebcamMenu();
 }
 
 void MainWindow::changeStatePage(PageState new_state)
@@ -57,13 +112,21 @@ void MainWindow::updateStatePage()
         this->setCentralWidget( new WarningPage( _polybox, this ) );
         break;
     case LabView :
-        this->setCentralWidget( new LabViewPage( _polybox->labViewModule(), this ) );
+        this->setCentralWidget( new LabViewPage( _polybox->labViewModule(), this, false ) );
         connect(this,SIGNAL(joypadOff()),this->centralWidget(),SLOT(disableJoypad()));
         connect(this,SIGNAL(joypadOn(QJoystick*)),this->centralWidget(),SLOT(setJoypad(QJoystick*)));
         if ( _joypadActivated )
         {
             emit joypadOn( PolyboxModule::getJoypad() );
         }
+        break;
+    case LabViewDock :
+    {
+        QDockWidget* dock = new QDockWidget("LabView (dock) ",this);
+        dock->setWidget( new LabViewPage( _polybox->labViewModule(), this, true ) );
+        dock->setFloating( true );
+        dock->show();
+    }
         break;
     case Scanner:
     {
@@ -169,9 +232,15 @@ void MainWindow::on_actionActiver_Manette_triggered()
     }
     else
     {
-        _polybox->loadJoypad();
-        ui->actionActiver_Manette->setText(tr("Désactiver manette"));
-        emit joypadOn( PolyboxModule::getJoypad() );
+        if ( _polybox->loadJoypad() )
+        {
+            ui->actionActiver_Manette->setText(tr("Désactiver manette"));
+            emit joypadOn( PolyboxModule::getJoypad() );
+        }
+        else
+        {
+            return;
+        }
     }
     _joypadActivated = !_joypadActivated;
 }
@@ -206,3 +275,8 @@ void MainWindow::on_actionLabView_triggered()
     changeStatePage( LabView );
 }
 
+
+void MainWindow::on_actionLabView_dock_triggered()
+{
+    changeStatePage( LabViewDock );
+}

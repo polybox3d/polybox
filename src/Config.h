@@ -74,6 +74,8 @@ public:
     static float bedTempAbs;
     static float bedTempNylon;
 
+    static int hardwareTimer;
+
     static void init();
 
     static void importFromXmlFile( QString filename );

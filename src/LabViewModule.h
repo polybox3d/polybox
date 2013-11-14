@@ -31,9 +31,11 @@ public:
      */
     virtual void updateComponents();
     virtual void parseMCode(QByteArray stream);
+
     void setCamera( QString cam );
     void startCamera();
     void startRecording();
+    static QProcess* startCamera(QProcess* process, QString camera);
 
     void initFaceClass();
     void setFaceLight(QString face_name, int horizontale, int verticale);
@@ -45,6 +47,7 @@ public:
     int getGlobalIntensityH(){ return _top.h; }
     int getGlobalIntensityV(){ return _top.v; }
 
+    static QStringList getAllCamera(QString path_directory);
 
     Face _left;
     Face _right;

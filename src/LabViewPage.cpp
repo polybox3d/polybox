@@ -1,7 +1,7 @@
 #include "LabViewPage.h"
 #include "ui_LabViewPage.h"
 
-LabViewPage::LabViewPage(LabViewModule* labview, QWidget *parent) :
+LabViewPage::LabViewPage(LabViewModule* labview, QWidget *parent, bool small_ui) :
     QWidget(parent),
     ui(new Ui::LabViewPage)
 {
@@ -13,7 +13,7 @@ LabViewPage::LabViewPage(LabViewModule* labview, QWidget *parent) :
     _currentProfile = NULL;
 
 
-    ui->cameraSelector->addItems( getAllCamera( Config::pathToWebcamDevice ) );
+    ui->cameraSelector->addItems( LabViewModule::getAllCamera( Config::pathToWebcamDevice ) );
     //1 or more camera detected, we setup UI
     if ( ui->cameraSelector->count() > 0 )
     {
@@ -24,12 +24,19 @@ LabViewPage::LabViewPage(LabViewModule* labview, QWidget *parent) :
 
     loadDefaultAmbiances( Config::ambiancePathFolder );
 
-    HomeButton* hb = new HomeButton( 50,50, this );
-    hb->setGeometry( this->width()-hb->width()-10,
-                     this->height()-hb->height(),
-                     hb->width(), hb->height());
-    connect( hb, SIGNAL(clicked()), (MainWindow*)(parent), SLOT(backToModulePage()));
-    connect( ui->backToHelp, SIGNAL(clicked()), (MainWindow*)(parent), SLOT(backToHelpPage()));
+    if ( ! small_ui )
+    {
+        HomeButton* hb = new HomeButton( 50,50, this );
+        hb->setGeometry( this->width()-hb->width()-10,
+                         this->height()-hb->height(),
+                         hb->width(), hb->height());
+        connect( hb, SIGNAL(clicked()), (MainWindow*)(parent), SLOT(backToModulePage()));
+        connect( ui->backToHelp, SIGNAL(clicked()), (MainWindow*)(parent), SLOT(backToHelpPage()));
+    }
+    else
+    {
+         ui->backToHelp->deleteLater();
+    }
 }
 
 LabViewPage::~LabViewPage()
@@ -47,12 +54,6 @@ void LabViewPage::disableJoypad()
     _handler = NULL;
 }
 
-
-QStringList LabViewPage::getAllCamera(QString path_directory)
-{
-    QDir cameras_dir(path_directory);
-    return cameras_dir.entryList(QStringList("video*"),QDir::System, QDir::Name) ;
-}
 
 void LabViewPage::on_startVisu_clicked()
 {
