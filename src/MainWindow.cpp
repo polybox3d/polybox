@@ -76,6 +76,7 @@ void MainWindow::updateHardware()
 
 void MainWindow::changeStatePage(PageState new_state)
 {
+    _previousState = _currentState;
     _currentState = new_state;
     updateStatePage();
 }
@@ -84,6 +85,13 @@ void MainWindow::updateStatePage()
 {
 
     // @todo thing about delete the widget....
+    qApp->processEvents();
+    if ( _previousState == ScannerLaser )
+    {
+        QWidget* w = centralWidget();
+        w->setParent(0);
+    }
+
     switch ( _currentState )
     {
     case Start:
@@ -212,8 +220,9 @@ void MainWindow::updateStatePage()
         break;
     case ScannerLaser :
     {
-        QProcess* laser = new QProcess(this);
-        laser->start( Config::scannerLaserPath );
+        this->setCentralWidget( new FsMainWindow( _polybox->port(), this ) );
+        /*QProcess* laser = new QProcess(this);
+        laser->start( Config::scannerLaserPath );*/
         break;
     }
     default:

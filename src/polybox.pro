@@ -20,6 +20,8 @@ QMAKE_CXXFLAGS_DEBUG +=  -O3 -Ofast
 
 #UART Lib
 include(../externals/qextserialport/src/qextserialport.pri)
+include(../externals/FabScan100/qtTest/qtTest.pri)
+
 
 SOURCES += main.cpp\
         MainWindow.cpp \

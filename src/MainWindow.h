@@ -18,6 +18,7 @@
 #include "DynamicTestPage.h"
 #include "PolyboxModule.h"
 
+#include "fsmainwindow.h"
 #include "pageState.h"
 
 namespace Ui {
@@ -68,6 +69,7 @@ private:
 
     Ui::MainWindow *ui;
     PageState _currentState;
+    PageState _previousState;
     PolyboxModule* _polybox;
     bool _joypadActivated;
     QProcess* _webcam;
