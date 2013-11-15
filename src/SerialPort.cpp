@@ -10,7 +10,14 @@ SerialPort::SerialPort(QObject *parent) :
   //QextSerialPort("/dev/ttyACM0", QextSerialPort::EventDriven, parent)
 {
     _port = NULL;
-    _printerCOM = NULL;
+}
+QString SerialPort::path()
+{
+    return _path;
+}
+QString SerialPort::name()
+{
+    return _name;
 }
 
 bool SerialPort::connectToSerialPort()
@@ -33,6 +40,8 @@ bool SerialPort::connectToSerialPort()
 
     if ( _port->open(QIODevice::ReadWrite) == true)
     {
+        _path = Config::pathToSerialDevice;
+        _name = Config::serialPortName;
         cout<<"ok!"<<endl;
         //connect(this, SIGNAL(readyRead()), this, SLOT(onReadyRead()) );
         //      connect(this, SIGNAL(dsrChanged(bool)), this, SLOT(onDsrChanged(bool)) );

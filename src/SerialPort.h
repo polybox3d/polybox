@@ -31,6 +31,8 @@ public:
      * @param code
      */
     void sendMCode(int code);
+    QString path();
+    QString name();
 
     QByteArray datas(){ return _datas; }
 
@@ -72,7 +74,8 @@ public slots:
 
 private:
     QextSerialPort* _port;
-    QProcess* _printerCOM;
+    QString _path;
+    QString _name;
     QByteArray _datas;
     QByteArray _rcp_datas;
 

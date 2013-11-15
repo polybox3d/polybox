@@ -33,6 +33,7 @@ MainWindow::~MainWindow()
 void MainWindow::setupSerialMenu()
 {
     ui->menuConnexion->clear();
+    QAction* act;
     foreach ( QString serial, SerialPort::getDevicesNames(Config::pathToSerialDevice, "tty*"))
     {
         if ( serial.startsWith("tty"))
@@ -41,7 +42,11 @@ void MainWindow::setupSerialMenu()
             {
                 if ( serial.startsWith("ttyACM") || serial.startsWith("ttyVIRT") || serial.startsWith("ttyUSB") )
                 {
-                    ui->menuConnexion->addAction( serial );
+                    act = ui->menuConnexion->addAction( serial );
+                    if ( serial.compare(_polybox->port()->name() ) ) // We are already connected to this serial !
+                    {
+                        act->setChecked( true );
+                    }
                 }
             }
         }
