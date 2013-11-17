@@ -2,3 +2,6 @@
 	path = externals/qextserialport
 	url = https://code.google.com/p/qextserialport/
 
+[submodule "externals/FabScan100"]
+	path = externals/FabScan100
+	url = https://github.com/skapin/FabScan100.git
