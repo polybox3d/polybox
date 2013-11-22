@@ -198,7 +198,7 @@ void MainWindow::updateStatePage()
             int value_ret = dialog.exec();
             if ( value_ret != 0 )
             {
-                this->setCentralWidget( new CNCPage( this ) );
+                CHANGE_PAGE( static_cast<PageState>(value_ret) );
             }
         }
         else
@@ -217,7 +217,7 @@ void MainWindow::updateStatePage()
         }
     }
         break;
-    case ConfigurCNC :
+    case ConfigureCNC :
         this->setCentralWidget( new ConfigCNCPage( this ) );
         break;
     case DynamicTest :

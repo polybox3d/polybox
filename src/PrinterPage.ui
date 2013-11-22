@@ -390,6 +390,38 @@
     </rect>
    </property>
   </widget>
+  <widget class="Led" name="ledClogged">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>370</y>
+     <width>18</width>
+     <height>18</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="pixmap">
+    <pixmap resource="ressources.qrc">:/img/img/led_off_red.png</pixmap>
+   </property>
+   <property name="scaledContents">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="QLabel" name="labelClogged">
+   <property name="geometry">
+    <rect>
+     <x>50</x>
+     <y>370</y>
+     <width>101</width>
+     <height>17</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Wire not clogged</string>
+   </property>
+  </widget>
  </widget>
  <customwidgets>
   <customwidget>
@@ -397,6 +429,11 @@
    <extends>QWidget</extends>
    <header>PrinterSmallUI.h</header>
    <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>Led</class>
+   <extends>QLabel</extends>
+   <header>Led.h</header>
   </customwidget>
  </customwidgets>
  <resources>

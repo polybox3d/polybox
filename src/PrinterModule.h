@@ -51,6 +51,7 @@ public:
     Temperature coldBuse2();
 
     bool printerPlugged() const;
+    bool wireClogged() const;
     bool detectPlastic() const;
     bool bedPlugged() const;
 
@@ -87,6 +88,7 @@ private:
     Temperature _coldBuse1;
     Temperature _coldBuse2;
 
+    bool _wireClogged;
     bool _printerPlugged;
     bool _detectPlastic;
     bool _bedPlugged;

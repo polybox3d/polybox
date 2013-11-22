@@ -30,6 +30,7 @@ void PrinterPage::repaintComponents()
     ui->boxTempSlider->setValue( _printer->getTargetChamberTemp().getValue() );
     ui->bedTempSlider->setValue( _printer->getTargetBedTemp().getValue() );
     ui->bedtempSpin->setValue( _printer->getTargetBedTemp().getValue() );
+    ui->ledClogged->setActivated( ! _printer->wireClogged() );
 }
 
 void PrinterPage::on_selectAllBed_clicked()

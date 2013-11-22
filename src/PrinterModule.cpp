@@ -115,6 +115,12 @@ void PrinterModule::parseMCode(QByteArray stream)
         }
     }
         break;
+    case 639:
+    {
+        SerialPort::nextField( str, idx);
+        SerialPort::parseTrueFalse( &_wireClogged, str[idx] );
+    }
+        break;
     case 640:
     {
         while ( idx < size )
@@ -286,4 +292,8 @@ bool PrinterModule::detectPlastic() const
 bool PrinterModule::bedPlugged() const
 {
     return _bedPlugged;
+}
+bool PrinterModule::wireClogged() const
+{
+    return _wireClogged;
 }

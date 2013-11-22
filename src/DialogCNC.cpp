@@ -20,7 +20,7 @@ void DialogCNC::on_startCnc_clicked()
 
 void DialogCNC::on_configuration_clicked()
 {
-    this->done( ConfigurCNC );
+    this->done( ConfigureCNC );
 }
 
 void DialogCNC::on_help_clicked()

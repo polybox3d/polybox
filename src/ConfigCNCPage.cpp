@@ -12,6 +12,7 @@ ConfigCNCPage::ConfigCNCPage(QWidget *parent) :
                      this->height()-hb->height(),
                      hb->width(), hb->height());
     connect( hb, SIGNAL(clicked()), (MainWindow*)(parent), SLOT(backToModulePage()));
+
 }
 
 ConfigCNCPage::~ConfigCNCPage()
