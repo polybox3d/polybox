@@ -216,10 +216,10 @@ void LabViewPage::updateUI()
         if ( ! _selectedFaces.isEmpty() )
         {
             Face* face = _selectedFaces.first();
-            ui->intensite_2->setValue( face->v );
-            ui->intensite_3->setValue( face->h );
-            ui->intensiteSpin_2->setValue( face->v );
-            ui->intensiteSpin_3->setValue( face->h );
+            ui->intensite_2->setValue( face->v() );
+            ui->intensite_3->setValue( face->h() );
+            ui->intensiteSpin_2->setValue( face->v() );
+            ui->intensiteSpin_3->setValue( face->h() );
         }
 
     }
@@ -232,11 +232,11 @@ void LabViewPage::setSelectedFacesLight(int light, bool horizontale, bool vertic
     {
         if ( horizontale )
         {
-            current_face->h = light;
+            current_face->setHIntensity( light );
         }
         if ( verticale )
         {
-            current_face->v = light;
+            current_face->setVIntensity( light );
         }
     }
     updateUI();

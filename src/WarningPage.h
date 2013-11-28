@@ -2,6 +2,7 @@
 #define WARNING_H
 
 #include <QWidget>
+#include <QTimer>
 
 #include "MainWindow.h"
 #include "CNCChecker.h"
@@ -34,7 +35,7 @@ public slots:
      * @brief goBack Go back to the previous page
      */
     void goBack();
-
+    void updateModules();
 private slots:
     /**
      * @brief on_help_clicked Called when the user click on Help button. Go back to the Help page
@@ -58,6 +59,7 @@ private:
      * @brief _polybox pending PolyboxModule.
      */
     PolyboxModule* _polybox;
+    QTimer _updateComponentsTimer;
 };
 
 #endif // WARNING_H

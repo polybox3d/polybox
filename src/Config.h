@@ -75,6 +75,8 @@ public:
     static float bedTempNylon;
 
     static int hardwareTimer;
+    static int updateConfigModuleTimer;
+    static int updateModuleTimer;
 
     static void init();
 

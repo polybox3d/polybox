@@ -7,7 +7,8 @@ WarningPage::WarningPage(PolyboxModule *polybox, QWidget *parent) :
 {
     ui->setupUi(this);
     _polybox = polybox;
-
+    _updateComponentsTimer.setInterval( Config::updateConfigModuleTimer );
+    connect( &_updateComponentsTimer, SIGNAL(timeout()), this, SLOT(updateModules()));
     HomeButton* hb = new HomeButton( 50,50, this );
     hb->setGeometry( this->width()-hb->width()-10,
                      this->height()-hb->height(),
@@ -19,15 +20,15 @@ WarningPage::WarningPage(PolyboxModule *polybox, QWidget *parent) :
     ui->cncWidget->setModule( _polybox->cncModule() );
     ui->printerWidget->setModule( _polybox->printerModule() );
 
-    /* ui->cncWidget = new CNCChecker( this );
-    ui->cncWidget->setGeometry( this->width()/2, this->height()/2, 400, 250);
-
-    ui->scannerWidget = new SCannerChecker( this );
-    ui->scannerWidget->setGeometry( 0, this->height()/2, 400, 250);
-
-    ui->printerWidget = new PrinterChecker( this );
-    ui->printerWidget->setGeometry( this->width()/2, 0, 400, 250);*/
 }
+void WarningPage::updateModules()
+{
+    ui->generalWidget->updateModuleValues();
+    ui->scannerWidget->updateModuleValues();
+    ui->cncWidget->updateModuleValues();
+    ui->printerWidget->updateModuleValues();
+}
+
 void WarningPage::goBack()
 {
     CHANGE_PAGE( Start );

@@ -5,6 +5,8 @@
 
 using namespace std;
 
+SerialPort* SerialPort::serialPortInstance = NULL;
+
 SerialPort::SerialPort(QObject *parent) :
     QObject(parent)
   //QextSerialPort("/dev/ttyACM0", QextSerialPort::EventDriven, parent)
@@ -89,7 +91,7 @@ void SerialPort::sendMCode(int code)
 void SerialPort::sendMCode(QString code)
 {
     code = "M"+code;
-    if ( _port->isWritable() && _port->isOpen() )
+    if ( _port != NULL && _port->isWritable() && _port->isOpen() )
     {
         _port->write( code.toStdString().c_str() );
     }

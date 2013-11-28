@@ -152,7 +152,15 @@ void PrinterModule::parseMCode(QByteArray stream)
 
 void PrinterModule::updateComponents()
 {
-    _polybox->port()->sendMCode( MCode::ASK_PRINTER_UPDATE );
+    _polybox->port()->sendMCode( 631 );
+    _polybox->port()->sendMCode( 632 );
+    _polybox->port()->sendMCode( 633 );
+    _polybox->port()->sendMCode( 634 );
+    _polybox->port()->sendMCode( 635 );
+    _polybox->port()->sendMCode( 636 );
+    _polybox->port()->sendMCode( 639 );
+    _polybox->port()->sendMCode( 640 );
+
 }
 
 void PrinterModule::activateAllBed(bool activated)

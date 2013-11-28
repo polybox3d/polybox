@@ -19,7 +19,7 @@ QString Config::scannerLaserPath=Config::pathToHomeDirectory+"/fabscan100/qtTest
 QString Config::defaultConfigFileName="./config.xml";
 
 int Config::motherboardBaudrate=115200;
-bool Config::bypassCheck = true ;
+bool Config::bypassCheck = false ;
 QColor Config::colorLabviewFaceSelected = QColor( 70, 230, 255 );
 QString Config::ambiancePathFolder=":/xml/ambiances";
 
@@ -27,6 +27,8 @@ float Config::bedTempPla=60;
 float Config::bedTempAbs=75;
 float Config::bedTempNylon=70;
 int Config::hardwareTimer=3000; // ms
+int Config::updateConfigModuleTimer = 500; // 1sec = 1000 ms
+int Config::updateModuleTimer = 1000; // 1sec = 1000 ms
 
 QString Config::pathToJoypadOverlay=Config::pathToHomeDirectory+"joypadoverlay/src/JoypadOverlay";
 

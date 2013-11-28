@@ -134,7 +134,17 @@ bool GlobalModule::isReady() const
 
 void GlobalModule::updateComponents()
 {
+    cout<<"Ask Update Global All"<<endl;
     _arduino1 = _polybox->port()->connectToSerialPort();
+    SerialPort::getSerial()->sendMCode("651");
+    SerialPort::getSerial()->sendMCode("652");
+    SerialPort::getSerial()->sendMCode("653");
+    SerialPort::getSerial()->sendMCode("654");
+    SerialPort::getSerial()->sendMCode("655");
+    SerialPort::getSerial()->sendMCode("656");
+    SerialPort::getSerial()->sendMCode("657");
+    SerialPort::getSerial()->sendMCode("658");
+    SerialPort::getSerial()->sendMCode("659");
 }
 
 

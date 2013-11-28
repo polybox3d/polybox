@@ -19,7 +19,7 @@ public:
 #define BED_4 8
     explicit PrinterModule(PolyboxModule* polybox, QObject *parent = 0);
     virtual bool isReady() const;
-    virtual void updateComponents();
+
 
     void setTargetBedTemp( const Temperature &temp);
     Temperature getTargetBedTemp();
@@ -63,6 +63,7 @@ signals:
     void updateUI();
 
 public slots:
+    virtual void updateComponents();
 private:
     virtual void initAll();
     Temperature _targetBedTemp;

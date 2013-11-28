@@ -39,14 +39,20 @@ public:
 
     void initFaceClass();
     void setFaceLight(QString face_name, int horizontale, int verticale);
+    void setFaceLight(int face_id, int horizontale, int verticale);
+
     void exportXmlAllFaces(QXmlStreamWriter *xml);
     void parseGlobalcolor(QXmlStreamReader *xml);
-    void saveToXmlFile(QString filename);
+    void  saveToXmlFile(QString filename);
     QColor* currentColor(){ return &_currentColor;}
     void setAllFacesLight(int light, bool horizontale, bool verticale);
-    int getGlobalIntensityH(){ return _top.h; }
-    int getGlobalIntensityV(){ return _top.v; }
 
+    int getGlobalIntensityH(){ return _top.h(); }
+    int getGlobalIntensityV(){ return _top.v(); }
+
+    QColor getGlobalColor(){ return _currentColor; }
+    void setGlobalColor(QColor c);
+    void sendGlobalColor();
     static QStringList getAllCamera(QString path_directory);
 
     Face _left;

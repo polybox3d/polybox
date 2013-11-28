@@ -7,6 +7,7 @@
 #include "MainWindow.h"
 #include "PrinterModule.h"
 #include <iostream>
+#include <QTimer>
 
 using namespace std;
 namespace Ui {
@@ -76,6 +77,7 @@ private:
     void setChamberActivated(bool activated);
     void selectCustomBed();
     void selectCustomChamber();
+    QTimer _updateModuleTimer;
 };
 
 #endif // PRINTERPAGE_H

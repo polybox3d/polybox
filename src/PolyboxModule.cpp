@@ -14,21 +14,21 @@ PolyboxModule::PolyboxModule(QObject *parent) :
     QObject(parent)
 {
     Config::init();
-    _cnc = new CNCModule( this, this );
-    _labview = new LabViewModule( this );
-    _printer = new PrinterModule( this, this );
-    _scanner = new ScannerModule( this, this );
-    _global = new GlobalModule( this, this );
 
     _hardwareTimer.start( Config::hardwareTimer );
     connect( &_hardwareTimer, SIGNAL(timeout()), this, SLOT(hardwareTimerTimeout()));
 
-    _port = new SerialPort();
+    _port = SerialPort::getSerial();
     _connected = _port->connectToSerialPort();
     if ( _connected )
     {
         connect ( _port, SIGNAL(dataReady()), this, SLOT(parseData()) );
     }
+    _cnc = new CNCModule( this, this );
+    _labview = new LabViewModule( this );
+    _printer = new PrinterModule( this, this );
+    _scanner = new ScannerModule( this, this );
+    _global = new GlobalModule( this, this );
 
 }
 

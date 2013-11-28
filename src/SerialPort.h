@@ -14,8 +14,12 @@ class SerialPort : public QObject
 {
     Q_OBJECT
 public:
-    explicit SerialPort(QObject *parent = 0);
-
+    static SerialPort* getSerial()
+    {
+        if ( serialPortInstance == NULL )
+            serialPortInstance = new SerialPort();
+        return serialPortInstance;
+    }
     /**
      * @brief connectToSerialPort Connect the current serial with defautl value and setting (115200baudrate, 8b, no parity, 1 stop)
      * @return
@@ -73,6 +77,8 @@ public slots:
     void parseSerialDatas();
 
 private:
+    explicit SerialPort(QObject *parent = 0);
+    static SerialPort* serialPortInstance;
     QextSerialPort* _port;
     QString _path;
     QString _name;

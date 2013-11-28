@@ -10,8 +10,27 @@ LabViewModule::LabViewModule(PolyboxModule *polybox, QObject *parent) :
 void LabViewModule::initAll()
 {
     _mediaPlayer = NULL;
-    _currentColor.setRgb( 0, 0, 0 );
+    setGlobalColor( QColor( 0, 0, 0 ) );
     initFaceClass();
+}
+
+void LabViewModule::setGlobalColor(QColor c)
+{
+    _currentColor = c;
+    sendGlobalColor();
+}
+
+void LabViewModule::sendGlobalColor()
+{
+    QString param("622 R");
+    param+=_currentColor.red();
+    param+=" E";
+    param+= _currentColor.green();
+    param+=" P";
+    param+=_currentColor.blue();
+    param+=" I";
+    param+=_currentColor.alpha();
+    SerialPort::getSerial()->sendMCode( param.toStdString().c_str() );
 }
 
 QStringList LabViewModule::getAllCamera(QString path_directory)
@@ -33,11 +52,22 @@ QStringList LabViewModule::getConnectedCameraPath()
 void LabViewModule::initFaceClass()
 {
     _top.name="top";
+    _top.id = FACE_TOP_ID;
+
     _bot.name="bot";
+    _bot.id = FACE_BOT_ID;
+
     _left.name="left";
+    _left.id = FACE_LEFT_ID;
+
     _right.name="right";
+    _right.id = FACE_RIGHT_ID;
+
     _back.name="back";
+    _back.id = FACE_BACK_ID;
+
     _front.name="front";
+    _front.id = FACE_FRONT_ID;
 }
 
 bool LabViewModule::isReady() const
@@ -98,11 +128,21 @@ void LabViewModule::setAllFacesLight(int light, bool horizontale, bool verticale
 {
     if ( horizontale )
     {
-        _left.h = _right.h = _top.h = _bot.h = _back.h = _front.h = light;
+        _left.setHIntensity( light);
+        _right.setHIntensity( light);
+        _top.setHIntensity( light);
+        _bot.setHIntensity( light);
+        _back.setHIntensity( light);
+        _front.setHIntensity( light);
     }
     if ( verticale)
     {
-        _left.v = _right.v = _top.v = _bot.v = _back.v = _front.v = light;
+        _left.setVIntensity( light);
+        _right.setVIntensity( light);
+        _top.setVIntensity( light);
+        _bot.setVIntensity( light);
+        _back.setVIntensity( light);
+        _front.setVIntensity( light);
     }
 }
 
@@ -139,7 +179,7 @@ void LabViewModule::parseMCode(QByteArray stream)
                 SerialPort::nextValue( str, idx);
                 _currentColor.setGreen( SerialPort::embeddedstr2l( str, idx ) );
             }
-            if ( str[idx] == 'B' )
+            if ( str[idx] == 'P' )
             {
                 SerialPort::nextValue( str, idx);
                 _currentColor.setBlue( SerialPort::embeddedstr2l( str, idx ) );
@@ -153,10 +193,56 @@ void LabViewModule::parseMCode(QByteArray stream)
         }
     }
         break;
-    case 614:
+    case 624:
     {
+        SerialPort::nextField( str, idx);
+        while ( idx < size )
+        {
+            if ( str[idx] == 'X' )
+            {
+                SerialPort::nextValue( str, idx);
+
+                setAllFacesLight( SerialPort::embeddedstr2l( str, idx ), true, false );
+
+            }
+            if ( str[idx] == 'Y' )
+            {
+                SerialPort::nextValue( str, idx);
+                setAllFacesLight( SerialPort::embeddedstr2l( str, idx ), false, true );
+            }
+            SerialPort::nextField( str, idx);
+        }
         /*SerialPort::nextField( str, idx);
         SerialPort::parseTrueFalse( &_, str[idx] );*/
+    }
+        break;
+    case 627:
+    {
+        SerialPort::nextField( str, idx);
+        int x, y, id ;
+        x=y=id=0;
+        while ( idx < size )
+        {
+            if ( str[idx] == 'P' )
+            {
+                SerialPort::nextValue( str, idx);
+                id = SerialPort::embeddedstr2l( str, idx );
+            }
+            if ( str[idx] == 'X' )
+            {
+                SerialPort::nextValue( str, idx);
+                x = SerialPort::embeddedstr2l( str, idx );
+                setFaceLight( SerialPort::embeddedstr2l( str, idx ), false, true );
+            }
+            if ( str[idx] == 'Y' )
+            {
+                SerialPort::nextValue( str, idx);
+                y = SerialPort::embeddedstr2l( str, idx );
+                setFaceLight( SerialPort::embeddedstr2l( str, idx ), false, true );
+            }
+            SerialPort::nextField( str, idx);
+        }
+        setFaceLight( id, x, y );
     }
         break;
     default:
@@ -183,10 +269,10 @@ void LabViewModule::saveToXmlFile(QString filename)
     xml.writeTextElement("name", filename.split("/").last().split(".").first());
     //COLOR
     xml.writeStartElement("globalcolor");
-    xml.writeTextElement("red", QString::number(_currentColor.red()));
-    xml.writeTextElement("green", QString::number(_currentColor.green()) );
-    xml.writeTextElement("blu", QString::number(_currentColor.blue()) );
-    xml.writeTextElement("intensity", QString::number(_currentColor.alpha()) );
+    xml.writeTextElement("red", QString::number( getGlobalColor().red()));
+    xml.writeTextElement("green", QString::number( getGlobalColor().green()) );
+    xml.writeTextElement("blu", QString::number( getGlobalColor().blue()) );
+    xml.writeTextElement("intensity", QString::number( getGlobalColor().alpha()) );
     xml.writeEndElement();//color
 
     exportXmlAllFaces( &xml );
@@ -225,38 +311,55 @@ void LabViewModule::parseGlobalcolor(QXmlStreamReader *xml)
         }
         xml->readNext();
     }
+    sendGlobalColor(); // we update firmware data
 }
+void LabViewModule::setFaceLight(int face_id, int horizontale, int verticale)
+{
+    if ( face_id == FACE_TOP_ID )
+        setFaceLight( "top", horizontale, verticale );
+    if ( face_id == FACE_BOT_ID )
+        setFaceLight( "bot", horizontale, verticale );
+    if ( face_id == FACE_LEFT_ID )
+        setFaceLight( "left", horizontale, verticale );
+    if ( face_id == FACE_RIGHT_ID )
+        setFaceLight( "right", horizontale, verticale );
+    if ( face_id == FACE_BACK_ID )
+        setFaceLight( "back", horizontale, verticale );
+    if ( face_id == FACE_FRONT_ID )
+        setFaceLight( "front", horizontale, verticale );
+}
+
 void LabViewModule::setFaceLight(QString face_name, int horizontale, int verticale)
 {
+    Face* cface = NULL;
     if ( face_name == "top" )
     {
-        _top.h = horizontale;
-        _top.v = verticale;
+        cface = &_top;
     }
     if ( face_name == "bot" )
     {
-        _bot.h = horizontale;
-        _bot.v = verticale;
+        cface = &_bot;
     }
     if ( face_name == "left" )
     {
-         _left.h = horizontale;
-         _left.v = verticale;
+         cface = &_left;
     }
     if ( face_name == "right" )
     {
-         _right.h = horizontale;
-         _right.v = verticale;
+        cface = &_right;
     }
     if ( face_name == "back" )
     {
-         _back.h = horizontale;
-         _back.v = verticale;
+        cface = &_back;
     }
     if ( face_name == "front" )
     {
-         _front.h = horizontale;
-         _front.v = verticale;
+        cface = &_front;
+    }
+    if ( cface != NULL )
+    {
+        cface->setHIntensity( horizontale );
+        cface->setVIntensity( verticale );
     }
 }
 
