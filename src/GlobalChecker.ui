@@ -137,75 +137,11 @@
      </rect>
     </property>
     <property name="text">
-     <string>Webcam de surveillance
+     <string>Webcam surveillance
  branché</string>
     </property>
     <property name="wordWrap">
      <bool>true</bool>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label_4">
-    <property name="geometry">
-     <rect>
-      <x>40</x>
-      <y>190</y>
-      <width>121</width>
-      <height>16</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Etat de la puissance</string>
-    </property>
-   </widget>
-   <widget class="Led" name="powerLed">
-    <property name="geometry">
-     <rect>
-      <x>10</x>
-      <y>190</y>
-      <width>15</width>
-      <height>15</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-    <property name="pixmap">
-     <pixmap resource="ressources.qrc">:/img/img/led_off_red.png</pixmap>
-    </property>
-    <property name="scaledContents">
-     <bool>true</bool>
-    </property>
-   </widget>
-   <widget class="Led" name="commandLed">
-    <property name="geometry">
-     <rect>
-      <x>10</x>
-      <y>160</y>
-      <width>15</width>
-      <height>15</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-    <property name="pixmap">
-     <pixmap resource="ressources.qrc">:/img/img/led_off_red.png</pixmap>
-    </property>
-    <property name="scaledContents">
-     <bool>true</bool>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label_3">
-    <property name="geometry">
-     <rect>
-      <x>40</x>
-      <y>160</y>
-      <width>141</width>
-      <height>16</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Etat des commande</string>
     </property>
    </widget>
    <widget class="QLabel" name="label_12">
@@ -253,6 +189,52 @@
      <string>Arduino #4 connectée</string>
     </property>
    </widget>
+   <widget class="Led" name="toolATULed">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>160</y>
+      <width>15</width>
+      <height>15</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="pixmap">
+     <pixmap resource="ressources.qrc">:/img/img/led_off_red.png</pixmap>
+    </property>
+    <property name="scaledContents">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_14">
+    <property name="geometry">
+     <rect>
+      <x>40</x>
+      <y>160</y>
+      <width>121</width>
+      <height>17</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Bloc outil branché</string>
+    </property>
+   </widget>
+   <zorder>arduino2Led</zorder>
+   <zorder>label_9</zorder>
+   <zorder>arduino1Led</zorder>
+   <zorder>label_8</zorder>
+   <zorder>webcamPluggedLed</zorder>
+   <zorder>arduino3Led</zorder>
+   <zorder>label_6</zorder>
+   <zorder>label_12</zorder>
+   <zorder>arduino4Led</zorder>
+   <zorder>label_13</zorder>
+   <zorder>toolATULed</zorder>
+   <zorder>label_14</zorder>
+   <zorder>toolATULed</zorder>
+   <zorder>label_14</zorder>
   </widget>
   <widget class="QGroupBox" name="groupBox_2">
    <property name="geometry">
@@ -270,20 +252,20 @@
     <property name="geometry">
      <rect>
       <x>45</x>
-      <y>30</y>
+      <y>70</y>
       <width>101</width>
       <height>16</height>
      </rect>
     </property>
     <property name="text">
-     <string>Boitier ouvert</string>
+     <string>Porte ouverte</string>
     </property>
    </widget>
    <widget class="Led" name="boxOpenLed">
     <property name="geometry">
      <rect>
       <x>15</x>
-      <y>30</y>
+      <y>70</y>
       <width>15</width>
       <height>15</height>
      </rect>
@@ -302,20 +284,20 @@
     <property name="geometry">
      <rect>
       <x>45</x>
-      <y>70</y>
-      <width>57</width>
+      <y>50</y>
+      <width>91</width>
       <height>17</height>
      </rect>
     </property>
     <property name="text">
-     <string>ATU</string>
+     <string>Alimenté</string>
     </property>
    </widget>
    <widget class="Led" name="tempICLed">
     <property name="geometry">
      <rect>
       <x>15</x>
-      <y>110</y>
+      <y>120</y>
       <width>15</width>
       <height>15</height>
      </rect>
@@ -334,8 +316,8 @@
     <property name="geometry">
      <rect>
       <x>50</x>
-      <y>100</y>
-      <width>111</width>
+      <y>110</y>
+      <width>121</width>
       <height>41</height>
      </rect>
     </property>
@@ -344,11 +326,11 @@
 carte électronique</string>
     </property>
    </widget>
-   <widget class="Led" name="ATULed">
+   <widget class="Led" name="powerLed">
     <property name="geometry">
      <rect>
       <x>15</x>
-      <y>70</y>
+      <y>50</y>
       <width>15</width>
       <height>15</height>
      </rect>
@@ -367,7 +349,7 @@ carte électronique</string>
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>130</y>
+      <y>140</y>
       <width>31</width>
       <height>17</height>
      </rect>
@@ -376,11 +358,107 @@ carte électronique</string>
      <string>--°C</string>
     </property>
    </widget>
+   <widget class="Led" name="icOpenLed">
+    <property name="geometry">
+     <rect>
+      <x>15</x>
+      <y>90</y>
+      <width>15</width>
+      <height>15</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="pixmap">
+     <pixmap resource="ressources.qrc">:/img/img/led_off_red.png</pixmap>
+    </property>
+    <property name="scaledContents">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_7">
+    <property name="geometry">
+     <rect>
+      <x>45</x>
+      <y>90</y>
+      <width>101</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Capot ouvert</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_15">
+    <property name="geometry">
+     <rect>
+      <x>45</x>
+      <y>170</y>
+      <width>91</width>
+      <height>17</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>PRE-ASI ATU</string>
+    </property>
+   </widget>
+   <widget class="Led" name="preasiATULed">
+    <property name="geometry">
+     <rect>
+      <x>15</x>
+      <y>170</y>
+      <width>15</width>
+      <height>15</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="pixmap">
+     <pixmap resource="ressources.qrc">:/img/img/led_off_red.png</pixmap>
+    </property>
+    <property name="scaledContents">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="Led" name="connectedLed">
+    <property name="geometry">
+     <rect>
+      <x>15</x>
+      <y>30</y>
+      <width>15</width>
+      <height>15</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="pixmap">
+     <pixmap resource="ressources.qrc">:/img/img/led_off_red.png</pixmap>
+    </property>
+    <property name="scaledContents">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_16">
+    <property name="geometry">
+     <rect>
+      <x>45</x>
+      <y>30</y>
+      <width>131</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Connecté</string>
+    </property>
+   </widget>
   </widget>
   <widget class="QLabel" name="label_11">
    <property name="geometry">
     <rect>
-     <x>220</x>
+     <x>200</x>
      <y>0</y>
      <width>161</width>
      <height>16</height>

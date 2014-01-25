@@ -84,13 +84,15 @@
     <string/>
    </property>
    <property name="pixmap">
-    <pixmap>logo_400.png</pixmap>
+    <pixmap resource="ressources.qrc">:/img/img/logo_400.png</pixmap>
    </property>
    <property name="scaledContents">
     <bool>true</bool>
    </property>
   </widget>
  </widget>
- <resources/>
+ <resources>
+  <include location="ressources.qrc"/>
+ </resources>
  <connections/>
 </ui>

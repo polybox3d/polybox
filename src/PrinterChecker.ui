@@ -178,11 +178,6 @@
       <string>-°C</string>
      </property>
     </widget>
-    <zorder>tempBotBuse2Led</zorder>
-    <zorder>tempTopBuse2Led</zorder>
-    <zorder>boxBloc</zorder>
-    <zorder>tempTopBuse2Value</zorder>
-    <zorder>tempBotBuse2Value</zorder>
    </widget>
    <widget class="QGroupBox" name="boxBloc">
     <property name="geometry">
@@ -258,7 +253,7 @@
       <rect>
        <x>10</x>
        <y>20</y>
-       <width>133</width>
+       <width>135</width>
        <height>20</height>
       </rect>
      </property>
@@ -341,27 +336,8 @@
     <widget class="Led" name="tempBedMidLed">
      <property name="geometry">
       <rect>
-       <x>50</x>
-       <y>30</y>
-       <width>15</width>
-       <height>15</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string/>
-     </property>
-     <property name="pixmap">
-      <pixmap resource="ressources.qrc">:/img/img/led_off_red.png</pixmap>
-     </property>
-     <property name="scaledContents">
-      <bool>true</bool>
-     </property>
-    </widget>
-    <widget class="Led" name="tempBedExtLed">
-     <property name="geometry">
-      <rect>
-       <x>130</x>
-       <y>30</y>
+       <x>80</x>
+       <y>32</y>
        <width>15</width>
        <height>15</height>
       </rect>
@@ -380,46 +356,20 @@
      <property name="geometry">
       <rect>
        <x>10</x>
-       <y>28</y>
-       <width>45</width>
-       <height>17</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>Milieu</string>
-     </property>
-    </widget>
-    <widget class="QLabel" name="label_10">
-     <property name="geometry">
-      <rect>
-       <x>70</x>
-       <y>28</y>
+       <y>30</y>
        <width>61</width>
        <height>17</height>
       </rect>
      </property>
      <property name="text">
-      <string>Exterieur</string>
+      <string>Moyenne</string>
      </property>
     </widget>
     <widget class="QLabel" name="tempBedMidValue">
      <property name="geometry">
       <rect>
-       <x>40</x>
-       <y>50</y>
-       <width>31</width>
-       <height>20</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>-°C</string>
-     </property>
-    </widget>
-    <widget class="QLabel" name="tempBedExtValue">
-     <property name="geometry">
-      <rect>
-       <x>120</x>
-       <y>50</y>
+       <x>100</x>
+       <y>30</y>
        <width>31</width>
        <height>20</height>
       </rect>
@@ -434,9 +384,9 @@
    <property name="geometry">
     <rect>
      <x>190</x>
-     <y>110</y>
+     <y>140</y>
      <width>201</width>
-     <height>111</height>
+     <height>101</height>
     </rect>
    </property>
    <property name="title">
@@ -574,7 +524,7 @@
      <rect>
       <x>90</x>
       <y>40</y>
-      <width>47</width>
+      <width>56</width>
       <height>42</height>
      </rect>
     </property>
@@ -602,7 +552,7 @@
      <x>190</x>
      <y>20</y>
      <width>201</width>
-     <height>91</height>
+     <height>111</height>
     </rect>
    </property>
    <property name="title">
@@ -613,7 +563,7 @@
      <rect>
       <x>40</x>
       <y>50</y>
-      <width>81</width>
+      <width>141</width>
       <height>17</height>
      </rect>
     </property>
@@ -664,12 +614,12 @@
      <rect>
       <x>40</x>
       <y>30</y>
-      <width>151</width>
-      <height>17</height>
+      <width>131</width>
+      <height>20</height>
      </rect>
     </property>
     <property name="text">
-     <string>Outil Imprimante branché</string>
+     <string>Outil branché (1&amp;2)</string>
     </property>
    </widget>
    <widget class="Led" name="bedPlugLed">
@@ -702,6 +652,57 @@
     </property>
     <property name="text">
      <string>Lit chauffant branché</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_10">
+    <property name="geometry">
+     <rect>
+      <x>40</x>
+      <y>90</y>
+      <width>151</width>
+      <height>17</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Buse bouchée</string>
+    </property>
+   </widget>
+   <widget class="Led" name="buseCloggedLed">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>90</y>
+      <width>15</width>
+      <height>15</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="pixmap">
+     <pixmap resource="ressources.qrc">:/img/img/led_off_red.png</pixmap>
+    </property>
+    <property name="scaledContents">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="Led" name="printerPlugLed_2">
+    <property name="geometry">
+     <rect>
+      <x>180</x>
+      <y>32</y>
+      <width>15</width>
+      <height>15</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="pixmap">
+     <pixmap resource="ressources.qrc">:/img/img/led_off_red.png</pixmap>
+    </property>
+    <property name="scaledContents">
+     <bool>true</bool>
     </property>
    </widget>
   </widget>

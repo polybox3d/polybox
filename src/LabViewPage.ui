@@ -198,7 +198,7 @@ selection-color: rgb(255, 0, 4);</string>
      <rect>
       <x>10</x>
       <y>120</y>
-      <width>181</width>
+      <width>182</width>
       <height>25</height>
      </rect>
     </property>
@@ -228,7 +228,7 @@ selection-color: rgb(255, 0, 4);</string>
       <x>10</x>
       <y>25</y>
       <width>311</width>
-      <height>84</height>
+      <height>88</height>
      </rect>
     </property>
     <layout class="QGridLayout" name="gridLayout">
@@ -280,9 +280,9 @@ selection-color: rgb(255, 0, 4);</string>
   <widget class="QGroupBox" name="profilBox">
    <property name="geometry">
     <rect>
-     <x>380</x>
+     <x>370</x>
      <y>20</y>
-     <width>341</width>
+     <width>351</width>
      <height>61</height>
     </rect>
    </property>
@@ -318,9 +318,9 @@ selection-color: rgb(255, 0, 4);</string>
    <widget class="QLabel" name="currentProfil">
     <property name="geometry">
      <rect>
-      <x>20</x>
+      <x>10</x>
       <y>30</y>
-      <width>101</width>
+      <width>121</width>
       <height>21</height>
      </rect>
     </property>
@@ -332,9 +332,9 @@ selection-color: rgb(255, 0, 4);</string>
   <widget class="QGroupBox" name="groupBox">
    <property name="geometry">
     <rect>
-     <x>380</x>
+     <x>370</x>
      <y>90</y>
-     <width>361</width>
+     <width>371</width>
      <height>401</height>
     </rect>
    </property>
@@ -474,7 +474,7 @@ selection-color: rgb(255, 0, 4);</string>
    </property>
    <property name="geometry">
     <rect>
-     <x>380</x>
+     <x>370</x>
      <y>500</y>
      <width>101</width>
      <height>41</height>
@@ -500,9 +500,9 @@ selection-color: rgb(255, 0, 4);</string>
    </property>
    <property name="geometry">
     <rect>
-     <x>490</x>
+     <x>476</x>
      <y>500</y>
-     <width>141</width>
+     <width>161</width>
      <height>41</height>
     </rect>
    </property>
@@ -523,7 +523,7 @@ selection-color: rgb(255, 0, 4);</string>
   <widget class="QPushButton" name="backToHelp">
    <property name="geometry">
     <rect>
-     <x>640</x>
+     <x>644</x>
      <y>500</y>
      <width>91</width>
      <height>41</height>

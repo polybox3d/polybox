@@ -28,6 +28,11 @@
         <file>img/pattern_f_s.png</file>
         <file>img/pattern_l_s.png</file>
         <file>img/pattern_t_s.png</file>
+        <file>img/onoff.png</file>
+        <file>img/atu_all.png</file>
+        <file>img/on.png</file>
+        <file>img/off.png</file>
+        <file>img/atu_all_on.png</file>
     </qresource>
     <qresource prefix="/xml">
         <file>ambiances/Autumn.xml</file>

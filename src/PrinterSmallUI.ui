@@ -13,7 +13,7 @@
   <property name="windowTitle">
    <string>Form</string>
   </property>
-  <widget class="QWidget" name="">
+  <widget class="QWidget" name="layoutWidget">
    <property name="geometry">
     <rect>
      <x>0</x>
@@ -31,7 +31,7 @@
      </widget>
     </item>
     <item row="0" column="1">
-     <widget class="QProgressBar" name="progressBar">
+     <widget class="QProgressBar" name="bedTempBar">
       <property name="maximum">
        <number>90</number>
       </property>
@@ -51,7 +51,7 @@
      </widget>
     </item>
     <item row="1" column="1">
-     <widget class="QProgressBar" name="progressBar_2">
+     <widget class="QProgressBar" name="boxTempBar">
       <property name="maximum">
        <number>90</number>
       </property>
