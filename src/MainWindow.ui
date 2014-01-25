@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>800</width>
+    <height>600</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>PolyBox - Centre de contrôle</string>
+  </property>
+  <property name="windowIcon">
+   <iconset resource="ressources.qrc">
+    <normaloff>:/img/img/logo_400.png</normaloff>:/img/img/logo_400.png</iconset>
+  </property>
+  <property name="dockNestingEnabled">
+   <bool>false</bool>
+  </property>
+  <widget class="QWidget" name="centralWidget"/>
+  <widget class="QMenuBar" name="menuBar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>800</width>
+     <height>22</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menuModules">
+    <property name="title">
+     <string>Modules</string>
+    </property>
+    <addaction name="actionCNC"/>
+    <addaction name="actionImprimante"/>
+    <addaction name="actionScanner"/>
+    <addaction name="actionLabView"/>
+    <addaction name="actionLabView_dock"/>
+   </widget>
+   <widget class="QMenu" name="menuConfiguration">
+    <property name="title">
+     <string>Outils</string>
+    </property>
+    <widget class="QMenu" name="menuVisualiser">
+     <property name="title">
+      <string>Visualiser</string>
+     </property>
+    </widget>
+    <widget class="QMenu" name="menuConnexion">
+     <property name="title">
+      <string>Connexion</string>
+     </property>
+    </widget>
+    <addaction name="actionActiver_Manette"/>
+    <addaction name="menuVisualiser"/>
+    <addaction name="menuConnexion"/>
+   </widget>
+   <widget class="QMenu" name="menuAide">
+    <property name="title">
+     <string>Aide</string>
+    </property>
+   </widget>
+   <widget class="QMenu" name="menuA_propos">
+    <property name="title">
+     <string>A propos</string>
+    </property>
+   </widget>
+   <addaction name="menuModules"/>
+   <addaction name="menuConfiguration"/>
+   <addaction name="menuAide"/>
+   <addaction name="menuA_propos"/>
+  </widget>
+  <widget class="QStatusBar" name="statusBar"/>
+  <action name="actionCNC">
+   <property name="text">
+    <string>CNC</string>
+   </property>
+  </action>
+  <action name="actionImprimante">
+   <property name="text">
+    <string>Imprimante</string>
+   </property>
+  </action>
+  <action name="actionScanner">
+   <property name="text">
+    <string>Scanner</string>
+   </property>
+  </action>
+  <action name="actionLabView">
+   <property name="text">
+    <string>LabView</string>
+   </property>
+  </action>
+  <action name="actionActiver_Manette">
+   <property name="text">
+    <string>Activer Manette</string>
+   </property>
+  </action>
+  <action name="actionLabView_dock">
+   <property name="text">
+    <string>LabView (dock)</string>
+   </property>
+  </action>
+  <action name="actionDdd_2">
+   <property name="text">
+    <string>ddd</string>
+   </property>
+  </action>
+  <action name="action">
+   <property name="text">
+    <string> </string>
+   </property>
+  </action>
+  <action name="actionToto">
+   <property name="text">
+    <string>toto</string>
+   </property>
+  </action>
+ </widget>
+ <layoutdefault spacing="6" margin="11"/>
+ <resources>
+  <include location="ressources.qrc"/>
+ </resources>
+ <connections/>
+</ui>

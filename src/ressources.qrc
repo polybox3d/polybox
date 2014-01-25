@@ -1,0 +1,38 @@
+<RCC>
+    <qresource prefix="/img">
+        <file>img/logo_400.png</file>
+        <file>img/logo_per_150.png</file>
+        <file>img/pattern_b.png</file>
+        <file>img/pattern_f.png</file>
+        <file>img/pattern_l.png</file>
+        <file>img/pattern_r.png</file>
+        <file>img/pattern_t.png</file>
+        <file>img/pattern_back.png</file>
+        <file>img/play_green.png</file>
+        <file>img/play.png</file>
+        <file>img/record.png</file>
+        <file>img/help.png</file>
+        <file>img/conf.png</file>
+        <file>img/close.png</file>
+        <file>img/laser.png</file>
+        <file>img/primesense.png</file>
+        <file>img/led_off_red.png</file>
+        <file>img/led_off.png</file>
+        <file>img/led_on.png</file>
+        <file>img/update.png</file>
+        <file>img/test.png</file>
+        <file>img/validate.png</file>
+        <file>img/pattern_r_s.png</file>
+        <file>img/pattern_b_s.png</file>
+        <file>img/pattern_back_s.png</file>
+        <file>img/pattern_f_s.png</file>
+        <file>img/pattern_l_s.png</file>
+        <file>img/pattern_t_s.png</file>
+    </qresource>
+    <qresource prefix="/xml">
+        <file>ambiances/Autumn.xml</file>
+        <file>ambiances/PolyBox.xml</file>
+        <file>ambiances/Sand.xml</file>
+        <file>config/.initialConfig.xml</file>
+    </qresource>
+</RCC>
