@@ -6,6 +6,7 @@
 #include <QStringList>
 #include <QProcess>
 #include <QFileDialog>
+#include <QCamera>
 
 
 #include "AbstractModule.h"

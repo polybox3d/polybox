@@ -19,11 +19,13 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->setupUi(this);
     _joypadActivated = false;
     _webcam = NULL;
+    _dockLV = NULL;
 
+    /**             ATU BUTTON              **/
     _atuON = true;
     _atu = new ATUButton( 60, 30, this );
     _atu->setGeometry( this->width()-_atu->width()-10,
-                     ui->menuBar->height()+5,
+                     ui->menuBar->height()+2,
                      _atu->width(), _atu->height());
     connect ( _atu, SIGNAL(released()), this, SLOT(toggleATU()));
 
@@ -39,6 +41,10 @@ void MainWindow::toggleATU()
 {
     _atuON = !_atuON;
     this->centralWidget()->setEnabled( _atuON );
+    if ( _dockLV != NULL )
+    {
+        _dockLV->setEnabled( _atuON );
+    }
 }
 
 MainWindow::~MainWindow()
@@ -125,12 +131,6 @@ void MainWindow::updateStatePage()
 
     // @todo thing about delete the widget....
     qApp->processEvents();
-    if ( _previousState == ScannerLaser )
-    {
-        QWidget* w = centralWidget();
-        w->setParent(0);
-        _atu->raise();
-    }
 
     switch ( _currentState )
     {
@@ -170,12 +170,13 @@ void MainWindow::updateStatePage()
         break;
     case LabViewDock :
     {
-        if (_polybox->isCommonReady() )
+        if (_polybox->isCommonReady() || Config::bypassCheck )
         {
-            QDockWidget* dock = new QDockWidget("LabView (dock) ",this);
-            dock->setWidget( new LabViewPage( _polybox->labViewModule(), this, true ) );
-            dock->setFloating( true );
-            dock->show();
+            _dockLV = new QDockWidget("LabView (dock) ",this);
+            _dockLV->setWidget( new LabViewPage( _polybox->labViewModule(), this, true ) );
+            _dockLV->setFloating( true );
+            _dockLV->show();
+            _dockLV->setEnabled( _atuON );
         }
         else
         {
@@ -287,7 +288,10 @@ void MainWindow::updateStatePage()
         break;
         
     }
+
     _atu->raise();
+    _atu->show();
+    _atu->activateWindow();
     this->centralWidget()->setEnabled( _atuON );
 }
 

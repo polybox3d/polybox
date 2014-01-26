@@ -17,9 +17,9 @@
    <property name="geometry">
     <rect>
      <x>10</x>
-     <y>10</y>
+     <y>19</y>
      <width>171</width>
-     <height>235</height>
+     <height>221</height>
     </rect>
    </property>
    <property name="title">
@@ -325,9 +325,9 @@
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>160</y>
+      <y>158</y>
       <width>151</width>
-      <height>71</height>
+      <height>61</height>
      </rect>
     </property>
     <property name="title">
@@ -550,7 +550,7 @@
    <property name="geometry">
     <rect>
      <x>190</x>
-     <y>20</y>
+     <y>19</y>
      <width>201</width>
      <height>111</height>
     </rect>
@@ -709,10 +709,10 @@
   <widget class="QLabel" name="label_11">
    <property name="geometry">
     <rect>
-     <x>150</x>
-     <y>0</y>
-     <width>231</width>
-     <height>16</height>
+     <x>20</x>
+     <y>2</y>
+     <width>271</width>
+     <height>20</height>
     </rect>
    </property>
    <property name="text">
@@ -722,7 +722,7 @@
   <widget class="Led" name="printerReadyLed">
    <property name="geometry">
     <rect>
-     <x>380</x>
+     <x>300</x>
      <y>0</y>
      <width>15</width>
      <height>15</height>

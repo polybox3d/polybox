@@ -22,7 +22,7 @@ void LabViewModule::setGlobalColor(QColor c)
 
 void LabViewModule::sendGlobalColor()
 {
-    QString param(MCODE_LABVIEW_SET_RGB+" R");
+    QString param(QString(MCODE_LABVIEW_SET_RGB)+" R");
     param+=_currentColor.red();
     param+=" E";
     param+= _currentColor.green();
@@ -35,8 +35,16 @@ void LabViewModule::sendGlobalColor()
 
 QStringList LabViewModule::getAllCamera(QString path_directory)
 {
-    QDir cameras_dir(path_directory);
-    return cameras_dir.entryList(QStringList("video*"),QDir::System, QDir::Name) ;
+    QList<QByteArray> cameras = QCamera::availableDevices();
+    QStringList list_cameras;
+    QCamera* camera;
+    foreach(const QByteArray &deviceName, cameras )
+    {
+        list_cameras.append( camera->deviceDescription(deviceName) );
+    }
+    return list_cameras;
+    /*QDir cameras_dir(path_directory);
+    return cameras_dir.entryList(QStringList("video*"),QDir::System, QDir::Name) ;*/
 }
 
 QStringList LabViewModule::getConnectedCameraPath()

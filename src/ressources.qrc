@@ -33,6 +33,11 @@
         <file>img/on.png</file>
         <file>img/off.png</file>
         <file>img/atu_all_on.png</file>
+        <file>img/fan_pulsor2.png</file>
+        <file>img/fan_extractor.png</file>
+        <file>img/fan_pulsor.png</file>
+        <file>img/heater.png</file>
+        <file>img/fan_heater.png</file>
     </qresource>
     <qresource prefix="/xml">
         <file>ambiances/Autumn.xml</file>

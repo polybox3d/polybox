@@ -34,19 +34,19 @@ LabViewPage::LabViewPage(LabViewModule* labview, QWidget *parent, bool small_ui)
         connect( ui->backToHelp, SIGNAL(clicked()), (MainWindow*)(parent), SLOT(backToHelpPage()));
 
 
-        OnOffButton* onoff = new OnOffButton( 60, 30, this );
-        onoff->setGeometry( this->width()-onoff->width()-10,
-                         50,
-                         onoff->width(), onoff->height());
-
-        onoff->setState( _labview->isOn() );
-        connect ( onoff, SIGNAL(released()), _labview, SLOT(toggleInter()));
-        connect ( onoff, SIGNAL(released()), this, SLOT(updateUI()));
     }
     else
     {
          ui->backToHelp->deleteLater();
     }
+    OnOffButton* onoff = new OnOffButton( 60, 30, this );
+    onoff->setGeometry( this->width()-onoff->width()-10,
+                     45,
+                     onoff->width(), onoff->height());
+
+    onoff->setState( _labview->isOn() );
+    connect ( onoff, SIGNAL(released()), _labview, SLOT(toggleInter()));
+    connect ( onoff, SIGNAL(released()), this, SLOT(updateUI()));
 }
 
 LabViewPage::~LabViewPage()

@@ -81,7 +81,7 @@ private:
     QProcess* _webcam;
     bool _atuON;
     ATUButton* _atu;
-
+    QDockWidget* _dockLV;
 };
 
 #endif // MAINWINDOW_H
