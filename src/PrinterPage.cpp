@@ -9,7 +9,7 @@ PrinterPage::PrinterPage(PrinterModule* printer, QWidget *parent) :
     ui->setupUi(this);
     ui->tempWidget->addPrinterModule( _printer );
     _printerSoftware = NULL;
-    _printerSoftwarePath = DEFAULT_SOFTWARE_PRINTER_PATH;
+    _printerSoftwarePath = Config::pathToPrinterSoftware;
     _updateModuleTimer.setInterval( Config::updateModuleTimer );
     connect( &_updateModuleTimer, SIGNAL(timeout()), _printer, SLOT(updateComponents()) );
 
@@ -150,8 +150,13 @@ void PrinterPage::on_boxCustom_clicked()
     setChamberActivated(true);
 }
 
-void PrinterPage::on_pushButton_clicked()
+void PrinterPage::on_startPrint_clicked()
 {
+    if ( _printerSoftware != NULL )
+    {
+        _printerSoftware->kill();
+    }
+
     QString command = _printerSoftwarePath;
     QStringList parameters;
     parameters << "" ;
@@ -256,3 +261,4 @@ void PrinterPage::on_extractorSpin_valueChanged(int arg1)
     _printer->setFanExtractorFanSpeed( arg1 );
     repaintComponents();
 }
+

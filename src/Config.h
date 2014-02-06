@@ -20,6 +20,8 @@ public:
     Config();
 #define INITIAL_CONFIG_FILE ":/xml/config/.initialConfig.xml"
 
+    static QString pathToPrinterSoftware;
+
     /**
      * @brief pathToHomeDirectory Full path to the main user home directory (/home/<user>/)
      */

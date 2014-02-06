@@ -28,8 +28,6 @@ public:
     ~PrinterPage();
 
 private slots:
-    void on_pushButton_clicked();
-
 
     void on_bedTempSlider_valueChanged(int value);
 
@@ -82,6 +80,8 @@ private slots:
     void on_extractorSpin_valueChanged(int arg1);
 
     void repaintComponents();
+
+    void on_startPrint_clicked();
 
 private:
     Ui::PrinterPage *ui;
