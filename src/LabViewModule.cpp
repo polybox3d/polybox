@@ -35,16 +35,16 @@ void LabViewModule::sendGlobalColor()
 
 QStringList LabViewModule::getAllCamera(QString path_directory)
 {
+    /*
     QList<QByteArray> cameras = QCamera::availableDevices();
     QStringList list_cameras;
-    QCamera* camera;
     foreach(const QByteArray &deviceName, cameras )
     {
-        list_cameras.append( camera->deviceDescription(deviceName) );
+        list_cameras.append( QCamera::deviceDescription(deviceName) );
     }
-    return list_cameras;
-    /*QDir cameras_dir(path_directory);
-    return cameras_dir.entryList(QStringList("video*"),QDir::System, QDir::Name) ;*/
+    return list_cameras;*/
+    QDir cameras_dir(path_directory);
+    return cameras_dir.entryList(QStringList("video*"),QDir::System, QDir::Name) ;
 }
 
 QStringList LabViewModule::getConnectedCameraPath()
