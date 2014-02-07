@@ -157,12 +157,11 @@ void PrinterPage::on_startPrint_clicked()
         _printerSoftware->kill();
     }
 
-    QString command = _printerSoftwarePath;
+    QString command = "mono";
     QStringList parameters;
-    parameters << "" ;
+    parameters << _printerSoftwarePath<<" -home "<< Config::pathToPrinterWorkingDir;
     _printerSoftware = new QProcess( this );
     _printerSoftware->start( command, parameters );
-
 }
 
 void PrinterPage::selectCustomBed()

@@ -22,6 +22,8 @@ public:
 
     static QString pathToPrinterSoftware;
 
+    static QString pathToPrinterWorkingDir;
+
     /**
      * @brief pathToHomeDirectory Full path to the main user home directory (/home/<user>/)
      */

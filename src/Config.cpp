@@ -7,7 +7,8 @@ Config::Config()
 }
 
 QString Config::pathToHomeDirectory="/home/poly/";
-QString Config::pathToPrinterSoftware=Config::pathToHomeDirectory+"RepetierHost/repetierHost";
+QString Config::pathToPrinterSoftware=Config::pathToHomeDirectory+"RepetierHost/RepetierHost.exe";
+QString Config::pathToPrinterWorkingDir=Config::pathToHomeDirectory+"RepetierHost";
 QString Config::pathToLinuxCNC=Config::pathToHomeDirectory+"linuxcnc/";
 QString Config::pathToWebcamDevice="/dev/";
 QString Config::webcamName="video0";
