@@ -107,6 +107,16 @@ private slots:
 
     void on_cameraSelector_currentIndexChanged(int index);
 
+    void on_rgbLineEdit_editingFinished();
+
+    void on_softwareRadio_clicked();
+
+    void on_teleRadio_clicked();
+
+    void on_intensite_2_actionTriggered(int action);
+
+    void on_intensite_2_sliderMoved(int position);
+
 private:
     void setLight(int light, bool horizontale=true, bool verticale=true);
     void processFaceClick(Face* face, QPushButton* face_button, QString base_name);

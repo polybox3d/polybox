@@ -216,7 +216,7 @@ void PrinterModule::updateComponents()
 void PrinterModule::toggleInter()
 {
     _isOn = !_isOn;
-    _polybox->port()->sendMCode( QString(MCODE_PRINTER_SET_STATUS)+" S"+QString::number(_isOn) );
+    _polybox->port()->sendMCode( QString::number(MCODE_PRINTER_SET_STATUS)+" S"+QString::number(_isOn) );
 }
 
 void PrinterModule::activateAllBed(bool activated)

@@ -61,7 +61,7 @@ void MainWindow::setupSerialMenu()
         {
             if ( ! serial.startsWith( "ttyS" ))
             {
-                if ( serial.startsWith("ttyACM") || serial.startsWith("ttyVIRT") || serial.startsWith("ttyUSB") )
+                if ( serial.startsWith("ttyACM") || serial.startsWith("ttyUSB") )
                 {
                     act = ui->menuConnexion->addAction( serial );
                     act->setCheckable( true );

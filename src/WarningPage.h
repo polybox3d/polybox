@@ -11,6 +11,7 @@
 #include "GlobalChecker.h"
 #include "HomeButton.h"
 #include "DialogConfigSoft.h"
+#include "Console.h"
 
 #include "PolyboxModule.h"
 
@@ -49,6 +50,8 @@ private slots:
      * @brief on_dynamicTest_clicked Called when the user click on Run Tests. Open a new ConfigCNCPage, which allows the user to run CNCTest.
      */
     void on_dynamicTest_clicked();
+
+    void on_pushButton_clicked();
 
 private:
     /**

@@ -22,6 +22,9 @@ public:
 
     QStringList getConnectedCameraPath();
 
+    enum LabViewController{
+        Noone, Software, Manual
+    };
     /**
      * @brief isReady Informe if the LabViewModule is ready to be used. If everything is connected etc..
      * @return Return True if the moduel is ready, false otherwise.
@@ -55,6 +58,7 @@ public:
     void setGlobalColor(QColor c);
     void sendGlobalColor();
     static QStringList getAllCamera(QString path_directory);
+    void sendController( LabViewController c);
 
     Face _left;
     Face _right;

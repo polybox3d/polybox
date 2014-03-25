@@ -4,7 +4,7 @@
 #
 #-------------------------------------------------
 
-QT       += core gui xml
+QT       += core gui xml multimedia multimediawidgets
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -17,7 +17,6 @@ DEFINES += QT_NO_DEBUG_OUTPUT
 DEFINES += BYPASS_CHECK
 QMAKE_CXXFLAGS_DEBUG +=  -O3 -Ofast
 }
-CONFIG += precompile_header
 
 #UART Lib
 include(../externals/qextserialport/src/qextserialport.pri)
@@ -68,7 +67,9 @@ SOURCES += main.cpp\
     OpenPageJPH.cpp \
     interbutton.cpp \
     ATUButton.cpp \
-    OnOffButton.cpp
+    OnOffButton.cpp \
+    Console.cpp \
+    polyplexer.cpp
 
 HEADERS  += MainWindow.h \
         OpenPage.h \
@@ -115,7 +116,9 @@ HEADERS  += MainWindow.h \
     OpenPageJPH.h \
     interbutton.h \
     ATUButton.h \
-    OnOffButton.h
+    OnOffButton.h \
+    Console.h \
+    polyplexer.h
 
 FORMS    += MainWindow.ui \
         OpenPage.ui \
@@ -137,7 +140,8 @@ FORMS    += MainWindow.ui \
     DynamicTestPage.ui \
     PrinterSmallUI.ui \
     qjoystickenumerator.ui \
-    interbutton.ui
+    interbutton.ui \
+    Console.ui
 
 RESOURCES += \
     ressources.qrc

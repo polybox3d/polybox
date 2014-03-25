@@ -22,15 +22,32 @@ void LabViewModule::setGlobalColor(QColor c)
 
 void LabViewModule::sendGlobalColor()
 {
-    QString param(QString(MCODE_LABVIEW_SET_RGB)+" R");
-    param+=_currentColor.red();
+    QString param(QString::number(MCODE_LABVIEW_SET_RGB)+" R");
+    param+=QString::number(_currentColor.red());
     param+=" E";
-    param+= _currentColor.green();
+    param+= QString::number(_currentColor.green());
     param+=" P";
-    param+=_currentColor.blue();
+    param+=QString::number(_currentColor.blue());
     param+=" I";
-    param+=_currentColor.alpha();
-    SerialPort::getSerial()->sendMCode( param.toStdString().c_str() );
+    param+=QString::number(_currentColor.alpha());
+    SerialPort::getSerial()->sendMCode( param );
+}
+
+void LabViewModule::sendController(LabViewController c)
+{
+    int mcode = 649;
+    if ( c == Software )
+    {
+        SerialPort::getSerial()->sendMCode( QString::number(mcode) + " S" );
+    }
+    else if ( c == Manual)
+    {
+        SerialPort::getSerial()->sendMCode( QString::number(mcode) + " H" );
+    }
+    else
+    {
+        SerialPort::getSerial()->sendMCode( QString::number(mcode) + " H" );
+    }
 }
 
 QStringList LabViewModule::getAllCamera(QString path_directory)
@@ -60,7 +77,7 @@ QStringList LabViewModule::getConnectedCameraPath()
 void LabViewModule::toggleInter()
 {
     _isOn = !_isOn;
-    _polybox->port()->sendMCode( QString(MCODE_LABVIEW_SET_STATUS)+" S"+QString::number(_isOn) );
+    _polybox->port()->sendMCode( QString::number(MCODE_LABVIEW_SET_STATUS)+" S"+QString::number(_isOn) );
 }
 
 void LabViewModule::initFaceClass()

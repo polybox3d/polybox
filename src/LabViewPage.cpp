@@ -211,6 +211,30 @@ void LabViewPage::updateUI()
                                  QString::number(_labview->currentColor()->green())+","+
                                  QString::number(_labview->currentColor()->blue())+","+
                                  QString::number(_labview->currentColor()->alpha())+");\nselection-color: rgb(255, 0, 4);");
+    // rgb edit line
+    QString rgb_str;
+    QString tmp = QString::number(_labview->currentColor()->red(), 16);
+    if ( tmp.size() < 2)
+    {
+        tmp = "0"+tmp;
+    }
+    rgb_str = tmp;
+
+    tmp = QString::number(_labview->currentColor()->green(), 16 );
+    if ( tmp.size() < 2)
+    {
+        tmp = "0"+tmp;
+    }
+    rgb_str += tmp;
+
+    tmp = QString::number(_labview->currentColor()->blue(), 16 );
+    if ( tmp.size() < 2)
+    {
+        tmp = "0"+tmp;
+    }
+    rgb_str += tmp;
+
+    ui->rgbLineEdit->setText( rgb_str ) ;
 
     if ( ui->globalLightRadio->isChecked() )
     {
@@ -360,7 +384,7 @@ void LabViewPage::on_individualLightRadio_clicked()
 
 void LabViewPage::on_intensite_2_valueChanged(int value)
 {
-    setLight( value, false, true );
+    //setLight( value, false, true );
 }
 
 void LabViewPage::on_intensite_3_valueChanged(int value)
@@ -441,4 +465,34 @@ void LabViewPage::on_cameraSelector_currentIndexChanged(int index)
 {
     _labview->setCamera( ui->cameraSelector->itemText( index ) );
     updateUI();
+}
+
+void LabViewPage::on_rgbLineEdit_editingFinished()
+{
+    QString color_str = ui->rgbLineEdit->text().right(6); // we delete #
+    bool ok;
+    _labview->currentColor()->setRed( color_str.left(2).toInt( &ok, 16) );
+    _labview->currentColor()->setGreen( color_str.right(4).left(2).toInt(&ok, 16) );
+    _labview->currentColor()->setBlue(color_str.right(2).toInt(&ok, 16) );
+    updateUI();
+}
+
+void LabViewPage::on_softwareRadio_clicked()
+{
+    _labview->sendController( LabViewModule::Software);
+}
+
+void LabViewPage::on_teleRadio_clicked()
+{
+    _labview->sendController( LabViewModule::Manual );
+}
+
+void LabViewPage::on_intensite_2_actionTriggered(int action)
+{
+
+}
+
+void LabViewPage::on_intensite_2_sliderMoved(int position)
+{
+
 }

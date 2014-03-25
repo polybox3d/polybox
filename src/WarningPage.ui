@@ -42,7 +42,6 @@
      <height>250</height>
     </rect>
    </property>
-   <zorder>scannerWidget</zorder>
   </widget>
   <widget class="CNCChecker" name="cncWidget" native="true">
    <property name="geometry">
@@ -116,6 +115,19 @@
    <property name="icon">
     <iconset resource="ressources.qrc">
      <normaloff>:/img/img/test.png</normaloff>:/img/img/test.png</iconset>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButton">
+   <property name="geometry">
+    <rect>
+     <x>190</x>
+     <y>520</y>
+     <width>99</width>
+     <height>25</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Console</string>
    </property>
   </widget>
  </widget>

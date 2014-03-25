@@ -58,3 +58,9 @@ void WarningPage::on_dynamicTest_clicked()
 {
     CHANGE_PAGE( DynamicTest );
 }
+
+void WarningPage::on_pushButton_clicked()
+{
+    Console* c = new Console();
+    c->show();
+}

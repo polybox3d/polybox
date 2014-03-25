@@ -51,15 +51,12 @@ bool SerialPort::connectToSerialPort()
 
     if ( _port->open(QIODevice::ReadWrite) == true)
     {
-        cout<<"ok!"<<endl;
         //connect(this, SIGNAL(readyRead()), this, SLOT(onReadyRead()) );
         //      connect(this, SIGNAL(dsrChanged(bool)), this, SLOT(onDsrChanged(bool)) );
      /*   if (!(lineStatus() & LS_DSR)){
             qDebug() << "warning: device is not turned on"<<lineStatus();
             return false;
         }*/
-        qDebug() << "listening for data on" << _port->portName();
-        qDebug() << "Ok connected";
         connect ( _port, SIGNAL(readyRead()), this, SLOT(parseSerialDatas()) );
         return true;
     }
@@ -84,15 +81,16 @@ void SerialPort::parseSerialDatas()
     int a = _port->bytesAvailable();
     tmp.resize(a);
     _port->read( tmp.data(), tmp.size() );
-
+/*
     int c_size = _rcp_datas.size();
     _rcp_datas.resize(  c_size + tmp.size() );
-    strcat( _rcp_datas.data(), tmp.data() );
+    strcat( _rcp_datas.data(), tmp.data() );*/
+    _rcp_datas.append( tmp );
     // end of line/command
-    cout<<tmp.data()<<endl;
-    if ( QString(tmp).contains("*"))
+    if ( QString(_rcp_datas).contains("\r") || QString(_rcp_datas).contains("\n"))
     {
         _datas = _rcp_datas;
+        cout<<"--->"<<_rcp_datas.data()<<"END"<<endl;
         _rcp_datas.clear();
         emit dataReady();
     }
@@ -105,7 +103,8 @@ void SerialPort::sendMCode(int code)
 }
 void SerialPort::sendMCode(QString code)
 {
-    code = "M"+code;
+    cout<<code.toStdString()<<endl;
+    code = "M"+code+"\r\n";
     if ( _port != NULL && _port->isWritable() && _port->isOpen() )
     {
         _port->write( code.toStdString().c_str() );

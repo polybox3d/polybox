@@ -27,7 +27,7 @@
      <x>0</x>
      <y>0</y>
      <width>800</width>
-     <height>22</height>
+     <height>20</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuModules">
@@ -51,7 +51,7 @@
     </widget>
     <widget class="QMenu" name="menuConnexion">
      <property name="title">
-      <string>Connexion</string>
+      <string>Connexion Machine</string>
      </property>
     </widget>
     <addaction name="actionActiver_Manette"/>
@@ -111,7 +111,7 @@
   </action>
   <action name="action">
    <property name="text">
-    <string> </string>
+    <string/>
    </property>
   </action>
   <action name="actionToto">
