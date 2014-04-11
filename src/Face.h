@@ -4,6 +4,7 @@
 #include <QString>
 #include <QXmlStreamWriter>
 #include <QXmlStreamReader>
+#include <QColor>
 
 #include "SerialPort.h"
 #include "mcode.h"
@@ -24,7 +25,14 @@ public:
 
     void setHIntensity( int h );
     void setVIntensity( int v );
+
     void sendIntensity();
+
+    void setColor( int r, int g, int b);
+    void setColor( QColor c);
+    void sendColor();
+    QColor color(){ return _color; }
+    QColor* getColor(){ return &_color; }
 
     int h();
     int v();
@@ -36,6 +44,7 @@ public:
 private:
     int _h;
     int _v;
+    QColor _color;
 
 };
 

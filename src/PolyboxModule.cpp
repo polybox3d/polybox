@@ -18,11 +18,17 @@ PolyboxModule::PolyboxModule(QObject *parent) :
     _hardwareTimer.start( Config::hardwareTimer );
     connect( &_hardwareTimer, SIGNAL(timeout()), this, SLOT(hardwareTimerTimeout()));
 
-    _port = SerialPort::getSerial();
-    _connected = _port->connectToSerialPort();
-    if ( _connected )
+    _polyplexer = Polyplexer::getInstance();
+    _polyplexer->useWindowOutput(false);
+    if ( _polyplexer->start() )
     {
-        connect ( _port, SIGNAL(dataReady()), this, SLOT(parseData()) );
+        _port = SerialPort::getSerial();
+        _connected = _port->isConnected();
+        if ( _connected )
+        {
+            MainWindow::textWindow( "Your software is fully connected. ");
+            connect ( _port, SIGNAL(dataReady()), this, SLOT(parseData()) );
+        }
     }
     _cnc = new CNCModule( this, this );
     _labview = new LabViewModule( this );
@@ -35,7 +41,6 @@ PolyboxModule::PolyboxModule(QObject *parent) :
 void PolyboxModule::hardwareTimerTimeout()
 {
     emit updateHardware();
-    //    _cnc->updateComponents();
 }
 
 void PolyboxModule::parseData()
@@ -45,7 +50,6 @@ void PolyboxModule::parseData()
     int idx = str.indexOf('M') ;
     if ( idx != -1 ) // M Code find
     {
-        cout<<"#Code:"<<str.toStdString()<<endl;
          _cnc->parseMCode( &str.toStdString().c_str()[idx+1] );
          _global->parseMCode( &str.toStdString().c_str()[idx+1] );
          _scanner->parseMCode( &str.toStdString().c_str()[idx+1] );

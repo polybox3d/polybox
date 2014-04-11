@@ -119,6 +119,11 @@ private slots:
 
 private:
     void setLight(int light, bool horizontale=true, bool verticale=true);
+    void setRed(int value );
+    void setBlue(int value );
+    void setGreen(int value );
+    void setAlpha( int value );
+    void setColor( QColor color );
     void processFaceClick(Face* face, QPushButton* face_button, QString base_name);
     void setActivateLightControl( bool activated );
 
@@ -131,6 +136,7 @@ private:
 
     QVector<Face*> _selectedFaces;
     LabViewJPH* _handler;
+    bool _update;
 };
 
 #endif // LABVIEW_H

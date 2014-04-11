@@ -4,6 +4,8 @@
 #include <QMainWindow>
 #include <QTranslator>
 #include <QDockWidget>
+#include <QLabel>
+#include <QMessageBox>
 
 #include "Config.h"
 
@@ -17,6 +19,7 @@
 #include "WarningPage.h"
 #include "DynamicTestPage.h"
 #include "PolyboxModule.h"
+#include "polyplexer.h"
 
 #include "fsmainwindow.h"
 #include "pageState.h"
@@ -37,6 +40,8 @@ public:
     explicit MainWindow(QWidget *parent = 0);
 
     static MainWindow* getMainWindow();
+    static void errorWindow(QString errorText);
+    static void textWindow(QString text);
 
     ~MainWindow();
 public slots:
@@ -46,6 +51,8 @@ public slots:
     void startCamera();
     void startConnexion();
     void updateHardware();
+
+    void startConsoleWindow();
 
 signals:
     void joypadOff();
@@ -66,6 +73,8 @@ private slots:
     void on_actionActiver_Manette_triggered();
 
     void on_actionLabView_dock_triggered();
+
+    void on_actionConsole_triggered();
 
 private:
     void updateStatePage();

@@ -19,6 +19,8 @@ public slots:
 private slots:
     void on_sendCodeButton_clicked();
 
+    void on_inputCode_returnPressed();
+
 private:
     Ui::Console *ui;
 };

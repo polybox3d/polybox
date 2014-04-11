@@ -7,7 +7,7 @@ WarningPage::WarningPage(PolyboxModule *polybox, QWidget *parent) :
 {
     ui->setupUi(this);
     _polybox = polybox;
-    _updateComponentsTimer.setInterval( Config::updateConfigModuleTimer );
+    _updateComponentsTimer.start( Config::updateConfigModuleTimer  );
     connect( &_updateComponentsTimer, SIGNAL(timeout()), this, SLOT(updateModules()));
     HomeButton* hb = new HomeButton( 50,50, this );
     hb->setGeometry( this->width()-hb->width()-10,
@@ -59,8 +59,8 @@ void WarningPage::on_dynamicTest_clicked()
     CHANGE_PAGE( DynamicTest );
 }
 
-void WarningPage::on_pushButton_clicked()
+void WarningPage::on_console_clicked()
 {
-    Console* c = new Console();
-    c->show();
+    MainWindow::getMainWindow()->startConsoleWindow();
+
 }

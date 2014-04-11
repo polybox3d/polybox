@@ -11,8 +11,8 @@ SerialPort::SerialPort(QObject *parent) :
     QObject(parent)
   //QextSerialPort("/dev/ttyACM0", QextSerialPort::EventDriven, parent)
 {
-    _path = Config::pathToSerialDevice;
-    _name = Config::serialPortName;
+    _path = Config::pathToVirtualPolySerialDevice;
+    _name = Config::serialVirtualPolySerialPort;
     _port = NULL;
 }
 QString SerialPort::path()
@@ -90,9 +90,17 @@ void SerialPort::parseSerialDatas()
     if ( QString(_rcp_datas).contains("\r") || QString(_rcp_datas).contains("\n"))
     {
         _datas = _rcp_datas;
-        cout<<"--->"<<_rcp_datas.data()<<"END"<<endl;
         _rcp_datas.clear();
         emit dataReady();
+    }
+}
+
+void SerialPort::sendCode(QString code)
+{
+    if ( _port != NULL && _port->isWritable() && _port->isOpen() )
+    {
+        code = code +"\r\n";
+        _port->write( code.toStdString().c_str() );
     }
 }
 
@@ -103,11 +111,6 @@ void SerialPort::sendMCode(int code)
 }
 void SerialPort::sendMCode(QString code)
 {
-    cout<<code.toStdString()<<endl;
-    code = "M"+code+"\r\n";
-    if ( _port != NULL && _port->isWritable() && _port->isOpen() )
-    {
-        _port->write( code.toStdString().c_str() );
-    }
-
+    code = "M"+code;
+    this->sendCode( code );
 }

@@ -8,7 +8,7 @@ PrinterPage::PrinterPage(PrinterModule* printer, QWidget *parent) :
     _printer = printer;
     ui->setupUi(this);
     ui->tempWidget->addPrinterModule( _printer );
-    _printerSoftware = NULL;
+    _printerSoftware.setParent( this );
     _printerSoftwarePath = Config::pathToPrinterSoftware;
     _updateModuleTimer.setInterval( Config::updateModuleTimer );
     connect( &_updateModuleTimer, SIGNAL(timeout()), _printer, SLOT(updateComponents()) );
@@ -152,16 +152,17 @@ void PrinterPage::on_boxCustom_clicked()
 
 void PrinterPage::on_startPrint_clicked()
 {
-    if ( _printerSoftware != NULL )
+    /*if ( _printerSoftware != NULL )
     {
         _printerSoftware->kill();
-    }
+    }*/
 
     QString command = "mono";
     QStringList parameters;
     parameters << _printerSoftwarePath<<" -home "<< Config::pathToPrinterWorkingDir;
-    _printerSoftware = new QProcess( this );
-    _printerSoftware->start( command, parameters );
+    //_printerSoftware = new QProcess( this );
+    _printerSoftware.start( command, parameters );
+    cout<<_printerSoftwarePath.toStdString()<<endl;
 }
 
 void PrinterPage::selectCustomBed()

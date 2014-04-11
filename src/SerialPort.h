@@ -35,6 +35,9 @@ public:
      * @param code
      */
     void sendMCode(int code);
+
+    void sendCode(QString code);
+
     QString path();
     QString name();
 

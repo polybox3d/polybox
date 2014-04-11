@@ -48,8 +48,9 @@ public:
     void exportXmlAllFaces(QXmlStreamWriter *xml);
     void parseGlobalcolor(QXmlStreamReader *xml);
     void  saveToXmlFile(QString filename);
-    QColor* currentColor(){ return &_currentColor;}
+    QColor* currentColor(){ return _top.getColor();}
     void setAllFacesLight(int light, bool horizontale, bool verticale);
+    void setAllFacesColor(QColor c);
 
     int getGlobalIntensityH(){ return _top.h(); }
     int getGlobalIntensityV(){ return _top.v(); }

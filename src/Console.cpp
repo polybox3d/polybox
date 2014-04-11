@@ -23,6 +23,12 @@ void Console::parseData()
 
 void Console::on_sendCodeButton_clicked()
 {
-    SerialPort::getSerial()->sendMCode( ui->inputCode->text() );
+    SerialPort::getSerial()->sendCode( ui->inputCode->text() );
+    ui->inputCode->setText("");
+}
+
+void Console::on_inputCode_returnPressed()
+{
+    SerialPort::getSerial()->sendCode( ui->inputCode->text() );
     ui->inputCode->setText("");
 }

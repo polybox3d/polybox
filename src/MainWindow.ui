@@ -53,10 +53,13 @@
      <property name="title">
       <string>Connexion Machine</string>
      </property>
+     <addaction name="separator"/>
+     <addaction name="actionVisualisation"/>
     </widget>
     <addaction name="actionActiver_Manette"/>
-    <addaction name="menuVisualiser"/>
     <addaction name="menuConnexion"/>
+    <addaction name="menuVisualiser"/>
+    <addaction name="actionConsole"/>
    </widget>
    <widget class="QMenu" name="menuAide">
     <property name="title">
@@ -78,30 +81,48 @@
    <property name="text">
     <string>CNC</string>
    </property>
+   <property name="shortcut">
+    <string>Ctrl+Shift+C</string>
+   </property>
   </action>
   <action name="actionImprimante">
    <property name="text">
     <string>Imprimante</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+Shift+P</string>
    </property>
   </action>
   <action name="actionScanner">
    <property name="text">
     <string>Scanner</string>
    </property>
+   <property name="shortcut">
+    <string>Ctrl+Shift+S</string>
+   </property>
   </action>
   <action name="actionLabView">
    <property name="text">
     <string>LabView</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+Shift+L</string>
    </property>
   </action>
   <action name="actionActiver_Manette">
    <property name="text">
     <string>Activer Manette</string>
    </property>
+   <property name="shortcut">
+    <string>Ctrl+Shift+M</string>
+   </property>
   </action>
   <action name="actionLabView_dock">
    <property name="text">
     <string>LabView (dock)</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+Shift+L, L</string>
    </property>
   </action>
   <action name="actionDdd_2">
@@ -117,6 +138,19 @@
   <action name="actionToto">
    <property name="text">
     <string>toto</string>
+   </property>
+  </action>
+  <action name="actionConsole">
+   <property name="text">
+    <string>Console</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+Shift+O</string>
+   </property>
+  </action>
+  <action name="actionVisualisation">
+   <property name="text">
+    <string>Visualisation</string>
    </property>
   </action>
  </widget>

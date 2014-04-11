@@ -51,7 +51,7 @@ private slots:
      */
     void on_dynamicTest_clicked();
 
-    void on_pushButton_clicked();
+    void on_console_clicked();
 
 private:
     /**

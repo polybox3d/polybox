@@ -117,7 +117,7 @@
      <normaloff>:/img/img/test.png</normaloff>:/img/img/test.png</iconset>
    </property>
   </widget>
-  <widget class="QPushButton" name="pushButton">
+  <widget class="QPushButton" name="console">
    <property name="geometry">
     <rect>
      <x>190</x>

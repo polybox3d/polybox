@@ -6,12 +6,12 @@ LabViewPage::LabViewPage(LabViewModule* labview, QWidget *parent, bool small_ui)
     ui(new Ui::LabViewPage)
 {
     _labview = labview;
+    _update = false;
     connect( _labview , SIGNAL(updateUI()), this, SLOT(updateUI()));
     ui->setupUi(this);
 
 
     _currentProfile = NULL;
-
 
     ui->cameraSelector->addItems( LabViewModule::getAllCamera( Config::pathToWebcamDevice ) );
     //1 or more camera detected, we setup UI
@@ -193,7 +193,8 @@ void LabViewPage::loadDefaultAmbiances(QString folder_path)
 //Update graphicals composants.
 void LabViewPage::updateUI()
 {
-    //  QPainter paint(this);
+    // prevent update loop and multiple MCode send
+    _update = true;
     //sliders
     ui->r->setValue( _labview->currentColor()->red());
     ui->g->setValue( _labview->currentColor()->green());
@@ -261,6 +262,8 @@ void LabViewPage::updateUI()
     ui->lightBox->setEnabled( _labview->isOn() );
     ui->startRecording->setEnabled( _labview->isOn() );
     ui->startVisu->setEnabled( _labview->isOn() );
+
+    _update = false;
 }
 
 void LabViewPage::setSelectedFacesLight(int light, bool horizontale, bool verticale)
@@ -280,6 +283,43 @@ void LabViewPage::setSelectedFacesLight(int light, bool horizontale, bool vertic
     updateUI();
 }
 
+void LabViewPage::setColor(QColor color)
+{
+
+    if ( ui->individualLightRadio->isChecked() )
+    {
+        _labview->setAllFacesColor( color );
+    }
+    else
+    {
+        _labview->setAllFacesColor( color );
+    }
+}
+void LabViewPage::setRed( int value )
+{
+    QColor c = _labview->getGlobalColor();
+    c.setRed( value );
+    setColor( c );
+
+}
+void LabViewPage::setGreen( int value )
+{
+    QColor c = _labview->getGlobalColor();
+    c.setGreen( value );
+    setColor( c );
+}
+void LabViewPage::setBlue( int value )
+{
+    QColor c = _labview->getGlobalColor();
+    c.setBlue( value );
+    setColor( c );
+}
+void LabViewPage::setAlpha( int value )
+{
+    QColor c = _labview->getGlobalColor();
+    c.setAlpha( value );
+    setColor( c );
+}
 void LabViewPage::setLight(int light, bool horizontale, bool verticale)
 {
     // user select global control
@@ -291,7 +331,6 @@ void LabViewPage::setLight(int light, bool horizontale, bool verticale)
     {
         setSelectedFacesLight( light, horizontale, verticale );
     }
-    updateUI();
 }
 
 
@@ -384,74 +423,91 @@ void LabViewPage::on_individualLightRadio_clicked()
 
 void LabViewPage::on_intensite_2_valueChanged(int value)
 {
-    //setLight( value, false, true );
+    if ( _update ) return;
+    setLight( value, false, true );
+    updateUI();
 }
 
 void LabViewPage::on_intensite_3_valueChanged(int value)
 {
+    if ( _update ) return;
     setLight( value, true, false );
+    updateUI();
 }
 
 void LabViewPage::on_intensiteSpin_2_valueChanged(int arg1)
 {
+    if ( _update ) return;
     setLight( arg1, false, true );
+    updateUI();
 }
 
 void LabViewPage::on_intensiteSpin_3_valueChanged(int arg1)
 {
+    if ( _update ) return;
     setLight( arg1, true, false );
+    updateUI();
 }
 
 void LabViewPage::on_r_valueChanged(int value)
 {
-    _labview->currentColor()->setRed( value );
+    if ( _update ) return;
+    this->setRed( value );
     updateUI();
 }
 
 void LabViewPage::on_g_valueChanged(int value)
 {
-    _labview->currentColor()->setGreen( value );
+    if ( _update ) return;
+    setGreen( value );
     updateUI();
 }
 
 void LabViewPage::on_b_valueChanged(int value)
 {
-    _labview->currentColor()->setBlue( value );
+    if ( _update ) return;
+    setBlue( value );
     updateUI();
 }
 
 void LabViewPage::on_rSpin_valueChanged(int arg1)
 {
-    _labview->currentColor()->setRed( arg1 );
+    if ( _update ) return;
+    this->setRed( arg1 );
     updateUI();
 }
 
 void LabViewPage::on_gSpin_valueChanged(int arg1)
 {
-    _labview->currentColor()->setGreen( arg1 );
+    if ( _update ) return;
+    this->setGreen( arg1 );
     updateUI();
 }
 
 void LabViewPage::on_bSpin_valueChanged(int arg1)
 {
-    _labview->currentColor()->setBlue( arg1 );
+    if ( _update ) return;
+    this->setBlue( arg1 );
     updateUI();
 }
 
 void LabViewPage::on_intensite_valueChanged(int value)
 {
-    _labview->currentColor()->setAlpha( value );
+    if ( _update ) return;
+    this->setAlpha( value );
     updateUI();
 }
 
 void LabViewPage::on_intensiteSpin_valueChanged(int arg1)
 {
-    _labview->currentColor()->setAlpha( arg1 );
+    if ( _update ) return;
+    this->setAlpha( arg1 );
     updateUI();
 }
 
 void LabViewPage::on_selectAmb_currentIndexChanged(int index)
 {
+    if ( _update ) return;
     QString filename = ui->selectAmb->itemData( index ).toString();
     if ( !filename.isEmpty() )
     {
@@ -463,12 +519,14 @@ void LabViewPage::on_selectAmb_currentIndexChanged(int index)
 
 void LabViewPage::on_cameraSelector_currentIndexChanged(int index)
 {
+    if ( _update ) return;
     _labview->setCamera( ui->cameraSelector->itemText( index ) );
     updateUI();
 }
 
 void LabViewPage::on_rgbLineEdit_editingFinished()
 {
+    if ( _update ) return;
     QString color_str = ui->rgbLineEdit->text().right(6); // we delete #
     bool ok;
     _labview->currentColor()->setRed( color_str.left(2).toInt( &ok, 16) );

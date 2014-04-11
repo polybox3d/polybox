@@ -85,7 +85,7 @@ private slots:
 
 private:
     Ui::PrinterPage *ui;
-    QProcess* _printerSoftware;
+    QProcess _printerSoftware;
     QString _printerSoftwarePath;
     PrinterModule* _printer;
     void setBedActivated(bool activated);

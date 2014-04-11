@@ -154,6 +154,15 @@ void LabViewModule::startRecording()
     _mediaPlayer->start( command, parameters );
 
 }
+void LabViewModule::setAllFacesColor(QColor c)
+{
+    _left.setColor( c );
+    _right.setColor( c );
+    _top.setColor( c );
+    _bot.setColor( c );
+    _back.setColor( c );
+    _front.setColor( c );
+}
 
 void LabViewModule::setAllFacesLight(int light, bool horizontale, bool verticale)
 {

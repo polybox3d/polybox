@@ -40,6 +40,13 @@ public:
     static QString pathToSerialDevice;
 
     static QString serialPortName;
+
+    static QString pathToPolyplexerDaemon;
+
+    static QString pathToVirtualPolySerialDevice;
+
+    static QString serialVirtualPolySerialPort;
+
     /**
      * @brief webcamName id for webcam (video0)
      */

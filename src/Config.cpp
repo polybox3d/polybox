@@ -6,17 +6,22 @@ Config::Config()
 {
 }
 
-QString Config::pathToHomeDirectory="/home/poly/";
-QString Config::pathToPrinterSoftware=Config::pathToHomeDirectory+"RepetierHost/RepetierHost.exe";
-QString Config::pathToPrinterWorkingDir=Config::pathToHomeDirectory+"RepetierHost";
+QString Config::pathToHomeDirectory="/home/onslaught/";
+QString Config::pathToPrinterSoftware=Config::pathToHomeDirectory+"Dev/reprapgiga/Repetier-HostModified/Repetier-Host-master/src/RepetierHost/bin/Release/RepetierHost.exe";
+QString Config::pathToPrinterWorkingDir=Config::pathToHomeDirectory+"Dev/reprapgiga/RepetierHost";
 QString Config::pathToLinuxCNC=Config::pathToHomeDirectory+"linuxcnc/";
 QString Config::pathToWebcamDevice="/dev/";
 QString Config::webcamName="video0";
 QString Config::pathToSerialDevice="/dev/";
-QString Config::serialPortName="ttyVIRT1";//wildcard allowed
+
+QString Config::pathToVirtualPolySerialDevice="/dev/";
+QString Config::serialVirtualPolySerialPort="ttyPOLY";
+
+QString Config::serialPortName="ttyACM0";//wildcard allowed
 QString Config::linuxCNCCommand="linuxcnc";
 QString Config::scannerLaserPath=Config::pathToHomeDirectory+"/fabscan100/qtTest/";
 QString Config::defaultConfigFileName="./config.xml";
+QString Config::pathToPolyplexerDaemon="/home/onslaught/Dev/reprapgiga/Tools-Polybox/polyplexer/PolyPlexer";
 
 int Config::motherboardBaudrate=115200;
 bool Config::bypassCheck = true ;

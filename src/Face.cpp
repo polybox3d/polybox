@@ -21,6 +21,26 @@ void  Face::toXml(QXmlStreamWriter *xml)
 }
 
 
+void Face::setColor( int r, int g, int b)
+{
+    setColor( QColor(r,g,b) );
+}
+void Face::setColor( QColor c)
+{
+    _color = c;
+    sendColor();
+}
+
+void Face::sendColor()
+{
+    SerialPort::getSerial()->sendMCode(QString::number(MCODE_LABVIEW_SET_RGB)
+                                       +" R"+QString::number(_color.red())
+                                       +" E"+QString::number(_color.green())
+                                       +" P"+QString::number(_color.blue())
+                                       +" I"+QString::number(_color.alpha()));
+}
+
+
 void Face::setHIntensity( int h )
 {
     _h = h;

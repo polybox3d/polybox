@@ -7,6 +7,20 @@ MainWindow* MainWindow::getMainWindow(){
     return mainwindow;
 }
 
+void MainWindow::errorWindow(QString errorText)
+{
+    QMessageBox messageBox;
+    messageBox.critical(0,"Error",errorText);
+    messageBox.setFixedSize(500,200);
+}
+
+void MainWindow::textWindow(QString text)
+{    
+    QMessageBox messageBox;
+    messageBox.information(0,"Information",text);
+    messageBox.setFixedSize(500,200);
+}
+
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
@@ -35,6 +49,11 @@ MainWindow::MainWindow(QWidget *parent) :
 
     setupWebcamMenu();
     setupSerialMenu();
+}
+void MainWindow::startConsoleWindow()
+{
+    Console* c = new Console();
+    c->show();
 }
 
 void MainWindow::toggleATU()
@@ -66,7 +85,7 @@ void MainWindow::setupSerialMenu()
                     act = ui->menuConnexion->addAction( serial );
                     act->setCheckable( true );
                     connect( act, SIGNAL(triggered()),this,SLOT(startConnexion()) );
-                    if ( ! serial.compare(_polybox->port()->name() ) ) // We are already connected to this serial !
+                    if ( ! serial.compare(Polyplexer::getInstance()->portMachine() ) && SerialPort::getSerial()->isConnected() ) // We are already connected to this serial !
                     {
                         act->setChecked( true );
                     }
@@ -74,22 +93,26 @@ void MainWindow::setupSerialMenu()
             }
         }
     }
-
 }
 void MainWindow::startConnexion()
 {
     if ( QAction* act = dynamic_cast<QAction*>(sender()) )
     {
-        if ( ! SerialPort::getSerial()->name().compare( act->text() ) ) //already connected
+        Polyplexer* poly = Polyplexer::getInstance();
+
+        if ( ! poly->portMachine().compare( act->text().split('/').last() ) && SerialPort::getSerial()->isConnected() ) //already connected
         {
-            SerialPort::getSerial()->disconnectPort();
+            poly->stop();
             act->setChecked(false);
         }
         else
         {
-            SerialPort::getSerial()->setPath( Config::pathToSerialDevice );
-            SerialPort::getSerial()->setName( act->text() );
-            act->setChecked( SerialPort::getSerial()->connectToSerialPort() );
+            bool connected = poly->start( Config::pathToSerialDevice, act->text().split('/').last() );
+            act->setChecked( connected ) ;
+            if ( connected )
+            {
+                MainWindow::textWindow( "Your software is fully connected. ");
+            }
         }
     }
 }
@@ -352,4 +375,9 @@ void MainWindow::on_actionLabView_triggered()
 void MainWindow::on_actionLabView_dock_triggered()
 {
     changeStatePage( LabViewDock );
+}
+
+void MainWindow::on_actionConsole_triggered()
+{
+    this->startConsoleWindow();
 }

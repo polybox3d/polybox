@@ -13,6 +13,7 @@
 #include "ScannerModule.h"
 #include "PrinterModule.h"
 */
+#include "polyplexer.h"
 
 #include "Qjoystick.h"
 #include "qjoystickenumerator.h"
@@ -61,6 +62,7 @@ private:
     ScannerModule* _scanner;
     PrinterModule* _printer;
     SerialPort * _port;
+    Polyplexer * _polyplexer;
     static QJoystick* _joypad;
     QTimer _hardwareTimer;
 
