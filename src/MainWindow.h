@@ -21,7 +21,10 @@
 #include "PolyboxModule.h"
 #include "polyplexer.h"
 
-#include "fsmainwindow.h"
+#if !defined NO_SCAN
+ #include "fsmainwindow.h"
+#endif
+
 #include "pageState.h"
 #include "ATUButton.h"
 

@@ -130,6 +130,32 @@
     <string>Console</string>
    </property>
   </widget>
+  <widget class="QPushButton" name="pinEditor">
+   <property name="geometry">
+    <rect>
+     <x>90</x>
+     <y>520</y>
+     <width>91</width>
+     <height>25</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Pin Editeur</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="flashBoard">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>520</y>
+     <width>71</width>
+     <height>25</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Flasher</string>
+   </property>
+  </widget>
  </widget>
  <customwidgets>
   <customwidget>

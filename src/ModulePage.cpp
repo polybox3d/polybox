@@ -16,6 +16,8 @@ ModulePage::ModulePage(PolyboxModule* poly, QWidget *parent) :
     _base_scaling_size = 10;
     ui->setupUi(this);
     ui->homeButton->installEventFilter( this );
+    _updateTimer.start( Config::updateModuleTimer );
+    connect( &_updateTimer, SIGNAL(timeout()), this, SLOT(repaintComponents()) );
 
 }
 
@@ -39,7 +41,7 @@ void ModulePage::disableJoypad()
     _handler = NULL;
 }
 
-void ModulePage::paintEvent(QPaintEvent *)
+void ModulePage::repaintComponents()
 {
     // CNC
     if ( _polybox->isCncReady() )

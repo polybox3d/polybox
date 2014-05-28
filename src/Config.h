@@ -95,6 +95,7 @@ public:
     static void saveToXmlFile( QString filename );
     static void parseGeneral(QXmlStreamReader *xml);
     static void parseCNC(QXmlStreamReader *xml);
+    static void parsePrinter(QXmlStreamReader *xml);
     static void parseWebcam(QXmlStreamReader *xml);
 
 

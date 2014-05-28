@@ -1,4 +1,5 @@
 #include "WarningPage.h"
+#include "DebugPin.h"
 #include "ui_WarningPage.h"
 
 WarningPage::WarningPage(PolyboxModule *polybox, QWidget *parent) :
@@ -63,4 +64,11 @@ void WarningPage::on_console_clicked()
 {
     MainWindow::getMainWindow()->startConsoleWindow();
 
+}
+
+void WarningPage::on_pinEditor_clicked()
+{
+    DebugPin* debugpin = new DebugPin();
+    debugpin->setWindowTitle("Editeur de pin");
+    debugpin->show();
 }

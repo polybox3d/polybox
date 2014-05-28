@@ -18,9 +18,13 @@ DEFINES += BYPASS_CHECK
 QMAKE_CXXFLAGS_DEBUG +=  -O3 -Ofast
 }
 
+DEFINES += NO_SCAN
 #UART Lib
 include(../externals/qextserialport/src/qextserialport.pri)
-include(../externals/FabScan100/qtTest/qtTest.pri)
+
+
+#include(../externals/FabScan100/qtTest/qtTest.pri)
+
 
 
 SOURCES += main.cpp\
@@ -69,7 +73,8 @@ SOURCES += main.cpp\
     ATUButton.cpp \
     OnOffButton.cpp \
     Console.cpp \
-    polyplexer.cpp
+    polyplexer.cpp \
+    DebugPin.cpp
 
 HEADERS  += MainWindow.h \
         OpenPage.h \
@@ -118,7 +123,8 @@ HEADERS  += MainWindow.h \
     ATUButton.h \
     OnOffButton.h \
     Console.h \
-    polyplexer.h
+    polyplexer.h \
+    DebugPin.h
 
 FORMS    += MainWindow.ui \
         OpenPage.ui \
@@ -141,7 +147,8 @@ FORMS    += MainWindow.ui \
     PrinterSmallUI.ui \
     qjoystickenumerator.ui \
     interbutton.ui \
-    Console.ui
+    Console.ui \
+    DebugPin.ui
 
 RESOURCES += \
     ressources.qrc

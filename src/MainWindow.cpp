@@ -53,6 +53,7 @@ MainWindow::MainWindow(QWidget *parent) :
 void MainWindow::startConsoleWindow()
 {
     Console* c = new Console();
+    c->setWindowTitle("Console");
     c->show();
 }
 
@@ -302,7 +303,9 @@ void MainWindow::updateStatePage()
         break;
     case ScannerLaser :
     {
-        this->setCentralWidget( new FsMainWindow( _polybox->port(), this ) );
+#if !defined NO_SCAN
+ this->setCentralWidget( new FsMainWindow( _polybox->port(), this ) );
+#endif
         /*QProcess* laser = new QProcess(this);
         laser->start( Config::scannerLaserPath );*/
         break;

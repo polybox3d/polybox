@@ -59,7 +59,7 @@
    <property name="title">
     <string>WebCam</string>
    </property>
-   <widget class="QWidget" name="">
+   <widget class="QWidget" name="layoutWidget">
     <property name="geometry">
      <rect>
       <x>10</x>
@@ -91,25 +91,20 @@
      </item>
     </layout>
    </widget>
-   <zorder>webcamName</zorder>
-   <zorder>pathDev</zorder>
-   <zorder>label_4</zorder>
-   <zorder>label_5</zorder>
-   <zorder>groupBox_3</zorder>
   </widget>
   <widget class="QGroupBox" name="groupBox_2">
    <property name="geometry">
     <rect>
      <x>400</x>
-     <y>160</y>
+     <y>170</y>
      <width>341</width>
-     <height>131</height>
+     <height>111</height>
     </rect>
    </property>
    <property name="title">
     <string>CNC</string>
    </property>
-   <widget class="QWidget" name="">
+   <widget class="QWidget" name="layoutWidget">
     <property name="geometry">
      <rect>
       <x>10</x>
@@ -148,32 +143,22 @@
      <x>10</x>
      <y>130</y>
      <width>371</width>
-     <height>271</height>
+     <height>341</height>
     </rect>
    </property>
    <property name="title">
     <string>Générale</string>
    </property>
-   <widget class="QWidget" name="">
+   <widget class="QWidget" name="layoutWidget">
     <property name="geometry">
      <rect>
-      <x>11</x>
-      <y>45</y>
+      <x>10</x>
+      <y>40</y>
       <width>341</width>
-      <height>120</height>
+      <height>276</height>
      </rect>
     </property>
     <layout class="QGridLayout" name="gridLayout">
-     <item row="0" column="0">
-      <widget class="QLabel" name="label">
-       <property name="text">
-        <string>Repertoire Home :</string>
-       </property>
-      </widget>
-     </item>
-     <item row="0" column="1">
-      <widget class="QLineEdit" name="homeDirectory"/>
-     </item>
      <item row="1" column="0">
       <widget class="QLabel" name="label_7">
        <property name="text">
@@ -181,8 +166,45 @@
        </property>
       </widget>
      </item>
+     <item row="2" column="1">
+      <widget class="QComboBox" name="serialDeviceCombo"/>
+     </item>
+     <item row="6" column="0">
+      <widget class="QLabel" name="label_13">
+       <property name="text">
+        <string>Executable PolyPlexer :</string>
+       </property>
+      </widget>
+     </item>
+     <item row="4" column="0">
+      <widget class="QLabel" name="label_11">
+       <property name="text">
+        <string>Désactiver les contrôles :</string>
+       </property>
+      </widget>
+     </item>
+     <item row="4" column="1">
+      <widget class="QCheckBox" name="activateByPass">
+       <property name="text">
+        <string/>
+       </property>
+      </widget>
+     </item>
+     <item row="6" column="1">
+      <widget class="QLineEdit" name="polyplexerBin"/>
+     </item>
+     <item row="0" column="0">
+      <widget class="QLabel" name="label">
+       <property name="text">
+        <string>Repertoire Home :</string>
+       </property>
+      </widget>
+     </item>
      <item row="1" column="1">
       <widget class="QLineEdit" name="serialPortPath"/>
+     </item>
+     <item row="0" column="1">
+      <widget class="QLineEdit" name="homeDirectory"/>
      </item>
      <item row="2" column="0">
       <widget class="QLabel" name="label_8">
@@ -191,8 +213,8 @@
        </property>
       </widget>
      </item>
-     <item row="2" column="1">
-      <widget class="QComboBox" name="serialDeviceCombo"/>
+     <item row="5" column="1">
+      <widget class="QLineEdit" name="virtualDevice"/>
      </item>
      <item row="3" column="0">
       <widget class="QLabel" name="label_6">
@@ -201,11 +223,20 @@
        </property>
       </widget>
      </item>
+     <item row="5" column="0">
+      <widget class="QLabel" name="label_12">
+       <property name="text">
+        <string>Périphérique Virtuel : </string>
+       </property>
+      </widget>
+     </item>
      <item row="3" column="1">
       <widget class="QLineEdit" name="baudrate"/>
      </item>
     </layout>
    </widget>
+   <zorder>layoutWidget</zorder>
+   <zorder>activateByPass</zorder>
   </widget>
   <widget class="QGroupBox" name="groupBox_4">
    <property name="geometry">
@@ -213,7 +244,7 @@
      <x>10</x>
      <y>20</y>
      <width>371</width>
-     <height>121</height>
+     <height>101</height>
     </rect>
    </property>
    <property name="title">
@@ -270,6 +301,51 @@
     <property name="text">
      <string>Charger Valeurs usines</string>
     </property>
+   </widget>
+  </widget>
+  <widget class="QGroupBox" name="groupBox_5">
+   <property name="geometry">
+    <rect>
+     <x>400</x>
+     <y>300</y>
+     <width>341</width>
+     <height>121</height>
+    </rect>
+   </property>
+   <property name="title">
+    <string>Imprimante</string>
+   </property>
+   <widget class="QWidget" name="layoutWidget_2">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>30</y>
+      <width>321</width>
+      <height>58</height>
+     </rect>
+    </property>
+    <layout class="QGridLayout" name="gridLayout_4">
+     <item row="0" column="0">
+      <widget class="QLabel" name="label_9">
+       <property name="text">
+        <string>Executable :</string>
+       </property>
+      </widget>
+     </item>
+     <item row="0" column="1">
+      <widget class="QLineEdit" name="printersoftBin"/>
+     </item>
+     <item row="1" column="0">
+      <widget class="QLabel" name="label_10">
+       <property name="text">
+        <string>Répertoire de travail :</string>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="1">
+      <widget class="QLineEdit" name="printerworkingdir"/>
+     </item>
+    </layout>
    </widget>
   </widget>
  </widget>

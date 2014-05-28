@@ -53,6 +53,8 @@ private slots:
 
     void on_console_clicked();
 
+    void on_pinEditor_clicked();
+
 private:
     /**
      * @brief ui Graphical Layer.

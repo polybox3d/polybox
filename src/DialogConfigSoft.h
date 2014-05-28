@@ -43,6 +43,10 @@ private slots:
 
     void on_loadFactoryValue_clicked();
 
+    void on_printersoftBin_cursorPositionChanged(int arg1, int arg2);
+
+    void on_printerworkingdir_cursorPositionChanged(int arg1, int arg2);
+
 private:
     /**
      * @brief ui Graphical layer.
@@ -52,3 +56,4 @@ private:
 };
 
 #endif // DIALOGCONFIGSOFT_H
+

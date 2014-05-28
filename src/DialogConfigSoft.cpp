@@ -47,6 +47,11 @@ void DialogConfigSoft::saveValue()
     Config::motherboardBaudrate =  ui->baudrate->text().toInt() ;
     Config::pathToSerialDevice = ui->serialPortPath->text() ;
     Config::serialPortName = ui->serialDeviceCombo->currentText() ;
+
+    Config::pathToPrinterSoftware = ui->printersoftBin->text();
+    Config::pathToPrinterWorkingDir = ui->printerworkingdir->text();
+
+    Config::bypassCheck = ui->activateByPass->isChecked();
 }
 
 void DialogConfigSoft::on_validate_clicked()
@@ -91,3 +96,24 @@ void DialogConfigSoft::on_loadFactoryValue_clicked()
     Config::importFromXmlFile( INITIAL_CONFIG_FILE );
     updateValues();
 }
+
+void DialogConfigSoft::on_printersoftBin_cursorPositionChanged(int arg1, int arg2)
+{
+    QString fileName = QFileDialog::getOpenFileName(this,
+                                                    tr("Selectionner l'executable du logiciel d'impression"), ".", tr("executable (*)"));
+    if ( fileName != NULL && ! fileName.isEmpty() )
+    {
+       ui->printersoftBin->setText( fileName );
+    }
+}
+
+void DialogConfigSoft::on_printerworkingdir_cursorPositionChanged(int arg1, int arg2)
+{
+    QString dirName = QFileDialog::getExistingDirectory(this,
+                                                         tr("Selectionner un répertoire de travail"),".");
+    if ( dirName != NULL && ! dirName.isEmpty() )
+    {
+       ui->printerworkingdir->setText( dirName );
+    }
+}
+

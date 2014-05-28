@@ -3,6 +3,7 @@
 
 #include <QWidget>
 #include <QPaintEvent>
+#include <QTimer>
 #include <iostream>
 
 #include "pageState.h"
@@ -44,7 +45,6 @@ public:
     void back();
 
 protected:
-    void paintEvent(QPaintEvent *);
 
 public slots:
     void setJoypad( QJoystick* joypad );
@@ -58,6 +58,9 @@ public slots:
 
     void on_scannerButton_clicked();
 
+protected slots:
+    void repaintComponents();
+
 private:
     Ui::ModulePage *ui;
     bool eventFilter(QObject *obj, QEvent *event);
@@ -65,6 +68,7 @@ private:
 
     PolyboxModule* _polybox;
     ModulePageJPH* _handler;
+    QTimer _updateTimer;
 };
 
 #endif // MODULEPAGE_H

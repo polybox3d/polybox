@@ -89,6 +89,9 @@ void Config::importFromXmlFile( QString filename )
                 if(xml.name() == "cnc") {
                     parseCNC( &xml );
                 }
+                if(xml.name() == "printer") {
+                    parsePrinter( &xml );
+                }
 
                 xml.readNext();
             }
@@ -98,6 +101,26 @@ void Config::importFromXmlFile( QString filename )
     }
 
 
+}
+void Config::parsePrinter(QXmlStreamReader *xml)
+{
+    while(!(xml->tokenType() == QXmlStreamReader::EndElement && xml->name() == "printer"))
+    {
+        if(xml->tokenType() == QXmlStreamReader::StartElement)
+        {
+            if(xml->name() == "path_to_printer")
+            {
+                xml->readNext();
+                Config::pathToPrinterSoftware = xml->text().toString();
+            }
+            if(xml->name() == "path_to_printer_workingdir")
+            {
+                xml->readNext();
+                Config::pathToPrinterWorkingDir = xml->text().toString();
+            }
+        }
+        xml->readNext();
+    }
 }
 
 void Config::parseGeneral(QXmlStreamReader *xml)
@@ -126,6 +149,37 @@ void Config::parseGeneral(QXmlStreamReader *xml)
                 xml->readNext();
                 Config::motherboardBaudrate = xml->text().toString().toInt();
             }
+            if(xml->name() == "path_to_virtudevice")
+            {
+                xml->readNext();
+                Config::pathToVirtualPolySerialDevice = xml->text().toString();
+            }
+            if(xml->name() == "virtuserial_port")
+            {
+                xml->readNext();
+                Config::serialVirtualPolySerialPort = xml->text().toString();
+            }
+            if(xml->name() == "path_polyplexer_daemon")
+            {
+                xml->readNext();
+                Config::pathToPolyplexerDaemon = xml->text().toString();
+            }
+            if(xml->name() == "update_config_timer")
+            {
+                xml->readNext();
+                Config::updateConfigModuleTimer = xml->text().toString().toInt();
+            }
+            if(xml->name() == "update_module_timer")
+            {
+                xml->readNext();
+                Config::updateModuleTimer = xml->text().toString().toInt();
+            }
+            if(xml->name() == "by_pass_check")
+            {
+                xml->readNext();
+                Config::bypassCheck = xml->text().toString().toInt();
+            }
+
         }
         xml->readNext();
     }
@@ -190,12 +244,24 @@ void Config::saveToXmlFile( QString filename )
     xml.writeTextElement("device_path", Config::pathToSerialDevice );
     xml.writeTextElement("device_name", Config::serialPortName );
     xml.writeTextElement("baudrate", QString::number( Config::motherboardBaudrate) );
+    xml.writeTextElement("path_to_virtudevice", Config::pathToVirtualPolySerialDevice);
+    xml.writeTextElement("virtuserial_port", Config::serialVirtualPolySerialPort);
+    xml.writeTextElement("path_polyplexer_daemon", Config::pathToPolyplexerDaemon);
+    xml.writeTextElement("update_config_timer", QString::number( Config::updateConfigModuleTimer) );
+    xml.writeTextElement("update_module_timer", QString::number( Config::updateModuleTimer) );
+    xml.writeTextElement("by_pass_check", QString::number(Config::bypassCheck) );
     xml.writeEndElement();//GENERAL
 
-    //GENERAL
+    //WEBCAM
     xml.writeStartElement("webcam");
     xml.writeTextElement("directory",Config::pathToWebcamDevice );
     xml.writeTextElement("device_name", Config::webcamName );
+    xml.writeEndElement();//GENERAL
+
+    //PRINTER
+    xml.writeStartElement("printer");
+    xml.writeTextElement("path_to_printer",Config::pathToPrinterSoftware );
+    xml.writeTextElement("path_to_printer_workingdir", Config::pathToPrinterWorkingDir );
     xml.writeEndElement();//GENERAL
 
     //GENERAL
