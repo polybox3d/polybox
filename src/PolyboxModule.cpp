@@ -47,7 +47,7 @@ void PolyboxModule::parseData()
 {
     QByteArray datas = _port->datas();
     QString str(datas);
-    int idx = str.indexOf('M') ;
+    int idx = str.indexOf('#') ;
     if ( idx != -1 ) // M Code find
     {
          _cnc->parseMCode( &str.toStdString().c_str()[idx+1] );

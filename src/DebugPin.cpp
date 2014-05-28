@@ -32,8 +32,8 @@ void DebugPin::setupComponents()
     ui->boardCombo->addItem("Slave 5");
 
     /**** Input Output combo box  ****/
-    ui->IOCombo->addItem("Output");
-    ui->IOCombo->addItem("Input");
+    /*ui->IOCombo->addItem("Output");
+    ui->IOCombo->addItem("Input");*/
 
 }
 
@@ -41,17 +41,51 @@ void DebugPin::parseData()
 {
     QByteArray data = SerialPort::getSerial()->datas();
 
+
+    QString str(data);
+    int idx = str.indexOf('#') ;
+    if ( idx == -1 ) // # Code bot found
+    {
+        return;
+    }
+
+    long value = SerialPort::embeddedstr2l( &str.toStdString().c_str()[idx+1], 0 );
+    idx = 0;
+    int size = str.size();
+    switch ( value )
+    {
+    case 700:
+    {
+        SerialPort::nextField( str, idx);
+        while ( idx < size )
+        {
+            if ( str[idx] == 'P' )
+            {
+                SerialPort::nextValue( str, idx);
+                ui->pinValueInc->setText( QString::number(SerialPort::embeddedstr2l( str, idx )) );
+            }
+            SerialPort::nextField( str, idx);
+        }
+        /*SerialPort::nextField( str, idx);
+        SerialPort::parseTrueFalse( &_, str[idx] );*/
+    }
+        break;
+
+    default:
+        break;
+    }
+
 }
 
 void DebugPin::updateComponents()
 {
-    if ( ui->IOCombo->currentIndex() == 0 )
-        return;
+/*    if ( ui->IOCombo->currentIndex() == 0 )
+        return;*/
     bool ok;
     ui->pinNumber->text().toInt(&ok);
     if ( ui->pinNumber->text().isEmpty() || !ok )
     {
-        ui->pinValue->setText("Select a pin");
+        ui->pinValue->setText("Select a value");
 
     }
     else
