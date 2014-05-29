@@ -18,6 +18,9 @@ This is a non-exhaustive list :
 * PCL (with FLANN)
 * Boost
 
+apt-get install gcc g++ build-essential
+apt-get install qt5-default qtmultimedia5-dev libqt5-*
+apt-get install qtcreator
 
 Usage
 =====
