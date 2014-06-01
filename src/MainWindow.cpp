@@ -95,6 +95,8 @@ void MainWindow::setupSerialMenu()
         }
     }
 }
+
+
 void MainWindow::startConnexion()
 {
     if ( QAction* act = dynamic_cast<QAction*>(sender()) )
@@ -108,12 +110,10 @@ void MainWindow::startConnexion()
         }
         else
         {
-            bool connected = poly->start( Config::pathToSerialDevice, act->text().split('/').last() );
+            bool connected = _polybox->connectToPrinter( Config::pathToSerialDevice, act->text().split('/').last() );
             act->setChecked( connected ) ;
-            if ( connected )
-            {
-                MainWindow::textWindow( "Your software is fully connected. ");
-            }
+
+
         }
     }
 }

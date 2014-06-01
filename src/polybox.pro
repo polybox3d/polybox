@@ -25,41 +25,17 @@ include(../externals/qextserialport/src/qextserialport.pri)
 
 #include(../externals/FabScan100/qtTest/qtTest.pri)
 
-
+INCLUDEPATH += Checker
+INCLUDEPATH += Page
+INCLUDEPATH += Module
+INCLUDEPATH += Widget
 
 SOURCES += main.cpp\
         MainWindow.cpp \
-        OpenPage.cpp \
         Updater.cpp \
-        ModulePage.cpp \
-        HelpPage.cpp \
-    HomeButton.cpp \
-    LabViewPage.cpp \
-    LabViewModule.cpp \
-    PrinterPage.cpp \
-    DialogCNC.cpp \
-    CNCPage.cpp \
-    ConfigCNCPage.cpp \
-    DialogScanner.cpp \
-    Led.cpp \
-    CNCChecker.cpp \
-    CheckerModele.cpp \
-    CNCModule.cpp \
-    SCannerChecker.cpp \
-    PrinterChecker.cpp \
-    WarningPage.cpp \
-    GlobalChecker.cpp \
-    DialogConfigSoft.cpp \
-    DynamicTestPage.cpp \
-    PolyboxModule.cpp \
-    PrinterModule.cpp \
-    ScannerModule.cpp \
-    AbstractChecker.cpp \
-    AbstractModule.cpp \
     Temperature.cpp \
     SerialPort.cpp \
     Config.cpp \
-    GlobalModule.cpp \
     Face.cpp \
     PrinterSmallUI.cpp \
     Qjoystick.cpp \
@@ -69,47 +45,46 @@ SOURCES += main.cpp\
     ModulePageJPH.cpp \
     LabViewJPH.cpp \
     OpenPageJPH.cpp \
-    interbutton.cpp \
-    ATUButton.cpp \
-    OnOffButton.cpp \
-    Console.cpp \
-    polyplexer.cpp \
-    DebugPin.cpp
+    Widget/Console.cpp \
+    Widget/HomeButton.cpp \
+    Widget/DialogCNC.cpp \
+    Widget/DialogScanner.cpp \
+    Widget/Led.cpp \
+    Widget/DialogConfigSoft.cpp \
+    Widget/interbutton.cpp \
+    Widget/ATUButton.cpp \
+    Widget/OnOffButton.cpp \
+    Widget/DebugPin.cpp \
+    Checker/AbstractChecker.cpp \
+    Checker/CNCChecker.cpp \
+    Checker/CheckerModele.cpp \
+    Checker/SCannerChecker.cpp \
+    Checker/PrinterChecker.cpp \
+    Checker/GlobalChecker.cpp \
+    Page/DynamicTestPage.cpp \
+    Page/WarningPage.cpp \
+    Page/CNCPage.cpp \
+    Page/ConfigCNCPage.cpp \
+    Page/PrinterPage.cpp \
+    Page/LabViewPage.cpp \
+    Page/OpenPage.cpp \
+    Page/ModulePage.cpp \
+    Page/HelpPage.cpp \
+    Module/GlobalModule.cpp \
+    Module/LabViewModule.cpp \
+    Module/CNCModule.cpp \
+    Module/PolyboxModule.cpp \
+    Module/PrinterModule.cpp \
+    Module/ScannerModule.cpp \
+    Module/AbstractModule.cpp \
+    polyplexer.cpp
 
 HEADERS  += MainWindow.h \
-        OpenPage.h \
         Updater.h \
-        ModulePage.h \
-        HelpPage.h \
-        pageState.h \
-    HomeButton.h \
-    LabViewPage.h \
-    LabViewModule.h \
-    PrinterPage.h \
-    DialogCNC.h \
-    CNCPage.h \
-    ConfigCNCPage.h \
-    DialogScanner.h \
-    Led.h \
-    CNCChecker.h \
-    CheckerModele.h \
-    CNCModule.h \
-    SCannerChecker.h \
-    PrinterChecker.h \
-    WarningPage.h \
-    GlobalChecker.h \
-    DialogConfigSoft.h \
-    DynamicTestPage.h \
-    PolyboxModule.h \
-    PrinterModule.h \
-    ScannerModule.h \
-    AbstractChecker.h \
-    AbstractModule.h \
     Temperature.h \
     SerialPort.h \
     mcode.h \
     Config.h \
-    GlobalModule.h \
     Face.h \
     PrinterSmallUI.h \
     Qjoystick.h \
@@ -119,36 +94,64 @@ HEADERS  += MainWindow.h \
     ModulePageJPH.h \
     LabViewJPH.h \
     OpenPageJPH.h \
-    interbutton.h \
-    ATUButton.h \
-    OnOffButton.h \
-    Console.h \
-    polyplexer.h \
-    DebugPin.h
+    Widget/interbutton.h \
+    Widget/ATUButton.h \
+    Widget/OnOffButton.h \
+    Widget/Console.h \
+    Widget/HomeButton.h \
+    Widget/DialogCNC.h \
+    Widget/DialogScanner.h \
+    Widget/Led.h \
+    Widget/DialogConfigSoft.h \
+    Widget/DebugPin.h \
+    Checker/CNCChecker.h \
+    Checker/CheckerModele.h \
+    Checker/SCannerChecker.h \
+    Checker/PrinterChecker.h \
+    Checker/AbstractChecker.h \
+    Checker/GlobalChecker.h \
+    Page/WarningPage.h \
+    Page/DynamicTestPage.h \
+    Page/ConfigCNCPage.h \
+    Page/CNCPage.h \
+    Page/PrinterPage.h \
+    Page/ModulePage.h \
+    Page/HelpPage.h \
+    Page/pageState.h \
+    Page/LabViewPage.h \
+    Page/OpenPage.h \
+    Module/CNCModule.h \
+    Module/LabViewModule.h \
+    Module/PolyboxModule.h \
+    Module/PrinterModule.h \
+    Module/ScannerModule.h \
+    Module/AbstractModule.h \
+    Module/GlobalModule.h \
+    polyplexer.h
 
 FORMS    += MainWindow.ui \
-        OpenPage.ui \
-        ModulePage.ui \
-        HelpPage.ui \
-    LabViewPage.ui \
-    PrinterPage.ui \
-    DialogCNC.ui \
-    CNCPage.ui \
-    ConfigCNCPage.ui \
-    DialogScanner.ui \
-    CNCChecker.ui \
-    CheckerModele.ui \
-    SCannerChecker.ui \
-    PrinterChecker.ui \
-    WarningPage.ui \
-    GlobalChecker.ui \
-    DialogConfigSoft.ui \
-    DynamicTestPage.ui \
     PrinterSmallUI.ui \
     qjoystickenumerator.ui \
-    interbutton.ui \
-    Console.ui \
-    DebugPin.ui
+    Widget/interbutton.ui \
+    Widget/Console.ui \
+    Widget/DialogCNC.ui \
+    Widget/DialogScanner.ui \
+    Widget/DialogConfigSoft.ui \
+    Widget/DebugPin.ui \
+    Checker/CNCChecker.ui \
+    Checker/CheckerModele.ui \
+    Checker/SCannerChecker.ui \
+    Checker/PrinterChecker.ui \
+    Checker/GlobalChecker.ui \
+    Page/CNCPage.ui \
+    Page/ConfigCNCPage.ui \
+    Page/WarningPage.ui \
+    Page/DynamicTestPage.ui \
+    Page/OpenPage.ui \
+    Page/ModulePage.ui \
+    Page/HelpPage.ui \
+    Page/LabViewPage.ui \
+    Page/PrinterPage.ui
 
 RESOURCES += \
     ressources.qrc

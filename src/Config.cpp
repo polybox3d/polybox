@@ -21,7 +21,7 @@ QString Config::serialPortName="ttyACM0";//wildcard allowed
 QString Config::linuxCNCCommand="linuxcnc";
 QString Config::scannerLaserPath=Config::pathToHomeDirectory+"/fabscan100/qtTest/";
 QString Config::defaultConfigFileName="./config.xml";
-QString Config::pathToPolyplexerDaemon="/home/onslaught/Dev/reprapgiga/Tools-Polybox/polyplexer/PolyPlexer";
+QString Config::pathToPolyplexerDaemon="../../externals/Polyplexer/PolyPlexer";
 
 int Config::motherboardBaudrate=115200;
 bool Config::bypassCheck = true ;

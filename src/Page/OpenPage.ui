@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>OpenPage</class>
+ <widget class="QWidget" name="OpenPage">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>800</width>
+    <height>550</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Form</string>
+  </property>
+  <widget class="QLabel" name="label">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>0</y>
+     <width>771</width>
+     <height>231</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:xx-large; font-weight:600;&quot;&gt;Bienvenue !&lt;/span&gt;&lt;/p&gt;&lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent convallis porttitor orci ut tincidunt. Sed lorem urna, convallis vel tincidunt non, pretium in risus. Donec ac erat semper, eleifend sem vel, ornare mauris. Integer quis est nisi. Curabitur volutpat nulla sed vestibulum tincidunt. &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+   </property>
+   <property name="scaledContents">
+    <bool>true</bool>
+   </property>
+   <property name="wordWrap">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="warning">
+   <property name="geometry">
+    <rect>
+     <x>610</x>
+     <y>450</y>
+     <width>111</width>
+     <height>71</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Configuration</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="module">
+   <property name="geometry">
+    <rect>
+     <x>330</x>
+     <y>430</y>
+     <width>181</width>
+     <height>101</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Commencez</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="help">
+   <property name="geometry">
+    <rect>
+     <x>100</x>
+     <y>450</y>
+     <width>111</width>
+     <height>71</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Aide</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="logo">
+   <property name="geometry">
+    <rect>
+     <x>300</x>
+     <y>200</y>
+     <width>231</width>
+     <height>211</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="pixmap">
+    <pixmap resource="ressources.qrc">:/img/img/logo_400.png</pixmap>
+   </property>
+   <property name="scaledContents">
+    <bool>true</bool>
+   </property>
+  </widget>
+ </widget>
+ <resources>
+  <include location="ressources.qrc"/>
+ </resources>
+ <connections/>
+</ui>

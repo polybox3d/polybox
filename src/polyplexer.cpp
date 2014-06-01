@@ -10,8 +10,8 @@ Polyplexer::Polyplexer(QObject *parent) :
 {
     _polyplexer = NULL;
     _outputWidget = NULL;
-    _portMachine="ttyACM0";
-    _pathMachine="/dev/";
+    _portMachine = Config::serialPortName;
+    _pathMachine = Config::pathToSerialDevice;
 
     useWindowOutput(false);
 }
@@ -30,6 +30,7 @@ Polyplexer::~Polyplexer()
 
 bool Polyplexer::isRunning()
 {
+    return SerialPort::getSerial()->isConnected();
 }
 
 void Polyplexer::useWindowOutput(bool use_window )
@@ -40,6 +41,14 @@ void Polyplexer::manageWindow()
 {
 
 }
+
+QByteArray Polyplexer::printerDatas()
+{
+    if ( SerialPort::getSerial() == NULL)
+        return "";
+    return SerialPort::getSerial()->datas();
+}
+
 bool Polyplexer::start(QString path, QString port)
 {
     setPortMachine( port );
@@ -75,7 +84,7 @@ bool Polyplexer::start()
             _outputWidget->show();
         }
         /** Start VirtualSerial Connexion **/
-        isRunning = SerialPort::getSerial()->connectToSerialPort();
+        isRunning = !(_polyplexer->waitForFinished(1000)) && SerialPort::getSerial()->connectToSerialPort() ;
     }
     return isRunning;
 }
