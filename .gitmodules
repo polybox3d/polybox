@@ -5,3 +5,6 @@
 [submodule "externals/FabScan100"]
 	path = externals/FabScan100
 	url = https://github.com/skapin/FabScan100.git
+[submodule "externals/Polyplexer"]
+	path = externals/Polyplexer
+	url = https://github.com/skapin/Polyplexer.git
