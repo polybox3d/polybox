@@ -28,11 +28,17 @@ Usage
 First, you need to clone (or download) this repository.
 Then, the project need to update submodule from external repository.
 Run : 
-git submodule init 
-git submobule update
-
+```
+ git submodule init 
+ git submodule update
+```
 The first command init git submodule, the second update and getfiles from external repo.
 
+To pull current and external repository updatge use : 
+
+```
+ git pull --recurse-submodules
+```
 
 License
 =======
