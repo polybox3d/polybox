@@ -64,7 +64,7 @@ bool Polyplexer::start()
     QString program = Config::pathToPolyplexerDaemon;
     QStringList arguments;
 
-    arguments << this->_pathMachine+this->_portMachine << DEAMON_POLY_POLYPLEXER << DEAMON_PRINTER_POLYPLEXER;
+    arguments << QString("--serial=")+this->_pathMachine+this->_portMachine << QString("--polybox_sock=")+DEAMON_POLY_POLYPLEXER << QString("--printer_sock=")+DEAMON_PRINTER_POLYPLEXER;
     _polyplexer = new QProcess( this );
     connect( _polyplexer, SIGNAL(finished(int,QProcess::ExitStatus)), this,SLOT(finished(int,QProcess::ExitStatus)));
     connect( _polyplexer, SIGNAL(readyReadStandardError()), this,SLOT(newOutputText()));
@@ -94,22 +94,22 @@ void Polyplexer::finished(int exitCode, QProcess::ExitStatus exitStatus)
     {
         if  ( exitCode == 1 )
         {
-            MainWindow::errorWindow( _polyplexer->readAllStandardError()+"\n\n. Bad software usage...This should not happen, unless you mess with the software or set bad settings...");
+            MainWindow::errorWindow( _polyplexer->readAllStandardError()+tr("\n\nMauvaise configuration du logiciel...Ca n'aurait pas du se passer à part si vous avez modifier tout et n'importequoi dans les configurations ou les sources..."));
         }
         else if  ( exitCode == 8 )
         {
-            MainWindow::errorWindow( _polyplexer->readAllStandardError()+"\n\n.The software can't connect to the printer. It can't found serial connexion.\n"
-                                     "Check if hardware is correcty plugged, powered and if software parameters are correct (device name, path, permission).");
+            MainWindow::errorWindow( _polyplexer->readAllStandardError()+tr("\n\nImpossible de se connecter à la machine. Connexion serie/USB introuvable.\n"
+                                     "Verifiez les branchements, l'alimentation electrique et les paramètres (device name, path, permission)."));
         }
         else if  ( exitCode == 9 )
         {
-            MainWindow::errorWindow( _polyplexer->readAllStandardError()+"\n\n.The software can't connect to the virtual printer serial. It can't found serial connexion.\n"
-                                     "Check if software parameters are correct (device name, path, permission).");
+            MainWindow::errorWindow( _polyplexer->readAllStandardError()+tr("\n\nImpossible de se connecter à la machine. Connexion serie/USB introuvable.\n"
+                                     "Verifiez les parametres (device name, path, permission)."));
         }
         else if  ( exitCode == 10 )
         {
-            MainWindow::errorWindow( _polyplexer->readAllStandardError()+"\n\n.The software is not connected to the virtual polysoftware serial. It can't found serial connexion.\n"
-                                     "Check if software parameters are correct (device name, path, permission).");
+            MainWindow::errorWindow( _polyplexer->readAllStandardError()+tr("\n\nImpossible de se connecter au peripherique virtuel. Connexion introuvable.\n"
+                                     "Verifiez les parametres (device name, path, permission)."));
         }
         else
         {
@@ -119,7 +119,7 @@ void Polyplexer::finished(int exitCode, QProcess::ExitStatus exitStatus)
     }
     else
     {
-        MainWindow::textWindow( "Connexion closed. ");
+        MainWindow::textWindow( "Connexion fermée. ");
     }
     this->stop();
 }

@@ -48,16 +48,16 @@ bool PolyboxModule::connectToPrinter()
     {
         if ( SerialPort::getSerial()->isConnected()  )
         {
-            MainWindow::textWindow( "Your software is fully connected. ");
+            MainWindow::textWindow( tr("Le logiciel est correctement connecté à la machine. ") );
         }
         else
         {
-            MainWindow::errorWindow( "The software can't connect to the printer.\n Error 0xff34' " );
+            MainWindow::errorWindow( tr("Impossible de se connecter à la machine.\n Error 0xff34' ") );
         }
     }
     else
     {
-        MainWindow::errorWindow( "The software can't connect to the printer.\n Error starting Polyplexer. 0xff30' " );
+        MainWindow::errorWindow( tr("Impossible de se connecter à la machine.\n Erreur au lancement du sous-programme Polyplexer. 0xff30' ") );
     }
     return _connected;
 }

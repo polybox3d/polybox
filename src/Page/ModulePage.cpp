@@ -44,7 +44,7 @@ void ModulePage::disableJoypad()
 void ModulePage::repaintComponents()
 {
     // CNC
-    if ( _polybox->isCncReady() )
+    if ( _polybox->isCncReady() || Config::bypassCheck )
     {
         ui->cncButton->setStyleSheet( QString("background-color: ")+DEFAULT_CNC_BUTTON+";" );
     }
@@ -53,7 +53,7 @@ void ModulePage::repaintComponents()
         ui->cncButton->setStyleSheet( QString("background-color: ")+DEFAULT_DISABLE_BUTTON+";" );
     }
     // SCANNER
-    if ( _polybox->isScannerReady() )
+    if ( _polybox->isScannerReady() || Config::bypassCheck )
     {
         ui->scannerButton->setStyleSheet(  QString("background-color: ")+DEFAULT_SCANNER_BUTTON+";" );
     }
@@ -62,7 +62,7 @@ void ModulePage::repaintComponents()
         ui->scannerButton->setStyleSheet(  QString("background-color: ")+DEFAULT_DISABLE_BUTTON+";" );
     }
     // PRINTER
-    if ( _polybox->isPrinterReady() )
+    if ( _polybox->isPrinterReady() || Config::bypassCheck )
     {
         ui->printerButton->setStyleSheet(  QString("background-color: ")+DEFAULT_PRINTER_BUTTON+";" );
     }

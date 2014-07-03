@@ -18,6 +18,7 @@
 #include "ConfigCNCPage.h"
 #include "WarningPage.h"
 #include "DynamicTestPage.h"
+#include "DialogConfigSoft.h"
 #include "PolyboxModule.h"
 #include "polyplexer.h"
 
@@ -78,6 +79,8 @@ private slots:
     void on_actionLabView_dock_triggered();
 
     void on_actionConsole_triggered();
+
+    void on_actionParametres_triggered();
 
 private:
     void updateStatePage();

@@ -36,13 +36,15 @@ enum MCodeFlags
 
 #define MCODE_LABVIEW_GET_STATUS                640
 #define MCODE_LABVIEW_SET_STATUS                641
-#define MCODE_LABVIEW_GET_RGB                   642
-#define MCODE_LABVIEW_SET_RGB                   643
+#define MCODE_LABVIEW_GET_GLOBAL_RGB            642
+#define MCODE_LABVIEW_SET_GLOBAL_RGB            643
 #define MCODE_LABVIEW_GET_GLOBAL_I              644
 #define MCODE_LABVIEW_SET_GLOBAL_I              645
 #define MCODE_LABVIEW_GET_FACE_I                646
 #define MCODE_LABVIEW_SET_FACE_I                647
 #define MCODE_LABVIEW_LED_PLUGGED               648
+#define MCODE_LABVIEW_GET_FACE_RGB              650
+#define MCODE_LABVIEW_SET_FACE_RGB              651
 
 /**      PRINTER MCODE    **/
 

@@ -384,3 +384,13 @@ void MainWindow::on_actionConsole_triggered()
 {
     this->startConsoleWindow();
 }
+
+void MainWindow::on_actionParametres_triggered()
+{
+    DialogConfigSoft dialog( _polybox, (QWidget*)this->parent());
+    int value_ret = dialog.exec();
+    if ( value_ret != 0 )
+    {
+
+    }
+}

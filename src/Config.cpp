@@ -9,13 +9,13 @@ Config::Config()
 QString Config::pathToHomeDirectory="/home/onslaught/";
 QString Config::pathToPrinterSoftware=Config::pathToHomeDirectory+"Dev/reprapgiga/Repetier-HostModified/Repetier-Host-master/src/RepetierHost/bin/Release/RepetierHost.exe";
 QString Config::pathToPrinterWorkingDir=Config::pathToHomeDirectory+"Dev/reprapgiga/RepetierHost";
+
 QString Config::pathToLinuxCNC=Config::pathToHomeDirectory+"linuxcnc/";
-QString Config::pathToWebcamDevice="/dev/";
-QString Config::webcamName="video0";
 QString Config::pathToSerialDevice="/dev/";
 
 QString Config::pathToVirtualPolySerialDevice="/dev/";
 QString Config::serialVirtualPolySerialPort="ttyPOLY";
+QString Config::pathToWebcamDevice="/dev/";
 
 QString Config::serialPortName="ttyACM0";//wildcard allowed
 QString Config::linuxCNCCommand="linuxcnc";
@@ -82,9 +82,6 @@ void Config::importFromXmlFile( QString filename )
                 if(xml.name() == "general")
                 {
                     parseGeneral( &xml );
-                }
-                if(xml.name() == "webcam") {
-                    parseWebcam( &xml );
                 }
                 if(xml.name() == "cnc") {
                     parseCNC( &xml );
@@ -205,26 +202,6 @@ void Config::parseCNC(QXmlStreamReader *xml)
         xml->readNext();
     }
 }
-void Config::parseWebcam(QXmlStreamReader *xml)
-{
-    while(!(xml->tokenType() == QXmlStreamReader::EndElement && xml->name() == "webcam"))
-    {
-        if(xml->tokenType() == QXmlStreamReader::StartElement)
-        {
-            if(xml->name() == "directory")
-            {
-                xml->readNext();
-                Config::pathToWebcamDevice = xml->text().toString();
-            }
-            if(xml->name() == "device_name")
-            {
-                xml->readNext();
-                Config::webcamName = xml->text().toString();
-            }
-        }
-        xml->readNext();
-    }
-}
 
 void Config::saveToXmlFile( QString filename )
 {
@@ -244,32 +221,33 @@ void Config::saveToXmlFile( QString filename )
     xml.writeTextElement("device_path", Config::pathToSerialDevice );
     xml.writeTextElement("device_name", Config::serialPortName );
     xml.writeTextElement("baudrate", QString::number( Config::motherboardBaudrate) );
+    xml.writeTextElement("by_pass_check", QString::number(Config::bypassCheck) );
     xml.writeTextElement("path_to_virtudevice", Config::pathToVirtualPolySerialDevice);
     xml.writeTextElement("virtuserial_port", Config::serialVirtualPolySerialPort);
     xml.writeTextElement("path_polyplexer_daemon", Config::pathToPolyplexerDaemon);
+    xml.writeTextElement("hardaware_timer", QString::number( Config::hardwareTimer) );
     xml.writeTextElement("update_config_timer", QString::number( Config::updateConfigModuleTimer) );
     xml.writeTextElement("update_module_timer", QString::number( Config::updateModuleTimer) );
-    xml.writeTextElement("by_pass_check", QString::number(Config::bypassCheck) );
+
     xml.writeEndElement();//GENERAL
 
-    //WEBCAM
-    xml.writeStartElement("webcam");
-    xml.writeTextElement("directory",Config::pathToWebcamDevice );
-    xml.writeTextElement("device_name", Config::webcamName );
-    xml.writeEndElement();//GENERAL
+    //SCANNER
+    xml.writeStartElement("scanner");
+    xml.writeTextElement("path_to_scanner",Config::scannerLaserPath );
+    xml.writeEndElement();//scanner
 
-    //PRINTER
-    xml.writeStartElement("printer");
-    xml.writeTextElement("path_to_printer",Config::pathToPrinterSoftware );
-    xml.writeTextElement("path_to_printer_workingdir", Config::pathToPrinterWorkingDir );
-    xml.writeEndElement();//GENERAL
-
-    //GENERAL
+    //CNC
     xml.writeStartElement("cnc");
     xml.writeTextElement("directory",Config::pathToLinuxCNC );
     xml.writeTextElement("bin_command", Config::linuxCNCCommand );
     xml.writeEndElement();//GENERAL
 
+
+    //PRINTER
+    xml.writeStartElement("printer");
+    xml.writeTextElement("path_to_printer",Config::pathToPrinterSoftware );
+    xml.writeTextElement("path_to_printer_workingdir", Config::pathToPrinterWorkingDir );
+    xml.writeEndElement();//PRINTER
 
     xml.writeEndElement();//config
     xml.writeEndDocument();

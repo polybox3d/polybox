@@ -48,10 +48,6 @@ public:
     static QString serialVirtualPolySerialPort;
 
     /**
-     * @brief webcamName id for webcam (video0)
-     */
-    static QString webcamName;
-    /**
      * @brief scannerLaserPath Full path to scanner-laser software.
      */
     static QString scannerLaserPath;

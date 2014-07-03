@@ -60,6 +60,7 @@
     <addaction name="menuConnexion"/>
     <addaction name="menuVisualiser"/>
     <addaction name="actionConsole"/>
+    <addaction name="actionParametres"/>
    </widget>
    <widget class="QMenu" name="menuAide">
     <property name="title">
@@ -151,6 +152,11 @@
   <action name="actionVisualisation">
    <property name="text">
     <string>Visualisation</string>
+   </property>
+  </action>
+  <action name="actionParametres">
+   <property name="text">
+    <string>Paramètres</string>
    </property>
   </action>
  </widget>

@@ -79,7 +79,7 @@
     <string>Aide</string>
    </property>
    <property name="icon">
-    <iconset resource="ressources.qrc">
+    <iconset resource="../ressources.qrc">
      <normaloff>:/img/img/help.png</normaloff>:/img/img/help.png</iconset>
    </property>
   </widget>
@@ -96,7 +96,7 @@
     <string>Configuration logicielle</string>
    </property>
    <property name="icon">
-    <iconset resource="ressources.qrc">
+    <iconset resource="../ressources.qrc">
      <normaloff>:/img/img/conf.png</normaloff>:/img/img/conf.png</iconset>
    </property>
   </widget>
@@ -113,7 +113,7 @@
     <string>Tests Dynamiques</string>
    </property>
    <property name="icon">
-    <iconset resource="ressources.qrc">
+    <iconset resource="../ressources.qrc">
      <normaloff>:/img/img/test.png</normaloff>:/img/img/test.png</iconset>
    </property>
   </widget>
@@ -184,7 +184,7 @@
   </customwidget>
  </customwidgets>
  <resources>
-  <include location="ressources.qrc"/>
+  <include location="../ressources.qrc"/>
  </resources>
  <connections/>
 </ui>

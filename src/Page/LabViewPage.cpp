@@ -297,26 +297,26 @@ void LabViewPage::setColor(QColor color)
 }
 void LabViewPage::setRed( int value )
 {
-    QColor c = _labview->getGlobalColor();
+    QColor c = *_labview->getGlobalColor();
     c.setRed( value );
     setColor( c );
 
 }
 void LabViewPage::setGreen( int value )
 {
-    QColor c = _labview->getGlobalColor();
+    QColor c = *_labview->getGlobalColor();
     c.setGreen( value );
     setColor( c );
 }
 void LabViewPage::setBlue( int value )
 {
-    QColor c = _labview->getGlobalColor();
+    QColor c = *_labview->getGlobalColor();
     c.setBlue( value );
     setColor( c );
 }
 void LabViewPage::setAlpha( int value )
 {
-    QColor c = _labview->getGlobalColor();
+    QColor c = *_labview->getGlobalColor();
     c.setAlpha( value );
     setColor( c );
 }

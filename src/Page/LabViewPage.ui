@@ -510,7 +510,7 @@ selection-color: rgb(255, 0, 4);</string>
     <string>Visualiser</string>
    </property>
    <property name="icon">
-    <iconset resource="ressources.qrc">
+    <iconset resource="../ressources.qrc">
      <normaloff>:/img/img/play_green.png</normaloff>:/img/img/play_green.png</iconset>
    </property>
    <property name="checkable">
@@ -536,7 +536,7 @@ selection-color: rgb(255, 0, 4);</string>
     <string>Enregistrer la vidéo</string>
    </property>
    <property name="icon">
-    <iconset resource="ressources.qrc">
+    <iconset resource="../ressources.qrc">
      <normaloff>:/img/img/record.png</normaloff>:/img/img/record.png</iconset>
    </property>
    <property name="checkable">
@@ -559,7 +559,7 @@ selection-color: rgb(255, 0, 4);</string>
     <string>Aide</string>
    </property>
    <property name="icon">
-    <iconset resource="ressources.qrc">
+    <iconset resource="../ressources.qrc">
      <normaloff>:/img/img/help.png</normaloff>:/img/img/help.png</iconset>
    </property>
    <property name="checkable">
@@ -636,7 +636,7 @@ selection-color: rgb(255, 0, 4);</string>
   </widget>
  </widget>
  <resources>
-  <include location="ressources.qrc"/>
+  <include location="../ressources.qrc"/>
  </resources>
  <connections/>
 </ui>

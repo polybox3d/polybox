@@ -16,13 +16,12 @@ void LabViewModule::initAll()
 
 void LabViewModule::setGlobalColor(QColor c)
 {
-    _currentColor = c;
-    sendGlobalColor();
+    setAllFacesColor(c);
 }
 
 void LabViewModule::sendGlobalColor()
 {
-    QString param(QString::number(MCODE_LABVIEW_SET_RGB)+" R");
+    /*QString param(QString::number(MCODE_LABVIEW_SET_GLOBAL_RGB)+" R");
     param+=QString::number(_currentColor.red());
     param+=" E";
     param+= QString::number(_currentColor.green());
@@ -31,6 +30,7 @@ void LabViewModule::sendGlobalColor()
     param+=" I";
     param+=QString::number(_currentColor.alpha());
     SerialPort::getSerial()->sendMCode( param );
+    */
 }
 
 void LabViewModule::sendController(LabViewController c)
@@ -204,11 +204,50 @@ void LabViewModule::parseMCode(QByteArray stream)
     int size = str.size();
     switch ( value )
     {
-    case MCODE_LABVIEW_GET_RGB:
+    case MCODE_LABVIEW_GET_GLOBAL_RGB:
     {
         SerialPort::nextField( str, idx);
         while ( idx < size )
         {
+            if ( str[idx] == 'R' )
+            {
+                SerialPort::nextValue( str, idx);
+                currentColor()->setRed( SerialPort::embeddedstr2l( str, idx ));
+                setAllFacesColor( *currentColor() );
+            }
+            if ( str[idx] == 'E' )
+            {
+                SerialPort::nextValue( str, idx);
+                currentColor()->setGreen( SerialPort::embeddedstr2l( str, idx ) );
+                setAllFacesColor( *currentColor() );
+            }
+            if ( str[idx] == 'P' )
+            {
+                SerialPort::nextValue( str, idx);
+                currentColor()->setBlue( SerialPort::embeddedstr2l( str, idx ) );
+                setAllFacesColor( *currentColor() );
+            }
+            if ( str[idx] == 'I' )
+            {
+                SerialPort::nextValue( str, idx);
+                currentColor()->setAlpha( SerialPort::embeddedstr2l( str, idx ) );
+                setAllFacesColor( *currentColor() );
+            }
+            SerialPort::nextField( str, idx);
+        }
+    }
+        break;
+    case MCODE_LABVIEW_GET_FACE_RGB:
+    {
+  /*      SerialPort::nextField( str, idx);
+        Face* face = &_top;
+        while ( idx < size )
+        {
+            if ( str[idx] == 'S' )
+            {
+                SerialPort::nextValue( str, idx);
+                face
+            }
             if ( str[idx] == 'R' )
             {
                 SerialPort::nextValue( str, idx);
@@ -230,7 +269,7 @@ void LabViewModule::parseMCode(QByteArray stream)
                 _currentColor.setAlpha( SerialPort::embeddedstr2l( str, idx ) );
             }
             SerialPort::nextField( str, idx);
-        }
+        }*/
     }
         break;
     case MCODE_LABVIEW_GET_GLOBAL_I:
@@ -309,10 +348,10 @@ void LabViewModule::saveToXmlFile(QString filename)
     xml.writeTextElement("name", filename.split("/").last().split(".").first());
     //COLOR
     xml.writeStartElement("globalcolor");
-    xml.writeTextElement("red", QString::number( getGlobalColor().red()));
-    xml.writeTextElement("green", QString::number( getGlobalColor().green()) );
-    xml.writeTextElement("blu", QString::number( getGlobalColor().blue()) );
-    xml.writeTextElement("intensity", QString::number( getGlobalColor().alpha()) );
+    xml.writeTextElement("red", QString::number( getGlobalColor()->red()));
+    xml.writeTextElement("green", QString::number( getGlobalColor()->green()) );
+    xml.writeTextElement("blu", QString::number( getGlobalColor()->blue()) );
+    xml.writeTextElement("intensity", QString::number( getGlobalColor()->alpha()) );
     xml.writeEndElement();//color
 
     exportXmlAllFaces( &xml );
@@ -331,27 +370,28 @@ void LabViewModule::parseGlobalcolor(QXmlStreamReader *xml)
             if(xml->name() == "red")
             {
                 xml->readNext();
-                _currentColor.setRed( xml->text().toString().toInt() );
+                currentColor()->setRed( xml->text().toString().toInt() );
             }
             if(xml->name() == "green")
             {
                 xml->readNext();
-                _currentColor.setGreen( xml->text().toString().toInt() );
+                currentColor()->setGreen( xml->text().toString().toInt() );
             }
             if(xml->name() == "blu")
             {
                 xml->readNext();
-                _currentColor.setBlue( xml->text().toString().toInt() );
+                currentColor()->setBlue( xml->text().toString().toInt() );
             }
             if(xml->name() == "intensity")
             {
                 xml->readNext();
-                _currentColor.setAlpha( xml->text().toString().toInt() );
+                currentColor()->setAlpha( xml->text().toString().toInt() );
             }
         }
         xml->readNext();
     }
-    sendGlobalColor(); // we update firmware data
+    setGlobalColor(*currentColor());
+    //sendGlobalColor(); // we update firmware data
 }
 void LabViewModule::setFaceLight(int face_id, int horizontale, int verticale)
 {
