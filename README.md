@@ -40,6 +40,16 @@ To pull current and external repository updatge use :
  git pull --recurse-submodules
 ```
 
+Mettre à jours les sous modules.
+1/ Se placer dans le repertoire concerné
+```
+cd externals/Polyplexer
+```
+2/ Changer la branche et recuperer les commit
+```
+git checkout master
+```
+
 License
 =======
 
