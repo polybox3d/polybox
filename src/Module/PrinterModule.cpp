@@ -393,18 +393,26 @@ bool PrinterModule::wireClogged() const
 {
     return _wireClogged;
 }
+void PrinterModule::setFanByMask(u_int8_t mask, u_int8_t speed)
+{
+
+    SerialPort::getSerial()->sendMCode(QString::number(MCODE_PRINTER_SET_FAN_SPEED)+" P"+QString::number(mask)+ " S"+QString::number(speed) );
+}
 
 void PrinterModule::setFanPelletierSpeed(int speed)
 {
+    setFanByMask(0x0F,speed);
     _pelletierFanSpeed = speed;
 }
 
 void PrinterModule::setFanPulsorFanSpeed(int speed)
 {
+    setFanByMask(0x20,speed);
     _pulsorFanSpeed = speed;
 }
 void PrinterModule::setFanExtractorFanSpeed(int speed)
 {
+    setFanByMask(0x10,speed);
     _extractorFanSpeed = speed;
 }
 int PrinterModule::fanPelletierSpeed()

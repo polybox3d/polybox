@@ -146,67 +146,10 @@
      </rect>
     </property>
     <layout class="QGridLayout" name="gridLayout">
-     <item row="1" column="0">
-      <widget class="QLabel" name="label_7">
-       <property name="text">
-        <string>Répertoire périphériques :</string>
-       </property>
-      </widget>
-     </item>
-     <item row="2" column="1">
-      <widget class="QComboBox" name="serialDeviceCombo"/>
-     </item>
      <item row="6" column="0">
       <widget class="QLabel" name="label_13">
        <property name="text">
         <string>Executable PolyPlexer :</string>
-       </property>
-      </widget>
-     </item>
-     <item row="4" column="0">
-      <widget class="QLabel" name="label_11">
-       <property name="text">
-        <string>Désactiver les contrôles :</string>
-       </property>
-      </widget>
-     </item>
-     <item row="4" column="1">
-      <widget class="QCheckBox" name="activateByPass">
-       <property name="text">
-        <string/>
-       </property>
-      </widget>
-     </item>
-     <item row="6" column="1">
-      <widget class="QLineEdit" name="polyplexerBin"/>
-     </item>
-     <item row="0" column="0">
-      <widget class="QLabel" name="label">
-       <property name="text">
-        <string>Repertoire Home :</string>
-       </property>
-      </widget>
-     </item>
-     <item row="1" column="1">
-      <widget class="QLineEdit" name="serialPortPath"/>
-     </item>
-     <item row="0" column="1">
-      <widget class="QLineEdit" name="homeDirectory"/>
-     </item>
-     <item row="2" column="0">
-      <widget class="QLabel" name="label_8">
-       <property name="text">
-        <string>Nom périphérique série :</string>
-       </property>
-      </widget>
-     </item>
-     <item row="5" column="1">
-      <widget class="QLineEdit" name="virtualDevice"/>
-     </item>
-     <item row="3" column="0">
-      <widget class="QLabel" name="label_6">
-       <property name="text">
-        <string>Baudrate : </string>
        </property>
       </widget>
      </item>
@@ -216,6 +159,9 @@
         <string>Périphérique Virtuel : </string>
        </property>
       </widget>
+     </item>
+     <item row="5" column="1">
+      <widget class="QLineEdit" name="virtualDevice"/>
      </item>
      <item row="3" column="1">
       <widget class="QLineEdit" name="baudrate"/>
@@ -236,8 +182,35 @@
        </property>
       </widget>
      </item>
-     <item row="1" column="2">
-      <widget class="FolderButton" name="folderDevices">
+     <item row="1" column="0">
+      <widget class="QLabel" name="label_7">
+       <property name="text">
+        <string>Répertoire périphériques :</string>
+       </property>
+      </widget>
+     </item>
+     <item row="0" column="1">
+      <widget class="QLineEdit" name="homeDirectory"/>
+     </item>
+     <item row="2" column="1">
+      <widget class="QComboBox" name="serialDeviceCombo"/>
+     </item>
+     <item row="0" column="0">
+      <widget class="QLabel" name="label">
+       <property name="text">
+        <string>Repertoire Home :</string>
+       </property>
+      </widget>
+     </item>
+     <item row="2" column="0">
+      <widget class="QLabel" name="label_8">
+       <property name="text">
+        <string>Nom périphérique série :</string>
+       </property>
+      </widget>
+     </item>
+     <item row="6" column="2">
+      <widget class="FolderButton" name="folderExePolyPlexer">
        <property name="maximumSize">
         <size>
          <width>35</width>
@@ -268,8 +241,25 @@
        </property>
       </widget>
      </item>
-     <item row="6" column="2">
-      <widget class="FolderButton" name="folderExePolyPlexer">
+     <item row="1" column="1">
+      <widget class="QLineEdit" name="serialPortPath"/>
+     </item>
+     <item row="4" column="1">
+      <widget class="QCheckBox" name="activateByPass">
+       <property name="text">
+        <string/>
+       </property>
+      </widget>
+     </item>
+     <item row="3" column="0">
+      <widget class="QLabel" name="label_6">
+       <property name="text">
+        <string>Baudrate : </string>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="2">
+      <widget class="FolderButton" name="folderDevices">
        <property name="maximumSize">
         <size>
          <width>35</width>
@@ -281,6 +271,30 @@
        </property>
        <property name="flat">
         <bool>false</bool>
+       </property>
+      </widget>
+     </item>
+     <item row="6" column="1">
+      <widget class="QLineEdit" name="polyplexerBin"/>
+     </item>
+     <item row="4" column="0">
+      <widget class="QLabel" name="label_11">
+       <property name="text">
+        <string>Désactiver les contrôles :</string>
+       </property>
+      </widget>
+     </item>
+     <item row="7" column="0">
+      <widget class="QLabel" name="label_14">
+       <property name="text">
+        <string>Désactiver les contrôles :</string>
+       </property>
+      </widget>
+     </item>
+     <item row="7" column="1">
+      <widget class="QCheckBox" name="disablePolyplexer">
+       <property name="text">
+        <string> (Pour les experts)</string>
        </property>
       </widget>
      </item>

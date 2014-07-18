@@ -80,6 +80,7 @@ public slots:
     virtual void updateComponents();
 private:
     virtual void initAll();
+    void setFanByMask(u_int8_t mask, u_int8_t speed);
     Temperature _targetBedTemp;
     Temperature _targetChamberTemp;
 

@@ -274,6 +274,9 @@ selection-color: rgb(255, 0, 4);</string>
      </item>
      <item row="1" column="0">
       <widget class="QSlider" name="intensite_2">
+       <property name="maximum">
+        <number>255</number>
+       </property>
        <property name="orientation">
         <enum>Qt::Horizontal</enum>
        </property>
@@ -295,6 +298,9 @@ selection-color: rgb(255, 0, 4);</string>
      </item>
      <item row="4" column="0">
       <widget class="QSlider" name="intensite_3">
+       <property name="maximum">
+        <number>255</number>
+       </property>
        <property name="orientation">
         <enum>Qt::Horizontal</enum>
        </property>
