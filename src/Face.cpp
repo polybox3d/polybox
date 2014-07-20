@@ -55,7 +55,7 @@ void Face::setVIntensity( int v )
 }
 void Face::sendIntensity()
 {
-    SerialPort::getSerial()->sendMCode(QString::number(MCODE_LABVIEW_SET_FACE_I)+" S"+QString::number(id)+" X"+QString::number(_h)+"Y"+QString::number(_v));
+    SerialPort::getSerial()->sendMCode(QString::number(MCODE_LABVIEW_SET_FACE_I)+" S"+QString::number(id)+" X"+QString::number(_h)+" Y"+QString::number(_v));
 }
 
 int Face::h()
