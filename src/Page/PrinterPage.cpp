@@ -6,6 +6,7 @@ PrinterPage::PrinterPage(PrinterModule* printer, QWidget *parent) :
     ui(new Ui::PrinterPage)
 {
     _printer = printer;
+    _update = false;
     ui->setupUi(this);
     ui->tempWidget->addPrinterModule( _printer );
     _printerSoftware.setParent( this );
@@ -40,6 +41,8 @@ PrinterPage::~PrinterPage()
 void PrinterPage::repaintComponents()
 {
 
+    _update = true;
+
     ui->boxTempSpin->setValue( _printer->getTargetChamberTemp().getValue() );
     ui->boxTempSlider->setValue( _printer->getTargetChamberTemp().getValue() );
     ui->bedTempSlider->setValue( _printer->getTargetBedTemp().getValue() );
@@ -59,6 +62,8 @@ void PrinterPage::repaintComponents()
     ui->bedBox->setEnabled( _printer->isOn() );
     ui->printerboxBox->setEnabled( _printer->isOn() );
     ui->startPrint->setEnabled( _printer->isOn() );
+
+    _update = false;
 }
 
 void PrinterPage::on_selectAllBed_clicked()
@@ -184,23 +189,27 @@ void PrinterPage::selectCustomChamber()
 
 void PrinterPage::on_boxTempSlider_valueChanged(int value)
 {
+    if ( _update ) return;
     _printer->setTargetChamberTemp( Temperature(value) );
     repaintComponents();
 }
 void PrinterPage::on_boxTempSpin_valueChanged(int arg1)
 {
+    if ( _update ) return;
     _printer->setTargetChamberTemp( Temperature(arg1) );
     repaintComponents();
 }
 
 void PrinterPage::on_bedTempSlider_valueChanged(int value)
 {
+    if ( _update ) return;
     _printer->setTargetBedTemp(Temperature(value));
     repaintComponents();
 }
 
 void PrinterPage::on_bedtempSpin_valueChanged(int arg1)
 {
+    if ( _update ) return;
     _printer->setTargetBedTemp(Temperature(arg1));
     repaintComponents();
 }
@@ -229,35 +238,41 @@ void PrinterPage::on_bed_fr_clicked()
 
 void PrinterPage::on_fanPelletier_valueChanged(int value)
 {
+    if ( _update ) return;
     _printer->setFanPelletierSpeed( value );
     repaintComponents();
 }
 void PrinterPage::on_pelletierSpin_valueChanged(int arg1)
 {
+    if ( _update ) return;
     _printer->setFanPelletierSpeed( arg1 );
     repaintComponents();
 }
 
 void PrinterPage::on_fanPulsor_valueChanged(int value)
 {
+    if ( _update ) return;
     _printer->setFanPulsorFanSpeed( value );
     repaintComponents();
 }
 
 void PrinterPage::on_pulsorSpin_valueChanged(int arg1)
 {
+    if ( _update ) return;
     _printer->setFanPulsorFanSpeed( arg1 );
     repaintComponents();
 }
 
 void PrinterPage::on_fanExtractor_valueChanged(int value)
 {
+    if ( _update ) return;
     _printer->setFanExtractorFanSpeed( value );
     repaintComponents();
 }
 
 void PrinterPage::on_extractorSpin_valueChanged(int arg1)
 {
+    if ( _update ) return;
     _printer->setFanExtractorFanSpeed( arg1 );
     repaintComponents();
 }

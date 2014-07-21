@@ -53,6 +53,8 @@ void DialogConfigSoft::updateValues()
 
     ui->virtualDevice->setText( Config::pathToVirtualPolySerialDevice );
     ui->polyplexerBin->setText( Config::pathToPolyplexerDaemon );
+
+    ui->disablePolyplexer->setChecked( Config::disablePolyplexer );
 }
 
 void DialogConfigSoft::on_close_clicked()
@@ -76,6 +78,8 @@ void DialogConfigSoft::saveValue()
 
     Config::pathToVirtualPolySerialDevice = ui->virtualDevice->text();
     Config::pathToPolyplexerDaemon = ui->polyplexerBin->text();
+
+    Config::disablePolyplexer = ui->disablePolyplexer->isChecked();
 }
 
 void DialogConfigSoft::on_validate_clicked()
@@ -119,4 +123,9 @@ void DialogConfigSoft::on_loadFactoryValue_clicked()
 {
     Config::importFromXmlFile( INITIAL_CONFIG_FILE );
     updateValues();
+}
+
+void DialogConfigSoft::on_disablePolyplexer_clicked()
+{
+
 }

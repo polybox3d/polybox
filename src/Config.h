@@ -64,6 +64,9 @@ public:
      */
     static bool bypassCheck;
 
+
+    static bool disablePolyplexer;
+
     /**
      * @brief colorLabviewFaceSelected Color used when a face is selected in the labview module.
      */

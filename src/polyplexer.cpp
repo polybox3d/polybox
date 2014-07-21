@@ -58,8 +58,10 @@ bool Polyplexer::start(QString path, QString port)
 
 bool Polyplexer::start()
 {
-
+    bool isRunning = false;
     stop();
+    if ( ! Config::disablePolyplexer )
+    {
     /** Create process **/
     QString program = Config::pathToPolyplexerDaemon;
     QStringList arguments;
@@ -72,19 +74,27 @@ bool Polyplexer::start()
     //connect( _polyplexer, SIGNAL(finished(int)), this,SLOT(stop()));
     _polyplexer->start( program, arguments );
 
-    bool isRunning = _polyplexer->waitForStarted(3000) ;
+    isRunning = _polyplexer->waitForStarted(3000) ;
+    }
+    else
+    {
+        isRunning = true;
+    }
 
     if ( isRunning )
     {
         // create or no Window to get output data from process
-        if ( _useOutputWindow )
+        if ( _useOutputWindow && !Config::disablePolyplexer )
         {
             _outputWidget = new QTextEdit();
             _outputWidget->setFixedSize(400,600);
             _outputWidget->show();
         }
         /** Start VirtualSerial Connexion **/
-        isRunning = !(_polyplexer->waitForFinished(1000)) && SerialPort::getSerial()->connectToSerialPort() ;
+        if ( ! Config::disablePolyplexer )
+            isRunning = !(_polyplexer->waitForFinished(1000)) && SerialPort::getSerial()->connectToSerialPort() ;
+        else
+            isRunning = SerialPort::getSerial()->connectToSerialPort() ;
     }
     return isRunning;
 }

@@ -93,6 +93,7 @@ private:
     void selectCustomBed();
     void selectCustomChamber();
     QTimer _updateModuleTimer;
+    bool _update;
 };
 
 #endif // PRINTERPAGE_H

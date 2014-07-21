@@ -4,15 +4,25 @@
     <general>
         <home_directory>/home/poly/</home_directory>
         <device_path>/dev/</device_path>
-        <device_name>ttyVIRT1</device_name>
+        <device_name>ttyACM0</device_name>
         <baudrate>115200</baudrate>
+        <by_pass_check>1</by_pass_check>
+        <path_to_virtudevice>/dev/</path_to_virtudevice>
+        <virtuserial_port>ttyPOLY</virtuserial_port>
+        <path_polyplexer_daemon>../../externals/Polyplexer/PolyPlexer</path_polyplexer_daemon>
+        <hardaware_timer>3000</hardaware_timer>
+        <update_config_timer>500</update_config_timer>
+        <update_module_timer>1000</update_module_timer>
     </general>
-    <webcam>
-        <directory>/dev/</directory>
-        <device_name>video0</device_name>
-    </webcam>
+    <scanner>
+        <path_to_scanner>/home/poly/polybox/externals/FabScan100/qtTest/</path_to_scanner>
+    </scanner>
     <cnc>
         <directory>/home/poly/linuxcnc/</directory>
         <bin_command>linuxcnc</bin_command>
     </cnc>
+    <printer>
+        <path_to_printer></path_to_printer>
+        <path_to_printer_workingdir></path_to_printer_workingdir>
+    </printer>
 </config>

@@ -25,6 +25,9 @@ QString Config::pathToPolyplexerDaemon="../../externals/Polyplexer/PolyPlexer";
 
 int Config::motherboardBaudrate=115200;
 bool Config::bypassCheck = true ;
+
+bool Config::disablePolyplexer = false;
+
 QColor Config::colorLabviewFaceSelected = QColor( 70, 230, 255 );
 QString Config::ambiancePathFolder=":/xml/ambiances";
 

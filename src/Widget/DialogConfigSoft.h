@@ -43,6 +43,8 @@ private slots:
 
     void on_loadFactoryValue_clicked();
 
+    void on_disablePolyplexer_clicked();
+
 private:
     /**
      * @brief ui Graphical layer.

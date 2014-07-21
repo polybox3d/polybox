@@ -185,7 +185,7 @@ void LabViewPage::loadDefaultAmbiances(QString folder_path)
     ui->selectAmb->addItem("--------","");
     foreach( QString file, ambiances_files )
     {
-        ui->selectAmb->addItem(file.split(".").first(),file);
+        ui->selectAmb->addItem(file.split(".").first(),folder_path+'/'+file);
     }
     updateUI();
 }
@@ -241,20 +241,20 @@ void LabViewPage::updateUI()
     {
         int hi = _labview->getGlobalIntensityH();
         int vi = _labview->getGlobalIntensityV();
-        ui->intensite_2->setValue( vi );
-        ui->intensite_3->setValue( hi );
-        ui->intensiteSpin_2->setValue( vi );
-        ui->intensiteSpin_3->setValue( hi );
+        ui->intensityV->setValue( vi );
+        ui->intensityH->setValue( hi );
+        ui->intensityVSpin->setValue( vi );
+        ui->intensityHSpin->setValue( hi );
     }
     if ( ui->individualLightRadio->isChecked() )
     {
         if ( ! _selectedFaces.isEmpty() )
         {
             Face* face = _selectedFaces.first();
-            ui->intensite_2->setValue( face->v() );
-            ui->intensite_3->setValue( face->h() );
-            ui->intensiteSpin_2->setValue( face->v() );
-            ui->intensiteSpin_3->setValue( face->h() );
+            ui->intensityV->setValue( face->v() );
+            ui->intensityH->setValue( face->h() );
+            ui->intensityVSpin->setValue( face->v() );
+            ui->intensityHSpin->setValue( face->h() );
         }
 
     }
@@ -297,28 +297,28 @@ void LabViewPage::setColor(QColor color)
 }
 void LabViewPage::setRed( int value )
 {
-    QColor c = _labview->getGlobalColor();
-    c.setRed( value );
-    setColor( c );
+    QColor *c = _labview->getGlobalColor();
+    c->setRed( value );
+    setColor( *c );
 
 }
 void LabViewPage::setGreen( int value )
 {
-    QColor c = _labview->getGlobalColor();
-    c.setGreen( value );
-    setColor( c );
+    QColor *c = _labview->getGlobalColor();
+    c->setGreen( value );
+    setColor( *c );
 }
 void LabViewPage::setBlue( int value )
 {
-    QColor c = _labview->getGlobalColor();
-    c.setBlue( value );
-    setColor( c );
+    QColor *c = _labview->getGlobalColor();
+    c->setBlue( value );
+    setColor( *c );
 }
 void LabViewPage::setAlpha( int value )
 {
-    QColor c = _labview->getGlobalColor();
-    c.setAlpha( value );
-    setColor( c );
+    QColor *c = _labview->getGlobalColor();
+    c->setAlpha( value );
+    setColor( *c );
 }
 void LabViewPage::setLight(int light, bool horizontale, bool verticale)
 {
