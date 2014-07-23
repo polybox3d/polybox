@@ -58,6 +58,7 @@ void GlobalChecker::updateUI()
        ui->powerLed->setActivated( _global->power() );
        ui->webcamPluggedLed->setActivated( _global->webcamPlugged() );
        ui->tempICLed->setActivated( !_global->tempIC().isDefault() );
+       ui->tempIC->setText(QString::number(_global->tempIC().getValue())+"°C");
        ui->icOpenLed->setActivated( !_global->icOpen() );
        ui->toolATULed->setActivated( _global->toolATUok() );
        ui->preasiATULed->setActivated( _global->preasiATUok() );

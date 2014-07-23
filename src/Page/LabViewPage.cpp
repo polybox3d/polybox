@@ -336,10 +336,10 @@ void LabViewPage::setLight(int light, bool horizontale, bool verticale)
 
 void LabViewPage::setActivateLightControl(bool activated)
 {
-    ui->intensite_2->setEnabled( activated );
-    ui->intensite_3->setEnabled( activated );
-    ui->intensiteSpin_2->setEnabled( activated );
-    ui->intensiteSpin_3->setEnabled( activated );
+    ui->intensityH->setEnabled( activated );
+    ui->intensityHSpin->setEnabled( activated );
+    ui->intensityV->setEnabled( activated );
+    ui->intensityVSpin->setEnabled( activated );
 }
 
 void LabViewPage::processFaceClick(Face *face, QPushButton *face_button, QString base_name)
@@ -418,34 +418,6 @@ void LabViewPage::on_individualLightRadio_clicked()
     {
         setActivateLightControl( true );
     }
-    updateUI();
-}
-
-void LabViewPage::on_intensite_2_valueChanged(int value)
-{
-    if ( _update ) return;
-    setLight( value, false, true );
-    updateUI();
-}
-
-void LabViewPage::on_intensite_3_valueChanged(int value)
-{
-    if ( _update ) return;
-    setLight( value, true, false );
-    updateUI();
-}
-
-void LabViewPage::on_intensiteSpin_2_valueChanged(int arg1)
-{
-    if ( _update ) return;
-    setLight( arg1, false, true );
-    updateUI();
-}
-
-void LabViewPage::on_intensiteSpin_3_valueChanged(int arg1)
-{
-    if ( _update ) return;
-    setLight( arg1, true, false );
     updateUI();
 }
 
@@ -545,12 +517,32 @@ void LabViewPage::on_teleRadio_clicked()
     _labview->sendController( LabViewModule::Manual );
 }
 
-void LabViewPage::on_intensite_2_actionTriggered(int action)
-{
 
+void LabViewPage::on_intensityV_valueChanged(int value)
+{
+    if ( _update ) return;
+    setLight( value, false, true );
+    updateUI();
 }
 
-void LabViewPage::on_intensite_2_sliderMoved(int position)
+void LabViewPage::on_intensityHSpin_valueChanged(int arg1)
 {
-
+    if ( _update ) return;
+    setLight( arg1, true, false );
+    updateUI();
 }
+
+void LabViewPage::on_intensityVSpin_valueChanged(int arg1)
+{
+    if ( _update ) return;
+    setLight( arg1, false, true );
+    updateUI();
+}
+
+void LabViewPage::on_intensityH_valueChanged(int value)
+{
+    if ( _update ) return;
+    setLight( value, true, false );
+    updateUI();
+}
+

@@ -79,14 +79,6 @@ private slots:
 
     void on_startRecording_clicked();
 
-    void on_intensite_2_valueChanged(int value);
-
-    void on_intensite_3_valueChanged(int value);
-
-    void on_intensiteSpin_2_valueChanged(int arg1);
-
-    void on_intensiteSpin_3_valueChanged(int arg1);
-
     void on_backFace_clicked();
 
     void on_rightFace_clicked();
@@ -113,9 +105,13 @@ private slots:
 
     void on_teleRadio_clicked();
 
-    void on_intensite_2_actionTriggered(int action);
+    void on_intensityV_valueChanged(int value);
 
-    void on_intensite_2_sliderMoved(int position);
+    void on_intensityHSpin_valueChanged(int arg1);
+
+    void on_intensityVSpin_valueChanged(int arg1);
+
+    void on_intensityH_valueChanged(int value);
 
 private:
     void setLight(int light, bool horizontale=true, bool verticale=true);

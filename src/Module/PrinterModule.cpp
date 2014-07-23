@@ -396,7 +396,7 @@ bool PrinterModule::wireClogged() const
 void PrinterModule::setFanByMask(u_int8_t mask, u_int8_t speed)
 {
 
-    SerialPort::getSerial()->sendMCode(QString::number(MCODE_PRINTER_SET_FAN_SPEED)+" P"+QString::number(mask)+ " S"+QString::number(speed) );
+    SerialPort::getSerial()->sendMCode(QString::number(MCODE_PRINTER_SET_FAN_SPEED)+" P"+QString::number(mask)+ " S"+QString::number(speed*255/100) );
 }
 
 void PrinterModule::setFanPelletierSpeed(int speed)
