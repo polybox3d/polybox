@@ -72,15 +72,17 @@ void PolyboxModule::parseData()
 {
     QByteArray datas = _polyplexer->printerDatas();
     QString str(datas);
-    int idx = str.indexOf('#') ;
-    if ( idx != -1 ) // M Code find
+    /*int start_idx = 0;
+    int idx = str.indexOf( start_idx,'#') ;*/
+    QStringList datas_listed = str.split("#", QString::SkipEmptyParts );
+    foreach ( QString current_mcode, datas_listed )
     {
-         _cnc->parseMCode( &str.toStdString().c_str()[idx+1] );
-         _global->parseMCode( &str.toStdString().c_str()[idx+1] );
-         _scanner->parseMCode( &str.toStdString().c_str()[idx+1] );
-         _printer->parseMCode( &str.toStdString().c_str()[idx+1] );
-    }
+        _cnc->parseMCode( current_mcode.toStdString().c_str() );
+        _global->parseMCode( current_mcode.toStdString().c_str() );
+        _scanner->parseMCode( current_mcode.toStdString().c_str() );
+        _printer->parseMCode( current_mcode.toStdString().c_str() );
 
+    }
 }
 
 bool PolyboxModule::loadJoypad()

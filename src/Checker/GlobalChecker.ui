@@ -38,7 +38,7 @@
      <string/>
     </property>
     <property name="pixmap">
-     <pixmap resource="ressources.qrc">:/img/img/led_off_red.png</pixmap>
+     <pixmap resource="../ressources.qrc">:/img/img/led_off_red.png</pixmap>
     </property>
     <property name="scaledContents">
      <bool>true</bool>
@@ -70,7 +70,7 @@
      <string/>
     </property>
     <property name="pixmap">
-     <pixmap resource="ressources.qrc">:/img/img/led_off_red.png</pixmap>
+     <pixmap resource="../ressources.qrc">:/img/img/led_off_red.png</pixmap>
     </property>
     <property name="scaledContents">
      <bool>true</bool>
@@ -102,7 +102,7 @@
      <string/>
     </property>
     <property name="pixmap">
-     <pixmap resource="ressources.qrc">:/img/img/led_off_red.png</pixmap>
+     <pixmap resource="../ressources.qrc">:/img/img/led_off_red.png</pixmap>
     </property>
     <property name="scaledContents">
      <bool>true</bool>
@@ -121,7 +121,7 @@
      <string/>
     </property>
     <property name="pixmap">
-     <pixmap resource="ressources.qrc">:/img/img/led_off_red.png</pixmap>
+     <pixmap resource="../ressources.qrc">:/img/img/led_off_red.png</pixmap>
     </property>
     <property name="scaledContents">
      <bool>true</bool>
@@ -170,7 +170,7 @@
      <string/>
     </property>
     <property name="pixmap">
-     <pixmap resource="ressources.qrc">:/img/img/led_off_red.png</pixmap>
+     <pixmap resource="../ressources.qrc">:/img/img/led_off_red.png</pixmap>
     </property>
     <property name="scaledContents">
      <bool>true</bool>
@@ -202,7 +202,7 @@
      <string/>
     </property>
     <property name="pixmap">
-     <pixmap resource="ressources.qrc">:/img/img/led_off_red.png</pixmap>
+     <pixmap resource="../ressources.qrc">:/img/img/led_off_red.png</pixmap>
     </property>
     <property name="scaledContents">
      <bool>true</bool>
@@ -221,20 +221,6 @@
      <string>Bloc outil branché</string>
     </property>
    </widget>
-   <zorder>arduino2Led</zorder>
-   <zorder>label_9</zorder>
-   <zorder>arduino1Led</zorder>
-   <zorder>label_8</zorder>
-   <zorder>webcamPluggedLed</zorder>
-   <zorder>arduino3Led</zorder>
-   <zorder>label_6</zorder>
-   <zorder>label_12</zorder>
-   <zorder>arduino4Led</zorder>
-   <zorder>label_13</zorder>
-   <zorder>toolATULed</zorder>
-   <zorder>label_14</zorder>
-   <zorder>toolATULed</zorder>
-   <zorder>label_14</zorder>
   </widget>
   <widget class="QGroupBox" name="groupBox_2">
    <property name="geometry">
@@ -274,7 +260,7 @@
      <string/>
     </property>
     <property name="pixmap">
-     <pixmap resource="ressources.qrc">:/img/img/led_off_red.png</pixmap>
+     <pixmap resource="../ressources.qrc">:/img/img/led_off_red.png</pixmap>
     </property>
     <property name="scaledContents">
      <bool>true</bool>
@@ -306,7 +292,7 @@
      <string/>
     </property>
     <property name="pixmap">
-     <pixmap resource="ressources.qrc">:/img/img/led_off_red.png</pixmap>
+     <pixmap resource="../ressources.qrc">:/img/img/led_off_red.png</pixmap>
     </property>
     <property name="scaledContents">
      <bool>true</bool>
@@ -339,13 +325,13 @@ carte électronique</string>
      <string/>
     </property>
     <property name="pixmap">
-     <pixmap resource="ressources.qrc">:/img/img/led_off_red.png</pixmap>
+     <pixmap resource="../ressources.qrc">:/img/img/led_off_red.png</pixmap>
     </property>
     <property name="scaledContents">
      <bool>true</bool>
     </property>
    </widget>
-   <widget class="QLabel" name="label_10">
+   <widget class="QLabel" name="tempIC">
     <property name="geometry">
      <rect>
       <x>10</x>
@@ -371,7 +357,7 @@ carte électronique</string>
      <string/>
     </property>
     <property name="pixmap">
-     <pixmap resource="ressources.qrc">:/img/img/led_off_red.png</pixmap>
+     <pixmap resource="../ressources.qrc">:/img/img/led_off_red.png</pixmap>
     </property>
     <property name="scaledContents">
      <bool>true</bool>
@@ -416,7 +402,7 @@ carte électronique</string>
      <string/>
     </property>
     <property name="pixmap">
-     <pixmap resource="ressources.qrc">:/img/img/led_off_red.png</pixmap>
+     <pixmap resource="../ressources.qrc">:/img/img/led_off_red.png</pixmap>
     </property>
     <property name="scaledContents">
      <bool>true</bool>
@@ -435,7 +421,7 @@ carte électronique</string>
      <string/>
     </property>
     <property name="pixmap">
-     <pixmap resource="ressources.qrc">:/img/img/led_off_red.png</pixmap>
+     <pixmap resource="../ressources.qrc">:/img/img/led_off_red.png</pixmap>
     </property>
     <property name="scaledContents">
      <bool>true</bool>
@@ -481,7 +467,7 @@ carte électronique</string>
     <string/>
    </property>
    <property name="pixmap">
-    <pixmap resource="ressources.qrc">:/img/img/led_off_red.png</pixmap>
+    <pixmap resource="../ressources.qrc">:/img/img/led_off_red.png</pixmap>
    </property>
    <property name="scaledContents">
     <bool>true</bool>
@@ -496,7 +482,7 @@ carte électronique</string>
   </customwidget>
  </customwidgets>
  <resources>
-  <include location="ressources.qrc"/>
+  <include location="../ressources.qrc"/>
  </resources>
  <connections/>
 </ui>

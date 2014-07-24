@@ -180,7 +180,6 @@ void PrinterModule::parseMCode(QByteArray stream)
             {
                     SerialPort::nextValue( str, idx);
                     _tempBoxTop.setValue( SerialPort::embeddedstr2l( str, idx ) );
-                    cout<<"#"<<idx<<" "<<str.toStdString()<<endl;
             }
             if ( str[idx] == 'B')
             {
@@ -198,6 +197,7 @@ void PrinterModule::parseMCode(QByteArray stream)
     default:
         break;
     }
+    emit updateUI();
 }
 
 void PrinterModule::updateComponents()
@@ -209,7 +209,7 @@ void PrinterModule::updateComponents()
     _polybox->port()->sendMCode( MCODE_PRINTER_GET_COOLER_BOX_STATUS );
     _polybox->port()->sendMCode( MCODE_PRINTER_GET_COLDEND_STATUS );
     _polybox->port()->sendMCode( MCODE_PRINTER_GET_BED_TEMP_C );
-    _polybox->port()->sendMCode( MCODE_PRINTER_GET_CHAMBER_TEMP );
+    _polybox->port()->sendMCode( MCODE_PRINTER_GET_CHAMBER_TEMP_ALL );
     _polybox->port()->sendMCode( MCODE_PRINTER_GET_BUSE_CLOGGED );
 
 }
@@ -396,7 +396,7 @@ bool PrinterModule::wireClogged() const
 void PrinterModule::setFanByMask(u_int8_t mask, u_int8_t speed)
 {
 
-    SerialPort::getSerial()->sendMCode(QString::number(MCODE_PRINTER_SET_FAN_SPEED)+" P"+QString::number(mask)+ " S"+QString::number(speed) );
+    SerialPort::getSerial()->sendMCode(QString::number(MCODE_PRINTER_SET_FAN_SPEED)+" P"+QString::number(mask)+ " S"+QString::number(speed*255/100) );
 }
 
 void PrinterModule::setFanPelletierSpeed(int speed)

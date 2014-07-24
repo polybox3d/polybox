@@ -35,6 +35,7 @@ void ScannerModule::parseMCode(QByteArray stream)
     default:
         break;
     }
+    emit updateUI();
 }
 
 void ScannerModule::updateComponents()

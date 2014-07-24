@@ -37,9 +37,9 @@ void WarningPage::updateModules()
     if ( running )
     {
         ui->generalWidget->updateModuleValues();
-    /*    ui->scannerWidget->updateModuleValues();
+        ui->scannerWidget->updateModuleValues();
         ui->cncWidget->updateModuleValues();
-        ui->printerWidget->updateModuleValues();*/
+        ui->printerWidget->updateModuleValues();
     }
 
 

@@ -118,27 +118,18 @@ void GlobalModule::parseMCode(QByteArray stream)
     case MCODE_GLOBAL_GET_IC_TEMP:
     {
         SerialPort::nextField( str, idx);
-        long temperature1=0;
-        long temperature2=0;
         while ( idx < size )
         {
             if ( str[idx] == 'T' )
             {
-                if ( str[idx] == '1' )
+                if ( str[idx+1] == '0' )
                 {
                     SerialPort::nextValue( str, idx);
-                    temperature1 = SerialPort::embeddedstr2l( str, idx );
-                    temperature2 = temperature1;
-                }
-                if ( str[idx] == '2' )
-                {
-                    SerialPort::nextValue( str, idx);
-                    temperature2 = SerialPort::embeddedstr2l( str, idx );
+                    _tempIC.setValue(  SerialPort::embeddedstr2l( str, idx ) );
                 }
             }
             SerialPort::nextField( str, idx);
         }
-        _tempIC.setValue( (temperature1+temperature2) /2);
     }
     break;
     case MCODE_GLOBAL_GET_IC_OPEN:
