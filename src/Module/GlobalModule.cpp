@@ -35,7 +35,14 @@ void GlobalModule::parseMCode(QByteArray stream)
         SerialPort::nextField( str, idx);
         SerialPort::parseTrueFalse( &_boxOpen, str[idx] );  // Cuidao ! True = box is open, so Red light ! False means box is close, so gren light !
     }
-        break;
+    break;
+    case 600:
+    {
+        SerialPort::nextField( str, idx);
+
+        _ram = SerialPort::embeddedstr2l( str, idx );
+    }
+    break;
     case MCODE_GLOBAL_GET_STATUS:
     {
         SerialPort::nextField( str, idx);
@@ -178,6 +185,7 @@ void GlobalModule::updateComponents()
     SerialPort::getSerial()->sendMCode(MCODE_GLOBAL_GET_IC_TEMP);
     SerialPort::getSerial()->sendMCode(MCODE_GLOBAL_GET_IC_OPEN);
     SerialPort::getSerial()->sendMCode(MCODE_GLOBAL_GET_PREASI);
+    SerialPort::getSerial()->sendMCode( 600 );
     emit updateUI();
 }
 
@@ -239,4 +247,8 @@ bool GlobalModule::webcamPlugged() const
 Temperature GlobalModule::tempIC()
 {
     return _tempIC;
+}
+int GlobalModule::ram() const
+{
+    return _ram;
 }

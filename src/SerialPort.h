@@ -4,6 +4,7 @@
 #include <QProcess>
 #include <QDir>
 #include <QStringList>
+#include <QTimer>
 
 #include "qextserialport.h"
 #include "Config.h"
@@ -77,11 +78,16 @@ public:
     void setPath( QString path );
     bool isConnected() const;
     void disconnectPort();
+
+    int connectionUptime;
+
 signals:
     void dataReady();
+    void disconnected();
 
 public slots:
     void parseSerialDatas();
+    void connectionUptimeProcess();
 
 private:
     explicit SerialPort(QObject *parent = 0);
@@ -91,6 +97,7 @@ private:
     QString _name;
     QByteArray _datas;
     QByteArray _rcp_datas;
+    QTimer _uptimeTimer;
 
 };
 

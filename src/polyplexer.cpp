@@ -9,7 +9,6 @@ Polyplexer::Polyplexer(QObject *parent) :
     QObject(parent)
 {
     _polyplexer = NULL;
-    _outputWidget = NULL;
     _portMachine = Config::serialPortName;
     _pathMachine = Config::pathToSerialDevice;
 
@@ -18,10 +17,6 @@ Polyplexer::Polyplexer(QObject *parent) :
 
 Polyplexer::~Polyplexer()
 {
-    if ( _outputWidget != NULL )
-    {
-        _outputWidget->deleteLater();
-    }
     if ( _polyplexer != NULL )
     {
         _polyplexer->close();
@@ -69,8 +64,6 @@ bool Polyplexer::start()
     arguments << QString("--serial=")+this->_pathMachine+this->_portMachine << QString("--polybox_sock=")+DEAMON_POLY_POLYPLEXER << QString("--printer_sock=")+DEAMON_PRINTER_POLYPLEXER;
     _polyplexer = new QProcess( this );
     connect( _polyplexer, SIGNAL(finished(int,QProcess::ExitStatus)), this,SLOT(finished(int,QProcess::ExitStatus)));
-    connect( _polyplexer, SIGNAL(readyReadStandardError()), this,SLOT(newOutputText()));
-    connect( _polyplexer, SIGNAL(readyReadStandardOutput()), this,SLOT(newOutputText()));
     //connect( _polyplexer, SIGNAL(finished(int)), this,SLOT(stop()));
     _polyplexer->start( program, arguments );
 
@@ -86,9 +79,7 @@ bool Polyplexer::start()
         // create or no Window to get output data from process
         if ( _useOutputWindow && !Config::disablePolyplexer )
         {
-            _outputWidget = new QTextEdit();
-            _outputWidget->setFixedSize(400,600);
-            _outputWidget->show();
+            MainWindow::getMainWindow()->startConsoleWindow();
         }
         /** Start VirtualSerial Connexion **/
         if ( ! Config::disablePolyplexer )
@@ -134,14 +125,6 @@ void Polyplexer::finished(int exitCode, QProcess::ExitStatus exitStatus)
     this->stop();
 }
 
-void Polyplexer::newOutputText()
-{
-    if ( _useOutputWindow && _outputWidget != NULL )
-    {
-        _outputWidget->append( _polyplexer->readAllStandardError());
-        _outputWidget->append( _polyplexer->readAllStandardOutput());
-    }
-}
 
 bool Polyplexer::restart()
 {
@@ -153,10 +136,6 @@ bool Polyplexer::stop()
     if ( _polyplexer != NULL )
     {
         _polyplexer->kill();
-    }
-    if ( _outputWidget != NULL )
-    {
-        _outputWidget->close();
     }
     SerialPort::getSerial()->disconnectPort();
 }

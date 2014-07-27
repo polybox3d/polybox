@@ -14,7 +14,16 @@ SerialPort::SerialPort(QObject *parent) :
     _path = Config::pathToVirtualPolySerialDevice;
     _name = Config::serialVirtualPolySerialPort;
     _port = NULL;
+    connectionUptime = 0 ;
+
+    _uptimeTimer.start( Config::connectionUptimeDelay );
+    connect( &_uptimeTimer, SIGNAL(timeout()), this, SLOT(connectionUptimeProcess()));
 }
+void SerialPort::connectionUptimeProcess()
+{
+    connectionUptime++;
+}
+
 QString SerialPort::path()
 {
     return _path;
@@ -58,6 +67,7 @@ bool SerialPort::connectToSerialPort()
             return false;
         }*/
         connect ( _port, SIGNAL(readyRead()), this, SLOT(parseSerialDatas()) );
+        this->connectionUptime = 0 ;
         return true;
     }
     else
@@ -72,6 +82,7 @@ void SerialPort::disconnectPort()
     if ( _port != NULL && _port->isOpen() )
     {
         _port->close();
+        emit disconnected();
     }
 }
 
