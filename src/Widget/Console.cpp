@@ -8,6 +8,7 @@ Console::Console(QWidget *parent) :
 {
     ui->setupUi(this);
     connect( SerialPort::getSerial(), SIGNAL(dataReady()), this, SLOT(parseData()) );
+    connect( SerialPort::getSerial(), SIGNAL(disconnected()), this, SLOT(deleteLater()) );
 }
 
 Console::~Console()

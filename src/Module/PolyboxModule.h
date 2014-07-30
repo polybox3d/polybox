@@ -56,11 +56,13 @@ signals:
 public slots:
     void parseData();
     void hardwareTimerTimeout();
+    void pingPong();
 
 
 private:
     bool _connected;
 
+    u_int8_t _numberOfMissingPingPong;
     GlobalModule* _global;
     CNCModule* _cnc;
     LabViewModule* _labview;
@@ -70,6 +72,8 @@ private:
     Polyplexer * _polyplexer;
     static QJoystick* _joypad;
     QTimer _hardwareTimer;
+    QTimer _pingPongTimer;
+    void parseMCode( QByteArray stream );
 
 };
 

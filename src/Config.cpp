@@ -23,6 +23,8 @@ QString Config::scannerLaserPath=Config::pathToHomeDirectory+"/fabscan100/qtTest
 QString Config::defaultConfigFileName="./config.xml";
 QString Config::pathToPolyplexerDaemon="../../externals/Polyplexer/PolyPlexer";
 
+
+int Config::connectionUptimeDelay = 1000;
 int Config::motherboardBaudrate=115200;
 bool Config::bypassCheck = true ;
 

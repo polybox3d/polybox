@@ -82,6 +82,8 @@ enum MCodeFlags
 #define MCODE_GLOBAL_SET_POWER_STATUS           690
 #define MCODE_GLOBAL_SET_PAUSE                  691
 
+#define MCODE_PING_PONG                         703
+
 }
 
 #endif // MCODE_H

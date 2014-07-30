@@ -19,6 +19,9 @@ PolyboxModule::PolyboxModule(QObject *parent) :
     _hardwareTimer.start( Config::hardwareTimer );
     connect( &_hardwareTimer, SIGNAL(timeout()), this, SLOT(hardwareTimerTimeout()));
 
+    _pingPongTimer.start( 5000 );
+    connect( &_pingPongTimer, SIGNAL(timeout()), this, SLOT(pingPong()));
+
     _polyplexer = Polyplexer::getInstance();
     connectToPrinter();
 
@@ -49,6 +52,7 @@ bool PolyboxModule::connectToPrinter()
         if ( SerialPort::getSerial()->isConnected()  )
         {
             MainWindow::textWindow( tr("Le logiciel est correctement connecté à la machine. ") );
+            _numberOfMissingPingPong = 0;
         }
         else
         {
@@ -77,12 +81,45 @@ void PolyboxModule::parseData()
     QStringList datas_listed = str.split("#", QString::SkipEmptyParts );
     foreach ( QString current_mcode, datas_listed )
     {
+        this->parseMCode( current_mcode.toStdString().c_str() );
         _cnc->parseMCode( current_mcode.toStdString().c_str() );
         _global->parseMCode( current_mcode.toStdString().c_str() );
         _scanner->parseMCode( current_mcode.toStdString().c_str() );
         _printer->parseMCode( current_mcode.toStdString().c_str() );
-
     }
+
+}
+
+void PolyboxModule::parseMCode(QByteArray stream)
+{
+    QString str(stream);
+    long value = SerialPort::embeddedstr2l( str, 0 );
+
+    switch ( value )
+    {
+    case MCODE_PING_PONG:
+    {
+        _numberOfMissingPingPong = 0;
+    }
+        break;
+    default:
+        break;
+    }
+}
+
+void PolyboxModule::pingPong()
+{
+    if ( SerialPort::getSerial()->isConnected() )
+    {
+        _numberOfMissingPingPong++;
+        SerialPort::getSerial()->sendMCode( MCODE_PING_PONG );
+        if ( _numberOfMissingPingPong > 2 )
+        {
+            MainWindow::errorWindow( tr("Une erreur est survenue. La machine ne répond plus aux messages depuis un certain temps.\n Veuillez vous reconnecter.\n"));
+            _polyplexer->stop();
+        }
+    }
+
 }
 
 bool PolyboxModule::loadJoypad()

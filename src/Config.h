@@ -47,6 +47,8 @@ public:
 
     static QString serialVirtualPolySerialPort;
 
+    static int connectionUptimeDelay;
+
     /**
      * @brief scannerLaserPath Full path to scanner-laser software.
      */

@@ -52,7 +52,6 @@ public:
 
 signals:
 public slots:
-    void newOutputText();
     bool stop();
     void finished(int exitCode, QProcess::ExitStatus exitStatus);
 
@@ -72,7 +71,6 @@ private:
     bool _running;
     QProcess* _polyplexer;
     bool _useOutputWindow;
-    QTextEdit* _outputWidget;
 
     void manageWindow();
 };

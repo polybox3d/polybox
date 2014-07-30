@@ -62,5 +62,7 @@ void GlobalChecker::updateUI()
        ui->icOpenLed->setActivated( !_global->icOpen() );
        ui->toolATULed->setActivated( _global->toolATUok() );
        ui->preasiATULed->setActivated( _global->preasiATUok() );
+       ui->ramValue->setText( QString::number(_global->ram()) );
+       ui->uptime->setText(QString::number(SerialPort::getSerial()->connectionUptime/60)+'\'' );
     }
 }

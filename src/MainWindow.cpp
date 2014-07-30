@@ -52,9 +52,12 @@ MainWindow::MainWindow(QWidget *parent) :
 }
 void MainWindow::startConsoleWindow()
 {
-    Console* c = new Console();
-    c->setWindowTitle("Console");
-    c->show();
+    if ( SerialPort::getSerial()->isConnected() )
+    {
+        Console* c = new Console();
+        c->setWindowTitle("Console");
+        c->show();
+    }
 }
 
 void MainWindow::toggleATU()
