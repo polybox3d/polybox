@@ -20,7 +20,7 @@ This is a non-exhaustive list :
 
 apt-get install gcc g++ build-essential
 apt-get install qt5-default qtmultimedia5-dev libqt5-*
-apt-get install qtcreator
+apt-get install qtcreator qttools5-dev-tools
 
 Usage
 =====
@@ -61,6 +61,10 @@ Translation
 ===========
 
 Qt provides a powerfull process to translate software's string.
+You can download all Qt5 tools by running apt
+```
+sudo apt-get install qttools5-dev-tools
+```
 
 Translation files are stored in /polybox/i18n/ as TS file.
 The process is in 3 step. Updtae/create translate file. Translate the file/string. Then publish the translated file.
