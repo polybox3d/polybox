@@ -11,6 +11,8 @@ greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 TARGET = polybox
 TEMPLATE = app
 
+TRANSLATIONS = ../i18n/polybox_en.ts ../i18n/polybox_fr.ts
+
 CONFIG(release, debug|release)
 {
 DEFINES += QT_NO_DEBUG_OUTPUT
