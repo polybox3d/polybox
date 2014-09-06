@@ -79,7 +79,15 @@ lupdate polybox.pro
 ```
 2/ Translate the file
 
-Then, you have ot translate TR file using QLinguist
+Then, you have ot translate TR file using QLinguist.
+To start QtLinguist, run the following command in a terminal :
+```
+linguist
+```
+or 
+```
+/usr/lib/x86_64-linux-gnu/qt5/bin/linguist
+```
 
 3/ Convert TR file
 
