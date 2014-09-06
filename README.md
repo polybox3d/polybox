@@ -63,6 +63,8 @@ Translation
 Qt provides a powerfull process to translate software's string.
 
 Translation files are stored in /polybox/i18n/ as TS file.
+The process is in 3 step. Updtae/create translate file. Translate the file/string. Then publish the translated file.
+You can use QtCreator to update/publish TR files. (Tools > External > Linguist)
 
 1/ Create/update TS file.
 
@@ -74,6 +76,15 @@ lupdate polybox.pro
 2/ Translate the file
 
 Then, you have ot translate TR file using QLinguist
+
+3/ Convert TR file
+
+Finally, we need to convert the translated TR file into an QM file. QM file will be included at the next software compilation.
+
+```
+lrelease polybox.pro
+```
+
 
 References:
 * http://qt-project.org/doc/qt-5/linguist-translators.html
