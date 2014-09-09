@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Form</string>
+   <string>Contrôle CNC</string>
   </property>
   <widget class="QLabel" name="label_8">
    <property name="geometry">
@@ -39,7 +39,7 @@
     <string/>
    </property>
    <property name="pixmap">
-    <pixmap resource="ressources.qrc">:/img/img/led_off_red.png</pixmap>
+    <pixmap resource="../ressources.qrc">:/img/img/led_off_red.png</pixmap>
    </property>
    <property name="scaledContents">
     <bool>true</bool>
@@ -70,7 +70,7 @@
      <string/>
     </property>
     <property name="pixmap">
-     <pixmap resource="ressources.qrc">:/img/img/led_off_red.png</pixmap>
+     <pixmap resource="../ressources.qrc">:/img/img/led_off_red.png</pixmap>
     </property>
     <property name="scaledContents">
      <bool>true</bool>
@@ -102,7 +102,7 @@
      <string/>
     </property>
     <property name="pixmap">
-     <pixmap resource="ressources.qrc">:/img/img/led_off_red.png</pixmap>
+     <pixmap resource="../ressources.qrc">:/img/img/led_off_red.png</pixmap>
     </property>
     <property name="scaledContents">
      <bool>true</bool>
@@ -121,7 +121,7 @@
      <string/>
     </property>
     <property name="pixmap">
-     <pixmap resource="ressources.qrc">:/img/img/led_off_red.png</pixmap>
+     <pixmap resource="../ressources.qrc">:/img/img/led_off_red.png</pixmap>
     </property>
     <property name="scaledContents">
      <bool>true</bool>
@@ -153,7 +153,7 @@
      <string/>
     </property>
     <property name="pixmap">
-     <pixmap resource="ressources.qrc">:/img/img/led_off_red.png</pixmap>
+     <pixmap resource="../ressources.qrc">:/img/img/led_off_red.png</pixmap>
     </property>
     <property name="scaledContents">
      <bool>true</bool>
@@ -233,7 +233,7 @@
   </customwidget>
  </customwidgets>
  <resources>
-  <include location="ressources.qrc"/>
+  <include location="../ressources.qrc"/>
  </resources>
  <connections/>
 </ui>

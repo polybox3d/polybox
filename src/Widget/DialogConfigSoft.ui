@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Dialog</string>
+   <string>Panneau de configuration</string>
   </property>
   <widget class="QPushButton" name="close">
    <property name="geometry">
@@ -72,14 +72,14 @@
      <item row="0" column="0">
       <widget class="QLabel" name="label_2">
        <property name="text">
-        <string>Repertoire LinuxCNC :</string>
+        <string>Répertoire LinuxCNC :</string>
        </property>
       </widget>
      </item>
      <item row="1" column="0">
       <widget class="QLabel" name="label_3">
        <property name="text">
-        <string>Executable LinuxCNC :</string>
+        <string>Exécutable LinuxCNC :</string>
        </property>
       </widget>
      </item>

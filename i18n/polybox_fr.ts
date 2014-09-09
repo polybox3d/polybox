@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.0" language="fr_FR">
+<TS version="2.1" language="fr_FR">
 <context>
     <name>CNCChecker</name>
     <message>
         <location filename="../src/Checker/CNCChecker.ui" line="14"/>
-        <source>Form</source>
+        <source>Contrôle CNC</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -53,7 +53,7 @@
     <name>CNCPage</name>
     <message>
         <location filename="../src/Page/CNCPage.ui" line="14"/>
-        <source>Form</source>
+        <source>Module CNC</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -61,7 +61,7 @@
     <name>CheckerModele</name>
     <message>
         <location filename="../src/Checker/CheckerModele.ui" line="14"/>
-        <source>Form</source>
+        <source>Contrôle CNC</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -84,7 +84,7 @@
     <name>ConfigCNCPage</name>
     <message>
         <location filename="../src/Page/ConfigCNCPage.ui" line="14"/>
-        <source>Form</source>
+        <source>Configuration CNC</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -109,7 +109,7 @@
     </message>
     <message>
         <location filename="../src/Page/ConfigCNCPage.ui" line="77"/>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Ces outils vous permettent de vérifier le bon fonctionnement temsp réel de votre machine.Plus particulièrement la latence dans l&apos;execution du code. Une latence trop grande (&amp;gt;50-60uS) peut devenir problèmatique pour un contrôle fluide de la CN. Pour effectuer un test représentatif, il est important de &amp;quot;stresser&amp;quot; ma machine en lançant des programmes lourd, comem OpenGL, une copie sur disque ou même lire une vidéo HD. Le test doit durer le maximum de temps possible (&amp;gt;5min).&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Ces outils vous permettent de vérifier le bon fonctionnement temps réel de votre machine.Plus particulièrement la latence dans l&apos;execution du code. Une latence trop grande (&amp;gt;50-60uS) peut devenir problèmatique pour un contrôle fluide de la CN. Pour effectuer un test représentatif, il est important de &amp;quot;stresser&amp;quot; ma machine en lançant des programmes lourd, comem OpenGL, une copie sur disque ou même lire une vidéo HD. Le test doit durer le maximum de temps possible (&amp;gt;5min).&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -138,17 +138,17 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/Page/ConfigCNCPage.ui" line="165"/>
+        <location filename="../src/Page/ConfigCNCPage.ui" line="168"/>
         <source>Outils</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/Page/ConfigCNCPage.ui" line="177"/>
+        <location filename="../src/Page/ConfigCNCPage.ui" line="180"/>
         <source>Lancer</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/Page/ConfigCNCPage.ui" line="190"/>
+        <location filename="../src/Page/ConfigCNCPage.ui" line="193"/>
         <source>Il est possible d&apos;utiliser le module CN à l&apos;aide d&apos;une manette USB.
 Vous pouvez configurer votre maentte par le biais de l&apos;outil suivant.</source>
         <translation type="unfinished"></translation>
@@ -157,16 +157,12 @@ Vous pouvez configurer votre maentte par le biais de l&apos;outil suivant.</sour
 <context>
     <name>Console</name>
     <message>
-        <location filename="../src/Widget/Console.ui" line="14"/>
-        <source>Form</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="../src/Widget/Console.ui" line="26"/>
         <source>Envoyer Code</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../src/Widget/Console.ui" line="14"/>
         <location filename="../src/Widget/Console.ui" line="49"/>
         <source>Console</source>
         <translation type="unfinished"></translation>
@@ -176,7 +172,7 @@ Vous pouvez configurer votre maentte par le biais de l&apos;outil suivant.</sour
     <name>DebugPin</name>
     <message>
         <location filename="../src/Widget/DebugPin.ui" line="14"/>
-        <source>Form</source>
+        <source>Pin Débogueur</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -247,7 +243,7 @@ Vous pouvez configurer votre maentte par le biais de l&apos;outil suivant.</sour
     <name>DialogConfigSoft</name>
     <message>
         <location filename="../src/Widget/DialogConfigSoft.ui" line="14"/>
-        <source>Dialog</source>
+        <source>Panneau de configuration</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -267,12 +263,12 @@ Vous pouvez configurer votre maentte par le biais de l&apos;outil suivant.</sour
     </message>
     <message>
         <location filename="../src/Widget/DialogConfigSoft.ui" line="75"/>
-        <source>Repertoire LinuxCNC :</source>
+        <source>Répertoire LinuxCNC :</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../src/Widget/DialogConfigSoft.ui" line="82"/>
-        <source>Executable LinuxCNC :</source>
+        <source>Exécutable LinuxCNC :</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -460,7 +456,7 @@ Vous pouvez configurer votre maentte par le biais de l&apos;outil suivant.</sour
     <name>GlobalChecker</name>
     <message>
         <location filename="../src/Checker/GlobalChecker.ui" line="14"/>
-        <source>Form</source>
+        <source>Contrôle général</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -566,7 +562,7 @@ carte électronique</source>
     <name>HelpPage</name>
     <message>
         <location filename="../src/Page/HelpPage.ui" line="14"/>
-        <source>Form</source>
+        <source>Page d&apos;aide</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -574,7 +570,7 @@ carte électronique</source>
     <name>InterButton</name>
     <message>
         <location filename="../src/Widget/interbutton.ui" line="14"/>
-        <source>Form</source>
+        <source>Bouton Inter</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -600,7 +596,7 @@ carte électronique</source>
     <name>LabViewPage</name>
     <message>
         <location filename="../src/Page/LabViewPage.ui" line="20"/>
-        <source>Form</source>
+        <source>LabView</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -921,7 +917,7 @@ carte électronique</source>
     <name>ModulePage</name>
     <message>
         <location filename="../src/Page/ModulePage.ui" line="14"/>
-        <source>Form</source>
+        <source>Modules</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -949,7 +945,7 @@ carte électronique</source>
     <name>OpenPage</name>
     <message>
         <location filename="../src/Page/OpenPage.ui" line="14"/>
-        <source>Form</source>
+        <source>PolyboxSoftware</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -1038,7 +1034,7 @@ Verifiez les parametres (device name, path, permission).</source>
     <name>PrinterChecker</name>
     <message>
         <location filename="../src/Checker/PrinterChecker.ui" line="14"/>
-        <source>Form</source>
+        <source>Contrôle imprimante</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -1113,7 +1109,7 @@ Verifiez les parametres (device name, path, permission).</source>
     </message>
     <message>
         <location filename="../src/Checker/PrinterChecker.ui" line="571"/>
-        <source>File détecté</source>
+        <source>Fil détecté</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -1141,7 +1137,7 @@ Verifiez les parametres (device name, path, permission).</source>
     <name>PrinterPage</name>
     <message>
         <location filename="../src/Page/PrinterPage.ui" line="14"/>
-        <source>Form</source>
+        <source>Module Imprimante</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -1259,7 +1255,7 @@ Verifiez les parametres (device name, path, permission).</source>
     <name>PrinterSmallUI</name>
     <message>
         <location filename="../src/PrinterSmallUI.ui" line="14"/>
-        <source>Form</source>
+        <source>Imprimante</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -1389,7 +1385,7 @@ Verifiez les parametres (device name, path, permission).</source>
     <name>SCannerChecker</name>
     <message>
         <location filename="../src/Checker/SCannerChecker.ui" line="14"/>
-        <source>Form</source>
+        <source>Contrôle Scanner</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -1423,7 +1419,7 @@ Verifiez les parametres (device name, path, permission).</source>
     <name>WarningPage</name>
     <message>
         <location filename="../src/Page/WarningPage.ui" line="14"/>
-        <source>Form</source>
+        <source>Panneau de Contrôle</source>
         <translation type="unfinished"></translation>
     </message>
     <message>

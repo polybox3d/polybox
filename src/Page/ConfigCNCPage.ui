@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Form</string>
+   <string>Configuration CNC</string>
   </property>
   <widget class="QGroupBox" name="groupBox_2">
    <property name="geometry">
@@ -74,7 +74,7 @@
      </rect>
     </property>
     <property name="text">
-     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Ces outils vous permettent de vérifier le bon fonctionnement temsp réel de votre machine.Plus particulièrement la latence dans l'execution du code. Une latence trop grande (&amp;gt;50-60uS) peut devenir problèmatique pour un contrôle fluide de la CN. Pour effectuer un test représentatif, il est important de &amp;quot;stresser&amp;quot; ma machine en lançant des programmes lourd, comem OpenGL, une copie sur disque ou même lire une vidéo HD. Le test doit durer le maximum de temps possible (&amp;gt;5min).&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Ces outils vous permettent de vérifier le bon fonctionnement temps réel de votre machine.Plus particulièrement la latence dans l'execution du code. Une latence trop grande (&amp;gt;50-60uS) peut devenir problèmatique pour un contrôle fluide de la CN. Pour effectuer un test représentatif, il est important de &amp;quot;stresser&amp;quot; ma machine en lançant des programmes lourd, comem OpenGL, une copie sur disque ou même lire une vidéo HD. Le test doit durer le maximum de temps possible (&amp;gt;5min).&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
     </property>
     <property name="wordWrap">
      <bool>true</bool>
@@ -153,6 +153,9 @@
    </property>
   </widget>
   <widget class="QGroupBox" name="groupBox_3">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
    <property name="geometry">
     <rect>
      <x>30</x>
