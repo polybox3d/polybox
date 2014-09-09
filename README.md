@@ -61,14 +61,20 @@ Translation
 ===========
 
 Qt provides a powerfull process to translate software's string.
-You can download all Qt5 tools by running apt
+You can download all Qt5 tools by running apt or from Qt Website
 ```
 sudo apt-get install qttools5-dev-tools
 ```
 
+Or 
+
+http://qt-project.org/downloads
+
 Translation files are stored in /polybox/i18n/ as TS file.
 The process is in 3 step. Updtae/create translate file. Translate the file/string. Then publish the translated file.
-You can use QtCreator to update/publish TR files. (Tools > External > Linguist)
+
+You can use a terminal or QtCreator to update/publish TR files. (Tools > External > Linguist)
+
 
 1/ Create/update TS file.
 
@@ -77,6 +83,9 @@ In a terminal, go inside the source repertory, and execute lupdate command :
 ```
 lupdate polybox.pro
 ```
+
+Qt Creator : (Tools > External > Linguist)
+
 2/ Translate the file
 
 Then, you have ot translate TR file using QLinguist.
@@ -96,6 +105,9 @@ Finally, we need to convert the translated TR file into an QM file. QM file will
 ```
 lrelease polybox.pro
 ```
+or 
+
+Qt Creator : (Tools > External > Linguist)
 
 
 References:
