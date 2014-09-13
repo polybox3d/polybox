@@ -66,6 +66,12 @@
     <property name="title">
      <string>Aide</string>
     </property>
+    <widget class="QMenu" name="menuLangage">
+     <property name="title">
+      <string>Langage</string>
+     </property>
+    </widget>
+    <addaction name="menuLangage"/>
    </widget>
    <widget class="QMenu" name="menuA_propos">
     <property name="title">
@@ -157,6 +163,11 @@
   <action name="actionParametres">
    <property name="text">
     <string>Paramètres</string>
+   </property>
+  </action>
+  <action name="actionLangage">
+   <property name="text">
+    <string>Langage</string>
    </property>
   </action>
  </widget>

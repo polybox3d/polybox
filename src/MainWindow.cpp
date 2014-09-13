@@ -31,6 +31,8 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(_polybox, SIGNAL(updateHardware()),this,SLOT(updateHardware()));
 
     ui->setupUi(this);
+
+    setupLanguage();
     _joypadActivated = false;
     _webcam = NULL;
     _dockLV = NULL;
@@ -58,6 +60,37 @@ void MainWindow::startConsoleWindow()
         c->setWindowTitle("Console");
         c->show();
     }
+}
+
+void MainWindow::restartApp()
+{
+    QProcess::startDetached(QApplication::applicationFilePath());
+    exit(12);
+}
+
+void MainWindow::translateApp()
+{
+    if ( QAction* act = dynamic_cast<QAction*>(sender()) )
+    {
+        QSettings().setValue("lang",act->text());
+        this->restartApp();
+    }
+}
+
+void MainWindow::setupLanguage()
+{
+    QDir directory( Config::translationPath );
+    QStringList ts_files = directory.entryList(QStringList("*.ts")) ;
+    QString lang;
+    QAction* act;
+
+    foreach( QString file, ts_files)
+    {
+        lang = file.split(".").first().split("_").last();
+        act = ui->menuLangage->addAction( lang );
+        connect(act,SIGNAL(triggered()),this, SLOT(translateApp()));
+    }
+
 }
 
 void MainWindow::toggleATU()

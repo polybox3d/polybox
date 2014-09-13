@@ -4,6 +4,7 @@
 #include <QString>
 #include <QColor>
 
+#include <QSettings>
 #include <QFile>
 #include <QMessageBox>
 #include <QFileDialog>
@@ -17,12 +18,12 @@
 class Config
 {
 public:
-    Config();
 #define INITIAL_CONFIG_FILE ":/xml/config/.initialConfig.xml"
-
+    Config();
     static QString pathToPrinterSoftware;
 
     static QString pathToPrinterWorkingDir;
+    static QString translationPath;
 
     /**
      * @brief pathToHomeDirectory Full path to the main user home directory (/home/<user>/)

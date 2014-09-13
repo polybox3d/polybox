@@ -6,6 +6,7 @@
 #include <QDockWidget>
 #include <QLabel>
 #include <QMessageBox>
+#include <QLibraryInfo>
 
 #include "Config.h"
 
@@ -46,6 +47,7 @@ public:
     static MainWindow* getMainWindow();
     static void errorWindow(QString errorText);
     static void textWindow(QString text);
+    static void restartApp();
 
     ~MainWindow();
 public slots:
@@ -55,6 +57,7 @@ public slots:
     void startCamera();
     void startConnexion();
     void updateHardware();
+    void translateApp();
 
     void startConsoleWindow();
 
@@ -64,6 +67,7 @@ signals:
 
 public slots:
     void toggleATU();
+    void setupLanguage();
 
 private slots:
     void on_actionCNC_triggered();
