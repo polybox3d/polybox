@@ -6,6 +6,7 @@
 #include <QSettings>
 #include <QStyleFactory>
 #include <QApplication>
+#include <QColor>
 #include <QPalette>
 #include <QStyle>
 

@@ -33,6 +33,16 @@ int main(int argc, char *argv[])
 
     /*********************  Starting EXE **********************/
     MainWindow w;
+/*
+    QWidget* handler_w = new QWidget(0,Qt::FramelessWindowHint);
+    QDockWidget* dock;
+    dock = new QDockWidget("PolySoftware", handler_w);
+    dock->setWidget( new MainWindow);
+    dock->setFloating( false );
+    dock->setFixedSize(800,600);
+    dock->show();
+
+    handler_w->show();**/
     w.show();
 
     return app.exec();

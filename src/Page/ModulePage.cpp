@@ -18,6 +18,7 @@ ModulePage::ModulePage(PolyboxModule* poly, QWidget *parent) :
     ui->homeButton->installEventFilter( this );
     _updateTimer.start( Config::updateModuleTimer );
     connect( &_updateTimer, SIGNAL(timeout()), this, SLOT(repaintComponents()) );
+    repaintComponents();
 
 }
 
@@ -70,6 +71,8 @@ void ModulePage::repaintComponents()
     {
         ui->printerButton->setStyleSheet(  QString("color: rgb(0, 0, 0);background-color: ")+DEFAULT_DISABLE_BUTTON+";" );
     }
+
+    ui->labviewButton->setStyleSheet(  QString("color: rgb(0, 0, 0);background-color: ")+DEFAULT_LABVIEW_BUTTON+";" );
 
 }
 

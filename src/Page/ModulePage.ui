@@ -25,6 +25,9 @@
    <property name="autoFillBackground">
     <bool>false</bool>
    </property>
+   <property name="frameShadow">
+    <enum>QFrame::Plain</enum>
+   </property>
    <property name="text">
     <string/>
    </property>
@@ -47,8 +50,15 @@
      <height>91</height>
     </rect>
    </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+     <weight>75</weight>
+     <bold>true</bold>
+    </font>
+   </property>
    <property name="styleSheet">
-    <string notr="true">background-color: rgb(255, 190, 190);
+    <string notr="true">background-color: rgb(217, 83, 79);
 color: rgb(0, 0, 0);</string>
    </property>
    <property name="text">
@@ -62,6 +72,9 @@ color: rgb(0, 0, 0);</string>
    </property>
   </widget>
   <widget class="QPushButton" name="cncButton">
+   <property name="enabled">
+    <bool>true</bool>
+   </property>
    <property name="geometry">
     <rect>
      <x>50</x>
@@ -70,8 +83,15 @@ color: rgb(0, 0, 0);</string>
      <height>91</height>
     </rect>
    </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+     <weight>75</weight>
+     <bold>true</bold>
+    </font>
+   </property>
    <property name="styleSheet">
-    <string notr="true">background-color: rgb(180, 210, 255);
+    <string notr="true">background-color: rgb(66, 139, 202);
 color: rgb(0, 0, 0);</string>
    </property>
    <property name="text">
@@ -79,6 +99,9 @@ color: rgb(0, 0, 0);</string>
    </property>
   </widget>
   <widget class="QPushButton" name="scannerButton">
+   <property name="enabled">
+    <bool>true</bool>
+   </property>
    <property name="geometry">
     <rect>
      <x>60</x>
@@ -87,14 +110,24 @@ color: rgb(0, 0, 0);</string>
      <height>91</height>
     </rect>
    </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+     <weight>75</weight>
+     <bold>true</bold>
+    </font>
+   </property>
    <property name="styleSheet">
-    <string notr="true">background-color: rgb(180, 255, 165);color: rgb(0, 0, 0);</string>
+    <string notr="true">background-color: rgb(92, 184, 92);color: rgb(0, 0, 0);</string>
    </property>
    <property name="text">
     <string>Scanner</string>
    </property>
   </widget>
   <widget class="QPushButton" name="labviewButton">
+   <property name="enabled">
+    <bool>true</bool>
+   </property>
    <property name="geometry">
     <rect>
      <x>620</x>
@@ -103,8 +136,15 @@ color: rgb(0, 0, 0);</string>
      <height>91</height>
     </rect>
    </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+     <weight>75</weight>
+     <bold>true</bold>
+    </font>
+   </property>
    <property name="styleSheet">
-    <string notr="true">background-color: rgb(255, 230, 155);color: rgb(0, 0, 0);</string>
+    <string notr="true">background-color: rgb(240, 173, 78);color: rgb(0, 0, 0);</string>
    </property>
    <property name="text">
     <string>LabView</string>

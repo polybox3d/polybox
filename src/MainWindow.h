@@ -43,7 +43,7 @@ class MainWindow : public QMainWindow
     Q_OBJECT
 
 public:
-    explicit MainWindow(QWidget *parent = 0);
+    explicit MainWindow(Qt::WindowFlags window_flags = Qt::Widget, QWidget *parent=0);
 
     static MainWindow* getMainWindow();
     static void errorWindow(QString errorText);

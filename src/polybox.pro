@@ -80,7 +80,8 @@ SOURCES += main.cpp\
     Module/ScannerModule.cpp \
     Module/AbstractModule.cpp \
     polyplexer.cpp \
-    Widget/FolderButton.cpp
+    Widget/FolderButton.cpp \
+    Theme.cpp
 
 HEADERS  += MainWindow.h \
         Updater.h \
@@ -131,7 +132,8 @@ HEADERS  += MainWindow.h \
     Module/AbstractModule.h \
     Module/GlobalModule.h \
     polyplexer.h \
-    Widget/FolderButton.h
+    Widget/FolderButton.h \
+    Theme.h
 
 FORMS    += MainWindow.ui \
     PrinterSmallUI.ui \

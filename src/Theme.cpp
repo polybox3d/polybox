@@ -51,7 +51,7 @@ void Theme::installFusionDark()
     QPalette darkPalette;
     darkPalette.setColor(QPalette::Window, QColor(53,53,53));
     darkPalette.setColor(QPalette::WindowText, Qt::white);
-    darkPalette.setColor(QPalette::Base, QColor(25,25,25));
+    darkPalette.setColor(QPalette::Base, QColor(35,35,35));
     darkPalette.setColor(QPalette::AlternateBase, QColor(53,53,53));
     darkPalette.setColor(QPalette::ToolTipBase, Qt::white);
     darkPalette.setColor(QPalette::ToolTipText, Qt::white);
@@ -63,8 +63,18 @@ void Theme::installFusionDark()
 
     darkPalette.setColor(QPalette::Highlight, QColor(42, 130, 218));
     darkPalette.setColor(QPalette::HighlightedText, Qt::black);
+
+    // this is for DISABLE widget color
+    darkPalette.setColor(QPalette::Disabled, QPalette::Button, QColor(25, 25, 25));
+    qApp->setStyleSheet("QToolTip { color: #ffffff; background-color: #2a82da; border: 1px solid white; }"
+                        );
+    /**
+                        "QMenu {"
+                        "border: 1px solid #191919;"
+                        "}"
+    **/
     qApp->setPalette(darkPalette);
-    qApp->setStyleSheet("QToolTip { color: #ffffff; background-color: #2a82da; border: 1px solid white; }");
+
 
 }
 
@@ -75,7 +85,7 @@ void Theme::installFusionDarkPurple()
     QPalette palette;
     palette.setColor(QPalette::Window, QColor(53,53,53));
     palette.setColor(QPalette::WindowText, Qt::white);
-    palette.setColor(QPalette::Base, QColor(15,15,15));
+    palette.setColor(QPalette::Base, QColor(35,35,35));
     palette.setColor(QPalette::AlternateBase, QColor(53,53,53));
     palette.setColor(QPalette::ToolTipBase, Qt::white);
     palette.setColor(QPalette::ToolTipText, Qt::white);
@@ -86,26 +96,20 @@ void Theme::installFusionDarkPurple()
 
     palette.setColor(QPalette::Highlight, QColor(142,45,197).lighter());
     palette.setColor(QPalette::HighlightedText, Qt::black);
+
+    // this is for DISABLE widget color
+    palette.setColor(QPalette::Disabled, QPalette::Button, QColor(25, 15, 25));
     qApp->setPalette(palette);
 }
 
 void Theme::installFusionClean()
 {
-    qApp->setStyle(QStyleFactory::create("fusio_clean"));
+    qApp->setStyle(QStyleFactory::create("fusion_clean"));
 
     QPalette palette;
-    palette.setColor(QPalette::Window, QColor(53,53,53));
-    palette.setColor(QPalette::WindowText, Qt::white);
-    palette.setColor(QPalette::Base, QColor(15,15,15));
-    palette.setColor(QPalette::AlternateBase, QColor(53,53,53));
-    palette.setColor(QPalette::ToolTipBase, Qt::white);
-    palette.setColor(QPalette::ToolTipText, Qt::white);
-    palette.setColor(QPalette::Text, Qt::white);
-    palette.setColor(QPalette::Button, QColor(53,53,53));
-    palette.setColor(QPalette::ButtonText, Qt::white);
-    palette.setColor(QPalette::BrightText, Qt::red);
+    palette.setColor(QPalette::Window, QColor(212,219,230.));
 
-    palette.setColor(QPalette::Highlight, QColor(142,45,197).lighter());
-    palette.setColor(QPalette::HighlightedText, Qt::black);
+    palette.setColor(QPalette::Highlight, QColor(132,189,223));
+
     qApp->setPalette(palette);
 }

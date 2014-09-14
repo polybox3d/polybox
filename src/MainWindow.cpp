@@ -21,8 +21,8 @@ void MainWindow::textWindow(QString text)
     messageBox.setFixedSize(500,200);
 }
 
-MainWindow::MainWindow(QWidget *parent) :
-    QMainWindow(parent),
+MainWindow::MainWindow(Qt::WindowFlags window_flags, QWidget *parent) :
+    QMainWindow(parent, window_flags),
     ui(new Ui::MainWindow)
 {
     mainwindow = this;
@@ -99,9 +99,8 @@ void MainWindow::setupThemes()
     act = ui->menuThemes->addAction("Fusion Purple");
     connect(act,SIGNAL(triggered()),this, SLOT(changeTheme()));
 
-/*    act = ui->menuThemes->addAction("Fusion Clean");
+    act = ui->menuThemes->addAction("Fusion Clean");
     connect(act,SIGNAL(triggered()),this, SLOT(changeTheme()));
-    */
 
     act = ui->menuThemes->addAction("White");
     connect(act,SIGNAL(triggered()),this, SLOT(changeTheme()));
