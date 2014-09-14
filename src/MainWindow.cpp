@@ -335,6 +335,11 @@ void MainWindow::updateStatePage()
         break;
     case CNC :
     {
+        // Is LinuxCNC already running/opened ?
+        if ( _polybox->cncModule()->isRunningLinuxCNC() )
+        {
+            break;
+        }
         bool cnc_ok = _polybox->isCncReady();
         if ( cnc_ok || Config::bypassCheck )
         {
@@ -342,7 +347,15 @@ void MainWindow::updateStatePage()
             int value_ret = dialog.exec();
             if ( value_ret != 0 )
             {
-                CHANGE_PAGE( static_cast<PageState>(value_ret) );
+                _dockCNC = new QDockWidget("LinuxCNC ",this);
+                _dockCNC->setWidget( new CNCPage( _polybox->cncModule(), _dockCNC ) );
+                _dockCNC->setFloating( true );
+                _dockCNC->setFixedHeight(350+15);
+                _dockCNC->setFixedWidth(275);
+                _dockCNC->show();
+                _dockCNC->setEnabled( _atuON );
+
+                //CHANGE_PAGE( static_cast<PageState>(value_ret) );
             }
         }
         else

@@ -1,10 +1,11 @@
 #include "CNCPage.h"
 #include "ui_CNCPage.h"
 
-CNCPage::CNCPage(QWidget *parent) :
+CNCPage::CNCPage(CNCModule *cncmodule, QWidget *parent) :
     QWidget(parent),
     ui(new Ui::CNCPage)
 {
+    _cnc = cncmodule;
     ui->setupUi(this);
 
     startLinuxCNC();
@@ -17,7 +18,6 @@ CNCPage::~CNCPage()
 
 void CNCPage::startLinuxCNC()
 {
-    QString command = Config::linuxCNCCommand;
-    _linuxcnc = new QProcess( this );
-    _linuxcnc->start( command);
+    _cnc->startLinuxCNC();
+    connect(_cnc, SIGNAL(signalLinuxCNCFinished()),this->parentWidget(),SLOT(close()));
 }

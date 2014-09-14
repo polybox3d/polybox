@@ -104,6 +104,7 @@ private:
     bool _atuON;
     ATUButton* _atu;
     QDockWidget* _dockLV;
+    QDockWidget* _dockCNC;
 };
 
 #endif // MAINWINDOW_H
