@@ -3,6 +3,9 @@
 #include <QApplication>
 #include <QLibraryInfo>
 #include <QSettings>
+#include <QStyleFactory>
+
+#include "Theme.h"
 
 int main(int argc, char *argv[])
 {
@@ -24,6 +27,9 @@ int main(int argc, char *argv[])
 
     if(!QFile::exists(Config::translationPath+"/polybox_fr.qm"))
         qWarning(Config::translationPath.toStdString().c_str());
+
+    /*********************  THEMES **********************/
+    Theme::installTheme();
 
     /*********************  Starting EXE **********************/
     MainWindow w;

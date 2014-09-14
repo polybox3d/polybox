@@ -22,6 +22,7 @@
 #include "DialogConfigSoft.h"
 #include "PolyboxModule.h"
 #include "polyplexer.h"
+#include "Theme.h"
 
 #if !defined NO_SCAN
  #include "fsmainwindow.h"
@@ -58,6 +59,7 @@ public slots:
     void startConnexion();
     void updateHardware();
     void translateApp();
+    void changeTheme();
 
     void startConsoleWindow();
 
@@ -68,6 +70,7 @@ signals:
 public slots:
     void toggleATU();
     void setupLanguage();
+    void setupThemes();
 
 private slots:
     void on_actionCNC_triggered();

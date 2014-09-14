@@ -17,6 +17,9 @@
    <iconset resource="ressources.qrc">
     <normaloff>:/img/img/logo_400.png</normaloff>:/img/img/logo_400.png</iconset>
   </property>
+  <property name="styleSheet">
+   <string notr="true"/>
+  </property>
   <property name="dockNestingEnabled">
    <bool>false</bool>
   </property>
@@ -71,7 +74,13 @@
       <string>Langage</string>
      </property>
     </widget>
+    <widget class="QMenu" name="menuThemes">
+     <property name="title">
+      <string>Thèmes</string>
+     </property>
+    </widget>
     <addaction name="menuLangage"/>
+    <addaction name="menuThemes"/>
    </widget>
    <widget class="QMenu" name="menuA_propos">
     <property name="title">

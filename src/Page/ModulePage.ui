@@ -48,7 +48,8 @@
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">background-color: rgb(255, 190, 190);</string>
+    <string notr="true">background-color: rgb(255, 190, 190);
+color: rgb(0, 0, 0);</string>
    </property>
    <property name="text">
     <string>Imprimante</string>
@@ -70,7 +71,8 @@
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">background-color: rgb(180, 210, 255);</string>
+    <string notr="true">background-color: rgb(180, 210, 255);
+color: rgb(0, 0, 0);</string>
    </property>
    <property name="text">
     <string>CNC</string>
@@ -86,7 +88,7 @@
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">background-color: rgb(180, 255, 165);</string>
+    <string notr="true">background-color: rgb(180, 255, 165);color: rgb(0, 0, 0);</string>
    </property>
    <property name="text">
     <string>Scanner</string>
@@ -102,7 +104,7 @@
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">background-color: rgb(255, 230, 155);</string>
+    <string notr="true">background-color: rgb(255, 230, 155);color: rgb(0, 0, 0);</string>
    </property>
    <property name="text">
     <string>LabView</string>

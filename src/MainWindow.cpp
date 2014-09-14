@@ -32,7 +32,6 @@ MainWindow::MainWindow(QWidget *parent) :
 
     ui->setupUi(this);
 
-    setupLanguage();
     _joypadActivated = false;
     _webcam = NULL;
     _dockLV = NULL;
@@ -48,7 +47,8 @@ MainWindow::MainWindow(QWidget *parent) :
 
     changeStatePage( Start );
     
-
+    setupLanguage();
+    setupThemes();
     setupWebcamMenu();
     setupSerialMenu();
 }
@@ -75,6 +75,37 @@ void MainWindow::translateApp()
         QSettings().setValue("lang",act->text());
         this->restartApp();
     }
+}
+void MainWindow::changeTheme()
+{
+    if ( QAction* act = dynamic_cast<QAction*>(sender()) )
+    {
+        Theme::installTheme( act->text() );
+        qApp->processEvents();
+        this->restartApp();
+    }
+}
+
+void MainWindow::setupThemes()
+{
+    QAction* act;
+
+    act = ui->menuThemes->addAction("Fusion White");
+    connect(act,SIGNAL(triggered()),this, SLOT(changeTheme()));
+
+    act = ui->menuThemes->addAction("Fusion Dark");
+    connect(act,SIGNAL(triggered()),this, SLOT(changeTheme()));
+
+    act = ui->menuThemes->addAction("Fusion Purple");
+    connect(act,SIGNAL(triggered()),this, SLOT(changeTheme()));
+
+/*    act = ui->menuThemes->addAction("Fusion Clean");
+    connect(act,SIGNAL(triggered()),this, SLOT(changeTheme()));
+    */
+
+    act = ui->menuThemes->addAction("White");
+    connect(act,SIGNAL(triggered()),this, SLOT(changeTheme()));
+
 }
 
 void MainWindow::setupLanguage()
