@@ -21,8 +21,8 @@ void MainWindow::textWindow(QString text)
     messageBox.setFixedSize(500,200);
 }
 
-MainWindow::MainWindow(QWidget *parent) :
-    QMainWindow(parent),
+MainWindow::MainWindow(Qt::WindowFlags window_flags, QWidget *parent) :
+    QMainWindow(parent, window_flags),
     ui(new Ui::MainWindow)
 {
     mainwindow = this;
@@ -31,6 +31,7 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(_polybox, SIGNAL(updateHardware()),this,SLOT(updateHardware()));
 
     ui->setupUi(this);
+
     _joypadActivated = false;
     _webcam = NULL;
     _dockLV = NULL;
@@ -46,7 +47,8 @@ MainWindow::MainWindow(QWidget *parent) :
 
     changeStatePage( Start );
     
-
+    setupLanguage();
+    setupThemes();
     setupWebcamMenu();
     setupSerialMenu();
 }
@@ -58,6 +60,67 @@ void MainWindow::startConsoleWindow()
         c->setWindowTitle("Console");
         c->show();
     }
+}
+
+void MainWindow::restartApp()
+{
+    QProcess::startDetached(QApplication::applicationFilePath());
+    exit(12);
+}
+
+void MainWindow::translateApp()
+{
+    if ( QAction* act = dynamic_cast<QAction*>(sender()) )
+    {
+        QSettings().setValue("lang",act->text());
+        this->restartApp();
+    }
+}
+void MainWindow::changeTheme()
+{
+    if ( QAction* act = dynamic_cast<QAction*>(sender()) )
+    {
+        Theme::installTheme( act->text() );
+        qApp->processEvents();
+        this->restartApp();
+    }
+}
+
+void MainWindow::setupThemes()
+{
+    QAction* act;
+
+    act = ui->menuThemes->addAction("Fusion White");
+    connect(act,SIGNAL(triggered()),this, SLOT(changeTheme()));
+
+    act = ui->menuThemes->addAction("Fusion Dark");
+    connect(act,SIGNAL(triggered()),this, SLOT(changeTheme()));
+
+    act = ui->menuThemes->addAction("Fusion Purple");
+    connect(act,SIGNAL(triggered()),this, SLOT(changeTheme()));
+
+    act = ui->menuThemes->addAction("Fusion Clean");
+    connect(act,SIGNAL(triggered()),this, SLOT(changeTheme()));
+
+    act = ui->menuThemes->addAction("White");
+    connect(act,SIGNAL(triggered()),this, SLOT(changeTheme()));
+
+}
+
+void MainWindow::setupLanguage()
+{
+    QDir directory( Config::translationPath );
+    QStringList ts_files = directory.entryList(QStringList("*.ts")) ;
+    QString lang;
+    QAction* act;
+
+    foreach( QString file, ts_files)
+    {
+        lang = file.split(".").first().split("_").last();
+        act = ui->menuLangage->addAction( lang );
+        connect(act,SIGNAL(triggered()),this, SLOT(translateApp()));
+    }
+
 }
 
 void MainWindow::toggleATU()
@@ -272,6 +335,11 @@ void MainWindow::updateStatePage()
         break;
     case CNC :
     {
+        // Is LinuxCNC already running/opened ?
+        if ( _polybox->cncModule()->isRunningLinuxCNC() )
+        {
+            break;
+        }
         bool cnc_ok = _polybox->isCncReady();
         if ( cnc_ok || Config::bypassCheck )
         {
@@ -279,7 +347,15 @@ void MainWindow::updateStatePage()
             int value_ret = dialog.exec();
             if ( value_ret != 0 )
             {
-                CHANGE_PAGE( static_cast<PageState>(value_ret) );
+                _dockCNC = new QDockWidget("LinuxCNC ",this);
+                _dockCNC->setWidget( new CNCPage( _polybox->cncModule(), _dockCNC ) );
+                _dockCNC->setFloating( true );
+                _dockCNC->setFixedHeight(350+15);
+                _dockCNC->setFixedWidth(275);
+                _dockCNC->show();
+                _dockCNC->setEnabled( _atuON );
+
+                //CHANGE_PAGE( static_cast<PageState>(value_ret) );
             }
         }
         else

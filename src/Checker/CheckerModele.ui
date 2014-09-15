@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Form</string>
+   <string>Contrôle CNC</string>
   </property>
   <widget class="QWidget" name="contentWidget" native="true">
    <property name="geometry">
@@ -42,7 +42,7 @@
        <string>Aide</string>
       </property>
       <property name="icon">
-       <iconset resource="ressources.qrc">
+       <iconset resource="../ressources.qrc">
         <normaloff>:/img/img/help.png</normaloff>:/img/img/help.png</iconset>
       </property>
      </widget>
@@ -53,7 +53,7 @@
        <string>Mettre à jour</string>
       </property>
       <property name="icon">
-       <iconset resource="ressources.qrc">
+       <iconset resource="../ressources.qrc">
         <normaloff>:/img/img/update.png</normaloff>:/img/img/update.png</iconset>
       </property>
      </widget>
@@ -64,7 +64,7 @@
        <string>Fermer</string>
       </property>
       <property name="icon">
-       <iconset resource="ressources.qrc">
+       <iconset resource="../ressources.qrc">
         <normaloff>:/img/img/close.png</normaloff>:/img/img/close.png</iconset>
       </property>
      </widget>
@@ -73,7 +73,7 @@
   </widget>
  </widget>
  <resources>
-  <include location="ressources.qrc"/>
+  <include location="../ressources.qrc"/>
  </resources>
  <connections/>
 </ui>

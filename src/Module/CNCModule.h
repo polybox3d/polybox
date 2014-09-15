@@ -73,9 +73,16 @@ public:
     void updateToolPlugged();
     void updateLubricantLevel();
     void updateVacummPlugged();
+    void startLinuxCNC();
+    bool isRunningLinuxCNC();
 
 signals:
     void updateUI();
+    void signalLinuxCNCFinished();
+
+public slots:
+    void linuxCNCFinished(int exitCode, QProcess::ExitStatus exitStatus);
+    void linuxCNCError(QProcess::ProcessError error);
 
 private:
     /**
@@ -88,6 +95,10 @@ private:
     float _levelLub;
     bool _vacuumPlugged;
     CNCType _cncType;
+    /**
+     * @brief _linuxcnc Stores the linuxcnc process. (external software, see Config::linuxCNCCommand for futher information)
+     */
+    QProcess* _linuxcnc;
 
 };
 

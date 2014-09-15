@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Form</string>
+   <string>Contrôle Scanner</string>
   </property>
   <widget class="QGroupBox" name="groupBox">
    <property name="geometry">
@@ -44,7 +44,7 @@
      <string/>
     </property>
     <property name="pixmap">
-     <pixmap resource="ressources.qrc">:/img/img/led_off_red.png</pixmap>
+     <pixmap resource="../ressources.qrc">:/img/img/led_off_red.png</pixmap>
     </property>
     <property name="scaledContents">
      <bool>true</bool>
@@ -89,7 +89,7 @@
      <string/>
     </property>
     <property name="pixmap">
-     <pixmap resource="ressources.qrc">:/img/img/led_off_red.png</pixmap>
+     <pixmap resource="../ressources.qrc">:/img/img/led_off_red.png</pixmap>
     </property>
     <property name="scaledContents">
      <bool>true</bool>
@@ -108,7 +108,7 @@
      <string/>
     </property>
     <property name="pixmap">
-     <pixmap resource="ressources.qrc">:/img/img/laser.png</pixmap>
+     <pixmap resource="../ressources.qrc">:/img/img/laser.png</pixmap>
     </property>
     <property name="scaledContents">
      <bool>true</bool>
@@ -140,7 +140,7 @@
      <string/>
     </property>
     <property name="pixmap">
-     <pixmap resource="ressources.qrc">:/img/img/led_off_red.png</pixmap>
+     <pixmap resource="../ressources.qrc">:/img/img/led_off_red.png</pixmap>
     </property>
     <property name="scaledContents">
      <bool>true</bool>
@@ -172,7 +172,7 @@
      <string/>
     </property>
     <property name="pixmap">
-     <pixmap resource="ressources.qrc">:/img/img/led_off_red.png</pixmap>
+     <pixmap resource="../ressources.qrc">:/img/img/led_off_red.png</pixmap>
     </property>
     <property name="scaledContents">
      <bool>true</bool>
@@ -204,7 +204,7 @@
      <string/>
     </property>
     <property name="pixmap">
-     <pixmap resource="ressources.qrc">:/img/img/primesense.png</pixmap>
+     <pixmap resource="../ressources.qrc">:/img/img/primesense.png</pixmap>
     </property>
     <property name="scaledContents">
      <bool>true</bool>
@@ -220,7 +220,7 @@
   </customwidget>
  </customwidgets>
  <resources>
-  <include location="ressources.qrc"/>
+  <include location="../ressources.qrc"/>
  </resources>
  <connections/>
 </ui>

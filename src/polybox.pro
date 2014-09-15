@@ -11,6 +11,8 @@ greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 TARGET = polybox
 TEMPLATE = app
 
+TRANSLATIONS = ../i18n/polybox_en.ts ../i18n/polybox_fr.ts
+
 CONFIG(release, debug|release)
 {
 DEFINES += QT_NO_DEBUG_OUTPUT
@@ -78,7 +80,8 @@ SOURCES += main.cpp\
     Module/ScannerModule.cpp \
     Module/AbstractModule.cpp \
     polyplexer.cpp \
-    Widget/FolderButton.cpp
+    Widget/FolderButton.cpp \
+    Theme.cpp
 
 HEADERS  += MainWindow.h \
         Updater.h \
@@ -129,7 +132,8 @@ HEADERS  += MainWindow.h \
     Module/AbstractModule.h \
     Module/GlobalModule.h \
     polyplexer.h \
-    Widget/FolderButton.h
+    Widget/FolderButton.h \
+    Theme.h
 
 FORMS    += MainWindow.ui \
     PrinterSmallUI.ui \

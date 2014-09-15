@@ -1,4 +1,5 @@
 #include "CNCModule.h"
+#include "MainWindow.h"
 
 CNCModule::CNCModule(PolyboxModule *polybox, QObject *parent) :
     QObject(parent), AbstractModule(polybox)
@@ -24,6 +25,7 @@ void CNCModule::initAll()
     _levelLub = false;
     _vacuumPlugged = false;
     _cncType = Noone;
+    _linuxcnc = NULL;
 }
 
 
@@ -113,6 +115,54 @@ void CNCModule::updateVacummPlugged()
     _polybox->port()->sendMCode( MCODE_CNC_VACUUM_DETECTED );
 }
 
+void CNCModule::linuxCNCFinished(int exitCode, QProcess::ExitStatus exitStatus )
+{
+    if ( exitCode == 2 )
+    {
+        MainWindow::errorWindow( tr("\n\nImpossible de lancer LinuxCNC."
+                                    "Veuillez vérifier que le chemin d'accès est correct.\n\n"
+                                    "Configuration > Paramètres logiciel \n\n")+_linuxcnc->readAllStandardError()+"\n\n" );
+    }
+    emit signalLinuxCNCFinished();
+}
+
+void CNCModule::linuxCNCError(QProcess::ProcessError error)
+{
+    if ( error == QProcess::FailedToStart)
+    {
+        MainWindow::errorWindow( tr("\n\nImpossible de lancer LinuxCNC. Le chemin d'accès à LinuxCNC ou les permissions sont incorrectes.\n\n"
+                                    "Veuillez vérifier que le chemin d'accèset les permissions.\n\n"
+                                    "Configuration > Paramètres logiciel \n\n")+_linuxcnc->readAll()+"\n\n"
+                                 "Error Code : "+QString::number(QProcess::FailedToStart));
+    }
+    else
+    {
+        MainWindow::errorWindow( tr("\n\nImpossible de lancer LinuxCNC.\n\n")+_linuxcnc->readAll()+"\n\n"
+                                 "Error Code : "+QString::number(QProcess::FailedToStart));
+    }
+    emit signalLinuxCNCFinished();
+}
+
+void CNCModule::startLinuxCNC()
+{
+    QString command = Config::linuxCNCCommand;
+    _linuxcnc = new QProcess( this );
+    connect( _linuxcnc, SIGNAL(finished(int,QProcess::ExitStatus)), this,SLOT(linuxCNCFinished(int,QProcess::ExitStatus)));
+    connect( _linuxcnc, SIGNAL(error(QProcess::ProcessError)), this,SLOT(linuxCNCError(QProcess::ProcessError)));
+    _linuxcnc->start( command);
+}
+bool CNCModule::isRunningLinuxCNC()
+{
+    if ( _linuxcnc != NULL )
+    {
+        return ( _linuxcnc->state() == QProcess::Running );
+    }
+    else
+    {
+        return false;
+    }
+
+}
 
 void CNCModule::updateComponents()
 {

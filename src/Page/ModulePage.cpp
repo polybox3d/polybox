@@ -18,6 +18,7 @@ ModulePage::ModulePage(PolyboxModule* poly, QWidget *parent) :
     ui->homeButton->installEventFilter( this );
     _updateTimer.start( Config::updateModuleTimer );
     connect( &_updateTimer, SIGNAL(timeout()), this, SLOT(repaintComponents()) );
+    repaintComponents();
 
 }
 
@@ -46,30 +47,32 @@ void ModulePage::repaintComponents()
     // CNC
     if ( _polybox->isCncReady() || Config::bypassCheck )
     {
-        ui->cncButton->setStyleSheet( QString("background-color: ")+DEFAULT_CNC_BUTTON+";" );
+        ui->cncButton->setStyleSheet( QString("color: rgb(0, 0, 0);background-color: ")+DEFAULT_CNC_BUTTON+";" );
     }
     else
     {
-        ui->cncButton->setStyleSheet( QString("background-color: ")+DEFAULT_DISABLE_BUTTON+";" );
+        ui->cncButton->setStyleSheet( QString("color: rgb(0, 0, 0);background-color: ")+DEFAULT_DISABLE_BUTTON+";" );
     }
     // SCANNER
     if ( _polybox->isScannerReady() || Config::bypassCheck )
     {
-        ui->scannerButton->setStyleSheet(  QString("background-color: ")+DEFAULT_SCANNER_BUTTON+";" );
+        ui->scannerButton->setStyleSheet(  QString("color: rgb(0, 0, 0);background-color: ")+DEFAULT_SCANNER_BUTTON+";" );
     }
     else
     {
-        ui->scannerButton->setStyleSheet(  QString("background-color: ")+DEFAULT_DISABLE_BUTTON+";" );
+        ui->scannerButton->setStyleSheet(  QString("color: rgb(0, 0, 0);background-color: ")+DEFAULT_DISABLE_BUTTON+";" );
     }
     // PRINTER
     if ( _polybox->isPrinterReady() || Config::bypassCheck )
     {
-        ui->printerButton->setStyleSheet(  QString("background-color: ")+DEFAULT_PRINTER_BUTTON+";" );
+        ui->printerButton->setStyleSheet(  QString("color: rgb(0, 0, 0);background-color: ")+DEFAULT_PRINTER_BUTTON+";" );
     }
     else
     {
-        ui->printerButton->setStyleSheet(  QString("background-color: ")+DEFAULT_DISABLE_BUTTON+";" );
+        ui->printerButton->setStyleSheet(  QString("color: rgb(0, 0, 0);background-color: ")+DEFAULT_DISABLE_BUTTON+";" );
     }
+
+    ui->labviewButton->setStyleSheet(  QString("color: rgb(0, 0, 0);background-color: ")+DEFAULT_LABVIEW_BUTTON+";" );
 
 }
 

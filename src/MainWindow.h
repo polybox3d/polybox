@@ -6,6 +6,7 @@
 #include <QDockWidget>
 #include <QLabel>
 #include <QMessageBox>
+#include <QLibraryInfo>
 
 #include "Config.h"
 
@@ -21,6 +22,7 @@
 #include "DialogConfigSoft.h"
 #include "PolyboxModule.h"
 #include "polyplexer.h"
+#include "Theme.h"
 
 #if !defined NO_SCAN
  #include "fsmainwindow.h"
@@ -41,11 +43,12 @@ class MainWindow : public QMainWindow
     Q_OBJECT
 
 public:
-    explicit MainWindow(QWidget *parent = 0);
+    explicit MainWindow(Qt::WindowFlags window_flags = Qt::Widget, QWidget *parent=0);
 
     static MainWindow* getMainWindow();
     static void errorWindow(QString errorText);
     static void textWindow(QString text);
+    static void restartApp();
 
     ~MainWindow();
 public slots:
@@ -55,6 +58,8 @@ public slots:
     void startCamera();
     void startConnexion();
     void updateHardware();
+    void translateApp();
+    void changeTheme();
 
     void startConsoleWindow();
 
@@ -64,6 +69,8 @@ signals:
 
 public slots:
     void toggleATU();
+    void setupLanguage();
+    void setupThemes();
 
 private slots:
     void on_actionCNC_triggered();
@@ -97,6 +104,7 @@ private:
     bool _atuON;
     ATUButton* _atu;
     QDockWidget* _dockLV;
+    QDockWidget* _dockCNC;
 };
 
 #endif // MAINWINDOW_H

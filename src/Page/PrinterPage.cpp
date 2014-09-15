@@ -154,6 +154,15 @@ void PrinterPage::on_boxCustom_clicked()
 {
     setChamberActivated(true);
 }
+void PrinterPage::processFinished(int exitCode, QProcess::ExitStatus exitStatus)
+{
+    if ( exitCode == 2 )
+    {
+        MainWindow::errorWindow( tr("\n\nImpossible de lancer le programme d'impression."
+                                    "Veuillez vérifier que le chemin d'accès est correct.\n\n"
+                                    "Configuration > Paramètres logiciel \n\n")+_printerSoftware.readAllStandardError()+"\n\n" );
+    }
+}
 
 void PrinterPage::on_startPrint_clicked()
 {
@@ -162,12 +171,15 @@ void PrinterPage::on_startPrint_clicked()
         _printerSoftware->kill();
     }*/
 
+    connect( &_printerSoftware, SIGNAL(finished(int,QProcess::ExitStatus)), this,SLOT(processFinished(int,QProcess::ExitStatus)));
+
     QString command = "mono";
     QStringList parameters;
     parameters << _printerSoftwarePath<<" -home "<< Config::pathToPrinterWorkingDir;
-    //_printerSoftware = new QProcess( this );
+
     _printerSoftware.start( command, parameters );
-    cout<<_printerSoftwarePath.toStdString()<<endl;
+
+    cout<<"----"<<_printerSoftwarePath.toStdString()<<endl;
 }
 
 void PrinterPage::selectCustomBed()

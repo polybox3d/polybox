@@ -2,10 +2,6 @@
 
 #include <QDebug>
 
-Config::Config()
-{
-}
-
 QString Config::pathToHomeDirectory="/home/onslaught/";
 QString Config::pathToPrinterSoftware=Config::pathToHomeDirectory+"Dev/reprapgiga/Repetier-HostModified/Repetier-Host-master/src/RepetierHost/bin/Release/RepetierHost.exe";
 QString Config::pathToPrinterWorkingDir=Config::pathToHomeDirectory+"Dev/reprapgiga/RepetierHost";
@@ -22,6 +18,7 @@ QString Config::linuxCNCCommand="linuxcnc";
 QString Config::scannerLaserPath=Config::pathToHomeDirectory+"/fabscan100/qtTest/";
 QString Config::defaultConfigFileName="./config.xml";
 QString Config::pathToPolyplexerDaemon="../../externals/Polyplexer/PolyPlexer";
+QString Config::translationPath="../../i18n";
 
 
 int Config::connectionUptimeDelay = 1000;
@@ -44,6 +41,9 @@ QString Config::pathToJoypadOverlay=Config::pathToHomeDirectory+"joypadoverlay/s
 
 
 
+Config::Config()
+{
+}
 
 
 void Config::init()

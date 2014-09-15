@@ -39,6 +39,7 @@
         <file>img/heater.png</file>
         <file>img/fan_heater.png</file>
         <file>img/folder.png</file>
+        <file>img/linuxcnc_logo.png</file>
     </qresource>
     <qresource prefix="/xml">
         <file>ambiances/Autumn.xml</file>
