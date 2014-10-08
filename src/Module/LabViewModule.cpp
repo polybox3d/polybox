@@ -35,7 +35,7 @@ void LabViewModule::sendGlobalColor()
 
 void LabViewModule::sendController(LabViewController c)
 {
-    int mcode = 649;
+    int mcode = MCODE_LABVIEW_SET_CONTROLLER;
     if ( c == Software )
     {
         SerialPort::getSerial()->sendMCode( QString::number(mcode) + " S" );
@@ -120,7 +120,7 @@ QProcess* LabViewModule::startCamera(QProcess* process, QString camera)
 
     QString command = "vlc";
     QStringList parameters;
-    parameters << "v4l2:///dev/"+camera ;
+    parameters << "v4l2:///dev/"+camera<<"--video-filter"<<"rotate{angle=180}" ;
     process = new QProcess( );
     process->start( command, parameters );
     return process;

@@ -350,8 +350,8 @@ void MainWindow::updateStatePage()
                 _dockCNC = new QDockWidget("LinuxCNC ",this);
                 _dockCNC->setWidget( new CNCPage( _polybox->cncModule(), _dockCNC ) );
                 _dockCNC->setFloating( true );
-                _dockCNC->setFixedHeight(350+15);
-                _dockCNC->setFixedWidth(275);
+                _dockCNC->setFixedHeight(230+15);
+                _dockCNC->setFixedWidth(150);
                 _dockCNC->show();
                 _dockCNC->setEnabled( _atuON );
 

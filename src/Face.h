@@ -5,9 +5,14 @@
 #include <QXmlStreamWriter>
 #include <QXmlStreamReader>
 #include <QColor>
+#include <QTimer>
 
 #include "SerialPort.h"
 #include "mcode.h"
+
+#include <iostream>
+
+using namespace std;
 
 #define FACE_TOP_ID 0
 #define FACE_BOT_ID 1
@@ -16,10 +21,12 @@
 #define FACE_BACK_ID 4
 #define FACE_FRONT_ID 5
 
-class Face
+class Face : public QObject
 {
+    Q_OBJECT
 public:
-    Face();
+    explicit Face();
+    ~Face();
     QString name;
     int id;
 
@@ -41,10 +48,16 @@ public:
 
     static int defaultLight;
 
+public slots:
+    void sendValues();
 private:
+
+    void startSenderTimer( int msec = 500);
+
     int _h;
     int _v;
     QColor _color;
+    QTimer _updateTimer;
 
 };
 

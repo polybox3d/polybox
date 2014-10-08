@@ -130,3 +130,8 @@ void ModulePage::on_scannerButton_clicked()
 {
     CHANGE_PAGE( Scanner );
 }
+
+void ModulePage::on_shareButton_clicked()
+{
+    QDesktopServices::openUrl(QUrl(Config::pathToDropbox));
+}
