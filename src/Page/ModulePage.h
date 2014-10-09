@@ -5,6 +5,7 @@
 #include <QPaintEvent>
 #include <QTimer>
 #include <iostream>
+#include <QDesktopServices>
 
 #include "pageState.h"
 #include "MainWindow.h"
@@ -68,6 +69,9 @@ public slots:
 
 protected slots:
     void repaintComponents();
+
+private slots:
+    void on_shareButton_clicked();
 
 private:
     Ui::ModulePage *ui;

@@ -2,12 +2,19 @@
 
 int Face::defaultLight=0;
 
-Face::Face()
+Face::Face(): QObject(0)
 {
     id = 0;
-    name="default-face";
-    _v=defaultLight;
-    _h=defaultLight;
+    name = "default-face";
+    _v = defaultLight;
+    _h = defaultLight;
+
+    _updateTimer.setSingleShot(true);
+    connect(&_updateTimer, SIGNAL(timeout()),this,SLOT(sendValues()));
+}
+Face::~Face()
+{
+
 }
 
 
@@ -25,10 +32,23 @@ void Face::setColor( int r, int g, int b)
 {
     setColor( QColor(r,g,b) );
 }
+
+void Face::startSenderTimer(int msec)
+{
+    _updateTimer.start( msec );
+}
+
 void Face::setColor( QColor c)
 {
     _color = c;
+    startSenderTimer( 500 );
+    //sendColor();
+}
+
+void Face::sendValues()
+{
     sendColor();
+    sendIntensity();
 }
 
 void Face::sendColor()
@@ -45,13 +65,15 @@ void Face::sendColor()
 void Face::setHIntensity( int h )
 {
     _h = h;
-    sendIntensity();
+    startSenderTimer( 500 );
+    //sendIntensity();
 }
 
 void Face::setVIntensity( int v )
 {
     _v = v;
-    sendIntensity();
+    startSenderTimer( 500 );
+    //sendIntensity();
 }
 void Face::sendIntensity()
 {

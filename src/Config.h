@@ -24,6 +24,7 @@ public:
 
     static QString pathToPrinterWorkingDir;
     static QString translationPath;
+    static QString pathToDropbox;
 
     /**
      * @brief pathToHomeDirectory Full path to the main user home directory (/home/<user>/)

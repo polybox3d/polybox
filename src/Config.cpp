@@ -20,6 +20,7 @@ QString Config::defaultConfigFileName="./config.xml";
 QString Config::pathToPolyplexerDaemon="../../externals/Polyplexer/PolyPlexer";
 QString Config::translationPath="../../i18n";
 
+QString Config::pathToDropbox=Config::pathToHomeDirectory+"plbx-dropbox/";
 
 int Config::connectionUptimeDelay = 1000;
 int Config::motherboardBaudrate=115200;

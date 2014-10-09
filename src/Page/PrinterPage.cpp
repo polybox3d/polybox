@@ -30,6 +30,13 @@ PrinterPage::PrinterPage(PrinterModule* printer, QWidget *parent) :
     onoff->setState( _printer->isOn() );
     connect ( onoff, SIGNAL(released()), _printer, SLOT(toggleInter()));
     connect ( onoff, SIGNAL(released()), this, SLOT(repaintComponents()));
+
+    ui->fanExtractor->setTracking( false );
+    ui->fanPelletier->setTracking( false );
+    ui->fanPulsor->setTracking( false );
+    ui->boxTempSlider->setTracking( false );
+    ui->bedTempSlider->setTracking( false );
+
     repaintComponents();
 }
 

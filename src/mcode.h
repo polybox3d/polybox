@@ -43,6 +43,7 @@ enum MCodeFlags
 #define MCODE_LABVIEW_GET_FACE_I                646
 #define MCODE_LABVIEW_SET_FACE_I                647
 #define MCODE_LABVIEW_LED_PLUGGED               648
+#define MCODE_LABVIEW_SET_CONTROLLER            649
 #define MCODE_LABVIEW_GET_FACE_RGB              650
 #define MCODE_LABVIEW_SET_FACE_RGB              651
 
