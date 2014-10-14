@@ -49,6 +49,22 @@ cd externals/Polyplexer
 ```
 git checkout master
 ```
+Compilation
+=====
+
+You can compile PolyboxSoftware using command line or QtCreator
+Be careful, software needs to compiled with qmake5. 
+Path: /usr/lib/i386-linux-gnu/qt5/bin/qmake
+
+1/ using command line
+```
+cd ~/polybox/src
+qmake5
+make
+```
+2/ using QtCreator
+
+
 
 
 M-Code

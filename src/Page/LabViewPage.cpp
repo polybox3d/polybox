@@ -511,11 +511,15 @@ void LabViewPage::on_rgbLineEdit_editingFinished()
 void LabViewPage::on_softwareRadio_clicked()
 {
     _labview->sendController( LabViewModule::Software);
+    ui->colorBox->setEnabled( true );
+    ui->lightBox->setEnabled( true );
 }
 
 void LabViewPage::on_teleRadio_clicked()
 {
     _labview->sendController( LabViewModule::Manual );
+    ui->colorBox->setEnabled( false );
+    ui->lightBox->setEnabled( false );
 }
 
 

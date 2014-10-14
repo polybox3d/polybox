@@ -38,15 +38,15 @@ void LabViewModule::sendController(LabViewController c)
     int mcode = MCODE_LABVIEW_SET_CONTROLLER;
     if ( c == Software )
     {
-        SerialPort::getSerial()->sendMCode( QString::number(mcode) + " S" );
+        SerialPort::getSerial()->sendMCode( QString::number(mcode) + " S1" );
     }
     else if ( c == Manual)
     {
-        SerialPort::getSerial()->sendMCode( QString::number(mcode) + " H" );
+        SerialPort::getSerial()->sendMCode( QString::number(mcode) + " H1" );
     }
     else
     {
-        SerialPort::getSerial()->sendMCode( QString::number(mcode) + " H" );
+        SerialPort::getSerial()->sendMCode( QString::number(mcode) + " H1" );
     }
 }
 
