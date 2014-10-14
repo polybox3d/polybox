@@ -7,6 +7,7 @@
 #include <QProcess>
 #include <QFileDialog>
 #include <QCamera>
+#include <QCameraInfo>
 
 
 #include "AbstractModule.h"

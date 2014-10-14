@@ -32,6 +32,7 @@ LabViewPage::LabViewPage(LabViewModule* labview, QWidget *parent, bool small_ui)
                          hb->width(), hb->height());
         connect( hb, SIGNAL(clicked()), (MainWindow*)(parent), SLOT(backToModulePage()));
         connect( ui->backToHelp, SIGNAL(clicked()), (MainWindow*)(parent), SLOT(backToHelpPage()));
+        ui->softwareRadio->setChecked( true );
 
 
     }
