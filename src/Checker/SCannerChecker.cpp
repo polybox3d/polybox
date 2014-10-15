@@ -41,8 +41,11 @@ void SCannerChecker::updateUI()
     {
         ui->webcamPlugLed->setActivated( _scanner->webcamPlugged() );
         ui->turntableLed->setActivated( _scanner->turntablePlugged() );
-        ui->turntableLed_2->setActivated( _scanner->turntablePlugged() );
-        ui->primesencePlugLed->setActivated( _scanner->primesensePlugged() );
+
+        ui->laser0Led->setActivated( _scanner->laser0Plugged() );
+        ui->laser1Led->setActivated( _scanner->laser1Plugged() );
+        //ui->turntableLed_2->setActivated( _scanner->turntablePlugged() );
+        //ui->primesencePlugLed->setActivated( _scanner->primesensePlugged() );
     }
 }
 

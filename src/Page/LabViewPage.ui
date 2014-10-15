@@ -190,7 +190,7 @@ selection-color: rgb(255, 0, 4);</string>
      </rect>
     </property>
     <property name="inputMask">
-     <string>HHHHHH; </string>
+     <string>HHHHHH</string>
     </property>
    </widget>
    <widget class="QLabel" name="rgbLineEditLabel">
@@ -224,7 +224,7 @@ selection-color: rgb(255, 0, 4);</string>
      <rect>
       <x>10</x>
       <y>120</y>
-      <width>182</width>
+      <width>184</width>
       <height>25</height>
      </rect>
     </property>
@@ -367,7 +367,7 @@ selection-color: rgb(255, 0, 4);</string>
      <x>370</x>
      <y>90</y>
      <width>371</width>
-     <height>401</height>
+     <height>361</height>
     </rect>
    </property>
    <property name="title">
@@ -474,19 +474,22 @@ selection-color: rgb(255, 0, 4);</string>
      <string notr="true">background-image: url(:/img/img/pattern_b.png);</string>
     </property>
     <property name="text">
-     <string>Dessous</string>
+     <string>Face Avant</string>
     </property>
     <property name="flat">
      <bool>true</bool>
     </property>
    </widget>
    <widget class="QPushButton" name="frontFace">
+    <property name="enabled">
+     <bool>false</bool>
+    </property>
     <property name="geometry">
      <rect>
-      <x>50</x>
-      <y>340</y>
-      <width>261</width>
-      <height>51</height>
+      <x>330</x>
+      <y>310</y>
+      <width>1</width>
+      <height>1</height>
      </rect>
     </property>
     <property name="styleSheet">

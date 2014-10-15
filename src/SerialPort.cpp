@@ -11,12 +11,12 @@ SerialPort::SerialPort(QObject *parent) :
     QObject(parent)
   //QextSerialPort("/dev/ttyACM0", QextSerialPort::EventDriven, parent)
 {
-    _path = Config::pathToVirtualPolySerialDevice;
-    _name = Config::serialVirtualPolySerialPort;
+    _path = Config::pathToVirtualPolySerialDevice();
+    _name = Config::serialVirtualPolySerialPort();
     _port = NULL;
     connectionUptime = 0 ;
 
-    _uptimeTimer.start( Config::connectionUptimeDelay );
+    _uptimeTimer.start( Config::connectionUptimeDelay() );
     connect( &_uptimeTimer, SIGNAL(timeout()), this, SLOT(connectionUptimeProcess()));
 }
 void SerialPort::connectionUptimeProcess()
@@ -52,7 +52,7 @@ bool SerialPort::connectToSerialPort()
     disconnectPort();
     _port = new QextSerialPort(_path+_name, QextSerialPort::EventDriven);
 
-    _port->setBaudRate( (BaudRateType)(Config::motherboardBaudrate) );
+    _port->setBaudRate( (BaudRateType)(Config::motherboardBaudrate()) );
     _port->setFlowControl(FLOW_OFF);
     _port->setParity(PAR_NONE);
     _port->setDataBits(DATA_8);

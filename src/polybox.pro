@@ -11,6 +11,13 @@ greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 TARGET = polybox
 TEMPLATE = app
 
+#-------------- WE ADD GIT VERSION----------------
+
+GIT_VERSION = $$system(git --git-dir $$PWD/../.git --work-tree $$PWD describe --always --tags)
+DEFINES += GIT_VERSION=\\\"$$GIT_VERSION\\\"
+
+#-------------------------------------------------
+
 TRANSLATIONS = ../i18n/polybox_en.ts ../i18n/polybox_fr.ts
 
 CONFIG(release, debug|release)
@@ -81,7 +88,8 @@ SOURCES += main.cpp\
     Module/AbstractModule.cpp \
     polyplexer.cpp \
     Widget/FolderButton.cpp \
-    Theme.cpp
+    Theme.cpp \
+    Widget/DialogCredits.cpp
 
 HEADERS  += MainWindow.h \
         Updater.h \
@@ -133,7 +141,8 @@ HEADERS  += MainWindow.h \
     Module/GlobalModule.h \
     polyplexer.h \
     Widget/FolderButton.h \
-    Theme.h
+    Theme.h \
+    Widget/DialogCredits.h
 
 FORMS    += MainWindow.ui \
     PrinterSmallUI.ui \
@@ -157,7 +166,8 @@ FORMS    += MainWindow.ui \
     Page/ModulePage.ui \
     Page/HelpPage.ui \
     Page/LabViewPage.ui \
-    Page/PrinterPage.ui
+    Page/PrinterPage.ui \
+    Widget/DialogCredits.ui
 
 RESOURCES += \
     ressources.qrc

@@ -11,6 +11,8 @@ void ScannerModule::initAll()
     _turntablePlugged = false;
     _webcamPlugged = false;
     _primesencePlugged = false;
+    _laser0Plugged = false;
+    _laser1Plugged = false;
 }
 
 void ScannerModule::parseMCode(QByteArray stream)
@@ -18,6 +20,7 @@ void ScannerModule::parseMCode(QByteArray stream)
     QString str(stream);
     long value = SerialPort::embeddedstr2l( str, 0 );
     int idx = 0;
+    int size = str.size();
     switch ( value )
     {
     case MCODE_SCANNER_TURNTABLE_PLUGGED:
@@ -30,6 +33,28 @@ void ScannerModule::parseMCode(QByteArray stream)
     {
         /*SerialPort::nextField( str, idx);
         SerialPort::parseTrueFalse( &_, str[idx] );*/
+    }
+        break;
+
+    case MCODE_SCANNER_GET_LASER_PLUGGED:
+    {
+        while ( idx < size )
+        {
+            SerialPort::nextField( str, idx);
+            if ( str[idx] == 'P')
+            {
+                if ( str[idx+1]=='0')
+                {
+                    SerialPort::nextValue( str, idx);
+                    _laser0Plugged =  SerialPort::embeddedstr2l( str, idx ) ;
+                }
+                else if ( str[idx+1]=='1')
+                {
+                    SerialPort::nextValue( str, idx);
+                    _laser1Plugged =  SerialPort::embeddedstr2l( str, idx ) ;
+                }
+            }
+        }
     }
         break;
     default:
@@ -46,13 +71,13 @@ void ScannerModule::updateComponents()
 }
 void ScannerModule::updateGlobalStatus()
 {
+    _polybox->port()->sendMCode( MCODE_SCANNER_GET_LASER_PLUGGED );
     //_polybox->port()->sendMCode( 610 );
 }
 
 void ScannerModule::updateTurntablePlugged()
 {
     _polybox->port()->sendMCode( MCODE_SCANNER_TURNTABLE_PLUGGED );
-    _polybox->port()->sendMCode( MCODE_SCANNER_GET_LASER_PLUGGED );
 }
 
 bool ScannerModule::isReady() const
@@ -63,7 +88,7 @@ bool ScannerModule::isReady() const
 
 bool ScannerModule::webcamPlugged() const
 {
-    return _webcamPlugged;
+    return ! (LabViewModule::getAllCamera( Config::pathToWebcamDevice() ).empty()) ;
 }
 bool ScannerModule::primesensePlugged() const
 {
@@ -72,4 +97,13 @@ bool ScannerModule::primesensePlugged() const
 bool ScannerModule::turntablePlugged() const
 {
     return _turntablePlugged;
+}
+
+bool ScannerModule::laser0Plugged() const
+{
+    return _laser0Plugged;
+}
+bool ScannerModule::laser1Plugged() const
+{
+    return _laser1Plugged;
 }

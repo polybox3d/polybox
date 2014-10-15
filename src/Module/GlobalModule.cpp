@@ -186,6 +186,7 @@ void GlobalModule::updateComponents()
     SerialPort::getSerial()->sendMCode(MCODE_GLOBAL_GET_IC_OPEN);
     SerialPort::getSerial()->sendMCode(MCODE_GLOBAL_GET_PREASI);
     SerialPort::getSerial()->sendMCode( 600 );
+
     emit updateUI();
 }
 
@@ -241,7 +242,7 @@ bool GlobalModule::power() const
 }
 bool GlobalModule::webcamPlugged() const
 {
-    return _webcamPlugged;
+    return ! (LabViewModule::getAllCamera( Config::pathToWebcamDevice() ).empty()) ;
 }
 
 Temperature GlobalModule::tempIC()

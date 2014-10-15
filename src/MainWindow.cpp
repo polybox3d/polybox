@@ -109,7 +109,7 @@ void MainWindow::setupThemes()
 
 void MainWindow::setupLanguage()
 {
-    QDir directory( Config::translationPath );
+    QDir directory( Config::translationPath() );
     QStringList ts_files = directory.entryList(QStringList("*.ts")) ;
     QString lang;
     QAction* act;
@@ -141,7 +141,7 @@ void MainWindow::setupSerialMenu()
 {
     ui->menuConnexion->clear();
     QAction* act;
-    foreach ( QString serial, SerialPort::getDevicesNames(Config::pathToSerialDevice, "tty*"))
+    foreach ( QString serial, SerialPort::getDevicesNames(Config::pathToSerialDevice(), "tty*"))
     {
         if ( serial.startsWith("tty"))
         {
@@ -176,7 +176,7 @@ void MainWindow::startConnexion()
         }
         else
         {
-            bool connected = _polybox->connectToPrinter( Config::pathToSerialDevice, act->text().split('/').last() );
+            bool connected = _polybox->connectToPrinter( Config::pathToSerialDevice(), act->text().split('/').last() );
             act->setChecked( connected ) ;
 
 
@@ -189,7 +189,7 @@ void MainWindow::setupWebcamMenu()
     // We add all camera available
     ui->menuVisualiser->clear();
     QAction* act;
-    foreach ( QString camera, LabViewModule::getAllCamera( Config::pathToWebcamDevice ))
+    foreach ( QString camera, LabViewModule::getAllCamera( Config::pathToWebcamDevice() ))
     {
         act = ui->menuVisualiser->addAction( camera );
         connect( act, SIGNAL(triggered()),this,SLOT(startCamera()) );
@@ -260,7 +260,7 @@ void MainWindow::updateStatePage()
         break;
     case LabViewDock :
     {
-        if (_polybox->isCommonReady() || Config::bypassCheck )
+        if (_polybox->isCommonReady() || Config::bypassCheck() )
         {
             _dockLV = new QDockWidget("LabView (dock) ",this);
             _dockLV->setWidget( new LabViewPage( _polybox->labViewModule(), this, true ) );
@@ -288,14 +288,15 @@ void MainWindow::updateStatePage()
     case Scanner:
     {
         bool scanner_ok = _polybox->isScannerReady();
-        if ( scanner_ok || Config::bypassCheck )
+        if ( scanner_ok || Config::bypassCheck() )
         {
-            DialogScanner dialog((QWidget*)this->parent());
+            CHANGE_PAGE( ScannerLaser );
+           /* DialogScanner dialog((QWidget*)this->parent());
             int value_ret = dialog.exec();
             if ( value_ret != 0 )
             {
                 CHANGE_PAGE( static_cast<PageState>(value_ret) );
-            }
+            }*/
         }
         else
         {
@@ -315,7 +316,7 @@ void MainWindow::updateStatePage()
     case Printer :
     {
         bool printer_ok = _polybox->isPrinterReady();
-        if ( printer_ok || Config::bypassCheck )
+        if ( printer_ok || Config::bypassCheck() )
         {
             this->setCentralWidget( new PrinterPage( _polybox->printerModule(), this ) );
         }
@@ -341,11 +342,11 @@ void MainWindow::updateStatePage()
             break;
         }
         bool cnc_ok = _polybox->isCncReady();
-        if ( cnc_ok || Config::bypassCheck )
+        if ( cnc_ok || Config::bypassCheck() )
         {
             DialogCNC dialog((QWidget*)this->parent());
             int value_ret = dialog.exec();
-            if ( value_ret != 0 )
+            if ( value_ret == CNC )
             {
                 _dockCNC = new QDockWidget("LinuxCNC ",this);
                 _dockCNC->setWidget( new CNCPage( _polybox->cncModule(), _dockCNC ) );
@@ -356,6 +357,14 @@ void MainWindow::updateStatePage()
                 _dockCNC->setEnabled( _atuON );
 
                 //CHANGE_PAGE( static_cast<PageState>(value_ret) );
+            }
+            else if ( value_ret == Help )
+            {
+                CHANGE_PAGE( Help );
+            }
+            else if ( value_ret == ConfigureCNC )
+            {
+
             }
         }
         else
@@ -383,7 +392,9 @@ void MainWindow::updateStatePage()
     case ScannerLaser :
     {
 #if !defined NO_SCAN
- this->setCentralWidget( new FsMainWindow( _polybox->port(), this ) );
+ //this->setCentralWidget( new FsMainWindow( _polybox->port(), this ) );
+        FsMainWindow* fw = new FsMainWindow( _polybox->port() );
+        fw->show();
 #endif
         /*QProcess* laser = new QProcess(this);
         laser->start( Config::scannerLaserPath );*/
@@ -466,10 +477,20 @@ void MainWindow::on_actionConsole_triggered()
 
 void MainWindow::on_actionParametres_triggered()
 {
-    DialogConfigSoft dialog( _polybox, (QWidget*)this->parent());
+    QDesktopServices::openUrl(QUrl(Config::pathToConfigFile()+"/"+QCoreApplication::organizationName()+"/"+QCoreApplication::applicationName()+".conf"));
+    /*DialogConfigSoft dialog( _polybox, (QWidget*)this->parent());
     int value_ret = dialog.exec();
     if ( value_ret != 0 )
     {
 
+    }*/
+}
+
+void MainWindow::on_actionCredits_triggered()
+{
+    DialogCredits dialog( (QWidget*)this->parent());
+    int value_ret = dialog.exec();
+    if ( value_ret != 0 )
+    {
     }
 }

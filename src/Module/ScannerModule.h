@@ -3,7 +3,7 @@
 
 #include <QObject>
 
-
+#include "LabViewModule.h"
 #include "AbstractModule.h"
 #include "PolyboxModule.h"
 #include "mcode.h"
@@ -48,6 +48,9 @@ public:
      */
     bool turntablePlugged() const;
 
+    bool laser0Plugged() const;
+    bool laser1Plugged() const;
+
     void updateGlobalStatus();
     void updateTurntablePlugged();
 
@@ -63,6 +66,8 @@ private:
     bool _webcamPlugged;
     bool _primesencePlugged;
     bool _turntablePlugged;
+    bool _laser0Plugged;
+    bool _laser1Plugged;
 };
 
 #endif // SCANNERMODULE_H

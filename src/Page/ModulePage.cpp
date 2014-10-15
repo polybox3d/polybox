@@ -16,7 +16,7 @@ ModulePage::ModulePage(PolyboxModule* poly, QWidget *parent) :
     _base_scaling_size = 10;
     ui->setupUi(this);
     ui->homeButton->installEventFilter( this );
-    _updateTimer.start( Config::updateModuleTimer );
+    _updateTimer.start( Config::updateModuleTimer() );
     connect( &_updateTimer, SIGNAL(timeout()), this, SLOT(repaintComponents()) );
     repaintComponents();
 
@@ -133,5 +133,6 @@ void ModulePage::on_scannerButton_clicked()
 
 void ModulePage::on_shareButton_clicked()
 {
-    QDesktopServices::openUrl(QUrl(Config::pathToDropbox));
+    QDesktopServices::openUrl(QUrl(Config::pathToDropbox()));
+
 }

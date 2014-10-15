@@ -22,6 +22,7 @@
 #include "DialogConfigSoft.h"
 #include "PolyboxModule.h"
 #include "polyplexer.h"
+#include "DialogCredits.h"
 #include "Theme.h"
 
 #if !defined NO_SCAN
@@ -88,6 +89,8 @@ private slots:
     void on_actionConsole_triggered();
 
     void on_actionParametres_triggered();
+
+    void on_actionCredits_triggered();
 
 private:
     void updateStatePage();

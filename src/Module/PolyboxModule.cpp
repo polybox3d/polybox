@@ -14,9 +14,8 @@ QJoystick* PolyboxModule::_joypad=NULL;
 PolyboxModule::PolyboxModule(QObject *parent) :
     QObject(parent)
 {
-    Config::init();
 
-    _hardwareTimer.start( Config::hardwareTimer );
+    _hardwareTimer.start( Config::hardwareTimer() );
     connect( &_hardwareTimer, SIGNAL(timeout()), this, SLOT(hardwareTimerTimeout()));
 
     _pingPongTimer.start( 5000 );

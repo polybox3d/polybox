@@ -21,7 +21,6 @@ public:
     explicit LabViewModule(PolyboxModule *polybox, QObject *parent = 0);
     ~LabViewModule(){}
 
-    QStringList getConnectedCameraPath();
 
     enum LabViewController{
         Noone, Software, Manual

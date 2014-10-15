@@ -34,25 +34,25 @@ DialogConfigSoft::~DialogConfigSoft()
 
 void DialogConfigSoft::updateValues()
 {
-    ui->linuxcncBin->setText( Config::linuxCNCCommand);
-    ui->linuxcncDirectory->setText( Config::pathToLinuxCNC);
-    ui->homeDirectory->setText( Config::pathToHomeDirectory);
-    ui->baudrate->setText( QString::number(Config::motherboardBaudrate) );
-    ui->serialDeviceCombo->addItems(SerialPort::getDevicesNames(Config::pathToSerialDevice));
+    ui->linuxcncBin->setText( Config::linuxCNCCommand());
+    ui->linuxcncDirectory->setText( Config::pathToLinuxCNC());
+    ui->homeDirectory->setText( Config::pathToHomeDirectory());
+    ui->baudrate->setText( QString::number(Config::motherboardBaudrate()) );
+    ui->serialDeviceCombo->addItems(SerialPort::getDevicesNames(Config::pathToSerialDevice()));
     int index = -1;
-    if ( (index = ui->serialDeviceCombo->findText(Config::serialPortName)) != -1)
+    if ( (index = ui->serialDeviceCombo->findText(Config::serialPortName())) != -1)
     {
         ui->serialDeviceCombo->setCurrentIndex( index );
     }
-    ui->serialPortPath->setText( Config::pathToSerialDevice );
+    ui->serialPortPath->setText( Config::pathToSerialDevice() );
 
-    ui->printersoftBin->setText( Config::pathToPrinterSoftware );
-    ui->printerworkingdir->setText( Config::pathToPrinterWorkingDir );
+    ui->printersoftBin->setText( Config::pathToPrinterSoftware() );
+    ui->printerworkingdir->setText( Config::pathToPrinterWorkingDir() );
 
     ui->activateByPass->setChecked( Config::bypassCheck );
 
-    ui->virtualDevice->setText( Config::pathToVirtualPolySerialDevice );
-    ui->polyplexerBin->setText( Config::pathToPolyplexerDaemon );
+    ui->virtualDevice->setText( Config::pathToVirtualPolySerialDevice() );
+    ui->polyplexerBin->setText( Config::pathToPolyplexerDaemon() );
 
     ui->disablePolyplexer->setChecked( Config::disablePolyplexer );
 }
@@ -64,22 +64,22 @@ void DialogConfigSoft::on_close_clicked()
 
 void DialogConfigSoft::saveValue()
 {
-    Config::linuxCNCCommand = ui->linuxcncBin->text() ;
-    Config::pathToLinuxCNC = ui->linuxcncDirectory->text() ;
-    Config::pathToHomeDirectory = ui->homeDirectory->text() ;
-    Config::motherboardBaudrate =  ui->baudrate->text().toInt() ;
-    Config::pathToSerialDevice = ui->serialPortPath->text() ;
-    Config::serialPortName = ui->serialDeviceCombo->currentText() ;
+    //Config::linuxCNCCommand = ui->linuxcncBin->text() ;
+    //Config::pathToLinuxCNC = ui->linuxcncDirectory->text() ;
+    //Config::pathToHomeDirectory = ui->homeDirectory->text() ;
+    //Config::motherboardBaudrate =  ui->baudrate->text().toInt() ;
+    //Config::pathToSerialDevice = ui->serialPortPath->text() ;
+    //Config::serialPortName = ui->serialDeviceCombo->currentText() ;
 
-    Config::pathToPrinterSoftware = ui->printersoftBin->text();
-    Config::pathToPrinterWorkingDir = ui->printerworkingdir->text();
+    //Config::pathToPrinterSoftware = ui->printersoftBin->text();
+    //Config::pathToPrinterWorkingDir = ui->printerworkingdir->text();
 
-    Config::bypassCheck = ui->activateByPass->isChecked();
+    //Config::bypassCheck = ui->activateByPass->isChecked();
 
-    Config::pathToVirtualPolySerialDevice = ui->virtualDevice->text();
-    Config::pathToPolyplexerDaemon = ui->polyplexerBin->text();
+    //Config::pathToVirtualPolySerialDevice = ui->virtualDevice->text();
+    //Config::pathToPolyplexerDaemon = ui->polyplexerBin->text();
 
-    Config::disablePolyplexer = ui->disablePolyplexer->isChecked();
+    //Config::disablePolyplexer = ui->disablePolyplexer->isChecked();
 }
 
 void DialogConfigSoft::on_validate_clicked()
@@ -98,7 +98,7 @@ void DialogConfigSoft::on_pushButton_clicked()
                                                      tr("Config File (*.xml)"));
      if ( fileName != NULL && ! fileName.isEmpty() )
      {
-         Config::saveToXmlFile( fileName );
+         //Config::saveToXmlFile( fileName );
      }
 }
 
@@ -116,12 +116,12 @@ void DialogConfigSoft::on_pushButton_2_clicked()
 void DialogConfigSoft::on_saveAsDefault_clicked()
 {
     saveValue();
-    Config::saveToXmlFile( Config::defaultConfigFileName );
+    //Config::saveToXmlFile( Config::defaultConfigFileName );
 }
 
 void DialogConfigSoft::on_loadFactoryValue_clicked()
 {
-    Config::importFromXmlFile( INITIAL_CONFIG_FILE );
+    //Config::importFromXmlFile( INITIAL_CONFIG_FILE );
     updateValues();
 }
 

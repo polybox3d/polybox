@@ -145,7 +145,7 @@ void CNCModule::linuxCNCError(QProcess::ProcessError error)
 
 void CNCModule::startLinuxCNC()
 {
-    QString command = Config::linuxCNCCommand;
+    QString command = Config::linuxCNCCommand();
     _linuxcnc = new QProcess( this );
     connect( _linuxcnc, SIGNAL(finished(int,QProcess::ExitStatus)), this,SLOT(linuxCNCFinished(int,QProcess::ExitStatus)));
     connect( _linuxcnc, SIGNAL(error(QProcess::ProcessError)), this,SLOT(linuxCNCError(QProcess::ProcessError)));

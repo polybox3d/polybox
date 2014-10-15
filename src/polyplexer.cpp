@@ -9,8 +9,8 @@ Polyplexer::Polyplexer(QObject *parent) :
     QObject(parent)
 {
     _polyplexer = NULL;
-    _portMachine = Config::serialPortName;
-    _pathMachine = Config::pathToSerialDevice;
+    _portMachine = Config::serialPortName();
+    _pathMachine = Config::pathToSerialDevice();
 
     useWindowOutput(false);
 }
@@ -55,10 +55,10 @@ bool Polyplexer::start()
 {
     bool isRunning = false;
     stop();
-    if ( ! Config::disablePolyplexer )
+    if ( ! Config::disablePolyplexer() )
     {
     /** Create process **/
-    QString program = Config::pathToPolyplexerDaemon;
+    QString program = Config::pathToPolyplexerDaemon();
     QStringList arguments;
 
     arguments << QString("--serial=")+this->_pathMachine+this->_portMachine << QString("--polybox_sock=")+DEAMON_POLY_POLYPLEXER << QString("--printer_sock=")+DEAMON_PRINTER_POLYPLEXER;
@@ -77,12 +77,12 @@ bool Polyplexer::start()
     if ( isRunning )
     {
         // create or no Window to get output data from process
-        if ( _useOutputWindow && !Config::disablePolyplexer )
+        if ( _useOutputWindow && !Config::disablePolyplexer() )
         {
             MainWindow::getMainWindow()->startConsoleWindow();
         }
         /** Start VirtualSerial Connexion **/
-        if ( ! Config::disablePolyplexer )
+        if ( ! Config::disablePolyplexer() )
             isRunning = !(_polyplexer->waitForFinished(1000)) && SerialPort::getSerial()->connectToSerialPort() ;
         else
             isRunning = SerialPort::getSerial()->connectToSerialPort() ;

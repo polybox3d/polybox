@@ -13,7 +13,7 @@ LabViewPage::LabViewPage(LabViewModule* labview, QWidget *parent, bool small_ui)
 
     _currentProfile = NULL;
 
-    ui->cameraSelector->addItems( LabViewModule::getAllCamera( Config::pathToWebcamDevice ) );
+    ui->cameraSelector->addItems( LabViewModule::getAllCamera( Config::pathToWebcamDevice() ) );
     //1 or more camera detected, we setup UI
     if ( ui->cameraSelector->count() > 0 )
     {
@@ -395,7 +395,8 @@ void LabViewPage::on_topFace_clicked()
 
 void LabViewPage::on_bottomFace_clicked()
 {
-    processFaceClick( &_labview->_bot, ui->bottomFace, "pattern_b");
+    processFaceClick( &_labview->_front, ui->bottomFace, "pattern_b");
+    //processFaceClick( &_labview->_bot, ui->bottomFace, "pattern_b");
 }
 
 void LabViewPage::on_frontFace_clicked()

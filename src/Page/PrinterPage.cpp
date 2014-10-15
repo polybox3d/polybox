@@ -10,8 +10,8 @@ PrinterPage::PrinterPage(PrinterModule* printer, QWidget *parent) :
     ui->setupUi(this);
     ui->tempWidget->addPrinterModule( _printer );
     _printerSoftware.setParent( this );
-    _printerSoftwarePath = Config::pathToPrinterSoftware;
-    _updateModuleTimer.setInterval( Config::updateModuleTimer );
+    _printerSoftwarePath = Config::pathToPrinterSoftware();
+    _updateModuleTimer.setInterval( Config::updateModuleTimer() );
     connect( &_updateModuleTimer, SIGNAL(timeout()), _printer, SLOT(updateComponents()) );
 
     HomeButton* hb = new HomeButton( 50,50, this );
@@ -114,21 +114,21 @@ void PrinterPage::setChamberActivated(bool activated)
 }
 void PrinterPage::on_plaBed_clicked()
 {
-    _printer->setTargetBedTemp( Temperature(Config::bedTempPla) );
+    _printer->setTargetBedTemp( Temperature(Config::bedTempPla()) );
     setBedActivated(true);
     repaintComponents();
 }
 
 void PrinterPage::on_absBed_clicked()
 {
-    _printer->setTargetBedTemp( Temperature(Config::bedTempAbs) );
+    _printer->setTargetBedTemp( Temperature(Config::bedTempAbs()) );
     setBedActivated(true);
     repaintComponents();
 }
 
 void PrinterPage::on_nylonBed_clicked()
 {
-    _printer->setTargetBedTemp( Temperature(Config::bedTempNylon) );
+    _printer->setTargetBedTemp( Temperature(Config::bedTempNylon()) );
     setBedActivated(true);
     repaintComponents();
 }
@@ -182,7 +182,7 @@ void PrinterPage::on_startPrint_clicked()
 
     QString command = "mono";
     QStringList parameters;
-    parameters << _printerSoftwarePath<<" -home "<< Config::pathToPrinterWorkingDir;
+    parameters << _printerSoftwarePath<<" -home "<< Config::pathToPrinterWorkingDir();
 
     _printerSoftware.start( command, parameters );
 

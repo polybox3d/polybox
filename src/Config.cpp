@@ -1,44 +1,166 @@
 #include "Config.h"
 
+#include <QStandardPaths>
 #include <QDebug>
 
-QString Config::pathToHomeDirectory="/home/onslaught/";
-QString Config::pathToPrinterSoftware=Config::pathToHomeDirectory+"Dev/reprapgiga/Repetier-HostModified/Repetier-Host-master/src/RepetierHost/bin/Release/RepetierHost.exe";
-QString Config::pathToPrinterWorkingDir=Config::pathToHomeDirectory+"Dev/reprapgiga/RepetierHost";
+QString Config::pathToHomeDirectory()
+{
+    return QStandardPaths::locate(QStandardPaths::HomeLocation, QString(), QStandardPaths::LocateDirectory);
+}
 
-QString Config::pathToLinuxCNC=Config::pathToHomeDirectory+"linuxcnc/";
-QString Config::pathToSerialDevice="/dev/";
-
-QString Config::pathToVirtualPolySerialDevice="/dev/";
-QString Config::serialVirtualPolySerialPort="ttyPOLY";
-QString Config::pathToWebcamDevice="/dev/";
-
-QString Config::serialPortName="ttyACM0";//wildcard allowed
-QString Config::linuxCNCCommand="linuxcnc";
-QString Config::scannerLaserPath=Config::pathToHomeDirectory+"/fabscan100/qtTest/";
 QString Config::defaultConfigFileName="./config.xml";
-QString Config::pathToPolyplexerDaemon="../../externals/Polyplexer/PolyPlexer";
-QString Config::translationPath="../../i18n";
 
-QString Config::pathToDropbox=Config::pathToHomeDirectory+"plbx-dropbox/";
-
-int Config::connectionUptimeDelay = 1000;
-int Config::motherboardBaudrate=115200;
-bool Config::bypassCheck = true ;
-
-bool Config::disablePolyplexer = false;
 
 QColor Config::colorLabviewFaceSelected = QColor( 70, 230, 255 );
 QString Config::ambiancePathFolder=":/xml/ambiances";
 
-float Config::bedTempPla=60;
-float Config::bedTempAbs=75;
-float Config::bedTempNylon=70;
-int Config::hardwareTimer=3000; // ms
-int Config::updateConfigModuleTimer = 500; // 1sec = 1000 ms
-int Config::updateModuleTimer = 1000; // 1sec = 1000 ms
 
-QString Config::pathToJoypadOverlay=Config::pathToHomeDirectory+"joypadoverlay/src/JoypadOverlay";
+
+/**************************************************************************
+ *              GUI_TIMER_GROUP
+ * ***********************************************************************/
+
+int Config::hardwareTimer()
+{
+    return Config::get(GUI_TIMER_GROUP,"hardwareTimer", 3000).toInt();
+}
+int Config::updateConfigModuleTimer()
+{
+return Config::get(GUI_TIMER_GROUP,"updateConfigModuleTimer", 500).toInt();
+}
+int Config::updateModuleTimer()
+{
+    return Config::get(GUI_TIMER_GROUP,"updateModuleTimer", 1000).toInt();
+}
+
+
+
+/**************************************************************************
+ *              SETTINGS_GROUP
+ * ***********************************************************************/
+
+
+QString Config::runtimePath()
+{
+    return Config::get(SETTINGS_GROUP,"runtimePath", "../../").toString();
+}
+
+QString Config::pathToConfigFile()
+{
+    return "Configurations";
+}
+
+QString Config::translationPath()
+{
+    return Config::get(SETTINGS_GROUP,"translationPath", Config::runtimePath()+"i18n").toString();
+}
+
+QString Config::pathToDropbox()
+{
+    return Config::get(SETTINGS_GROUP,"pathToDropbox",Config::pathToHomeDirectory()+"plbx-dropbox/").toString();
+}
+
+bool Config::bypassCheck()
+{
+    return Config::get(SETTINGS_GROUP,"bypassCheck", true).toBool();
+}
+/**************************************************************************
+ *              GLOBAL_GROUP
+ * ***********************************************************************/
+
+/**************************************************************************
+ *              CONNECTION_GROUP
+ * ***********************************************************************/
+
+QString Config::pathToSerialDevice()
+{
+    return Config::get(CONNECTION_GROUP,"pathToSerialDevice", "/dev/").toString();
+}
+
+QString Config::pathToVirtualPolySerialDevice()
+{
+    return Config::get(CONNECTION_GROUP,"pathToVirtualPolySerialDevice", "/dev/").toString();
+}
+QString Config::serialVirtualPolySerialPort()
+{
+    return Config::get(CONNECTION_GROUP,"serialVirtualPolySerialPort", "ttyPOLY").toString();
+}
+QString Config::pathToWebcamDevice()
+{
+    return Config::get(CONNECTION_GROUP,"pathToWebcamDevice", "/dev/").toString();
+}
+
+QString Config::serialPortName()
+{
+    return Config::get(CONNECTION_GROUP,"serialPortName", "ttyACM0").toString();
+}
+
+QString Config::pathToPolyplexerDaemon()
+{
+    return Config::get(CONNECTION_GROUP,"pathToPolyplexerDaemon", Config::runtimePath()+"externals/Polyplexer/PolyPlexer").toString();
+}
+int Config::connectionUptimeDelay()
+{
+    return Config::get(CONNECTION_GROUP,"connectionUptimeDelay", 1000).toInt();
+}
+int Config::motherboardBaudrate()
+{
+    return Config::get(CONNECTION_GROUP,"motherboardBaudrate", 115200).toInt();
+}
+
+bool Config::disablePolyplexer()
+{
+    return Config::get(CONNECTION_GROUP,"disablePolyplexer", false).toBool();
+}
+
+/**************************************************************************
+ *              SCANNER_GROUP
+ * ***********************************************************************/
+
+/**************************************************************************
+ *              CNC_GROUP
+ * ***********************************************************************/
+
+QString Config::pathToLinuxCNC()
+{
+    return Config::get(CNC_GROUP,"pathToLinuxCNC", Config::pathToHomeDirectory()+"linuxcnc/").toString();
+}
+QString Config::linuxCNCCommand()
+{
+    return Config::get(CNC_GROUP,"linuxCNCCommand", "linuxcnc").toString();
+}
+
+/**************************************************************************
+ *              PRINTER_GROUP
+ * ***********************************************************************/
+
+QString Config::pathToPrinterSoftware()
+{
+    return Config::get(PRINTER_GROUP, "pathToPrinterSoftware",
+                Config::pathToHomeDirectory()+"Dev/reprapgiga/Repetier-HostModified/Repetier-Host-master/src/RepetierHost/bin/Release/RepetierHost.exe" ).toString();
+}
+QString Config::pathToPrinterWorkingDir()
+{
+    return Config::get(PRINTER_GROUP, "pathToPrinterWorkingDir",
+                Config::pathToHomeDirectory()+"Dev/reprapgiga/RepetierHost" ).toString();
+}
+
+float Config::bedTempPla()
+{
+    return Config::get(PRINTER_GROUP,"bedTempPla", 50).toInt();
+
+}
+float Config::bedTempAbs()
+{
+    return Config::get(PRINTER_GROUP,"bedTempAbs", 70).toInt();
+
+}
+float Config::bedTempNylon()
+{
+    return Config::get(PRINTER_GROUP,"bedTempNylon", 65).toInt();
+}
+
+QString Config::pathToJoypadOverlay=Config::pathToHomeDirectory()+"joypadoverlay/src/JoypadOverlay";
 
 
 
@@ -49,6 +171,33 @@ Config::Config()
 
 void Config::init()
 {
+    QSettings().setValue("LOG/nbrExec", QSettings().value("LOG/nbrExec").toInt() + 1 );
+    // no settings found
+    if ( QSettings().value("ABOUT/version").toString().isEmpty() )
+    {
+        QSettings().setValue("ABOUT/version", QCoreApplication::applicationVersion() );
+        // We must find the runtime path (means we want the top level of the git repository
+        QDir dir;
+        for ( u_int8_t i = 0 ; i < 6 ; ++i )
+        {
+
+            if ( dir.cd("src") )
+            {
+                dir.cdUp();
+                Config::get(SETTINGS_GROUP,"runtimePath", dir.path()+"/").toString();
+                return;
+            }
+            else
+            {
+                dir.cdUp();
+            }
+        }
+        Config::get(ERRORS_GROUP,"runtimePath", "CRITICAL : Can't find src directory... The software will not work.").toString();
+    }
+
+
+
+    /*
     // does the default file exists ? if yes, we load it, if no, we load the basic file form QtRessources.
     QDir dir;
     if ( dir.exists(Config::defaultConfigFileName) )
@@ -61,7 +210,11 @@ void Config::init()
         Config::importFromXmlFile( INITIAL_CONFIG_FILE );
         qDebug()<<"Initial factory config loaded";
     }
+
+
+*/
 }
+
 
 void Config::importFromXmlFile( QString filename )
 {
@@ -107,7 +260,7 @@ void Config::importFromXmlFile( QString filename )
 }
 void Config::parsePrinter(QXmlStreamReader *xml)
 {
-    while(!(xml->tokenType() == QXmlStreamReader::EndElement && xml->name() == "printer"))
+ /*   while(!(xml->tokenType() == QXmlStreamReader::EndElement && xml->name() == "printer"))
     {
         if(xml->tokenType() == QXmlStreamReader::StartElement)
         {
@@ -123,11 +276,11 @@ void Config::parsePrinter(QXmlStreamReader *xml)
             }
         }
         xml->readNext();
-    }
+    }*/
 }
 
 void Config::parseGeneral(QXmlStreamReader *xml)
-{
+{/*
     while(!(xml->tokenType() == QXmlStreamReader::EndElement && xml->name() == "general"))
     {
         if(xml->tokenType() == QXmlStreamReader::StartElement)
@@ -186,10 +339,10 @@ void Config::parseGeneral(QXmlStreamReader *xml)
         }
         xml->readNext();
     }
-
+*/
 }
 void Config::parseCNC(QXmlStreamReader *xml)
-{
+{/*
     while(!(xml->tokenType() == QXmlStreamReader::EndElement && xml->name() == "cnc"))
     {
         if(xml->tokenType() == QXmlStreamReader::StartElement)
@@ -239,7 +392,6 @@ void Config::saveToXmlFile( QString filename )
 
     //SCANNER
     xml.writeStartElement("scanner");
-    xml.writeTextElement("path_to_scanner",Config::scannerLaserPath );
     xml.writeEndElement();//scanner
 
     //CNC
@@ -257,5 +409,5 @@ void Config::saveToXmlFile( QString filename )
 
     xml.writeEndElement();//config
     xml.writeEndDocument();
-    file->close();
+    file->close();*/
 }

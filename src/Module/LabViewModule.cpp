@@ -64,16 +64,6 @@ QStringList LabViewModule::getAllCamera(QString path_directory)
     return cameras_dir.entryList(QStringList("video*"),QDir::System, QDir::Name) ;
 }
 
-QStringList LabViewModule::getConnectedCameraPath()
-{
-    QString command = "ls";
-    QStringList parameters;
-    parameters << PATH_TO_DEVICE ;
-    QProcess* proc = new QProcess( this );
-    proc->start( command, parameters );
-
-}
-
 void LabViewModule::toggleInter()
 {
     _isOn = !_isOn;

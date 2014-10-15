@@ -8,7 +8,7 @@ WarningPage::WarningPage(PolyboxModule *polybox, QWidget *parent) :
 {
     ui->setupUi(this);
     _polybox = polybox;
-    _updateComponentsTimer.start( Config::updateConfigModuleTimer  );
+    _updateComponentsTimer.start( Config::updateConfigModuleTimer()  );
     connect( &_updateComponentsTimer, SIGNAL(timeout()), this, SLOT(updateModules()));
     HomeButton* hb = new HomeButton( 50,50, this );
     hb->setGeometry( this->width()-hb->width()-10,
@@ -63,12 +63,13 @@ void WarningPage::on_help_clicked()
 
 void WarningPage::on_configuration_clicked()
 {
-    DialogConfigSoft dialog( _polybox, (QWidget*)this->parent());
+    QDesktopServices::openUrl(QUrl(Config::pathToConfigFile()+"/"+QCoreApplication::organizationName()+"/"+QCoreApplication::applicationName()+".conf"));
+    /**DialogConfigSoft dialog( _polybox, (QWidget*)this->parent());
     int value_ret = dialog.exec();
     if ( value_ret != 0 )
     {
 
-    }
+    }**/
 }
 
 void WarningPage::on_dynamicTest_clicked()

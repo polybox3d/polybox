@@ -11,6 +11,13 @@
 #include <QXmlStreamReader>
 #include <QXmlStreamWriter>
 #include <QMap>
+#include <QDir>
+#include <QDate>
+#include <QCoreApplication>
+
+#include <iostream>
+
+using namespace std;
 
 /**
  * @brief The Config class Store Polybox config and constants, such as program path, command, driver.
@@ -18,58 +25,67 @@
 class Config
 {
 public:
-#define INITIAL_CONFIG_FILE ":/xml/config/.initialConfig.xml"
-    Config();
-    static QString pathToPrinterSoftware;
+//#define INITIAL_CONFIG_FILE ":/xml/config/.initialConfig.xml"
 
-    static QString pathToPrinterWorkingDir;
-    static QString translationPath;
-    static QString pathToDropbox;
+#define PRINTER_GROUP "PRINTER"
+#define CNC_GROUP "CNC"
+#define SCANNER_GROUP "SCANNER"
+#define GLOBAL_GROUP "GLOBAL"
+#define SETTINGS_GROUP "SETTINGS"
+#define CONNECTION_GROUP "CONNECTION"
+#define GUI_TIMER_GROUP "GUI_TIMER"
+#define ERRORS_GROUP "ERRORS"
+#define QSETTINGS_LOAD_AND_SAVE 1
+
+    Config();
+    static QString translationPath();
+    static QString pathToDropbox();
+
+    static QString runtimePath();
 
     /**
      * @brief pathToHomeDirectory Full path to the main user home directory (/home/<user>/)
      */
-    static QString pathToHomeDirectory;
-    /**
-     * @brief pathToLinuxCNC Full path to the top-level linuxCNC folder.
-     */
-    static QString pathToLinuxCNC;
+    static QString pathToHomeDirectory();
     /**
      * @brief pathToWebcamDevice Full path to the device directory. Something like /dev/tty for linux
      */
-    static QString pathToWebcamDevice;
+    static QString pathToWebcamDevice();
 
-    static QString pathToSerialDevice;
+    static QString pathToSerialDevice();
 
-    static QString serialPortName;
+    static QString serialPortName();
 
-    static QString pathToPolyplexerDaemon;
+    static QString pathToPolyplexerDaemon();
 
-    static QString pathToVirtualPolySerialDevice;
+    static QString pathToVirtualPolySerialDevice();
 
-    static QString serialVirtualPolySerialPort;
+    static QString serialVirtualPolySerialPort();
+    static QString pathToConfigFile();
 
-    static int connectionUptimeDelay;
-
-    /**
-     * @brief scannerLaserPath Full path to scanner-laser software.
-     */
-    static QString scannerLaserPath;
-    /**
-     * @brief linuxCNCCommand Command to start linuxCNC
-     */
-    static QString linuxCNCCommand;
     /**
      * @brief motherboardBaudrate Default baudrate between software and Polybox.
      */
-    static int motherboardBaudrate;
+    static int motherboardBaudrate();
+
+    static int connectionUptimeDelay();
+
+    /**
+     * @brief pathToLinuxCNC Full path to the top-level linuxCNC folder.
+     */
+    static QString pathToLinuxCNC();
+    /**
+     * @brief linuxCNCCommand Command to start linuxCNC
+     */
+    static QString linuxCNCCommand();
+
     /**
      * @brief bypassCheck disable check, so the user can acces to everything, withotu printer/cnc controle (atu, NTC, etc...)
      */
-    static bool bypassCheck;
+    static bool bypassCheck();
 
 
-    static bool disablePolyplexer;
+    static bool disablePolyplexer();
 
     /**
      * @brief colorLabviewFaceSelected Color used when a face is selected in the labview module.
@@ -84,13 +100,35 @@ public:
 
     static QString pathToJoypadOverlay;
 
-    static float bedTempPla;
-    static float bedTempAbs;
-    static float bedTempNylon;
+    static float bedTempPla();
+    static float bedTempAbs();
+    static float bedTempNylon();
 
-    static int hardwareTimer;
-    static int updateConfigModuleTimer;
-    static int updateModuleTimer;
+    static int hardwareTimer();
+    static int updateConfigModuleTimer();
+    static int updateModuleTimer();
+
+    static QString pathToPrinterSoftware();
+
+    static QString pathToPrinterWorkingDir();
+
+    static QVariant get(QString group_name, QString key, const QVariant &defaultValue = QVariant() )
+    {
+        //QSettings().beginGroup(group_name);
+        QVariant v = QSettings().value( group_name+"/"+key, defaultValue );
+        //QSettings().endGroup();
+
+#ifdef QSETTINGS_LOAD_AND_SAVE
+  #if QSETTINGS_LOAD_AND_SAVE == 1
+        // Save default value
+        if ( v == defaultValue )
+        {
+            QSettings().setValue( group_name+"/"+key, defaultValue );
+        }
+  #endif
+#endif
+        return v;
+    }
 
     static void init();
 

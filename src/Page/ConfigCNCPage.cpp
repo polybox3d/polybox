@@ -22,7 +22,7 @@ ConfigCNCPage::~ConfigCNCPage()
 
 void ConfigCNCPage::on_latencyHisto_clicked()
 {
-    QString command = Config::pathToLinuxCNC+"/scripts/latencyhistogram";
+    QString command = Config::pathToLinuxCNC()+"/scripts/latencyhistogram";
     QProcess* histo = new QProcess( this );
     histo->start( command );
 }
@@ -30,28 +30,28 @@ void ConfigCNCPage::on_latencyHisto_clicked()
 
 void ConfigCNCPage::on_latencyPlot_clicked()
 {
-    QString command = Config::pathToLinuxCNC+"/scripts/latencyplot";
+    QString command = Config::pathToLinuxCNC()+"/scripts/latencyplot";
     QProcess* plot = new QProcess( this );
     plot->start( command );
 }
 
 void ConfigCNCPage::on_latencyTab_clicked()
 {
-    QString command = Config::pathToLinuxCNC+"/scripts/latency-test";
+    QString command = Config::pathToLinuxCNC()+"/scripts/latency-test";
     QProcess* simple = new QProcess( this );
     simple->start( command );
 }
 
 void ConfigCNCPage::on_configStepper_clicked()
 {
-    QString command = Config::pathToLinuxCNC+"/bin/stepconf";
+    QString command = Config::pathToLinuxCNC()+"/bin/stepconf";
     QProcess* simple = new QProcess( this );
     simple->start( command );
 }
 
 void ConfigCNCPage::on_stressCNC_clicked()
 {
-    QString command = Config::pathToLinuxCNC+"/scripts/torture.py";
+    QString command = Config::pathToLinuxCNC()+"/scripts/torture.py";
     _script = new QProcess( this );
     _message = new QMessageBox( this );
 
