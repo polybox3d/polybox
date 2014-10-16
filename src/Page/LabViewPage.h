@@ -16,6 +16,8 @@
 #include <QXmlStreamReader>
 #include <QXmlStreamWriter>
 #include <QDataStream>
+#include <QColorDialog>
+#include <QRgb>
 
 #include <iostream>
 
@@ -112,6 +114,8 @@ private slots:
     void on_intensityVSpin_valueChanged(int arg1);
 
     void on_intensityH_valueChanged(int value);
+
+    void on_showColor_clicked();
 
 private:
     void setLight(int light, bool horizontale=true, bool verticale=true);

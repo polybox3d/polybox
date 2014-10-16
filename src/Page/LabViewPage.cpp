@@ -32,7 +32,9 @@ LabViewPage::LabViewPage(LabViewModule* labview, QWidget *parent, bool small_ui)
                          hb->width(), hb->height());
         connect( hb, SIGNAL(clicked()), (MainWindow*)(parent), SLOT(backToModulePage()));
         connect( ui->backToHelp, SIGNAL(clicked()), (MainWindow*)(parent), SLOT(backToHelpPage()));
+
         ui->softwareRadio->setChecked( true );
+        on_softwareRadio_clicked();
 
 
     }
@@ -508,6 +510,18 @@ void LabViewPage::on_rgbLineEdit_editingFinished()
     _labview->currentColor()->setBlue(color_str.right(2).toInt(&ok, 16) );
     updateUI();
 }
+
+void LabViewPage::on_showColor_clicked()
+{
+    QColor c = QColorDialog::getColor( _labview->currentColor()->toRgb(), this );
+    //ui->showColor->setStyleSheet( "background-color: rgb("+QString::number(c.red())+", "+QString::number(c.green())+", "+QString::number(c.blue())+", "+QString::number(c.alpha())+");");
+    QColor *cn = _labview->getGlobalColor();
+    *cn = c;
+    setColor( c );
+    updateUI();
+
+}
+
 
 void LabViewPage::on_softwareRadio_clicked()
 {
