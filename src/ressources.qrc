@@ -41,6 +41,8 @@
         <file>img/folder.png</file>
         <file>img/linuxcnc_logo.png</file>
         <file>img/dropbox.png</file>
+        <file>img/lock-open.png</file>
+        <file>img/lock-close.png</file>
     </qresource>
     <qresource prefix="/xml">
         <file>ambiances/Autumn.xml</file>

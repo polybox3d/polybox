@@ -43,6 +43,8 @@ public:
     void setSelectedFacesLight(int light, bool horizontale = true, bool verticale = true);
     void importFromXmlFile(QString filename );
     void loadDefaultAmbiances( QString folder_path );
+    void loadCameras();
+    bool eventFilter(QObject* watched, QEvent* event);
 
 
 #define BASE_STYLESHEET_FACE_BUTTON "background-image: url("
@@ -117,6 +119,8 @@ private slots:
 
     void on_showColor_clicked();
 
+    void on_lockButton_clicked();
+
 private:
     void setLight(int light, bool horizontale=true, bool verticale=true);
     void setRed(int value );
@@ -133,10 +137,12 @@ private:
     LabViewModule* _labview;
 
     QFile* _currentProfile;
+    OnOffButton* _onoff;
 
     QVector<Face*> _selectedFaces;
     LabViewJPH* _handler;
     bool _update;
+    bool _vhSliderLocked;
 };
 
 #endif // LABVIEW_H

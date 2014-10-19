@@ -9,18 +9,17 @@ LabViewPage::LabViewPage(LabViewModule* labview, QWidget *parent, bool small_ui)
     _update = false;
     connect( _labview , SIGNAL(updateUI()), this, SLOT(updateUI()));
     ui->setupUi(this);
+    ui->intensityH->installEventFilter(this);
+    ui->intensityV->installEventFilter(this);
+    ui->r->installEventFilter(this);
+    ui->g->installEventFilter(this);
+    ui->b->installEventFilter(this);
+    ui->intensite->installEventFilter(this);
 
 
     _currentProfile = NULL;
 
-    ui->cameraSelector->addItems( LabViewModule::getAllCamera( Config::pathToWebcamDevice() ) );
-    //1 or more camera detected, we setup UI
-    if ( ui->cameraSelector->count() > 0 )
-    {
-        _labview->setCamera( ui->cameraSelector->currentText() );
-        ui->startRecording->setEnabled( true );
-        ui->startVisu->setEnabled( true );
-    }
+    loadCameras();
 
     loadDefaultAmbiances( Config::ambiancePathFolder );
 
@@ -52,9 +51,39 @@ LabViewPage::LabViewPage(LabViewModule* labview, QWidget *parent, bool small_ui)
     connect ( onoff, SIGNAL(released()), this, SLOT(updateUI()));
 }
 
+bool LabViewPage::eventFilter(QObject* watched, QEvent* event)
+{
+    QSlider* m_slider = dynamic_cast<QSlider*>(watched);
+    if (event->type() == QEvent::MouseButtonPress )
+    {
+        QMouseEvent *mouseEvent = static_cast<QMouseEvent *>(event);
+        m_slider->setValue(QStyle::sliderValueFromPosition(m_slider->minimum(), m_slider->maximum(), mouseEvent->x(), m_slider->width()));
+    }
+
+    return false;
+}
+
 LabViewPage::~LabViewPage()
 {
     delete ui;
+}
+
+void LabViewPage::loadCameras()
+{
+    ui->cameraSelector->clear();
+    ui->cameraSelector->addItems( LabViewModule::getAllCamera( Config::pathToWebcamDevice() ) );
+    //1 or more camera detected, we setup UI
+    if ( ui->cameraSelector->count() > 0 )
+    {
+        _labview->setCamera( ui->cameraSelector->currentText() );
+        ui->startRecording->setEnabled( true );
+        ui->startVisu->setEnabled( true );
+    }
+    else
+    {
+        ui->startRecording->setEnabled( false );
+        ui->startVisu->setEnabled( false );
+    }
 }
 
 void LabViewPage::setJoypad(QJoystick *joypad)
@@ -261,10 +290,17 @@ void LabViewPage::updateUI()
         }
 
     }
-    ui->colorBox->setEnabled( _labview->isOn() );
-    ui->lightBox->setEnabled( _labview->isOn() );
-    ui->startRecording->setEnabled( _labview->isOn() );
-    ui->startVisu->setEnabled( _labview->isOn() );
+    if ( ! _labview->isOn())
+    {
+        ui->colorBox->setEnabled( false );
+        ui->lightBox->setEnabled( false );
+        ui->selectFaceBox->setEnabled( false );
+        ui->startRecording->setEnabled( false );
+        ui->startVisu->setEnabled( false );
+    }
+    loadCameras();
+
+
 
     _update = false;
 }
@@ -325,10 +361,15 @@ void LabViewPage::setAlpha( int value )
 }
 void LabViewPage::setLight(int light, bool horizontale, bool verticale)
 {
+    if( _vhSliderLocked )
+    {
+        horizontale = verticale = true;
+    }
     // user select global control
     if ( ui->globalLightRadio->isChecked() )
     {
         _labview->setAllFacesLight( light, horizontale, verticale );
+
     }
     if ( ui->individualLightRadio->isChecked() )
     {
@@ -408,12 +449,14 @@ void LabViewPage::on_frontFace_clicked()
 
 void LabViewPage::on_globalLightRadio_clicked()
 {
+    ui->selectFaceBox->setEnabled( false );
     setActivateLightControl( true );
     updateUI();
 }
 
 void LabViewPage::on_individualLightRadio_clicked()
 {
+    ui->selectFaceBox->setEnabled( true );
     if ( _selectedFaces.isEmpty() )
     {
         setActivateLightControl( false );
@@ -528,6 +571,7 @@ void LabViewPage::on_softwareRadio_clicked()
     _labview->sendController( LabViewModule::Software);
     ui->colorBox->setEnabled( true );
     ui->lightBox->setEnabled( true );
+    ui->selectFaceBox->setEnabled( true );
 }
 
 void LabViewPage::on_teleRadio_clicked()
@@ -535,6 +579,7 @@ void LabViewPage::on_teleRadio_clicked()
     _labview->sendController( LabViewModule::Manual );
     ui->colorBox->setEnabled( false );
     ui->lightBox->setEnabled( false );
+    ui->selectFaceBox->setEnabled( false );
 }
 
 
@@ -566,3 +611,15 @@ void LabViewPage::on_intensityH_valueChanged(int value)
     updateUI();
 }
 
+
+void LabViewPage::on_lockButton_clicked()
+{
+    _vhSliderLocked = !_vhSliderLocked;
+
+    if ( _vhSliderLocked )
+    {
+        setLight( ui->intensityH->value(), true, true );
+        updateUI();
+    }
+
+}

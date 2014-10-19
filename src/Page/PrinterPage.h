@@ -25,6 +25,9 @@ class PrinterPage : public QWidget
 
 public:
     explicit PrinterPage(PrinterModule* printer, QWidget *parent = 0);
+
+    bool eventFilter(QObject* watched, QEvent* event);
+
     ~PrinterPage();
 
 private slots:

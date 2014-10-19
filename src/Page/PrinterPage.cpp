@@ -31,6 +31,12 @@ PrinterPage::PrinterPage(PrinterModule* printer, QWidget *parent) :
     connect ( onoff, SIGNAL(released()), _printer, SLOT(toggleInter()));
     connect ( onoff, SIGNAL(released()), this, SLOT(repaintComponents()));
 
+    ui->bedTempSlider->installEventFilter(this);
+    ui->boxTempSlider->installEventFilter(this);
+    ui->fanPulsor->installEventFilter(this);
+    ui->fanPelletier->installEventFilter(this);
+    ui->fanExtractor->installEventFilter(this);
+
     ui->fanExtractor->setTracking( false );
     ui->fanPelletier->setTracking( false );
     ui->fanPulsor->setTracking( false );
@@ -43,6 +49,18 @@ PrinterPage::PrinterPage(PrinterModule* printer, QWidget *parent) :
 PrinterPage::~PrinterPage()
 {
     delete ui;
+}
+
+bool PrinterPage::eventFilter(QObject* watched, QEvent* event)
+{
+    QSlider* m_slider = dynamic_cast<QSlider*>(watched);
+    if (event->type() == QEvent::MouseButtonPress )
+    {
+        QMouseEvent *mouseEvent = static_cast<QMouseEvent *>(event);
+        m_slider->setValue(QStyle::sliderValueFromPosition(m_slider->minimum(), m_slider->maximum(), mouseEvent->x(), m_slider->width()));
+    }
+
+    return false;
 }
 
 void PrinterPage::repaintComponents()
