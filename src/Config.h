@@ -110,9 +110,19 @@ public:
     static int updateConfigModuleTimer();
     static int updateModuleTimer();
 
-    static QString pathToPrinterSoftware();
+    static int broadcastPort();
+    static QString broadcastIP();
 
+    static void setBroadcastPort( int port );
+    static void setBroadcastIP( QString IP );
+
+    static QString pathToPrinterSoftware();
     static QString pathToPrinterWorkingDir();
+
+    static void set(QString group_name, QString key, const QVariant &value )
+    {
+         QSettings().setValue( group_name+"/"+key, value );
+    }
 
     static QVariant get(QString group_name, QString key, const QVariant &defaultValue = QVariant() )
     {
@@ -125,7 +135,7 @@ public:
         // Save default value
         if ( v == defaultValue )
         {
-            QSettings().setValue( group_name+"/"+key, defaultValue );
+            Config::set( group_name, key, defaultValue );
         }
   #endif
 #endif

@@ -45,6 +45,25 @@ QString Config::runtimePath()
     return Config::get(SETTINGS_GROUP,"runtimePath", "../../").toString();
 }
 
+QString Config::broadcastIP()
+{
+    return Config::get(SETTINGS_GROUP,"broadcastIP", "127.0.0.1").toString();
+}
+
+int Config::broadcastPort()
+{
+    return Config::get(SETTINGS_GROUP,"broadcastPort", "6842").toInt();
+}
+
+void Config::setBroadcastIP(QString IP)
+{
+    Config::set(SETTINGS_GROUP,"broadcastIP", IP);
+}
+void Config::setBroadcastPort(int port)
+{
+    Config::set(SETTINGS_GROUP,"broadcastPort", port);
+}
+
 QString Config::pathToConfigFile()
 {
     return "Configurations";

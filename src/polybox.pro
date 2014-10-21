@@ -28,11 +28,13 @@ QMAKE_CXXFLAGS_DEBUG +=  -O3 -Ofast
 }
 
 DEFINES += NO_SCAN
+#include(../externals/FabScan100/qtTest/qtTest.pri)
+
 #UART Lib
 include(../externals/qextserialport/src/qextserialport.pri)
 
 
-#include(../externals/FabScan100/qtTest/qtTest.pri)
+
 
 INCLUDEPATH += Checker
 INCLUDEPATH += Page
@@ -89,7 +91,8 @@ SOURCES += main.cpp\
     polyplexer.cpp \
     Widget/FolderButton.cpp \
     Theme.cpp \
-    Widget/DialogCredits.cpp
+    Widget/DialogCredits.cpp \
+    Widget/DialogBroadcast.cpp
 
 HEADERS  += MainWindow.h \
         Updater.h \
@@ -142,7 +145,8 @@ HEADERS  += MainWindow.h \
     polyplexer.h \
     Widget/FolderButton.h \
     Theme.h \
-    Widget/DialogCredits.h
+    Widget/DialogCredits.h \
+    Widget/DialogBroadcast.h
 
 FORMS    += MainWindow.ui \
     PrinterSmallUI.ui \
@@ -167,7 +171,8 @@ FORMS    += MainWindow.ui \
     Page/HelpPage.ui \
     Page/LabViewPage.ui \
     Page/PrinterPage.ui \
-    Widget/DialogCredits.ui
+    Widget/DialogCredits.ui \
+    Widget/DialogBroadcast.ui
 
 RESOURCES += \
     ressources.qrc

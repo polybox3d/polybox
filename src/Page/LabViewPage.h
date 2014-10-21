@@ -25,6 +25,7 @@
 #include "LabViewJPH.h"
 #include "ATUButton.h"
 #include "OnOffButton.h"
+#include "DialogBroadcast.h"
 
 using namespace std;
 

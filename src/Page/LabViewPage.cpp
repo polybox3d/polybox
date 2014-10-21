@@ -38,12 +38,12 @@ LabViewPage::LabViewPage(LabViewModule* labview, QWidget *parent, bool small_ui)
     }
     else
     {
-         //ui->backToHelp->deleteLater();
+        //ui->backToHelp->deleteLater();
     }
     OnOffButton* onoff = new OnOffButton( 60, 30, this );
     onoff->setGeometry( this->width()-onoff->width()-10,
-                     45,
-                     onoff->width(), onoff->height());
+                        45,
+                        onoff->width(), onoff->height());
 
     onoff->setState( _labview->isOn() );
     connect ( onoff, SIGNAL(released()), _labview, SLOT(toggleInter()));
@@ -53,7 +53,7 @@ LabViewPage::LabViewPage(LabViewModule* labview, QWidget *parent, bool small_ui)
 bool LabViewPage::eventFilter(QObject* watched, QEvent* event)
 {
     QSlider* m_slider = dynamic_cast<QSlider*>(watched);
-    if (event->type() == QEvent::MouseButtonPress )
+    if (event->type() == QEvent::MouseButtonPress && m_slider->isEnabled() )
     {
         QMouseEvent *mouseEvent = static_cast<QMouseEvent *>(event);
         m_slider->setValue(QStyle::sliderValueFromPosition(m_slider->minimum(), m_slider->maximum(), mouseEvent->x(), m_slider->width()));
@@ -111,7 +111,12 @@ void LabViewPage::on_startRecording_clicked()
 
 void LabViewPage::on_startBroadcast_clicked()
 {
-    _labview->startBoardcast();
+    DialogBroadcast dialog((QWidget*)this->parent());
+    int value_ret = dialog.exec();
+    if ( value_ret == START_BROADCAST )
+    {
+        _labview->startBoardcast();
+    }
 }
 
 
@@ -194,9 +199,9 @@ void LabViewPage::on_loadProfil_clicked()
                                                     tr("Selectionner un profile"), ".", tr("Profile Files (*.xml)"));
     if ( fileName != NULL && ! fileName.isEmpty() )
     {
-       importFromXmlFile( fileName );
-       ui->currentProfil->setText( fileName.split("/").last().split(".").first() );
-       ui->selectAmb->setCurrentIndex( 0 );
+        importFromXmlFile( fileName );
+        ui->currentProfil->setText( fileName.split("/").last().split(".").first() );
+        ui->selectAmb->setCurrentIndex( 0 );
     }
     updateUI();
 }

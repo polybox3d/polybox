@@ -130,7 +130,7 @@ void LabViewModule::startBoardcast()
     QString command = "vlc";
     QStringList parameters;
     parameters << "v4l2:///dev/"+_selectedCamera<<"--video-filter"<<"rotate{angle="+QString::number(Config::webCamRotation())+"}"<<"--file-logging"<<"--logfile=vlc-log.txt"
-               <<"--sout=#duplicate{dst=display,dst=\"transcode{vcodec=WMV2,vb=800,scale=1,acodec=wma2,ab=128,channels=2,samplerate=44100}:http{mux=asf,dst=:1234/,name=\"PolyBox3D LiveStream\"}\"";
+               <<"--sout=#duplicate{dst=display,dst=\"transcode{vcodec=WMV2,vb=800,scale=1,acodec=wma2,ab=128,channels=2,samplerate=44100}:http{mux=asf,dst="+Config::broadcastIP()+":"+QString::number(Config::broadcastPort())+"/,name=\"PolyBox3D LiveStream\"}\"";
     _mediaPlayer = new QProcess( this );
     _mediaPlayer->start( command, parameters );
 
