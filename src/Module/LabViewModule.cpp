@@ -334,6 +334,16 @@ void LabViewModule::parseMCode(QByteArray stream)
    emit updateUI();
 }
 
+void LabViewModule::forceSendUpdate()
+{
+    _top.sendValues();
+    _bot.sendValues();
+    _right.sendValues();
+    _left.sendValues();
+    _front.sendValues();
+    _back.sendValues();
+}
+
 void LabViewModule::saveToXmlFile(QString filename)
 {
     QFile* file = new QFile(filename);

@@ -49,7 +49,9 @@ public:
 
     void exportXmlAllFaces(QXmlStreamWriter *xml);
     void parseGlobalcolor(QXmlStreamReader *xml);
-    void  saveToXmlFile(QString filename);
+    void saveToXmlFile(QString filename);
+
+    void forceSendUpdate();
 
     void setAllFacesLight(int light, bool horizontale, bool verticale);
     void setAllFacesColor(QColor c);

@@ -178,8 +178,6 @@ void MainWindow::startConnexion()
         {
             bool connected = _polybox->connectToPrinter( Config::pathToSerialDevice(), act->text().split('/').last() );
             act->setChecked( connected ) ;
-
-
         }
     }
 }

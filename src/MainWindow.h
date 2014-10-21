@@ -7,6 +7,7 @@
 #include <QLabel>
 #include <QMessageBox>
 #include <QLibraryInfo>
+#include <QThread>
 
 #include "Config.h"
 

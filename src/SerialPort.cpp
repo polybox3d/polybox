@@ -81,6 +81,7 @@ void SerialPort::disconnectPort()
 {
     if ( _port != NULL && _port->isOpen() )
     {
+        _port->flush();
         _port->close();
         emit disconnected();
     }
