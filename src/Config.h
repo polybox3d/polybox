@@ -100,6 +100,8 @@ public:
 
     static QString pathToJoypadOverlay;
 
+    static float webCamRotation();
+
     static float bedTempPla();
     static float bedTempAbs();
     static float bedTempNylon();

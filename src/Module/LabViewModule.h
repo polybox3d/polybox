@@ -39,6 +39,8 @@ public:
     void setCamera( QString cam );
     void startCamera();
     void startRecording();
+    void startBoardcast();
+
     static QProcess* startCamera(QProcess* process, QString camera);
 
     void initFaceClass();

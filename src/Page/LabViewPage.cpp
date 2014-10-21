@@ -30,7 +30,6 @@ LabViewPage::LabViewPage(LabViewModule* labview, QWidget *parent, bool small_ui)
                          this->height()-hb->height(),
                          hb->width(), hb->height());
         connect( hb, SIGNAL(clicked()), (MainWindow*)(parent), SLOT(backToModulePage()));
-        connect( ui->backToHelp, SIGNAL(clicked()), (MainWindow*)(parent), SLOT(backToHelpPage()));
 
         ui->softwareRadio->setChecked( true );
         on_softwareRadio_clicked();
@@ -39,7 +38,7 @@ LabViewPage::LabViewPage(LabViewModule* labview, QWidget *parent, bool small_ui)
     }
     else
     {
-         ui->backToHelp->deleteLater();
+         //ui->backToHelp->deleteLater();
     }
     OnOffButton* onoff = new OnOffButton( 60, 30, this );
     onoff->setGeometry( this->width()-onoff->width()-10,
@@ -78,11 +77,13 @@ void LabViewPage::loadCameras()
         _labview->setCamera( ui->cameraSelector->currentText() );
         ui->startRecording->setEnabled( true );
         ui->startVisu->setEnabled( true );
+        ui->startBroadcast->setEnabled( true );
     }
     else
     {
         ui->startRecording->setEnabled( false );
         ui->startVisu->setEnabled( false );
+        ui->startBroadcast->setEnabled( false );
     }
 }
 
@@ -107,6 +108,12 @@ void LabViewPage::on_startRecording_clicked()
 {
     _labview->startRecording();
 }
+
+void LabViewPage::on_startBroadcast_clicked()
+{
+    _labview->startBoardcast();
+}
+
 
 
 void LabViewPage::importFromXmlFile(QString filename)

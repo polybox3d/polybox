@@ -626,29 +626,6 @@
     <bool>false</bool>
    </property>
   </widget>
-  <widget class="QPushButton" name="backToHelp">
-   <property name="geometry">
-    <rect>
-     <x>644</x>
-     <y>500</y>
-     <width>91</width>
-     <height>41</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>Aide</string>
-   </property>
-   <property name="icon">
-    <iconset resource="../ressources.qrc">
-     <normaloff>:/img/img/help.png</normaloff>:/img/img/help.png</iconset>
-   </property>
-   <property name="checkable">
-    <bool>false</bool>
-   </property>
-   <property name="flat">
-    <bool>false</bool>
-   </property>
-  </widget>
   <widget class="QComboBox" name="cameraSelector">
    <property name="geometry">
     <rect>
@@ -716,6 +693,32 @@
      </widget>
     </item>
    </layout>
+  </widget>
+  <widget class="QPushButton" name="startBroadcast">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
+   <property name="geometry">
+    <rect>
+     <x>640</x>
+     <y>500</y>
+     <width>91</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Diffuser</string>
+   </property>
+   <property name="icon">
+    <iconset resource="../ressources.qrc">
+     <normaloff>:/img/img/record.png</normaloff>:/img/img/record.png</iconset>
+   </property>
+   <property name="checkable">
+    <bool>false</bool>
+   </property>
+   <property name="flat">
+    <bool>false</bool>
+   </property>
   </widget>
  </widget>
  <resources>

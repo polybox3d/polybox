@@ -121,6 +121,8 @@ private slots:
 
     void on_lockButton_clicked();
 
+    void on_startBroadcast_clicked();
+
 private:
     void setLight(int light, bool horizontale=true, bool verticale=true);
     void setRed(int value );

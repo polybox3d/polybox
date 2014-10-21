@@ -110,7 +110,7 @@ QProcess* LabViewModule::startCamera(QProcess* process, QString camera)
 
     QString command = "vlc";
     QStringList parameters;
-    parameters << "v4l2:///dev/"+camera<<"--video-filter"<<"rotate{angle=180}" ;
+    parameters << "v4l2:///dev/"+camera<<"--video-filter"<<"rotate{angle="+QString::number(Config::webCamRotation())+"}" ;
     process = new QProcess( );
     process->start( command, parameters );
     return process;
@@ -119,6 +119,21 @@ QProcess* LabViewModule::startCamera(QProcess* process, QString camera)
 void LabViewModule::startCamera()
 {
     _mediaPlayer = startCamera( _mediaPlayer, _selectedCamera );
+}
+void LabViewModule::startBoardcast()
+{
+    if ( _mediaPlayer != NULL )
+    {
+        _mediaPlayer->kill();
+    }
+
+    QString command = "vlc";
+    QStringList parameters;
+    parameters << "v4l2:///dev/"+_selectedCamera<<"--video-filter"<<"rotate{angle="+QString::number(Config::webCamRotation())+"}"<<"--file-logging"<<"--logfile=vlc-log.txt"
+               <<"--sout=#duplicate{dst=display,dst=\"transcode{vcodec=WMV2,vb=800,scale=1,acodec=wma2,ab=128,channels=2,samplerate=44100}:http{mux=asf,dst=:1234/,name=\"PolyBox3D LiveStream\"}\"";
+    _mediaPlayer = new QProcess( this );
+    _mediaPlayer->start( command, parameters );
+
 }
 
 void LabViewModule::startRecording()
@@ -138,11 +153,10 @@ void LabViewModule::startRecording()
 
     QString command = "vlc";
     QStringList parameters;
-    parameters << "v4l2:///dev/"+_selectedCamera<<"--file-logging"<<"--logfile=vlc-log.txt"
-               <<"--sout=#transcode{vcodec=h264,vb=0,scale=0,acodec=mpga,ab=128,channels=2,samplerate=44100}:std{access=file,mux=mp4,dst='"+fileName+"'}";
+    parameters << "v4l2:///dev/"+_selectedCamera<<"--video-filter"<<"rotate{angle="+QString::number(Config::webCamRotation())+"}"<<"--file-logging"<<"--logfile=vlc-log.txt"
+               <<"--sout=#duplicate{dst=display,dst=\"transcode{vcodec=h264,vb=0,scale=0,acodec=mpga,ab=128,channels=2,samplerate=44100}:std{access=file,mux=mp4,dst='"+fileName+"'}\"";
     _mediaPlayer = new QProcess( this );
     _mediaPlayer->start( command, parameters );
-
 }
 void LabViewModule::setAllFacesColor(QColor c)
 {
