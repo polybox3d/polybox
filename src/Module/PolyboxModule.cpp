@@ -22,7 +22,6 @@ PolyboxModule::PolyboxModule(QObject *parent) :
     connect( &_pingPongTimer, SIGNAL(timeout()), this, SLOT(pingPong()));
 
     _polyplexer = Polyplexer::getInstance();
-    connectToPrinter();
 
     _port = SerialPort::getSerial();
     connect ( _port, SIGNAL(dataReady()), this, SLOT(parseData()) );
@@ -33,6 +32,8 @@ PolyboxModule::PolyboxModule(QObject *parent) :
     _printer = new PrinterModule( this, this );
     _scanner = new ScannerModule( this, this );
     _global = new GlobalModule( this, this );
+
+    connectToPrinter();
 
 }
 bool PolyboxModule::connectToPrinter(QString path, QString port)
@@ -51,6 +52,11 @@ bool PolyboxModule::connectToPrinter()
         if ( SerialPort::getSerial()->isConnected()  )
         {
             MainWindow::textWindow( tr("Le logiciel est correctement connecté à la machine. ") );
+            QTimer* timer_connect = new QTimer(this);
+            connect( timer_connect, SIGNAL(timeout()), _labview, SLOT(setConnectedColor()) );
+            timer_connect->setSingleShot(true);
+            timer_connect->start( 2000 );
+
             _numberOfMissingPingPong = 0;
         }
         else

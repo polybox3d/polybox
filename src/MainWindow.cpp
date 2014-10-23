@@ -52,6 +52,29 @@ MainWindow::MainWindow(Qt::WindowFlags window_flags, QWidget *parent) :
     setupWebcamMenu();
     setupSerialMenu();
 }
+
+void MainWindow::closeEvent(QCloseEvent *event)
+{
+    if ( _polybox->isConnected() )
+    {
+        DialogWidget m_close( tr("La connexion est active avec la machine."
+                                 "Quitter le programme va intérompte toute impréssion ou usinage en activité. ")
+                              , this );
+        if ( m_close.exec() )
+        {
+            event->accept();
+        }
+        else
+        {
+            event->ignore();
+        }
+    }
+    else
+    {
+        event->accept();
+    }
+}
+
 void MainWindow::startConsoleWindow()
 {
     if ( SerialPort::getSerial()->isConnected() )

@@ -70,6 +70,12 @@ void LabViewModule::toggleInter()
     _polybox->port()->sendMCode( QString::number(MCODE_LABVIEW_SET_STATUS)+" S"+QString::number(_isOn) );
 }
 
+void LabViewModule::setConnectedColor()
+{
+    setAllFacesColor( QColor(0,150,120,255) );
+    setAllFacesLight( 120, true, true );
+}
+
 void LabViewModule::initFaceClass()
 {
     _top.name="top";

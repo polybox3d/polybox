@@ -92,7 +92,8 @@ SOURCES += main.cpp\
     Widget/FolderButton.cpp \
     Theme.cpp \
     Widget/DialogCredits.cpp \
-    Widget/DialogBroadcast.cpp
+    Widget/DialogBroadcast.cpp \
+    Widget/DialogWidget.cpp
 
 HEADERS  += MainWindow.h \
         Updater.h \
@@ -146,7 +147,8 @@ HEADERS  += MainWindow.h \
     Widget/FolderButton.h \
     Theme.h \
     Widget/DialogCredits.h \
-    Widget/DialogBroadcast.h
+    Widget/DialogBroadcast.h \
+    Widget/DialogWidget.h
 
 FORMS    += MainWindow.ui \
     PrinterSmallUI.ui \
@@ -172,7 +174,8 @@ FORMS    += MainWindow.ui \
     Page/LabViewPage.ui \
     Page/PrinterPage.ui \
     Widget/DialogCredits.ui \
-    Widget/DialogBroadcast.ui
+    Widget/DialogBroadcast.ui \
+    Widget/DialogWidget.ui
 
 RESOURCES += \
     ressources.qrc

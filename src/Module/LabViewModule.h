@@ -79,7 +79,8 @@ signals:
 
 public slots:
 
-    void toggleInter();
+     void toggleInter();
+     void setConnectedColor();
 private:
     /**
      * @brief initAll Initilalize all components.

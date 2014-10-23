@@ -659,7 +659,7 @@
    </property>
    <property name="icon">
     <iconset resource="../ressources.qrc">
-     <normaloff>:/img/img/record.png</normaloff>:/img/img/record.png</iconset>
+     <normaloff>:/img/img/broadcast.png</normaloff>:/img/img/broadcast.png</iconset>
    </property>
    <property name="checkable">
     <bool>false</bool>

@@ -24,6 +24,7 @@
 #include "PolyboxModule.h"
 #include "polyplexer.h"
 #include "DialogCredits.h"
+#include "DialogWidget.h"
 #include "Theme.h"
 
 #if !defined NO_SCAN
@@ -62,7 +63,7 @@ public slots:
     void updateHardware();
     void translateApp();
     void changeTheme();
-
+    void closeEvent(QCloseEvent *event);
     void startConsoleWindow();
 
 signals:
