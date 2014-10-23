@@ -84,6 +84,7 @@ enum MCodeFlags
 #define MCODE_GLOBAL_SET_PAUSE                  691
 
 #define MCODE_PING_PONG                         703
+#define MCODE_END_CONNECTION                    705
 
 }
 

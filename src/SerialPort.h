@@ -8,6 +8,7 @@
 
 #include "qextserialport.h"
 #include "Config.h"
+#include "mcode.h"
 /**
  * @brief The SerialPort class Constructs a classs based of QextSerialPort. Provides an overlay for Serial Communication through USB/COM
  */

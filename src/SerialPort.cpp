@@ -81,7 +81,7 @@ void SerialPort::disconnectPort()
 {
     if ( _port != NULL && _port->isOpen() )
     {
-        this->sendMCode( 703 );
+        this->sendMCode( MCODE_END_CONNECTION );
         _port->flush();
         _port->close();
         emit disconnected();
