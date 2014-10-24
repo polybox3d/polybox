@@ -15,12 +15,6 @@ PolyboxModule::PolyboxModule(QObject *parent) :
     QObject(parent)
 {
 
-    _hardwareTimer.start( Config::hardwareTimer() );
-    connect( &_hardwareTimer, SIGNAL(timeout()), this, SLOT(hardwareTimerTimeout()));
-
-    _pingPongTimer.start( 5000 );
-    connect( &_pingPongTimer, SIGNAL(timeout()), this, SLOT(pingPong()));
-
     _polyplexer = Polyplexer::getInstance();
 
     _port = SerialPort::getSerial();
@@ -34,6 +28,12 @@ PolyboxModule::PolyboxModule(QObject *parent) :
     _global = new GlobalModule( this, this );
 
     connectToPrinter();
+
+    _hardwareTimer.start( Config::hardwareTimer() );
+    connect( &_hardwareTimer, SIGNAL(timeout()), this, SLOT(hardwareTimerTimeout()));
+    _pingPongTimer.start( 5000 );
+    connect( &_pingPongTimer, SIGNAL(timeout()), this, SLOT(pingPong()));
+
 
 }
 bool PolyboxModule::connectToPrinter(QString path, QString port)
@@ -55,7 +55,7 @@ bool PolyboxModule::connectToPrinter()
             QTimer* timer_connect = new QTimer(this);
             connect( timer_connect, SIGNAL(timeout()), _labview, SLOT(setConnectedColor()) );
             timer_connect->setSingleShot(true);
-            timer_connect->start( 2000 );
+            timer_connect->start( 1000 );
 
             _numberOfMissingPingPong = 0;
         }
@@ -181,7 +181,7 @@ PrinterModule* PolyboxModule::printerModule()
 
 bool PolyboxModule::isConnected()
 {
-    return _connected;
+    return _connected && SerialPort::getSerial()->isConnected();
 }
 
 bool PolyboxModule::isCommonReady()

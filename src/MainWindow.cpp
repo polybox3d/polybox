@@ -62,6 +62,7 @@ void MainWindow::closeEvent(QCloseEvent *event)
                               , this );
         if ( m_close.exec() )
         {
+            SerialPort::getSerial()->disconnectPort();
             event->accept();
         }
         else
