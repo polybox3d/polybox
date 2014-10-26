@@ -8,11 +8,12 @@
 
 #include "qextserialport.h"
 #include "Config.h"
+#include "AbstractClient.h"
 #include "mcode.h"
 /**
  * @brief The SerialPort class Constructs a classs based of QextSerialPort. Provides an overlay for Serial Communication through USB/COM
  */
-class SerialPort : public QObject
+class SerialPort : public AbstractClient
 {
     Q_OBJECT
 public:
@@ -31,19 +32,10 @@ public:
      * @brief sendMCode Send code string added by a M letter at the beggining, to the device connected.
      * @param code
      */
-    void sendMCode(QString code);
-    /**
-     * @brief sendMCode Send code value as M Code to the device connected.
-     * @param code
-     */
-    void sendMCode(int code);
-
-    void sendCode(QString code);
 
     QString path();
     QString name();
 
-    QByteArray datas(){ return _datas; }
 
     static QStringList getDevicesNames( QString path, QString pattern="*" )
     {
@@ -77,28 +69,17 @@ public:
 
     void setName( QString name );
     void setPath( QString path );
-    bool isConnected() const;
     void disconnectPort();
 
-    int connectionUptime;
+    virtual QextSerialPort* getConnector();
 
-signals:
-    void dataReady();
-    void disconnected();
-
-public slots:
-    void parseSerialDatas();
-    void connectionUptimeProcess();
 
 private:
     explicit SerialPort(QObject *parent = 0);
     static SerialPort* serialPortInstance;
-    QextSerialPort* _port;
     QString _path;
     QString _name;
-    QByteArray _datas;
-    QByteArray _rcp_datas;
-    QTimer _uptimeTimer;
+
 
 };
 

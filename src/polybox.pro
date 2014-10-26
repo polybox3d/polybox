@@ -93,7 +93,9 @@ SOURCES += main.cpp\
     Theme.cpp \
     Widget/DialogCredits.cpp \
     Widget/DialogBroadcast.cpp \
-    Widget/DialogWidget.cpp
+    Widget/DialogWidget.cpp \
+    TCPServer.cpp \
+    AbstractClient.cpp
 
 HEADERS  += MainWindow.h \
         Updater.h \
@@ -148,7 +150,9 @@ HEADERS  += MainWindow.h \
     Theme.h \
     Widget/DialogCredits.h \
     Widget/DialogBroadcast.h \
-    Widget/DialogWidget.h
+    Widget/DialogWidget.h \
+    TCPServer.h \
+    AbstractClient.h
 
 FORMS    += MainWindow.ui \
     PrinterSmallUI.ui \
