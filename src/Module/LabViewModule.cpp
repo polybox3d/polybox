@@ -72,8 +72,9 @@ void LabViewModule::toggleInter()
 
 void LabViewModule::setConnectedColor()
 {
-    setAllFacesColor( QColor(0,150,120,255) );
-    setAllFacesLight( 120, true, true );
+    SerialPort::getSerial()->sendMCode( MCODE_START_CONNECTION );
+    //setAllFacesColor( QColor(0,150,120,255) );
+    //setAllFacesLight( 120, true, true );
 }
 
 void LabViewModule::initFaceClass()

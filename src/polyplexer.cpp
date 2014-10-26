@@ -134,10 +134,10 @@ bool Polyplexer::restart()
 bool Polyplexer::stop()
 {
     SerialPort::getSerial()->disconnectPort();
-    if ( _polyplexer != NULL )
+    /*if ( _polyplexer != NULL )
     {
         _polyplexer->kill();
-    }
+    }*/
 }
 
 bool Polyplexer::kill()

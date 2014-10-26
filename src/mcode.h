@@ -85,6 +85,7 @@ enum MCodeFlags
 
 #define MCODE_PING_PONG                         703
 #define MCODE_END_CONNECTION                    705
+#define MCODE_START_CONNECTION                  706
 
 }
 
