@@ -67,7 +67,7 @@ QStringList LabViewModule::getAllCamera(QString path_directory)
 void LabViewModule::toggleInter()
 {
     _isOn = !_isOn;
-    _polybox->port()->sendMCode( QString::number(MCODE_LABVIEW_SET_STATUS)+" S"+QString::number(_isOn) );
+    _polybox->connector()->sendMCode( QString::number(MCODE_LABVIEW_SET_STATUS)+" S"+QString::number(_isOn) );
 }
 
 void LabViewModule::setConnectedColor()

@@ -27,7 +27,7 @@ MainWindow::MainWindow(Qt::WindowFlags window_flags, QWidget *parent) :
 {
     mainwindow = this;
 
-    _polybox = new PolyboxModule( this );
+    _polybox = PolyboxModule::getInstance( this );
     connect(_polybox, SIGNAL(updateHardware()),this,SLOT(updateHardware()));
 
     ui->setupUi(this);

@@ -8,6 +8,7 @@
 #include "GlobalModule.h"
 #include <QDebug>
 
+PolyboxModule* PolyboxModule::polyboxModuleInstance = NULL;
 QJoystick* PolyboxModule::_joypad=NULL;
 
 
@@ -17,8 +18,8 @@ PolyboxModule::PolyboxModule(QObject *parent) :
 
     _polyplexer = Polyplexer::getInstance();
 
-    _port = SerialPort::getSerial();
-    connect ( _port, SIGNAL(dataReady()), this, SLOT(parseData()) );
+    _connector = SerialPort::getSerial();
+    connect ( _connector, SIGNAL(dataReady()), this, SLOT(parseData()) );
 
 
     _cnc = new CNCModule( this, this );
@@ -153,9 +154,9 @@ void PolyboxModule::setJoypad( QJoystick* joypad )
     _joypad = joypad;
 }
 
-SerialPort* PolyboxModule::port()
+AbstractClient* PolyboxModule::connector()
 {
-    return SerialPort::getSerial();
+    return _connector;
 }
 
 GlobalModule* PolyboxModule::globalModule()

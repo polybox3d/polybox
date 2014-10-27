@@ -28,7 +28,14 @@ class PolyboxModule : public QObject
 {
     Q_OBJECT
 public:
-    explicit PolyboxModule(QObject *parent = 0);
+    static PolyboxModule* getInstance(QObject *parent=0)
+    {
+        if ( polyboxModuleInstance == NULL )
+        {
+            polyboxModuleInstance = new PolyboxModule( parent );
+        }
+        return polyboxModuleInstance;
+    }
     bool isCommonReady();
     bool isConnected();
     bool isCncReady();
@@ -48,7 +55,7 @@ public:
     bool connectToPrinter(QString path, QString port);
 
     /** @deprecated **/
-    SerialPort* port();
+    AbstractClient* connector();
 
 signals:
     void updateHardware();
@@ -61,6 +68,8 @@ public slots:
 
 private:
     bool _connected;
+    explicit PolyboxModule(QObject *parent = 0);
+    static PolyboxModule* polyboxModuleInstance;
 
     u_int8_t _numberOfMissingPingPong;
     GlobalModule* _global;
@@ -68,7 +77,7 @@ private:
     LabViewModule* _labview;
     ScannerModule* _scanner;
     PrinterModule* _printer;
-    SerialPort * _port;
+    AbstractClient * _connector;
     Polyplexer * _polyplexer;
     static QJoystick* _joypad;
     QTimer _hardwareTimer;

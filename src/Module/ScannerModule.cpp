@@ -71,13 +71,13 @@ void ScannerModule::updateComponents()
 }
 void ScannerModule::updateGlobalStatus()
 {
-    _polybox->port()->sendMCode( MCODE_SCANNER_GET_LASER_PLUGGED );
+    _polybox->connector()->sendMCode( MCODE_SCANNER_GET_LASER_PLUGGED );
     //_polybox->port()->sendMCode( 610 );
 }
 
 void ScannerModule::updateTurntablePlugged()
 {
-    _polybox->port()->sendMCode( MCODE_SCANNER_TURNTABLE_PLUGGED );
+    _polybox->connector()->sendMCode( MCODE_SCANNER_TURNTABLE_PLUGGED );
 }
 
 bool ScannerModule::isReady() const

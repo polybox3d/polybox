@@ -202,21 +202,21 @@ void PrinterModule::parseMCode(QByteArray stream)
 
 void PrinterModule::updateComponents()
 {
-    _polybox->port()->sendMCode( MCODE_PRINTER_TOOL_PLUGGED );
-    _polybox->port()->sendMCode( MCODE_PRINTER_WIRE_DETECTED );
-    _polybox->port()->sendMCode( MCODE_PRINTER_BED_PLUGGED );
-    _polybox->port()->sendMCode( MCODE_PRINTER_PEL_PLUGGED );
-    _polybox->port()->sendMCode( MCODE_PRINTER_GET_COOLER_BOX_STATUS );
-    _polybox->port()->sendMCode( MCODE_PRINTER_GET_COLDEND_STATUS );
-    _polybox->port()->sendMCode( MCODE_PRINTER_GET_BED_TEMP_C );
-    _polybox->port()->sendMCode( MCODE_PRINTER_GET_CHAMBER_TEMP_ALL );
-    _polybox->port()->sendMCode( MCODE_PRINTER_GET_BUSE_CLOGGED );
+    _polybox->connector()->sendMCode( MCODE_PRINTER_TOOL_PLUGGED );
+    _polybox->connector()->sendMCode( MCODE_PRINTER_WIRE_DETECTED );
+    _polybox->connector()->sendMCode( MCODE_PRINTER_BED_PLUGGED );
+    _polybox->connector()->sendMCode( MCODE_PRINTER_PEL_PLUGGED );
+    _polybox->connector()->sendMCode( MCODE_PRINTER_GET_COOLER_BOX_STATUS );
+    _polybox->connector()->sendMCode( MCODE_PRINTER_GET_COLDEND_STATUS );
+    _polybox->connector()->sendMCode( MCODE_PRINTER_GET_BED_TEMP_C );
+    _polybox->connector()->sendMCode( MCODE_PRINTER_GET_CHAMBER_TEMP_ALL );
+    _polybox->connector()->sendMCode( MCODE_PRINTER_GET_BUSE_CLOGGED );
 
 }
 void PrinterModule::toggleInter()
 {
     _isOn = !_isOn;
-    _polybox->port()->sendMCode( QString::number(MCODE_PRINTER_SET_STATUS)+" S"+QString::number(_isOn) );
+    _polybox->connector()->sendMCode( QString::number(MCODE_PRINTER_SET_STATUS)+" S"+QString::number(_isOn) );
 }
 
 void PrinterModule::activateAllBed(bool activated)

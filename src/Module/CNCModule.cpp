@@ -102,17 +102,17 @@ void CNCModule::updateGlobalStatus()
 
 void CNCModule::updateToolPlugged()
 {
-    _polybox->port()->sendMCode( MCODE_CNC_TOOL_PLUGGED );
+    _polybox->connector()->sendMCode( MCODE_CNC_TOOL_PLUGGED );
 }
 
 void CNCModule::updateLubricantLevel()
 {
-    _polybox->port()->sendMCode( MCODE_CNC_LUBRICANT_LEVEL );
+    _polybox->connector()->sendMCode( MCODE_CNC_LUBRICANT_LEVEL );
 }
 
 void CNCModule::updateVacummPlugged()
 {
-    _polybox->port()->sendMCode( MCODE_CNC_VACUUM_DETECTED );
+    _polybox->connector()->sendMCode( MCODE_CNC_VACUUM_DETECTED );
 }
 
 void CNCModule::linuxCNCFinished(int exitCode, QProcess::ExitStatus exitStatus )
@@ -170,10 +170,10 @@ void CNCModule::updateComponents()
     updateLubricantLevel();
     updateToolPlugged();
     updateVacummPlugged();
-    _polybox->port()->sendMCode( MCODE_CNC_LUBRICANT_PLUGGED );
-    _polybox->port()->sendMCode( MCODE_CNC_RECYCLE_STATE );
-    _polybox->port()->sendMCode( MCODE_CNC_VACUUM_STATE );
-    _polybox->port()->sendMCode( MCODE_CNC_LUBRICANT_STATE );
+    _polybox->connector()->sendMCode( MCODE_CNC_LUBRICANT_PLUGGED );
+    _polybox->connector()->sendMCode( MCODE_CNC_RECYCLE_STATE );
+    _polybox->connector()->sendMCode( MCODE_CNC_VACUUM_STATE );
+    _polybox->connector()->sendMCode( MCODE_CNC_LUBRICANT_STATE );
 }
 
 bool CNCModule::cncPlugged()
