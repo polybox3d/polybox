@@ -2,6 +2,9 @@
 #define DIALOGCLIENT_H
 
 #include <QDialog>
+#include <QUdpSocket>
+
+#include "Config.h"
 
 namespace Ui {
 class DialogClient;
@@ -17,9 +20,11 @@ public:
 
 private slots:
     void on_close_clicked();
+    void processPendingDatagrams();
 
 private:
     Ui::DialogClient *ui;
+    QUdpSocket* _udpSocket;
 };
 
 #endif // DIALOGCLIENT_H

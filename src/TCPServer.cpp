@@ -17,8 +17,19 @@ void TCPServer::startListening(const QHostAddress &address, quint16 port)
         return;
     }
 
-    MainWindow::textWindow( tr("Server started."));
+    _udpSocket = new QUdpSocket(this);
 
+    _timerBroadcast = new QTimer(this);
+    _timerBroadcast->start( 2000 );
+    connect(_timerBroadcast, SIGNAL(timeout()), this, SLOT(broadcastDatagram()));
+    MainWindow::textWindow( tr("Server started."));
+}
+
+void TCPServer::broadcastDatagram()
+{
+    QByteArray datagram = "PolyBoxServ";
+    _udpSocket->writeDatagram(datagram.data(), datagram.size(),
+                             QHostAddress::Broadcast, Config::broadcastPort());
 }
 
 bool TCPServer::isListening()
@@ -28,6 +39,7 @@ bool TCPServer::isListening()
 
 void TCPServer::stopListening()
 {
+    _timerBroadcast->stop();
     _server.close();
     MainWindow::textWindow( tr("Server stopped."));
 }
