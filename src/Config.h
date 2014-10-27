@@ -14,6 +14,7 @@
 #include <QDir>
 #include <QDate>
 #include <QCoreApplication>
+#include <QHostAddress>
 
 #include <iostream>
 
@@ -62,6 +63,9 @@ public:
 
     static QString serialVirtualPolySerialPort();
     static QString pathToConfigFile();
+
+    static QHostAddress serverListeningAddress();
+    static quint16 serverListeningPort();
 
     /**
      * @brief motherboardBaudrate Default baudrate between software and Polybox.

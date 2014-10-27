@@ -53,8 +53,8 @@ bool SerialPort::connectToSerialPort()
             qDebug() << "warning: device is not turned on"<<lineStatus();
             return false;
         }*/
-        connect ( port, SIGNAL(readyRead()), this, SLOT(parseSerialDatas()) );
-        this->connectionUptime = 0 ;
+
+        this->startConnection();
         return true;
     }
     else

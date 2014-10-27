@@ -517,3 +517,42 @@ void MainWindow::on_actionCredits_triggered()
     {
     }
 }
+
+void MainWindow::on_actionMode_Serveur_toggled(bool arg1)
+{
+    if ( arg1 )
+    {
+        if ( _polybox->isConnected() )
+        {
+            _tcp_server.startListening( Config::serverListeningAddress(), Config::serverListeningPort() );
+            ui->actionMode_Serveur->setText(tr("Stop Server Mode"));
+        }
+        else
+        {
+            ui->actionMode_Serveur->setChecked( false );
+        }
+    }
+    else if ( _tcp_server.isListening() )
+    {
+        ui->actionMode_Serveur->setText(tr("Start Server Mode"));
+        _tcp_server.stopListening();
+    }
+}
+
+void MainWindow::on_actionStart_Client_Mode_toggled(bool arg1)
+{
+    if ( arg1 )
+    {
+        DialogClient dc( this );
+
+        if ( dc.exec() )
+        {
+
+        }
+        else
+        {
+             ui->actionStart_Client_Mode->setChecked( false );
+        }
+    }
+
+}

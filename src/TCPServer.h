@@ -6,14 +6,16 @@
 #include <QTcpSocket>
 #include <QList>
 
-#include "AbstractClient.h"
+#include "TCPClient.h"
 
 class TCPServer : public QObject
 {
     Q_OBJECT
 public:
     explicit TCPServer(QObject *parent = 0);
-    void startListening();
+    void startListening(const QHostAddress &address, quint16 port);
+    bool isListening();
+    void stopListening();
 
 signals:
 
@@ -23,7 +25,7 @@ public slots:
 
 private:
     QTcpServer _server;
-    QList<QTcpSocket*> _clients;
+    QList<TCPClient*> _clients;
 
 };
 

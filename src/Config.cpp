@@ -135,6 +135,18 @@ bool Config::disablePolyplexer()
     return Config::get(CONNECTION_GROUP,"disablePolyplexer", false).toBool();
 }
 
+QHostAddress Config::serverListeningAddress()
+{
+    QString s = Config::get(CONNECTION_GROUP,"serverListeningAddress", "127.0.0.1").toString();
+    QHostAddress h(s);
+    return h;
+}
+
+quint16 Config::serverListeningPort()
+{
+    return Config::get(CONNECTION_GROUP,"serverListeningPort", "8862").toInt();
+}
+
 /**************************************************************************
  *              SCANNER_GROUP
  * ***********************************************************************/
@@ -194,10 +206,10 @@ Config::Config()
 void Config::init()
 {
     QSettings().setValue("LOG/nbrExec", QSettings().value("LOG/nbrExec").toInt() + 1 );
+    QSettings().setValue("ABOUT/version", QCoreApplication::applicationVersion() );
     // no settings found
-    if ( QSettings().value("ABOUT/version").toString().isEmpty() )
+    if ( QSettings().value(QString(SETTINGS_GROUP)+"/runtimePath").toString().isEmpty() )
     {
-        QSettings().setValue("ABOUT/version", QCoreApplication::applicationVersion() );
         // We must find the runtime path (means we want the top level of the git repository
         QDir dir;
         for ( u_int8_t i = 0 ; i < 6 ; ++i )

@@ -50,6 +50,11 @@ void AbstractClient::parseSerialDatas()
     }
 }
 
+void AbstractClient::startConnection()
+{
+    connect ( _connector, SIGNAL(readyRead()), this, SLOT(parseSerialDatas()) );
+    this->connectionUptime = 0 ;
+}
 
 void AbstractClient::sendCode(QString code)
 {

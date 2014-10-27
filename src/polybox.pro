@@ -95,7 +95,9 @@ SOURCES += main.cpp\
     Widget/DialogBroadcast.cpp \
     Widget/DialogWidget.cpp \
     TCPServer.cpp \
-    AbstractClient.cpp
+    AbstractClient.cpp \
+    TCPClient.cpp \
+    Widget/DialogClient.cpp
 
 HEADERS  += MainWindow.h \
         Updater.h \
@@ -152,7 +154,9 @@ HEADERS  += MainWindow.h \
     Widget/DialogBroadcast.h \
     Widget/DialogWidget.h \
     TCPServer.h \
-    AbstractClient.h
+    AbstractClient.h \
+    TCPClient.h \
+    Widget/DialogClient.h
 
 FORMS    += MainWindow.ui \
     PrinterSmallUI.ui \
@@ -179,7 +183,8 @@ FORMS    += MainWindow.ui \
     Page/PrinterPage.ui \
     Widget/DialogCredits.ui \
     Widget/DialogBroadcast.ui \
-    Widget/DialogWidget.ui
+    Widget/DialogWidget.ui \
+    Widget/DialogClient.ui
 
 RESOURCES += \
     ressources.qrc

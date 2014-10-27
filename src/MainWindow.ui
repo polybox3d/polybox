@@ -60,10 +60,13 @@
      <addaction name="actionVisualisation"/>
     </widget>
     <addaction name="actionActiver_Manette"/>
-    <addaction name="menuConnexion"/>
     <addaction name="menuVisualiser"/>
     <addaction name="actionConsole"/>
     <addaction name="actionParametres"/>
+    <addaction name="separator"/>
+    <addaction name="menuConnexion"/>
+    <addaction name="actionMode_Serveur"/>
+    <addaction name="actionStart_Client_Mode"/>
    </widget>
    <widget class="QMenu" name="menuAide">
     <property name="title">
@@ -168,6 +171,22 @@
   <action name="actionCredits">
    <property name="text">
     <string>Credits</string>
+   </property>
+  </action>
+  <action name="actionMode_Serveur">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Start Server Mode</string>
+   </property>
+  </action>
+  <action name="actionStart_Client_Mode">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Start Client Mode</string>
    </property>
   </action>
  </widget>

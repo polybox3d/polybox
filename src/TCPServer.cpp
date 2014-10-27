@@ -1,32 +1,45 @@
 #include "TCPServer.h"
 
+#include "MainWindow.h"
+
 TCPServer::TCPServer(QObject *parent) :
     QObject(parent)
 {
+    connect( &_server, SIGNAL(newConnection()), this, SLOT(addNewConnection()));
 }
 
-void TCPServer::startListening()
+void TCPServer::startListening(const QHostAddress &address, quint16 port)
 {
-    if (!_server.listen()) {
-            /*QMessageBox::critical(this, tr("Fortune Server"),
-                                  tr("Unable to start the server: %1.")
-                                  .arg(_server.errorString()));**/
-            _server.close();
-            return;
-        }
+    if (!_server.listen( address, port))
+    {
+        MainWindow::errorWindow( tr("Unable to start the server: %1.").arg(_server.errorString()));
+        _server.close();
+        return;
+    }
 
-        connect( &_server, SIGNAL(newConnection()), this, SLOT(addNewConnection()));
+    MainWindow::textWindow( tr("Server started."));
 
+}
+
+bool TCPServer::isListening()
+{
+    return _server.isListening();
+}
+
+void TCPServer::stopListening()
+{
+    _server.close();
+    MainWindow::textWindow( tr("Server stopped."));
 }
 
 void TCPServer::addNewConnection()
 {
-    QTcpSocket* client = _server.nextPendingConnection();
-    _clients.append( client );
+    TCPClient* tcp_client =  new TCPClient( _server.nextPendingConnection() );
+    _clients.append( tcp_client );
+    tcp_client->startConnection();
 
-    connect( client, SIGNAL(disconnected()), this, SLOT(deleteLater()));
-    connect( client, SIGNAL(readyRead()), this, SLOT(processIncomingDatas()));
-
+    MainWindow::textWindow(tr("New Client connected."));
+    connect( tcp_client, SIGNAL(disconnected()), this, SLOT(deleteLater()));
 }
 
 void TCPServer::processIncomingDatas()

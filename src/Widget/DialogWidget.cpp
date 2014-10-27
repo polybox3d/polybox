@@ -7,6 +7,7 @@ DialogWidget::DialogWidget(QString displayedText, QWidget *parent) :
 {
     ui->setupUi(this);
     ui->text->setText( displayedText );
+    this->setWindowTitle( tr("What shoudl I do ?") );
 }
 
 DialogWidget::~DialogWidget()

@@ -28,6 +28,7 @@ public:
     void sendMCode(QString code);
     void sendMCode(int code);
     void sendCode(QString code);
+    void startConnection();
 
 protected:
     QByteArray _datas;
@@ -44,7 +45,6 @@ public slots:
 
 protected:
     QIODevice* _connector;
-
 };
 
 #endif // ABSTRACTCLIENT_H

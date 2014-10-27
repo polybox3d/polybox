@@ -26,6 +26,7 @@
 #include "DialogCredits.h"
 #include "DialogWidget.h"
 #include "Theme.h"
+#include "TCPServer.h"
 
 #if !defined NO_SCAN
  #include "fsmainwindow.h"
@@ -33,6 +34,7 @@
 
 #include "pageState.h"
 #include "ATUButton.h"
+#include "DialogClient.h"
 
 namespace Ui {
 class MainWindow;
@@ -94,6 +96,10 @@ private slots:
 
     void on_actionCredits_triggered();
 
+    void on_actionMode_Serveur_toggled(bool arg1);
+
+    void on_actionStart_Client_Mode_toggled(bool arg1);
+
 private:
     void updateStatePage();
     void setupWebcamMenu();
@@ -110,6 +116,7 @@ private:
     ATUButton* _atu;
     QDockWidget* _dockLV;
     QDockWidget* _dockCNC;
+    TCPServer _tcp_server;
 };
 
 #endif // MAINWINDOW_H
