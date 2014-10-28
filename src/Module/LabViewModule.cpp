@@ -38,15 +38,15 @@ void LabViewModule::sendController(LabViewController c)
     int mcode = MCODE_LABVIEW_SET_CONTROLLER;
     if ( c == Software )
     {
-        SerialPort::getSerial()->sendMCode( QString::number(mcode) + " S1" );
+        PolyboxModule::getInstance()->connector()->sendMCode( QString::number(mcode) + " S1" );
     }
     else if ( c == Manual)
     {
-        SerialPort::getSerial()->sendMCode( QString::number(mcode) + " H1" );
+        PolyboxModule::getInstance()->connector()->sendMCode( QString::number(mcode) + " H1" );
     }
     else
     {
-        SerialPort::getSerial()->sendMCode( QString::number(mcode) + " H1" );
+        PolyboxModule::getInstance()->connector()->sendMCode( QString::number(mcode) + " H1" );
     }
 }
 
@@ -72,7 +72,7 @@ void LabViewModule::toggleInter()
 
 void LabViewModule::setConnectedColor()
 {
-    SerialPort::getSerial()->sendMCode( MCODE_START_CONNECTION );
+    PolyboxModule::getInstance()->connector()->sendMCode( MCODE_START_CONNECTION );
     //setAllFacesColor( QColor(0,150,120,255) );
     //setAllFacesLight( 120, true, true );
 }

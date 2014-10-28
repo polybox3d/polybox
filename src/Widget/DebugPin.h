@@ -4,6 +4,8 @@
 #include <QWidget>
 #include <QTimer>
 
+#include "PolyboxModule.h"
+
 namespace Ui {
 class DebugPin;
 }

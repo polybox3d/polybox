@@ -3,6 +3,8 @@
 
 #include <QWidget>
 
+#include "PolyboxModule.h"
+
 namespace Ui {
 class Console;
 }

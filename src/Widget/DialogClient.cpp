@@ -41,3 +41,8 @@ void DialogClient::on_close_clicked()
 {
     this->reject();
 }
+
+void DialogClient::on_connect_clicked()
+{
+    this->accept();
+}

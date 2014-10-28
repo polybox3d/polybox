@@ -2,7 +2,7 @@
 #define ATUBUTTON_H
 
 #include <QPushButton>
-#include "SerialPort.h"
+#include "PolyboxModule.h"
 #include "mcode.h"
 
 class ATUButton : public QPushButton

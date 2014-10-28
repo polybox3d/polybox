@@ -26,11 +26,13 @@ MainWindow::MainWindow(Qt::WindowFlags window_flags, QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     mainwindow = this;
+    ui->setupUi(this);
 
     _polybox = PolyboxModule::getInstance( this );
     connect(_polybox, SIGNAL(updateHardware()),this,SLOT(updateHardware()));
 
-    ui->setupUi(this);
+    _polybox->connectToPrinter();
+
 
     _joypadActivated = false;
     _webcam = NULL;
@@ -62,7 +64,9 @@ void MainWindow::closeEvent(QCloseEvent *event)
                               , this );
         if ( m_close.exec() )
         {
-            SerialPort::getSerial()->disconnectPort();
+            SerialPort* con = dynamic_cast<SerialPort*>(PolyboxModule::getInstance()->connector());
+            if ( con )
+                con->disconnectPort();
             event->accept();
         }
         else
@@ -78,7 +82,7 @@ void MainWindow::closeEvent(QCloseEvent *event)
 
 void MainWindow::startConsoleWindow()
 {
-    if ( SerialPort::getSerial()->isConnected() )
+    if ( PolyboxModule::getInstance()->connector()->isConnected() )
     {
         Console* c = new Console();
         c->setWindowTitle("Console");
@@ -163,6 +167,7 @@ MainWindow::~MainWindow()
 }
 void MainWindow::setupSerialMenu()
 {
+
     ui->menuConnexion->clear();
     QAction* act;
     foreach ( QString serial, SerialPort::getDevicesNames(Config::pathToSerialDevice(), "tty*"))
@@ -175,8 +180,11 @@ void MainWindow::setupSerialMenu()
                 {
                     act = ui->menuConnexion->addAction( serial );
                     act->setCheckable( true );
-                    connect( act, SIGNAL(triggered()),this,SLOT(startConnexion()) );
-                    if ( ! serial.compare(Polyplexer::getInstance()->portMachine() ) && SerialPort::getSerial()->isConnected() ) // We are already connected to this serial !
+                    if ( _polybox->connectorType() == PolyboxModule::Serial )
+                    {
+                        connect( act, SIGNAL(triggered()),this,SLOT(startConnexion()) );
+                    }
+                    if ( ! serial.compare(Polyplexer::getInstance()->portMachine() ) && PolyboxModule::getInstance()->connector()->isConnected() ) // We are already connected to this serial !
                     {
                         act->setChecked( true );
                     }
@@ -193,7 +201,7 @@ void MainWindow::startConnexion()
     {
         Polyplexer* poly = Polyplexer::getInstance();
 
-        if ( ! poly->portMachine().compare( act->text().split('/').last() ) && SerialPort::getSerial()->isConnected() ) //already connected
+        if ( ! poly->portMachine().compare( act->text().split('/').last() ) && PolyboxModule::getInstance()->connector()->isConnected() ) //already connected
         {
             poly->stop();
             act->setChecked(false);
@@ -201,7 +209,7 @@ void MainWindow::startConnexion()
         else
         {
             bool connected = _polybox->connectToPrinter( Config::pathToSerialDevice(), act->text().split('/').last() );
-            act->setChecked( connected ) ;
+            //act->setChecked( connected ) ;
         }
     }
 }
@@ -228,6 +236,32 @@ void MainWindow::startCamera()
 void MainWindow::updateHardware()
 {
     setupSerialMenu();
+    if ( _polybox->connectorType() == PolyboxModule::Serial )
+    {
+        ui->actionMode_Serveur->setVisible( true );
+        ui->actionStart_Client_Mode->setVisible( true );
+        if ( _polybox->isConnected() )
+        {
+            ui->statusBar->showMessage( tr("Status : Connected") );
+        }
+        else
+        {
+            ui->statusBar->showMessage( tr("Status : Unconnected") );
+        }
+    }
+    else if ( _polybox->connectorType() == PolyboxModule::ServerTCP && _polybox->isConnected())
+    {
+        ui->actionMode_Serveur->setVisible( true );
+        ui->actionStart_Client_Mode->setVisible( false );
+        ui->statusBar->showMessage( tr("Status : Mode Server") );
+    }
+    else if ( _polybox->connectorType() == PolyboxModule::CLientTCP )
+    {
+        ui->actionMode_Serveur->setVisible( false );
+        ui->actionStart_Client_Mode->setVisible( true );
+        ui->statusBar->showMessage( tr("Status : Mode Client") );
+    }
+
     setupWebcamMenu();
 }
 
@@ -526,6 +560,8 @@ void MainWindow::on_actionMode_Serveur_toggled(bool arg1)
         {
             _tcp_server.startListening( Config::serverListeningAddress(), Config::serverListeningPort() );
             ui->actionMode_Serveur->setText(tr("Stop Server Mode"));
+            _polybox->setConnectorType( PolyboxModule::ServerTCP );
+            this->updateHardware();
         }
         else
         {
@@ -536,6 +572,8 @@ void MainWindow::on_actionMode_Serveur_toggled(bool arg1)
     {
         ui->actionMode_Serveur->setText(tr("Start Server Mode"));
         _tcp_server.stopListening();
+        _polybox->setConnectorType( PolyboxModule::Serial );
+        this->updateHardware();
     }
 }
 
@@ -547,11 +585,16 @@ void MainWindow::on_actionStart_Client_Mode_toggled(bool arg1)
 
         if ( dc.exec() )
         {
-
+            QTcpSocket* client = new QTcpSocket();
+            client->connectToHost( Config::broadcastIP(), Config::broadcastPort());
+            PolyboxModule::getInstance()->setConnector( new TCPClient(client), PolyboxModule::CLientTCP);
+            this->updateHardware();
         }
         else
         {
              ui->actionStart_Client_Mode->setChecked( false );
+             _polybox->setConnectorType( PolyboxModule::Serial );
+             this->updateHardware();
         }
     }
 

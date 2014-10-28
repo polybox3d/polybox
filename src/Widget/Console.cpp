@@ -7,8 +7,8 @@ Console::Console(QWidget *parent) :
     ui(new Ui::Console)
 {
     ui->setupUi(this);
-    connect( SerialPort::getSerial(), SIGNAL(dataReady()), this, SLOT(parseData()) );
-    connect( SerialPort::getSerial(), SIGNAL(disconnected()), this, SLOT(deleteLater()) );
+    connect( PolyboxModule::getInstance()->connector(), SIGNAL(dataReady()), this, SLOT(parseData()) );
+    connect( PolyboxModule::getInstance()->connector(), SIGNAL(disconnected()), this, SLOT(deleteLater()) );
 }
 
 Console::~Console()
@@ -18,18 +18,18 @@ Console::~Console()
 
 void Console::parseData()
 {
-    ui->displaySerial->append(SerialPort::getSerial()->datas());
+    ui->displaySerial->append(PolyboxModule::getInstance()->connector()->datas());
     //QString str(datas);
 }
 
 void Console::on_sendCodeButton_clicked()
 {
-    SerialPort::getSerial()->sendCode( ui->inputCode->text() );
+    PolyboxModule::getInstance()->connector()->sendCode( ui->inputCode->text() );
     ui->inputCode->setText("");
 }
 
 void Console::on_inputCode_returnPressed()
 {
-    SerialPort::getSerial()->sendCode( ui->inputCode->text() );
+    PolyboxModule::getInstance()->connector()->sendCode( ui->inputCode->text() );
     ui->inputCode->setText("");
 }

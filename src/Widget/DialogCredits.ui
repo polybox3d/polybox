@@ -56,7 +56,7 @@
     <rect>
      <x>10</x>
      <y>20</y>
-     <width>101</width>
+     <width>151</width>
      <height>21</height>
     </rect>
    </property>
@@ -78,7 +78,7 @@
     <rect>
      <x>10</x>
      <y>160</y>
-     <width>101</width>
+     <width>151</width>
      <height>21</height>
     </rect>
    </property>
@@ -144,7 +144,7 @@
     <rect>
      <x>10</x>
      <y>210</y>
-     <width>121</width>
+     <width>221</width>
      <height>21</height>
     </rect>
    </property>
@@ -192,7 +192,7 @@ You should have received a copy of the GNU General Public License along with thi
     <bool>true</bool>
    </property>
   </widget>
-  <widget class="QWidget" name="">
+  <widget class="QWidget" name="layoutWidget">
    <property name="geometry">
     <rect>
      <x>20</x>
@@ -309,13 +309,13 @@ You should have received a copy of the GNU General Public License along with thi
     </item>
    </layout>
   </widget>
-  <widget class="QWidget" name="">
+  <widget class="QWidget" name="layoutWidget">
    <property name="geometry">
     <rect>
      <x>300</x>
      <y>50</y>
-     <width>207</width>
-     <height>40</height>
+     <width>241</width>
+     <height>42</height>
     </rect>
    </property>
    <layout class="QGridLayout" name="gridLayout_2">

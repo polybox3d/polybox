@@ -13,7 +13,7 @@ DebugPin::DebugPin(QWidget *parent) :
     _updtaeTimer.start(500);
     connect(&_updtaeTimer,SIGNAL(timeout()),this,SLOT(updateComponents()));
 
-    connect( SerialPort::getSerial(), SIGNAL(dataReady()), this, SLOT(parseData()) );
+    connect( PolyboxModule::getInstance()->connector(), SIGNAL(dataReady()), this, SLOT(parseData()) );
 }
 
 DebugPin::~DebugPin()
@@ -39,7 +39,7 @@ void DebugPin::setupComponents()
 
 void DebugPin::parseData()
 {
-    QByteArray data = SerialPort::getSerial()->datas();
+    QByteArray data = PolyboxModule::getInstance()->connector()->datas();
 
 
     QString str(data);
@@ -90,7 +90,7 @@ void DebugPin::updateComponents()
     }
     else
     {
-        SerialPort::getSerial()->sendCode( QString("M700")+" P"+QString::number((ui->pinNumber->text().toInt()+(70*ui->boardCombo->currentIndex()))) );
+        PolyboxModule::getInstance()->connector()->sendCode( QString("M700")+" P"+QString::number((ui->pinNumber->text().toInt()+(70*ui->boardCombo->currentIndex()))) );
     }
 
 }
@@ -111,17 +111,17 @@ void DebugPin::on_sendPinValue_clicked()
     }
     else
     {
-        SerialPort::getSerial()->sendCode( QString("M701")+" P"+QString::number((ui->pinNumber->text().toInt()+(70*ui->boardCombo->currentIndex())))+" S"+ui->pinValue->text() );
+        PolyboxModule::getInstance()->connector()->sendCode( QString("M701")+" P"+QString::number((ui->pinNumber->text().toInt()+(70*ui->boardCombo->currentIndex())))+" S"+ui->pinValue->text() );
         ui->pinValue->setText("");
     }
 }
 
 void DebugPin::on_send0_clicked()
 {
-    SerialPort::getSerial()->sendCode( QString("M701")+" P"+QString::number((ui->pinNumber->text().toInt()+(70*ui->boardCombo->currentIndex())))+" S0" );
+    PolyboxModule::getInstance()->connector()->sendCode( QString("M701")+" P"+QString::number((ui->pinNumber->text().toInt()+(70*ui->boardCombo->currentIndex())))+" S0" );
 }
 
 void DebugPin::on_send255_clicked()
 {
-    SerialPort::getSerial()->sendCode( QString("M701")+" P"+QString::number((ui->pinNumber->text().toInt()+(70*ui->boardCombo->currentIndex())))+" S255" );
+    PolyboxModule::getInstance()->connector()->sendCode( QString("M701")+" P"+QString::number((ui->pinNumber->text().toInt()+(70*ui->boardCombo->currentIndex())))+" S255" );
 }

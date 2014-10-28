@@ -177,15 +177,16 @@ bool GlobalModule::isReady() const
 
 void GlobalModule::updateComponents()
 {
-    _arduinoMaitre = SerialPort::getSerial()->isConnected();
-    SerialPort::getSerial()->sendMCode(MCODE_GLOBAL_GET_BOX_OPEN);
-    SerialPort::getSerial()->sendMCode(MCODE_GLOBAL_GET_STATUS);
-    SerialPort::getSerial()->sendMCode(MCODE_GLOBAL_GET_ARDUINO_DETECTED);
-    SerialPort::getSerial()->sendMCode(MCODE_GLOBAL_GET_POWER_STATUS);
-    SerialPort::getSerial()->sendMCode(MCODE_GLOBAL_GET_IC_TEMP);
-    SerialPort::getSerial()->sendMCode(MCODE_GLOBAL_GET_IC_OPEN);
-    SerialPort::getSerial()->sendMCode(MCODE_GLOBAL_GET_PREASI);
-    SerialPort::getSerial()->sendMCode( 600 );
+    AbstractClient* connector = PolyboxModule::getInstance()->connector();
+    _arduinoMaitre = connector->isConnected();
+    connector->sendMCode(MCODE_GLOBAL_GET_BOX_OPEN);
+    connector->sendMCode(MCODE_GLOBAL_GET_STATUS);
+    connector->sendMCode(MCODE_GLOBAL_GET_ARDUINO_DETECTED);
+    connector->sendMCode(MCODE_GLOBAL_GET_POWER_STATUS);
+    connector->sendMCode(MCODE_GLOBAL_GET_IC_TEMP);
+    connector->sendMCode(MCODE_GLOBAL_GET_IC_OPEN);
+    connector->sendMCode(MCODE_GLOBAL_GET_PREASI);
+    connector->sendMCode( 600 );
 
     emit updateUI();
 }

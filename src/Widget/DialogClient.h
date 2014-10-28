@@ -5,6 +5,8 @@
 #include <QUdpSocket>
 
 #include "Config.h"
+#include "PolyboxModule.h"
+#include "TCPClient.h"
 
 namespace Ui {
 class DialogClient;
@@ -21,6 +23,8 @@ public:
 private slots:
     void on_close_clicked();
     void processPendingDatagrams();
+
+    void on_connect_clicked();
 
 private:
     Ui::DialogClient *ui;

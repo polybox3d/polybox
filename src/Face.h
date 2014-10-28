@@ -9,6 +9,7 @@
 
 #include "SerialPort.h"
 #include "mcode.h"
+#include "PolyboxModule.h"
 
 #include <iostream>
 

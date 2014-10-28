@@ -25,7 +25,7 @@ Polyplexer::~Polyplexer()
 
 bool Polyplexer::isRunning()
 {
-    return SerialPort::getSerial()->isConnected();
+    return PolyboxModule::getInstance()->connector()->isConnected();
 }
 
 void Polyplexer::useWindowOutput(bool use_window )
@@ -39,9 +39,9 @@ void Polyplexer::manageWindow()
 
 QByteArray Polyplexer::printerDatas()
 {
-    if ( SerialPort::getSerial() == NULL)
+    if ( PolyboxModule::getInstance()->connector() == NULL)
         return "";
-    return SerialPort::getSerial()->datas();
+    return PolyboxModule::getInstance()->connector()->datas();
 }
 
 bool Polyplexer::start(QString path, QString port)
@@ -81,11 +81,13 @@ bool Polyplexer::start()
         {
             MainWindow::getMainWindow()->startConsoleWindow();
         }
+        SerialPort* con = dynamic_cast<SerialPort*>(PolyboxModule::getInstance()->connector());
         /** Start VirtualSerial Connexion **/
         if ( ! Config::disablePolyplexer() )
-            isRunning = !(_polyplexer->waitForFinished(1000)) && SerialPort::getSerial()->connectToSerialPort() ;
+            isRunning = !(_polyplexer->waitForFinished(1000)) && con->connectToSerialPort() ;
         else
-            isRunning = SerialPort::getSerial()->connectToSerialPort() ;
+            isRunning = con->connectToSerialPort() ;
+
     }
     return isRunning;
 }
@@ -133,7 +135,7 @@ bool Polyplexer::restart()
 
 bool Polyplexer::stop()
 {
-    SerialPort::getSerial()->disconnectPort();
+    dynamic_cast<SerialPort*>(PolyboxModule::getInstance()->connector())->disconnectPort();
     /*if ( _polyplexer != NULL )
     {
         _polyplexer->kill();

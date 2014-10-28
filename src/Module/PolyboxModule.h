@@ -28,14 +28,13 @@ class PolyboxModule : public QObject
 {
     Q_OBJECT
 public:
-    static PolyboxModule* getInstance(QObject *parent=0)
-    {
-        if ( polyboxModuleInstance == NULL )
-        {
-            polyboxModuleInstance = new PolyboxModule( parent );
-        }
-        return polyboxModuleInstance;
-    }
+
+    enum ConnectorType{ Serial, ServerTCP, CLientTCP, Abstract};
+
+    static PolyboxModule* getInstance(QObject *parent=0);
+
+    ConnectorType connectorType() const;
+    void setConnectorType( ConnectorType type);
     bool isCommonReady();
     bool isConnected();
     bool isCncReady();
@@ -54,8 +53,8 @@ public:
     bool connectToPrinter();
     bool connectToPrinter(QString path, QString port);
 
-    /** @deprecated **/
     AbstractClient* connector();
+    void setConnector( AbstractClient* connector, ConnectorType type = Abstract );
 
 signals:
     void updateHardware();
@@ -68,7 +67,7 @@ public slots:
 
 private:
     bool _connected;
-    explicit PolyboxModule(QObject *parent = 0);
+    PolyboxModule(QObject *parent = 0);
     static PolyboxModule* polyboxModuleInstance;
 
     u_int8_t _numberOfMissingPingPong;
@@ -83,6 +82,7 @@ private:
     QTimer _hardwareTimer;
     QTimer _pingPongTimer;
     void parseMCode( QByteArray stream );
+    ConnectorType _connectorType;
 
 };
 

@@ -40,5 +40,5 @@ void ATUButton::toggleState()
         setText("ATU");
     }
     _atuActivated = !_atuActivated;
-    SerialPort::getSerial()->sendMCode( QString::number(MCODE_GLOBAL_SET_STATUS)+" S"+QString::number(_atuActivated) );
+    PolyboxModule::getInstance()->connector()->sendMCode( QString::number(MCODE_GLOBAL_SET_STATUS)+" S"+QString::number(_atuActivated) );
 }

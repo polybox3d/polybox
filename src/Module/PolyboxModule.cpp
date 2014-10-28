@@ -11,24 +11,53 @@
 PolyboxModule* PolyboxModule::polyboxModuleInstance = NULL;
 QJoystick* PolyboxModule::_joypad=NULL;
 
+PolyboxModule* PolyboxModule::getInstance(QObject *parent)
+{
+    if ( polyboxModuleInstance == NULL )
+    {
+        polyboxModuleInstance = new PolyboxModule( parent );
+    }
+    return polyboxModuleInstance;
+}
+
+PolyboxModule::ConnectorType PolyboxModule::connectorType() const
+{
+    return _connectorType;
+}
+void PolyboxModule::setConnectorType(ConnectorType type)
+{
+    _connectorType = type;
+    if ( type == ServerTCP)
+    {
+
+    }
+    else if ( type == CLientTCP)
+    {
+
+    }
+    else //if ( type == Serial)
+    {
+
+    }
+}
 
 PolyboxModule::PolyboxModule(QObject *parent) :
     QObject(parent)
 {
+    _connectorType = Serial;
+    _connector = SerialPort::getSerial();
 
     _polyplexer = Polyplexer::getInstance();
 
-    _connector = SerialPort::getSerial();
+
     connect ( _connector, SIGNAL(dataReady()), this, SLOT(parseData()) );
 
 
     _cnc = new CNCModule( this, this );
     _labview = new LabViewModule( this );
-    _printer = new PrinterModule( this, this );
-    _scanner = new ScannerModule( this, this );
+    _printer = new PrinterModule( this, this);
+    _scanner = new ScannerModule( this, this);
     _global = new GlobalModule( this, this );
-
-    connectToPrinter();
 
     _hardwareTimer.start( Config::hardwareTimer() );
     connect( &_hardwareTimer, SIGNAL(timeout()), this, SLOT(hardwareTimerTimeout()));
@@ -37,6 +66,17 @@ PolyboxModule::PolyboxModule(QObject *parent) :
 
 
 }
+
+void PolyboxModule::setConnector(AbstractClient *connector, ConnectorType type)
+{
+    if ( _connector != NULL )
+    {
+        delete _connector;
+    }
+    _connectorType =  type;
+    _connector = connector;
+}
+
 bool PolyboxModule::connectToPrinter(QString path, QString port)
 {
     _polyplexer->setPathMachine(path);
@@ -47,10 +87,9 @@ bool PolyboxModule::connectToPrinter(QString path, QString port)
 bool PolyboxModule::connectToPrinter()
 {
     _connected = _polyplexer->start();
-
     if ( _connected )
     {
-        if ( SerialPort::getSerial()->isConnected()  )
+        if ( _connector->isConnected()  )
         {
             MainWindow::textWindow( tr("Le logiciel est correctement connecté à la machine. ") );
             QTimer* timer_connect = new QTimer(this);
@@ -80,7 +119,7 @@ void PolyboxModule::hardwareTimerTimeout()
 
 void PolyboxModule::parseData()
 {
-    QByteArray datas = _polyplexer->printerDatas();
+    QByteArray datas = PolyboxModule::getInstance()->connector()->datas();//_polyplexer->printerDatas();
     QString str(datas);
     /*int start_idx = 0;
     int idx = str.indexOf( start_idx,'#') ;*/
@@ -115,10 +154,10 @@ void PolyboxModule::parseMCode(QByteArray stream)
 
 void PolyboxModule::pingPong()
 {
-    if ( SerialPort::getSerial()->isConnected() )
+    if ( _connector->isConnected() )
     {
         _numberOfMissingPingPong++;
-        SerialPort::getSerial()->sendMCode( MCODE_PING_PONG );
+        _connector->sendMCode( MCODE_PING_PONG );
         if ( _numberOfMissingPingPong > 2 )
         {
             MainWindow::errorWindow( tr("Une erreur est survenue. La machine ne répond plus aux messages depuis un certain temps.\n Veuillez vous reconnecter.\n"));
@@ -182,7 +221,7 @@ PrinterModule* PolyboxModule::printerModule()
 
 bool PolyboxModule::isConnected()
 {
-    return _connected && SerialPort::getSerial()->isConnected();
+    return _connected && _connector->isConnected();
 }
 
 bool PolyboxModule::isCommonReady()

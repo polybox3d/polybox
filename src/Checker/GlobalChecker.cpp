@@ -63,6 +63,6 @@ void GlobalChecker::updateUI()
        ui->toolATULed->setActivated( _global->toolATUok() );
        ui->preasiATULed->setActivated( _global->preasiATUok() );
        ui->ramValue->setText( QString::number(_global->ram()) );
-       ui->uptime->setText(QString::number(SerialPort::getSerial()->connectionUptime/60)+'\'' );
+       ui->uptime->setText(QString::number(PolyboxModule::getInstance()->connector()->connectionUptime/60)+'\'' );
     }
 }
