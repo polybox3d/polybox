@@ -27,6 +27,9 @@ MainWindow::MainWindow(Qt::WindowFlags window_flags, QWidget *parent) :
 {
     mainwindow = this;
     ui->setupUi(this);
+    ui->statusBar->addPermanentWidget( &_connectedLed);
+    _statusMessage = new QLabel(this);
+    ui->statusBar->addPermanentWidget( _statusMessage );
 
     _polybox = PolyboxModule::getInstance( this );
     connect(_polybox, SIGNAL(updateHardware()),this,SLOT(updateHardware()));
@@ -53,6 +56,10 @@ MainWindow::MainWindow(Qt::WindowFlags window_flags, QWidget *parent) :
     setupThemes();
     setupWebcamMenu();
     setupSerialMenu();
+}
+void MainWindow::displayStatusMessage(QString mess)
+{
+    _statusMessage->setText( mess );
 }
 
 void MainWindow::closeEvent(QCloseEvent *event)
@@ -242,24 +249,27 @@ void MainWindow::updateHardware()
         ui->actionStart_Client_Mode->setVisible( true );
         if ( _polybox->isConnected() )
         {
-            ui->statusBar->showMessage( tr("Status : Connected") );
+            _connectedLed.setActivated( true );
+            this->displayStatusMessage( tr("Status : Connected") );
         }
         else
         {
-            ui->statusBar->showMessage( tr("Status : Unconnected") );
+            _connectedLed.setActivated( false );
+            this->displayStatusMessage( tr("Status : Unconnected") );
+
         }
     }
     else if ( _polybox->connectorType() == PolyboxModule::ServerTCP && _polybox->isConnected())
     {
         ui->actionMode_Serveur->setVisible( true );
         ui->actionStart_Client_Mode->setVisible( false );
-        ui->statusBar->showMessage( tr("Status : Mode Server") );
+        this->displayStatusMessage( tr("Status : Mode Server") );
     }
     else if ( _polybox->connectorType() == PolyboxModule::CLientTCP )
     {
         ui->actionMode_Serveur->setVisible( false );
         ui->actionStart_Client_Mode->setVisible( true );
-        ui->statusBar->showMessage( tr("Status : Mode Client") );
+        this->displayStatusMessage( tr("Status : Mode Client") );
     }
 
     setupWebcamMenu();
