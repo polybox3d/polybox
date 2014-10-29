@@ -210,6 +210,7 @@ void PrinterModule::updateComponents()
     _polybox->connector()->sendMCode( MCODE_PRINTER_GET_COLDEND_STATUS );
     _polybox->connector()->sendMCode( MCODE_PRINTER_GET_BED_TEMP_C );
     _polybox->connector()->sendMCode( MCODE_PRINTER_GET_CHAMBER_TEMP_ALL );
+    //_polybox->connector()->sendMCode( MCODE_PRINTER_GET_CHAMBER_TEMP );
     _polybox->connector()->sendMCode( MCODE_PRINTER_GET_BUSE_CLOGGED );
 
 }

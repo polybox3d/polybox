@@ -6,6 +6,8 @@ DialogCNC::DialogCNC(QWidget *parent) :
     ui(new Ui::DialogCNC)
 {
     ui->setupUi(this);
+    setupListConfigs();
+
 }
 
 DialogCNC::~DialogCNC()
@@ -13,9 +15,37 @@ DialogCNC::~DialogCNC()
     delete ui;
 }
 
+void DialogCNC::setupListConfigs()
+{
+    QString default_ini = Config::linuxCNCDefaultConfigFile();
+    int i = -1;
+    foreach (QString path, CNCModule::getAllCNCConfigs(Config::linuxCNCConfig()) )
+    {
+        ++i;
+        ui->listConfigs->addItem( path.split('/').last().section('.',0,-2), path);
+        if ( default_ini.compare(path) == 0 )
+        {
+            ui->listConfigs->setCurrentIndex( i );
+        }
+    }
+    if ( i < 0 )
+    {
+        ui->startCnc->setEnabled( false );
+    }
+}
+
 void DialogCNC::on_startCnc_clicked()
 {
-    this->done( CNC );
+    QString file = qvariant_cast<QString>(ui->listConfigs->itemData(ui->listConfigs->currentIndex()));
+    if ( QFile::exists( file ) )
+    {
+        Config::setLinuxCNCDefaultConfigFile( file );
+        this->done( CNC );
+    }
+    else
+    {
+        ui->listConfigs->removeItem(ui->listConfigs->currentIndex());
+    }
 }
 
 void DialogCNC::on_configuration_clicked()

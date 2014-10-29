@@ -67,6 +67,8 @@ public slots:
 
     void on_scannerButton_clicked();
 
+    void changeLogo();
+
 protected slots:
     void repaintComponents();
 

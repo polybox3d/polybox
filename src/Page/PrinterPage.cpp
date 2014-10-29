@@ -11,8 +11,10 @@ PrinterPage::PrinterPage(PrinterModule* printer, QWidget *parent) :
     ui->tempWidget->addPrinterModule( _printer );
     _printerSoftware.setParent( this );
     _printerSoftwarePath = Config::pathToPrinterSoftware();
-    _updateModuleTimer.setInterval( Config::updateModuleTimer() );
+
+    _updateModuleTimer.start( Config::updateModuleTimer() );
     connect( &_updateModuleTimer, SIGNAL(timeout()), _printer, SLOT(updateComponents()) );
+    connect( &_updateModuleTimer, SIGNAL(timeout()), ui->tempWidget, SLOT(updateComponents()) );
 
     HomeButton* hb = new HomeButton( 50,50, this );
     hb->setGeometry( this->width()-hb->width()-10,

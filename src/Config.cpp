@@ -163,6 +163,22 @@ QString Config::linuxCNCCommand()
 {
     return Config::get(CNC_GROUP,"linuxCNCCommand", "linuxcnc").toString();
 }
+QString Config::linuxCNCConfig()
+{
+    return Config::get(CNC_GROUP,"linuxCNCConfig", Config::pathToHomeDirectory()+"linuxcnc/configs/mesa_official1/mesa_official1.ini").toString();
+}
+
+QString Config::linuxCNCDefaultConfigFile()
+{
+    return Config::get(CNC_GROUP,"linuxCNCDefaultConfigFile", Config::linuxCNCConfig()+"/mesa_official1/mesa_official1.ini").toString();
+}
+void Config::setLinuxCNCDefaultConfigFile(QString ini_file)
+{
+    if ( QFile::exists( ini_file ) )
+    {
+        Config::set(CNC_GROUP,"linuxCNCDefaultConfigFile", ini_file);
+    }
+}
 
 /**************************************************************************
  *              PRINTER_GROUP

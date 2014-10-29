@@ -15,6 +15,12 @@ OpenPage::OpenPage(PolyboxModule* poly,QWidget *parent) :
     }
     ui->setupUi(this);
     _handler = NULL;
+
+    connect(PolyboxModule::getInstance(),
+            SIGNAL(newType(PolyboxModule::ConnectorType)),
+            this,
+            SLOT(changeLogo()));
+
 }
 
 OpenPage::~OpenPage()
@@ -22,6 +28,22 @@ OpenPage::~OpenPage()
     delete ui;
 }
 
+void OpenPage::changeLogo()
+{
+    PolyboxModule::ConnectorType type = PolyboxModule::getInstance()->connectorType();
+    if ( type == PolyboxModule::ServerTCP)
+    {
+        ui->logo->setPixmap( QPixmap(":/img/img/logo_400_blu.png") );
+    }
+    else if ( type == PolyboxModule::CLientTCP)
+    {
+        ui->logo->setPixmap( QPixmap(":/img/img/logo_400_green.png") );
+    }
+    else //if ( type == Serial)
+    {
+        ui->logo->setPixmap( QPixmap(":/img/img/logo_400.png") );
+    }
+}
 
 void OpenPage::setJoypad(QJoystick *joypad)
 {

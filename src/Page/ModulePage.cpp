@@ -18,6 +18,10 @@ ModulePage::ModulePage(PolyboxModule* poly, QWidget *parent) :
     ui->homeButton->installEventFilter( this );
     _updateTimer.start( Config::updateModuleTimer() );
     connect( &_updateTimer, SIGNAL(timeout()), this, SLOT(repaintComponents()) );
+    connect(PolyboxModule::getInstance(),
+            SIGNAL(newType(PolyboxModule::ConnectorType)),
+            this,
+            SLOT(changeLogo()));
     repaintComponents();
 
 }
@@ -25,6 +29,23 @@ ModulePage::ModulePage(PolyboxModule* poly, QWidget *parent) :
 ModulePage::~ModulePage()
 {
     delete ui;
+}
+
+void ModulePage::changeLogo()
+{
+    PolyboxModule::ConnectorType type = PolyboxModule::getInstance()->connectorType();
+    if ( type == PolyboxModule::ServerTCP)
+    {
+        ui->homeButton->setPixmap( QPixmap(":/img/img/logo_400_blu.png") );
+    }
+    else if ( type == PolyboxModule::CLientTCP)
+    {
+        ui->homeButton->setPixmap( QPixmap(":/img/img/logo_400_green.png") );
+    }
+    else //if ( type == Serial)
+    {
+        ui->homeButton->setPixmap( QPixmap(":/img/img/logo_400.png") );
+    }
 }
 
 void ModulePage::back()

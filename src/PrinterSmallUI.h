@@ -16,6 +16,7 @@ public:
     explicit PrinterSmallUI(QWidget *parent = 0);
     void addPrinterModule(PrinterModule* printer);
     ~PrinterSmallUI();
+public slots:
     void updateComponents();
 private:
     Ui::PrinterSmallUI *ui;
