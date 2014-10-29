@@ -108,7 +108,6 @@ private:
     void setupWebcamMenu();
     void setupSerialMenu();
     static MainWindow* mainwindow;
-    void displayStatusMessage(QString mess);
 
     Ui::MainWindow *ui;
     PageState _currentState;
