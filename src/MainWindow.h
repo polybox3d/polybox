@@ -35,6 +35,7 @@
 #include "pageState.h"
 #include "ATUButton.h"
 #include "DialogClient.h"
+#include "Led.h"
 
 namespace Ui {
 class MainWindow;
@@ -67,6 +68,7 @@ public slots:
     void changeTheme();
     void closeEvent(QCloseEvent *event);
     void startConsoleWindow();
+    void displayStatusMessage(QString mess);
 
 signals:
     void joypadOff();
@@ -117,6 +119,8 @@ private:
     QDockWidget* _dockLV;
     QDockWidget* _dockCNC;
     TCPServer _tcp_server;
+    Led _connectedLed;
+    QLabel* _statusMessage;
 };
 
 #endif // MAINWINDOW_H
