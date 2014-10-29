@@ -2,6 +2,8 @@
 #define CNCMODULE_H
 
 #include <QObject>
+#include <QDir>
+#include <QDirIterator>
 
 #include "AbstractModule.h"
 #include "mcode.h"
@@ -75,6 +77,7 @@ public:
     void updateVacummPlugged();
     void startLinuxCNC();
     bool isRunningLinuxCNC();
+    static QStringList getAllCNCConfigs(QString path);
 
 signals:
     void updateUI();

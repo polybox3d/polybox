@@ -143,13 +143,37 @@ void CNCModule::linuxCNCError(QProcess::ProcessError error)
     emit signalLinuxCNCFinished();
 }
 
+QStringList CNCModule::getAllCNCConfigs(QString path)
+{
+    QStringList cnc_configs;
+    QDir dir(Config::linuxCNCConfig());
+
+    QDirIterator iterator(dir.absolutePath(), QDirIterator::Subdirectories);
+    while (iterator.hasNext())
+    {
+        iterator.next();
+        if (!iterator.fileInfo().isDir())
+        {
+            QString filename = iterator.fileName();
+            if (filename.endsWith(".ini") )
+            {
+                cnc_configs.append( iterator.filePath());
+            }
+        }
+    }
+
+    return cnc_configs;
+}
+
 void CNCModule::startLinuxCNC()
 {
     QString command = Config::linuxCNCCommand();
+    QStringList parameters;
+    parameters << Config::linuxCNCDefaultConfigFile();
     _linuxcnc = new QProcess( this );
     connect( _linuxcnc, SIGNAL(finished(int,QProcess::ExitStatus)), this,SLOT(linuxCNCFinished(int,QProcess::ExitStatus)));
     connect( _linuxcnc, SIGNAL(error(QProcess::ProcessError)), this,SLOT(linuxCNCError(QProcess::ProcessError)));
-    _linuxcnc->start( command);
+    _linuxcnc->start( command, parameters);
 }
 bool CNCModule::isRunningLinuxCNC()
 {

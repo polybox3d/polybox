@@ -39,6 +39,7 @@ void PolyboxModule::setConnectorType(ConnectorType type)
     {
 
     }
+    emit( newType(type));
 }
 
 PolyboxModule::PolyboxModule(QObject *parent) :

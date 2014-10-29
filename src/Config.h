@@ -82,6 +82,13 @@ public:
      * @brief linuxCNCCommand Command to start linuxCNC
      */
     static QString linuxCNCCommand();
+    /**
+     * @brief linuxCNCConfig configuration to parse. Path to config folder. Should be ~/linuxcnc/config
+     */
+    static QString linuxCNCConfig();
+
+    static QString linuxCNCDefaultConfigFile();
+    static void setLinuxCNCDefaultConfigFile( QString ini_file);
 
     /**
      * @brief bypassCheck disable check, so the user can acces to everything, withotu printer/cnc controle (atu, NTC, etc...)

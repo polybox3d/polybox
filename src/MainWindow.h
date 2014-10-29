@@ -27,6 +27,7 @@
 #include "DialogWidget.h"
 #include "Theme.h"
 #include "TCPServer.h"
+#include "Led.h"
 
 #if !defined NO_SCAN
  #include "fsmainwindow.h"
@@ -107,6 +108,7 @@ private:
     void setupWebcamMenu();
     void setupSerialMenu();
     static MainWindow* mainwindow;
+    void displayStatusMessage(QString mess);
 
     Ui::MainWindow *ui;
     PageState _currentState;

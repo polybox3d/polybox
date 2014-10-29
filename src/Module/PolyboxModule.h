@@ -58,6 +58,7 @@ public:
 
 signals:
     void updateHardware();
+    void newType(PolyboxModule::ConnectorType type);
 
 public slots:
     void parseData();

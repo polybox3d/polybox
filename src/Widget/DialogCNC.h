@@ -43,6 +43,8 @@ private:
      * @brief ui Graphical layer.
      */
     Ui::DialogCNC *ui;
+
+    void setupListConfigs();
 };
 
 #endif // DIALOGCNC_H

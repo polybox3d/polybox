@@ -35,7 +35,7 @@ public slots:
 
     void setJoypad( QJoystick* joypad );
     void disableJoypad();
-
+    void changeLogo();
     /**
      * @brief on_module_clicked Open the main page if everything is okay. If the Box is not ready to use, this function call GlobalChecker and display what is wrong to the user (something not plugged, ATU on etc...)
      */
