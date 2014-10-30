@@ -47,9 +47,8 @@ void Theme::installTheme(QString name)
 
 void Theme::installCommonStyleSheet()
 {
-    return;
     QString str_style;
-    QDir dir_qss("/home/onslaught/Dev/reprapgiga/polybox/src/style/");
+    QDir dir_qss(Config::runtimePath()+"/src/style/");
     QFileInfoList list = dir_qss.entryInfoList( QStringList("*.qss"), QDir::Files );
     foreach (QFileInfo qss, list)
     {

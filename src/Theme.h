@@ -13,6 +13,8 @@
 #include <QFileInfoList>
 #include <QDir>
 
+#include "Config.h"
+
 class Theme : public QObject
 {
     Q_OBJECT

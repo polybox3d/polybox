@@ -8,6 +8,7 @@ PrinterPage::PrinterPage(PrinterModule* printer, QWidget *parent) :
     _printer = printer;
     _update = false;
     ui->setupUi(this);
+    ui->bedtempSpin->setFixedHeight(42);
     ui->tempWidget->addPrinterModule( _printer );
     _printerSoftware.setParent( this );
     _printerSoftwarePath = Config::pathToPrinterSoftware();
