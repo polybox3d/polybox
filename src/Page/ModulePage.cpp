@@ -15,6 +15,8 @@ ModulePage::ModulePage(PolyboxModule* poly, QWidget *parent) :
     }
     _base_scaling_size = 10;
     ui->setupUi(this);
+    changeLogo();
+
     ui->homeButton->installEventFilter( this );
     _updateTimer.start( Config::updateModuleTimer() );
     connect( &_updateTimer, SIGNAL(timeout()), this, SLOT(repaintComponents()) );
@@ -40,7 +42,7 @@ void ModulePage::changeLogo()
     }
     else if ( type == PolyboxModule::CLientTCP)
     {
-        ui->homeButton->setPixmap( QPixmap(":/img/img/logo_400_green.png") );
+        ui->homeButton->setPixmap( QPixmap(":/img/img/logo_400_yellow.png") );
     }
     else //if ( type == Serial)
     {

@@ -121,7 +121,7 @@
      <rect>
       <x>30</x>
       <y>20</y>
-      <width>204</width>
+      <width>206</width>
       <height>25</height>
      </rect>
     </property>
@@ -311,59 +311,7 @@
      <item>
       <widget class="QSpinBox" name="boxTempSpin">
        <property name="styleSheet">
-        <string notr="true">QSpinBox {
-margin-left: 20px;  /* make room for the arrows */
-margin-right: 20px;  /* make room for the arrows */
-width: 20px;
-
-border: 2 solid #515151;
-background-color: #434343;
-}
-
-QSpinBox::up-button  {
-subcontrol-origin: margin;
-subcontrol-position: center left;
-
-width: 19px;
-border-width: 1px;
-}
-
-QSpinBox::up-arrow  {
-min-width: 19px;
-min-height: 14px;
-max-width: 19px;
-max-height: 14px;
-height: 19px;
-width: 14px;
-background-color:#FF0055;
-}
-
-QSpinBox::up-button:pressed  {
-top: 1px;
-right: 1px;
-}
-
-QSpinBox::down-button  {
-subcontrol-origin: margin;
-subcontrol-position: center right;
-width: 19px;
-border-width: 1px;
-}
-
-QSpinBox::down-arrow  {
-min-width: 19px;
-min-height: 14px;
-max-width: 19px;
-max-height: 14px;
-height: 19px;
-width: 14px;
-background-color:#00FF55;
-}
-
-QSpinBox::down-button:pressed  {
-top: 1px;
-left: 1px;
-}</string>
+        <string notr="true"/>
        </property>
        <property name="minimum">
         <number>20</number>
@@ -692,15 +640,6 @@ left: 1px;
     <string>Filament non bloqué</string>
    </property>
   </widget>
-  <zorder>groupBox</zorder>
-  <zorder>bedBox</zorder>
-  <zorder>printerboxBox</zorder>
-  <zorder>startPrint</zorder>
-  <zorder>backToHelp</zorder>
-  <zorder>tempWidget</zorder>
-  <zorder>ledClogged</zorder>
-  <zorder>labelClogged</zorder>
-  <zorder>bedtempSpin</zorder>
  </widget>
  <customwidgets>
   <customwidget>

@@ -38,8 +38,7 @@ int main(int argc, char *argv[])
 
     /*********************  Starting EXE **********************/
     MainWindow w;
-
-    w.show();
+    w.show();    
 
     return app.exec();
 }

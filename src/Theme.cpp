@@ -41,6 +41,24 @@ void Theme::installTheme(QString name)
             //Theme::installWhite();
         }
     }
+    installCommonStyleSheet();
+
+}
+
+void Theme::installCommonStyleSheet()
+{
+    return;
+    QString str_style;
+    QDir dir_qss("/home/onslaught/Dev/reprapgiga/polybox/src/style/");
+    QFileInfoList list = dir_qss.entryInfoList( QStringList("*.qss"), QDir::Files );
+    foreach (QFileInfo qss, list)
+    {
+        QFile File(qss.absoluteFilePath());
+        File.open(QFile::ReadOnly);
+        str_style += QLatin1String(File.readAll());
+    }
+
+    qApp->setStyleSheet( str_style );
 
 }
 

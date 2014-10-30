@@ -44,6 +44,8 @@
         <file>img/lock-open.png</file>
         <file>img/lock-close.png</file>
         <file>img/broadcast.png</file>
+        <file>img/logo_400_blu.png</file>
+        <file>img/logo_400_yellow.png</file>
     </qresource>
     <qresource prefix="/xml">
         <file>ambiances/Autumn.xml</file>

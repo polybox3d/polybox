@@ -9,6 +9,9 @@
 #include <QColor>
 #include <QPalette>
 #include <QStyle>
+#include <QStringList>
+#include <QFileInfoList>
+#include <QDir>
 
 class Theme : public QObject
 {
@@ -20,6 +23,8 @@ public:
     static void installFusionDark();
     static void installFusionDarkPurple();
     static void installFusionClean();
+
+    static void installCommonStyleSheet();
 
 signals:
 

@@ -14,6 +14,7 @@ OpenPage::OpenPage(PolyboxModule* poly,QWidget *parent) :
         qApp->exit( 42 );
     }
     ui->setupUi(this);
+    changeLogo();
     _handler = NULL;
 
     connect(PolyboxModule::getInstance(),
@@ -37,7 +38,7 @@ void OpenPage::changeLogo()
     }
     else if ( type == PolyboxModule::CLientTCP)
     {
-        ui->logo->setPixmap( QPixmap(":/img/img/logo_400_green.png") );
+        ui->logo->setPixmap( QPixmap(":/img/img/logo_400_yellow.png") );
     }
     else //if ( type == Serial)
     {

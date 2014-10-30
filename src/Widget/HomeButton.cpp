@@ -45,7 +45,7 @@ void HomeButton::changeIconOnConnectorType(PolyboxModule::ConnectorType type)
     }
     else if ( type == PolyboxModule::CLientTCP)
     {
-        changeIcon( QPixmap(":/img/img/logo_400_green.png") );
+        changeIcon( QPixmap(":/img/img/logo_400_yellow.png") );
     }
     else //if ( type == Serial)
     {
