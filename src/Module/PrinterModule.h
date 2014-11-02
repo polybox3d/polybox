@@ -2,12 +2,16 @@
 #define PRINTERMODULE_H
 
 #include <QObject>
+#include <iostream>
 
 #include "AbstractModule.h"
 #include "Temperature.h"
 
 #include "PolyboxModule.h"
 #include "mcode.h"
+
+using namespace std;
+
 
 class PrinterModule : public QObject, public AbstractModule
 {
@@ -68,6 +72,7 @@ public:
     int fanPulsorFanSpeed();
     int fanExtractorFanSpeed();
 
+    void startPrinterSoftware();
     PolyboxModule* getPolybox(){ return _polybox; }
 
     virtual void parseMCode(QByteArray stream);
@@ -78,9 +83,13 @@ signals:
 public slots:
     void toggleInter();
     virtual void updateComponents();
+
+
 private:
     virtual void initAll();
     void setFanByMask(u_int8_t mask, u_int8_t speed);
+
+    QProcess _printerSoftware;
     Temperature _targetBedTemp;
     Temperature _targetChamberTemp;
 

@@ -6,11 +6,13 @@
 #include <QStyleFactory>
 #include <QStandardPaths>
 
+
 #include "Theme.h"
 
 int main(int argc, char *argv[])
 {
     QApplication app(argc, argv);
+
 
     /*********************  INIT **********************/
     QSettings().setPath(QSettings::NativeFormat, QSettings::UserScope, Config::pathToConfigFile() );

@@ -86,12 +86,9 @@ private slots:
 
     void on_startPrint_clicked();
 
-    void processFinished(int exitCode, QProcess::ExitStatus exitStatus);
 
 private:
     Ui::PrinterPage *ui;
-    QProcess _printerSoftware;
-    QString _printerSoftwarePath;
     PrinterModule* _printer;
 
     void setBedActivated(bool activated);

@@ -27,19 +27,19 @@ DEFINES += BYPASS_CHECK
 QMAKE_CXXFLAGS_DEBUG +=  -O3 -Ofast
 }
 
+
+INCLUDEPATH += Checker
+INCLUDEPATH += Page
+INCLUDEPATH += Module
+INCLUDEPATH += Widget
+
+
 DEFINES += NO_SCAN
 #include(../externals/FabScan100/qtTest/qtTest.pri)
 
 #UART Lib
 include(../externals/qextserialport/src/qextserialport.pri)
 
-
-
-
-INCLUDEPATH += Checker
-INCLUDEPATH += Page
-INCLUDEPATH += Module
-INCLUDEPATH += Widget
 
 SOURCES += main.cpp\
         MainWindow.cpp \
@@ -188,3 +188,4 @@ FORMS    += MainWindow.ui \
 
 RESOURCES += \
     ressources.qrc
+

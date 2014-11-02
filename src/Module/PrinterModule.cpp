@@ -19,6 +19,16 @@ void PrinterModule::initAll()
     _pelletierFanSpeed = 0;
     _selectedBed = BED_1 & BED_2 & BED_3 & BED_4;
 }
+void PrinterModule::startPrinterSoftware()
+{
+    QString command = "mono";
+    QStringList parameters;
+    parameters << Config::pathToPrinterSoftware()<<" -home "<< Config::pathToPrinterWorkingDir();
+
+    _printerSoftware.start( command, parameters );
+
+    cout<<"----"<<Config::pathToPrinterSoftware().toStdString()<<endl;
+}
 
 void PrinterModule::parseMCode(QByteArray stream)
 {
@@ -206,7 +216,7 @@ void PrinterModule::updateComponents()
     _polybox->connector()->sendMCode( MCODE_PRINTER_WIRE_DETECTED );
     _polybox->connector()->sendMCode( MCODE_PRINTER_BED_PLUGGED );
     _polybox->connector()->sendMCode( MCODE_PRINTER_PEL_PLUGGED );
-    _polybox->connector()->sendMCode( MCODE_PRINTER_GET_COOLER_BOX_STATUS );
+    //_polybox->connector()->sendMCode( MCODE_PRINTER_GET_COOLER_BOX_STATUS );
     _polybox->connector()->sendMCode( MCODE_PRINTER_GET_COLDEND_STATUS );
     _polybox->connector()->sendMCode( MCODE_PRINTER_GET_BED_TEMP_C );
     _polybox->connector()->sendMCode( MCODE_PRINTER_GET_CHAMBER_TEMP_ALL );

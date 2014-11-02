@@ -57,20 +57,21 @@ bool Polyplexer::start()
     stop();
     if ( ! Config::disablePolyplexer() )
     {
-    /** Create process **/
-    QString program = Config::pathToPolyplexerDaemon();
-    QStringList arguments;
+        /** Create process **/
+        QString program = Config::pathToPolyplexerDaemon();
+        QStringList arguments;
 
-    arguments << QString("--serial=")+this->_pathMachine+this->_portMachine << QString("--polybox_sock=")+DEAMON_POLY_POLYPLEXER << QString("--printer_sock=")+DEAMON_PRINTER_POLYPLEXER;
-    _polyplexer = new QProcess( this );
-    connect( _polyplexer, SIGNAL(finished(int,QProcess::ExitStatus)), this,SLOT(finished(int,QProcess::ExitStatus)));
-    //connect( _polyplexer, SIGNAL(finished(int)), this,SLOT(stop()));
-    _polyplexer->start( program, arguments );
+        arguments << QString("--serial=")+this->_pathMachine+this->_portMachine << QString("--polybox_sock=")+DEAMON_POLY_POLYPLEXER << QString("--printer_sock=")+DEAMON_PRINTER_POLYPLEXER;
+        _polyplexer = new QProcess( this );
+        connect( _polyplexer, SIGNAL(finished(int,QProcess::ExitStatus)), this,SLOT(finished(int,QProcess::ExitStatus)));
+        //connect( _polyplexer, SIGNAL(finished(int)), this,SLOT(stop()));
+        _polyplexer->start( program, arguments );
 
-    isRunning = _polyplexer->waitForStarted(3000) ;
+        isRunning = _polyplexer->waitForStarted(3000) ;
     }
     else
     {
+        cout << (QString("--serial=")+this->_pathMachine+this->_portMachine).toStdString() << (QString("--polybox_sock=")+DEAMON_POLY_POLYPLEXER).toStdString() << (QString("--printer_sock=")+DEAMON_PRINTER_POLYPLEXER).toStdString() << endl;
         isRunning = true;
     }
 
@@ -102,17 +103,17 @@ void Polyplexer::finished(int exitCode, QProcess::ExitStatus exitStatus)
         else if  ( exitCode == 8 )
         {
             MainWindow::errorWindow( _polyplexer->readAllStandardError()+tr("\n\nImpossible de se connecter à la machine. Connexion serie/USB introuvable.\n"
-                                     "Verifiez les branchements, l'alimentation electrique et les paramètres (device name, path, permission)."));
+                                                                            "Verifiez les branchements, l'alimentation electrique et les paramètres (device name, path, permission)."));
         }
         else if  ( exitCode == 9 )
         {
             MainWindow::errorWindow( _polyplexer->readAllStandardError()+tr("\n\nImpossible de se connecter à la machine. Connexion serie/USB introuvable.\n"
-                                     "Verifiez les parametres (device name, path, permission)."));
+                                                                            "Verifiez les parametres (device name, path, permission)."));
         }
         else if  ( exitCode == 10 )
         {
             MainWindow::errorWindow( _polyplexer->readAllStandardError()+tr("\n\nImpossible de se connecter au peripherique virtuel. Connexion introuvable.\n"
-                                     "Verifiez les parametres (device name, path, permission)."));
+                                                                            "Verifiez les parametres (device name, path, permission)."));
         }
         else
         {

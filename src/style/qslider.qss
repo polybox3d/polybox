@@ -5,6 +5,7 @@ padding-right: -20px;
 padding-left: -20px;
 width: 75px;
 max-width: 75px;
+min-height: 23px;
 border-radius: 4px;
 }
 
@@ -23,12 +24,12 @@ max-width: 19px;
 max-height: 19px;
 height: 19px;
 width: 19px;
-background-image: url(./img/plus_border.png);
+background-image: url(:/img/img/plus_border.png);
 }
 
 QSpinBox::up-arrow:disabled, QSpinBox::up-arrow:off 
 {
-	background-image: url(./img/plus_border_disable.png);
+        background-image: url(:/img/img/plus_border_disable.png);
 }
 
 QSpinBox::up-button:pressed  {
@@ -51,12 +52,12 @@ max-width: 19px;
 max-height: 19px;
 height: 19px;
 width: 19px;
-background-image: url(./img/moins_border.png);
+background-image: url(:/img/img/moins_border.png);
 }
 
 QSpinBox::down-arrow:disabled, QSpinBox::down-arrow:off 
 {
-	background-image: url(./img/moins_border_disable.png);
+        background-image: url(:/img/img/moins_border_disable.png);
 }
 
 QSpinBox::down-button:pressed  {

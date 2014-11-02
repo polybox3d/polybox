@@ -46,11 +46,18 @@
         <file>img/broadcast.png</file>
         <file>img/logo_400_blu.png</file>
         <file>img/logo_400_yellow.png</file>
+        <file>img/plus_border_disable.png</file>
+        <file>img/plus_border.png</file>
+        <file>img/moins_border.png</file>
+        <file>img/moins_border_disable.png</file>
     </qresource>
     <qresource prefix="/xml">
         <file>ambiances/Autumn.xml</file>
         <file>ambiances/PolyBox.xml</file>
         <file>ambiances/Sand.xml</file>
         <file>config/.initialConfig.xml</file>
+    </qresource>
+    <qresource prefix="/style">
+        <file>style/qslider.qss</file>
     </qresource>
 </RCC>
