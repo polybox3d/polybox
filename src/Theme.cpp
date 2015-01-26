@@ -35,6 +35,10 @@ void Theme::installTheme(QString name)
         {
             Theme::installFusionClean();
         }
+        else if ( QSettings().value("theme").toString().compare("Polybox3D") == 0 )
+        {
+            Theme::installPolybox();
+        }
         else if ( QSettings().value("theme").toString().compare("White") == 0 )
         {
             qApp->setPalette( qApp->style()->standardPalette());
@@ -83,6 +87,40 @@ void Theme::installFusionDark()
 
     // this is for DISABLE widget color
     darkPalette.setColor(QPalette::Disabled, QPalette::Button, QColor(25, 25, 25));
+    qApp->setStyleSheet("QToolTip { color: #ffffff; background-color: #2a82da; border: 1px solid white; }"
+                        );
+    /**
+                        "QMenu {"
+                        "border: 1px solid #191919;"
+                        "}"
+    **/
+    qApp->setPalette(darkPalette);
+
+
+}
+
+void Theme::installPolybox()
+{
+    qApp->setStyle(QStyleFactory::create("fusion_dark_blu"));
+
+    QPalette darkPalette;
+    darkPalette.setColor(QPalette::Window, QColor(34,34,34));
+    darkPalette.setColor(QPalette::WindowText, Qt::white);
+    darkPalette.setColor(QPalette::Base, QColor(25,25,25));
+    darkPalette.setColor(QPalette::AlternateBase, QColor(34,34,34));
+    darkPalette.setColor(QPalette::ToolTipBase, Qt::white);
+    darkPalette.setColor(QPalette::ToolTipText, Qt::white);
+    darkPalette.setColor(QPalette::Text, Qt::white);
+    darkPalette.setColor(QPalette::Button, QColor(34,34,34));
+    darkPalette.setColor(QPalette::ButtonText, Qt::white);
+    darkPalette.setColor(QPalette::BrightText, Qt::red);
+    darkPalette.setColor(QPalette::Link, QColor(42, 130, 218));
+
+    darkPalette.setColor(QPalette::Highlight, QColor(42, 130, 218));
+    darkPalette.setColor(QPalette::HighlightedText, Qt::black);
+
+    // this is for DISABLE widget color
+    darkPalette.setColor(QPalette::Disabled, QPalette::Button, QColor(15, 15, 15));
     qApp->setStyleSheet("QToolTip { color: #ffffff; background-color: #2a82da; border: 1px solid white; }"
                         );
     /**

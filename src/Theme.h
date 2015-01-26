@@ -12,6 +12,7 @@
 #include <QStringList>
 #include <QFileInfoList>
 #include <QDir>
+#include <QFontDatabase>
 
 #include "Config.h"
 
@@ -22,6 +23,7 @@ public:
     explicit Theme(QObject *parent = 0);
     static void installTheme( QString name ="" );
 
+    static void installPolybox();
     static void installFusionDark();
     static void installFusionDarkPurple();
     static void installFusionClean();
