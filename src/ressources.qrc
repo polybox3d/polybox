@@ -50,6 +50,7 @@
         <file>img/plus_border.png</file>
         <file>img/moins_border.png</file>
         <file>img/moins_border_disable.png</file>
+        <file>img/settings.png</file>
     </qresource>
     <qresource prefix="/xml">
         <file>ambiances/Autumn.xml</file>

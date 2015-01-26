@@ -125,6 +125,8 @@ void MainWindow::setupThemes()
 {
     QAction* act;
 
+    act = ui->menuThemes->addAction("Polybox3D");
+    connect(act,SIGNAL(triggered()),this, SLOT(changeTheme()));
     act = ui->menuThemes->addAction("Fusion White");
     connect(act,SIGNAL(triggered()),this, SLOT(changeTheme()));
 
@@ -279,6 +281,14 @@ void MainWindow::changeStatePage(PageState new_state)
 {
     _previousState = _currentState;
     _currentState = new_state;
+
+    //No Welcome page, skip this step and go to Module Page
+#ifndef WELCOME_PAGE
+    if ( _currentState == Start )
+    {
+        _currentState = Module;
+    }
+#endif
     updateStatePage();
 }
 

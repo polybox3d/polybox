@@ -35,6 +35,7 @@ INCLUDEPATH += Widget
 
 
 DEFINES += NO_SCAN
+#DEFINES += WELCOME_PAGE
 #include(../externals/FabScan100/qtTest/qtTest.pri)
 
 #UART Lib

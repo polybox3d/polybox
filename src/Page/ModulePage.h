@@ -75,6 +75,8 @@ protected slots:
 private slots:
     void on_shareButton_clicked();
 
+    void on_configButton_clicked();
+
 private:
     Ui::ModulePage *ui;
     bool eventFilter(QObject *obj, QEvent *event);

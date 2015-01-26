@@ -24,6 +24,10 @@ ModulePage::ModulePage(PolyboxModule* poly, QWidget *parent) :
             SIGNAL(newType(PolyboxModule::ConnectorType)),
             this,
             SLOT(changeLogo()));
+
+#ifdef WELCOME_PAGE
+   ui->configButton->setVisible( false );
+#endif
     repaintComponents();
 
 }
@@ -158,4 +162,9 @@ void ModulePage::on_shareButton_clicked()
 {
     QDesktopServices::openUrl(QUrl(Config::pathToDropbox()));
 
+}
+
+void ModulePage::on_configButton_clicked()
+{
+    CHANGE_PAGE( Warning );
 }
