@@ -38,6 +38,9 @@ public:
 #define ERRORS_GROUP "ERRORS"
 #define QSETTINGS_LOAD_AND_SAVE 1
 
+#define POWER_SUPPLY_ENABLE_PIN_0 51 // pin 51 master
+#define POWER_SUPPLY_ENABLE_PIN_1 28+(70*1) // pin 28 slave 1
+
     Config();
     static QString translationPath();
     static QString pathToDropbox();
@@ -128,6 +131,7 @@ public:
     static void setBroadcastIP( QString IP );
 
     static QString pathToPrinterSoftware();
+    static void setPathToPrinterSoftware( QString path_to_printer_software );
     static QString pathToPrinterWorkingDir();
 
     static void set(QString group_name, QString key, const QVariant &value )

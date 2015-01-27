@@ -27,8 +27,25 @@ void PrinterModule::startPrinterSoftware()
 
     _printerSoftware.start( command, parameters );
 
+    _printerSoftware.waitForStarted(1000);
+    if ( _printerSoftware.waitForFinished(1000) )
+    {
+        if ( _printerSoftware.exitCode() == 2 )
+        {
+            MainWindow::errorWindow( tr("\n\nImpossible de lancer le programme d'impression."
+                                        "Veuillez vérifier que le chemin d'accès est correct.\n\n"
+                                        "Configuration > Paramètres logiciel \n\n")+_printerSoftware.readAllStandardError()+"\n\n" );
+
+            QString path = QFileDialog::getOpenFileName(MainWindow::getMainWindow(),
+                                                        tr("Open Printer Executable"),
+                                          Config::pathToHomeDirectory());
+            Config::setPathToPrinterSoftware( path );
+        }
+    }
+
     cout<<"----"<<Config::pathToPrinterSoftware().toStdString()<<endl;
 }
+
 
 void PrinterModule::parseMCode(QByteArray stream)
 {

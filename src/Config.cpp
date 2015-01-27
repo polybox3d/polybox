@@ -189,6 +189,14 @@ QString Config::pathToPrinterSoftware()
     return Config::get(PRINTER_GROUP, "pathToPrinterSoftware",
                 Config::pathToHomeDirectory()+"Dev/reprapgiga/Repetier-HostModified/Repetier-Host-master/src/RepetierHost/bin/Release/RepetierHost.exe" ).toString();
 }
+void Config::setPathToPrinterSoftware( QString path_to_printer_software)
+{
+    if ( QFile::exists( path_to_printer_software ) )
+    {
+        Config::set(PRINTER_GROUP,"pathToPrinterSoftware", path_to_printer_software);
+    }
+}
+
 QString Config::pathToPrinterWorkingDir()
 {
     return Config::get(PRINTER_GROUP, "pathToPrinterWorkingDir",

@@ -15,11 +15,12 @@
 
 using namespace std;
 
-#define FACE_TOP_ID 0
+
+#define FACE_RIGHT_ID 0
+#define FACE_BACK_ID 1
 #define FACE_LEFT_ID 2
-#define FACE_RIGHT_ID 3
-#define FACE_BACK_ID 4
-#define FACE_FRONT_ID 5
+#define FACE_TOP_ID 3
+#define FACE_FRONT_ID 4
 
 #define FACE_BOT_ID 5
 

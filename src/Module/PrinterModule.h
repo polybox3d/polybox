@@ -3,7 +3,10 @@
 
 #include <QObject>
 #include <iostream>
+#include <QProcess>
+#include <QFileDialog>
 
+#include "MainWindow.h"
 #include "AbstractModule.h"
 #include "Temperature.h"
 
@@ -83,7 +86,6 @@ signals:
 public slots:
     void toggleInter();
     virtual void updateComponents();
-
 
 private:
     virtual void initAll();
