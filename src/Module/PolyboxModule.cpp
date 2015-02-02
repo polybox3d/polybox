@@ -94,6 +94,7 @@ bool PolyboxModule::connectToPrinter()
     _connected = _polyplexer->start();
     if ( _connected )
     {
+        _numberOfMissingPingPong = PINGPONG_NOT_CONNECTED;
         SerialPort* con = dynamic_cast<SerialPort*>( _connector );
         /** Start VirtualSerial Connexion **/
         _connected = con->connectToSerialPort() ;
@@ -106,7 +107,7 @@ bool PolyboxModule::connectToPrinter()
             timer_connect->setSingleShot(true);
             timer_connect->start( 1000 );
 
-            _numberOfMissingPingPong = PINGPONG_OK;
+
         }
         else
         {
@@ -167,7 +168,8 @@ void PolyboxModule::pingPong()
     {
         _numberOfMissingPingPong++;
         _connector->sendMCode( MCODE_PING_PONG );
-        if ( _numberOfMissingPingPong > PINGPONG_MAX_TRIES )
+        // too much missing ping/pong or still not connected status (when just connected and waiting for 1st pong back)
+        if ( _numberOfMissingPingPong > PINGPONG_MAX_TRIES && _numberOfMissingPingPong > PINGPONG_NOT_CONNECTED+PINGPONG_MAX_TRIES )
         {
             MainWindow::errorWindow( tr("Une erreur est survenue. La machine ne répond plus aux messages depuis un certain temps.\n Veuillez vous reconnecter.\n"));
             _polyplexer->stop();

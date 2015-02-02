@@ -11,6 +11,32 @@
 
 #include "SerialPort.h"
 
+/***
+ * Connection flowchart
+ *
+ * PolyboxModule::connectToPrinter()
+ *          |
+ *          +----> Polyplexer::start()   // Create pipes and multiplexer for packets
+ *          |
+ *          +----> SerialPort::connectToSerialPort()  // Create connection between this software and a given pipe (serial/Tcp connection)
+ *
+ * ====================== PingPong process =====================
+ *
+ * PolyboxModule::_pingPongTimer.start( PINGPONG_DELAY_MS )
+ *                             Timer, periodically call PolyboxModule::pingPong() method.
+ *
+ * PolyboxModule::pingPong() : Send a ping to the server.
+ *                             Server can be printer firmware or remote server software.
+ *
+ * PolyboxModule::parseMCode() : Parse incoming datas. If PONG_M_CODE, reset ping-pong counter.
+ *
+ * PingPong value :
+ *                  idle, or new connection start :
+ *                    PolyboxModule::_numberOfMissingPingPong = PINGPONG_NOT_CONNECTED
+ *                  New pong parsed with PolyboxModule::parseMCode() :
+ *                    PolyboxModule::_numberOfMissingPingPong = PINGPONG_OK
+ *                  pingPong() : increment current value of _numberOfMissingPingPong
+ ***/
 
 class Polyplexer : public QObject
 {
