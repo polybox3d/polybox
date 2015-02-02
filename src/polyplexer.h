@@ -48,7 +48,6 @@ public:
     void setPrinterSocketType(PrinterSocketType type ) { _printerSocketType = type ; }
     PrinterSocketType printerSocketType( ) { return _printerSocketType ; }
 
-    QByteArray printerDatas();
 
 signals:
 public slots:
@@ -66,9 +65,11 @@ private:
     /**  Link between Pc and PrinterDaemon. TCP or Serial ? **/
     PrinterSocketType _printerSocketType;
 
+    /** Unique static instance of this Class (Polyplexer)**/
     static Polyplexer* polyplexerInstance;
 
     bool _running;
+    /** store and handle the external program as separate (Q)Process **/
     QProcess* _polyplexer;
     bool _useOutputWindow;
 

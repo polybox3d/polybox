@@ -34,7 +34,7 @@ MainWindow::MainWindow(Qt::WindowFlags window_flags, QWidget *parent) :
     _polybox = PolyboxModule::getInstance( this );
     connect(_polybox, SIGNAL(updateHardware()),this,SLOT(updateHardware()));
 
-    _polybox->connectToPrinter();
+    //_polybox->connectToPrinter();
 
 
     _joypadActivated = false;

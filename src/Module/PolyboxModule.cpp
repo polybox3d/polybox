@@ -8,6 +8,11 @@
 #include "GlobalModule.h"
 #include <QDebug>
 
+#define PINGPONG_NOT_CONNECTED     4242
+#define PINGPONG_MAX_TRIES         2
+#define PINGPONG_OK                0
+#define PINGPONG_DELAY_MS          4000
+
 PolyboxModule* PolyboxModule::polyboxModuleInstance = NULL;
 QJoystick* PolyboxModule::_joypad=NULL;
 
@@ -45,12 +50,11 @@ void PolyboxModule::setConnectorType(ConnectorType type)
 PolyboxModule::PolyboxModule(QObject *parent) :
     QObject(parent)
 {
-    _connectorType = Serial;
-    _connector = SerialPort::getSerial();
+    _connector = NULL ;
+    _numberOfMissingPingPong = PINGPONG_NOT_CONNECTED;
 
+    this->setConnector( SerialPort::getSerial(), Serial );
     _polyplexer = Polyplexer::getInstance();
-
-
     connect ( _connector, SIGNAL(dataReady()), this, SLOT(parseData()) );
 
 
@@ -62,7 +66,7 @@ PolyboxModule::PolyboxModule(QObject *parent) :
 
     _hardwareTimer.start( Config::hardwareTimer() );
     connect( &_hardwareTimer, SIGNAL(timeout()), this, SLOT(hardwareTimerTimeout()));
-    _pingPongTimer.start( 5000 );
+    _pingPongTimer.start( PINGPONG_DELAY_MS );
     connect( &_pingPongTimer, SIGNAL(timeout()), this, SLOT(pingPong()));
 
 
@@ -90,7 +94,11 @@ bool PolyboxModule::connectToPrinter()
     _connected = _polyplexer->start();
     if ( _connected )
     {
-        if ( _connector->isConnected()  )
+        SerialPort* con = dynamic_cast<SerialPort*>( _connector );
+        /** Start VirtualSerial Connexion **/
+        _connected = con->connectToSerialPort() ;
+
+        if ( _connected && _connector->isConnected()  )
         {
             MainWindow::textWindow( tr("Le logiciel est correctement connecté à la machine. ") );
             QTimer* timer_connect = new QTimer(this);
@@ -98,7 +106,7 @@ bool PolyboxModule::connectToPrinter()
             timer_connect->setSingleShot(true);
             timer_connect->start( 1000 );
 
-            _numberOfMissingPingPong = 0;
+            _numberOfMissingPingPong = PINGPONG_OK;
         }
         else
         {
@@ -145,7 +153,7 @@ void PolyboxModule::parseMCode(QByteArray stream)
     {
     case MCODE_PING_PONG:
     {
-        _numberOfMissingPingPong = 0;
+        _numberOfMissingPingPong = PINGPONG_OK;
     }
         break;
     default:
@@ -159,11 +167,15 @@ void PolyboxModule::pingPong()
     {
         _numberOfMissingPingPong++;
         _connector->sendMCode( MCODE_PING_PONG );
-        if ( _numberOfMissingPingPong > 2 )
+        if ( _numberOfMissingPingPong > PINGPONG_MAX_TRIES )
         {
             MainWindow::errorWindow( tr("Une erreur est survenue. La machine ne répond plus aux messages depuis un certain temps.\n Veuillez vous reconnecter.\n"));
             _polyplexer->stop();
         }
+    }
+    else
+    {
+
     }
 
 }
@@ -222,7 +234,7 @@ PrinterModule* PolyboxModule::printerModule()
 
 bool PolyboxModule::isConnected()
 {
-    return _connected && _connector->isConnected();
+    return _connected && _connector->isConnected() && _numberOfMissingPingPong <= PINGPONG_MAX_TRIES;
 }
 
 bool PolyboxModule::isCommonReady()
