@@ -10,9 +10,9 @@ class ATUButton : public QPushButton
     Q_OBJECT
 public:
     explicit ATUButton(QWidget *parent = 0);
-    ATUButton(int w, int h, QWidget *parent);
+    ATUButton(int w, int h, bool activated, QWidget *parent);
     void setSize( int w, int h);
-
+    void setState( bool activated );
 signals:
 
 public slots:

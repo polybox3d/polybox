@@ -43,12 +43,13 @@ MainWindow::MainWindow(Qt::WindowFlags window_flags, QWidget *parent) :
 
     /**             ATU BUTTON              **/
     _atuON = true;
-    _atu = new ATUButton( 60, 30, this );
+    toggleATU();
+    _atu = new ATUButton( 60, 30, _atuON, this );
     _atu->setGeometry( this->width()-_atu->width()-10,
                      ui->menuBar->height()+2,
                      _atu->width(), _atu->height());
     connect ( _atu, SIGNAL(released()), this, SLOT(toggleATU()));
-
+    _atu->setEnabled( false );
 
     changeStatePage( Start );
     
@@ -163,11 +164,11 @@ void MainWindow::setupLanguage()
 void MainWindow::toggleATU()
 {
     _atuON = !_atuON;
-    this->centralWidget()->setEnabled( _atuON );
+    /*this->centralWidget()->setEnabled( _atuON );
     if ( _dockLV != NULL )
     {
         _dockLV->setEnabled( _atuON );
-    }
+    }*/
 }
 
 MainWindow::~MainWindow()
@@ -212,12 +213,17 @@ void MainWindow::startConnexion()
 
         if ( ! poly->portMachine().compare( act->text().split('/').last() ) && PolyboxModule::getInstance()->connector()->isConnected() ) //already connected
         {
+            _atu->setState( true ); // true => activate ATU
+            _atu->setEnabled( false );
             poly->stop();
             act->setChecked(false);
+
         }
         else
         {
             bool connected = _polybox->connectToPrinter( Config::pathToSerialDevice(), act->text().split('/').last() );
+            _atu->setEnabled( connected );
+            _atu->setState( !connected ); // false => ATU off, machine works/ON
             //act->setChecked( connected ) ;
         }
     }
@@ -485,7 +491,7 @@ void MainWindow::updateStatePage()
     _atu->raise();
     _atu->show();
     _atu->activateWindow();
-    this->centralWidget()->setEnabled( _atuON );
+    //this->centralWidget()->setEnabled( _atuON );
 }
 
 void MainWindow::on_actionActiver_Manette_triggered()

@@ -11,13 +11,19 @@ ATUButton::ATUButton(QWidget *parent) :
 }
 
 
-ATUButton::ATUButton( int w, int h, QWidget *parent) :
+ATUButton::ATUButton(int w, int h, bool activated, QWidget *parent) :
     QPushButton(parent)
 {
-    _atuActivated = true;
+    _atuActivated = activated;
     setSize( w, h);
     toggleState();
     connect ( this, SIGNAL(released()), this, SLOT(toggleState()));
+}
+
+void ATUButton::setState(bool activated)
+{
+    _atuActivated = !activated;
+    toggleState();
 }
 
 void ATUButton::setSize(int w, int h)
@@ -31,12 +37,12 @@ void ATUButton::toggleState()
 {
     if ( _atuActivated )
     {
-        setIcon(QPixmap(":/img/img/atu_all.png"));
+        setIcon(QPixmap(":/img/img/atu_all_on.png"));
         setText("ATU");
     }
     else
     {
-        setIcon(QPixmap(":/img/img/atu_all_on.png"));
+        setIcon(QPixmap(":/img/img/atu_all.png"));
         setText("ATU");
     }
     _atuActivated = !_atuActivated;

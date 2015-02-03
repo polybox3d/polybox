@@ -94,7 +94,6 @@ private:
     /** Unique static instance of this Class (Polyplexer)**/
     static Polyplexer* polyplexerInstance;
 
-    bool _running;
     /** store and handle the external program as separate (Q)Process **/
     QProcess* _polyplexer;
     bool _useOutputWindow;
