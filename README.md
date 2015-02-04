@@ -49,6 +49,14 @@ cd externals/Polyplexer
 ```
 git checkout master
 ```
+
+
+Pre-Commit Script :
+Setup pre-commit script by running : 
+```
+ln -s ./pre-commit-git.sh .git/hooks/pre-commit
+```
+
 Compilation
 =====
 
