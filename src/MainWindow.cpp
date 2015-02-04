@@ -7,15 +7,28 @@ MainWindow* MainWindow::getMainWindow(){
     return mainwindow;
 }
 
+bool MainWindow::instanceExists()
+{
+    return (MainWindow::getMainWindow() != NULL || dynamic_cast<MainWindow*>(MainWindow::getMainWindow()) != NULL);
+}
+
 void MainWindow::errorWindow(QString errorText)
 {
+    if ( !MainWindow::instanceExists() )
+    {
+        return;
+    }
     QMessageBox messageBox;
     messageBox.critical(0,"Error",errorText);
     messageBox.setFixedSize(500,200);
 }
 
 void MainWindow::textWindow(QString text)
-{    
+{
+    if ( !MainWindow::instanceExists() )
+    {
+        return;
+    }
     QMessageBox messageBox;
     messageBox.information(0,"Information",text);
     messageBox.setFixedSize(500,200);

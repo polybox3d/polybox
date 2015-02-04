@@ -106,8 +106,6 @@ bool PolyboxModule::connectToPrinter()
             connect( timer_connect, SIGNAL(timeout()), _labview, SLOT(setConnectedColor()) );
             timer_connect->setSingleShot(true);
             timer_connect->start( 1000 );
-
-
         }
         else
         {

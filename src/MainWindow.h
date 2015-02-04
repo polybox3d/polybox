@@ -56,6 +56,7 @@ public:
     static void errorWindow(QString errorText);
     static void textWindow(QString text);
     static void restartApp();
+    static bool instanceExists();
 
     ~MainWindow();
 public slots:

@@ -16,7 +16,7 @@ int main(int argc, char *argv[])
     QApplication app(argc, argv);
 
     /*********************  SPLASHSCREEN **********************/
-    SplashScreen splash(QPixmap(":/img/img/splashscreen.png"));
+    SplashScreen splash(QPixmap(":/img/img/logo_400.png"));
     splash.show();
     app.processEvents();
 
