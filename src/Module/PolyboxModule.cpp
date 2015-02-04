@@ -8,7 +8,7 @@
 #include "GlobalModule.h"
 #include <QDebug>
 
-#define PINGPONG_NOT_CONNECTED     4242
+#define PINGPONG_NOT_CONNECTED     42
 #define PINGPONG_MAX_TRIES         2
 #define PINGPONG_OK                0
 #define PINGPONG_DELAY_MS          4000
