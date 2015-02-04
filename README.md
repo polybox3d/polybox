@@ -54,7 +54,7 @@ git checkout master
 Pre-Commit Script :
 Setup pre-commit script by running : 
 ```
-ln -s ../../pre-commit.sh .git/hooks/pre-commit
+ln -s ../../pre-push.sh .git/hooks/pre-push
 ```
 
 Compilation
