@@ -23,7 +23,7 @@ void DialogBroadcast::on_closeButton_clicked()
 void DialogBroadcast::on_broadcastButton_clicked()
 {
     bool conv_ok;
-    //int port = ui->port->text().toInt( &conv_ok );
+    int port = ui->port->text().toInt( &conv_ok );
     if ( conv_ok )
     {
         this->done( START_BROADCAST );

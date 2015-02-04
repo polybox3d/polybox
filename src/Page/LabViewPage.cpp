@@ -128,15 +128,14 @@ void LabViewPage::importFromXmlFile(QString filename)
     QFile* file = new QFile(filename);
     if (!file->open(QIODevice::ReadOnly | QIODevice::Text)) {
         QMessageBox::critical(this,
-                              "Save to XML file",
-                              "Couldn't read from "+filename,
+                              tr("Save to XML file"),
+                              tr("Couldn't read from ")+filename,
                               QMessageBox::Ok);
         return;
     }
     QXmlStreamReader xml(file);
     while(!xml.atEnd() && !xml.hasError())
     {
-        QMap<QString, QString> profile;
         // Let's check that we're really getting a profile.
         if( xml.tokenType() != QXmlStreamReader::StartElement && xml.name() == "profile") {
             return;

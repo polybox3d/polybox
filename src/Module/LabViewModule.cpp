@@ -356,8 +356,8 @@ void LabViewModule::saveToXmlFile(QString filename)
     QFile* file = new QFile(filename);
     if (!file->open(QIODevice::WriteOnly | QIODevice::Text)) {
         QMessageBox::critical(NULL,
-                              "Save to XML file",
-                              "Couldn't write to "+filename,
+                              tr("Save to XML file"),
+                              tr("Couldn't write to ")+filename,
                               QMessageBox::Ok);
         return;
     }

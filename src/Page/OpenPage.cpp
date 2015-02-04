@@ -70,7 +70,7 @@ void OpenPage::on_module_clicked()
         CheckerModele* checker = new CheckerModele((QWidget*)this->parent());
 
 
-        checker->setWindowTitle("Etat de la machine");
+        checker->setWindowTitle(tr("Etat de la machine"));
         checker->setContentWidget( new GlobalChecker( _polybox->globalModule(),  checker));
         _polybox->globalModule()->updateComponents();
         int value_ret = checker->exec();

@@ -64,12 +64,6 @@ void WarningPage::on_help_clicked()
 void WarningPage::on_configuration_clicked()
 {
     QDesktopServices::openUrl(QUrl(Config::pathToConfigFile()+"/"+QCoreApplication::organizationName()+"/"+QCoreApplication::applicationName()+".conf"));
-    /**DialogConfigSoft dialog( _polybox, (QWidget*)this->parent());
-    int value_ret = dialog.exec();
-    if ( value_ret != 0 )
-    {
-
-    }**/
 }
 
 void WarningPage::on_dynamicTest_clicked()
@@ -86,6 +80,6 @@ void WarningPage::on_console_clicked()
 void WarningPage::on_pinEditor_clicked()
 {
     DebugPin* debugpin = new DebugPin();
-    debugpin->setWindowTitle("Editeur de pin");
+    debugpin->setWindowTitle(tr("Editeur de pins"));
     debugpin->show();
 }

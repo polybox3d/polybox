@@ -6,7 +6,6 @@ ATUButton::ATUButton(QWidget *parent) :
     setIcon(QPixmap(":/img/img/atu_all.png"));
     setText(QString::number(this->width()));
     setIconSize( QSize(this->width(), this->height()) );
-    //setGeometry(0,0,160,160);
     setFlat( false );
 }
 
@@ -38,12 +37,12 @@ void ATUButton::toggleState()
     if ( _atuActivated )
     {
         setIcon(QPixmap(":/img/img/atu_all_on.png"));
-        setText("ATU");
+        setText(tr("ATU"));
     }
     else
     {
         setIcon(QPixmap(":/img/img/atu_all.png"));
-        setText("ATU");
+        setText(tr("ATU"));
     }
     _atuActivated = !_atuActivated;
     PolyboxModule::getInstance()->connector()->sendMCode( QString::number(MCODE_GLOBAL_SET_STATUS)+" S"+QString::number(_atuActivated) );

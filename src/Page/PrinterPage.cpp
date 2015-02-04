@@ -9,8 +9,6 @@ PrinterPage::PrinterPage(PrinterModule* printer, QWidget *parent) :
     _update = false;
     ui->setupUi(this);
     ui->tempWidget->addPrinterModule( _printer );
-    /*_printerSoftware.setParent( this );
-    _printerSoftwarePath = Config::pathToPrinterSoftware();*/
 
     _updateModuleTimer.start( Config::updateModuleTimer() );
     connect( &_updateModuleTimer, SIGNAL(timeout()), _printer, SLOT(updateComponents()) );
@@ -184,10 +182,6 @@ void PrinterPage::on_boxCustom_clicked()
 
 void PrinterPage::on_startPrint_clicked()
 {
-    /*if ( _printerSoftware != NULL )
-    {
-        _printerSoftware->kill();
-    }*/
     _printer->startPrinterSoftware();
 }
 

@@ -49,12 +49,12 @@ void DialogConfigSoft::updateValues()
     ui->printersoftBin->setText( Config::pathToPrinterSoftware() );
     ui->printerworkingdir->setText( Config::pathToPrinterWorkingDir() );
 
-    ui->activateByPass->setChecked( Config::bypassCheck );
+    ui->activateByPass->setChecked( Config::bypassCheck() );
 
     ui->virtualDevice->setText( Config::pathToVirtualPolySerialDevice() );
     ui->polyplexerBin->setText( Config::pathToPolyplexerDaemon() );
 
-    ui->disablePolyplexer->setChecked( Config::disablePolyplexer );
+    ui->disablePolyplexer->setChecked( Config::disablePolyplexer() );
 }
 
 void DialogConfigSoft::on_close_clicked()
@@ -108,7 +108,7 @@ void DialogConfigSoft::on_pushButton_2_clicked()
                                                     tr("Selectionner une configuration"), ".", tr("Config Files (*.xml)"));
     if ( fileName != NULL && ! fileName.isEmpty() )
     {
-       Config::importFromXmlFile( fileName );
+       //Config::importFromXmlFile( fileName );
     }
     updateValues();
 }

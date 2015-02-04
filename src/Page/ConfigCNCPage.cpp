@@ -58,12 +58,12 @@ void ConfigCNCPage::on_stressCNC_clicked()
     _script->start( command );
     connect( _script, SIGNAL(finished(int)),this, SLOT(outputReady()) );
     _message->exec();
-    _message->setText("Working...");
+    _message->setText(tr("Working..."));
 }
 
 void ConfigCNCPage::outputReady()
 {
-    _message->setText( "Done." );
+    _message->setText( tr("Done.") );
 }
 
 void ConfigCNCPage::on_startJoypadOverlay_clicked()

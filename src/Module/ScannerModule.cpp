@@ -29,13 +29,6 @@ void ScannerModule::parseMCode(QByteArray stream)
         SerialPort::parseTrueFalse( &_turntablePlugged, str[idx] );
     }
         break;
-    case 614:
-    {
-        /*SerialPort::nextField( str, idx);
-        SerialPort::parseTrueFalse( &_, str[idx] );*/
-    }
-        break;
-
     case MCODE_SCANNER_GET_LASER_PLUGGED:
     {
         while ( idx < size )
@@ -72,7 +65,6 @@ void ScannerModule::updateComponents()
 void ScannerModule::updateGlobalStatus()
 {
     _polybox->connector()->sendMCode( MCODE_SCANNER_GET_LASER_PLUGGED );
-    //_polybox->port()->sendMCode( 610 );
 }
 
 void ScannerModule::updateTurntablePlugged()

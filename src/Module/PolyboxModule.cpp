@@ -250,11 +250,9 @@ bool PolyboxModule::isCncReady()
 bool PolyboxModule::isPrinterReady()
 {
     return ( _printer->isReady() && this->isConnected() && this->isCommonReady() );
-    //return ( ->isReady() && this->isConnected() && this->isCommonReady() );
 }
 
 bool PolyboxModule::isScannerReady()
 {
     return ( _scanner->isReady() && this->isConnected() && this->isCommonReady() );
-    //return ( _la->isReady() && this->isConnected() && this->isCommonReady() );
 }

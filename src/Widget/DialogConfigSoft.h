@@ -10,6 +10,7 @@ namespace Ui {
 class DialogConfigSoft;
 }
 /**
+ * @deprecated not in use, better edit software values with external text editor.
  * @brief The DialogConfigSoft class QDialog allowing the user to see and modify the software values/constants such as PATH, or default values.
  */
 class DialogConfigSoft : public QDialog

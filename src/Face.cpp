@@ -73,7 +73,6 @@ void Face::setVIntensity( int v )
 {
     _v = v;
     startSenderTimer( 500 );
-    //sendIntensity();
 }
 void Face::sendIntensity()
 {

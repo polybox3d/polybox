@@ -66,8 +66,6 @@ void DebugPin::parseData()
             }
             SerialPort::nextField( str, idx);
         }
-        /*SerialPort::nextField( str, idx);
-        SerialPort::parseTrueFalse( &_, str[idx] );*/
     }
         break;
 
@@ -85,7 +83,7 @@ void DebugPin::updateComponents()
     ui->pinNumber->text().toInt(&ok);
     if ( ui->pinNumber->text().isEmpty() || !ok )
     {
-        ui->pinValue->setText("Select a value");
+        ui->pinValue->setText(tr("Select a value"));
 
     }
     else

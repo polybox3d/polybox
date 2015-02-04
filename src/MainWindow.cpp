@@ -106,7 +106,7 @@ void MainWindow::startConsoleWindow()
     if ( PolyboxModule::getInstance()->connector()->isConnected() )
     {
         Console* c = new Console();
-        c->setWindowTitle("Console");
+        c->setWindowTitle(tr("Console"));
         c->show();
     }
 }
@@ -574,12 +574,6 @@ void MainWindow::on_actionConsole_triggered()
 void MainWindow::on_actionParametres_triggered()
 {
     QDesktopServices::openUrl(QUrl(Config::pathToConfigFile()+"/"+QCoreApplication::organizationName()+"/"+QCoreApplication::applicationName()+".conf"));
-    /*DialogConfigSoft dialog( _polybox, (QWidget*)this->parent());
-    int value_ret = dialog.exec();
-    if ( value_ret != 0 )
-    {
-
-    }*/
 }
 
 void MainWindow::on_actionCredits_triggered()

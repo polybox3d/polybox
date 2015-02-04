@@ -19,7 +19,6 @@ Console::~Console()
 void Console::parseData()
 {
     ui->displaySerial->append(PolyboxModule::getInstance()->connector()->datas());
-    //QString str(datas);
 }
 
 void Console::on_sendCodeButton_clicked()
