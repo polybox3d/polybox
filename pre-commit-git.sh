@@ -1,5 +1,7 @@
+#!/bin/sh
 #We want to run test on commited source, and not current source.
 #So we stash them
+
 if [ `date +%w` -eq 3 ]; then
   echo "Enjoy your life. Do not work on Sunday!"
   exit 1
