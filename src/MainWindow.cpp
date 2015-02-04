@@ -9,7 +9,7 @@ MainWindow* MainWindow::getMainWindow(){
 
 bool MainWindow::instanceExists()
 {
-    return (MainWinWindow() != NULL || dynamic_cast<MainWindow*>(MainWindow::getMainWindow()) != NULL);
+    return (MainWindow::getMainWindow() != NULL || dynamic_cast<MainWindow*>(MainWindow::getMainWindow()) != NULL);
 }
 
 void MainWindow::errorWindow(QString errorText)
