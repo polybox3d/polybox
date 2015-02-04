@@ -5,14 +5,20 @@
 #include <QSettings>
 #include <QStyleFactory>
 #include <QStandardPaths>
-
+#include <QSplashScreen>
+#include <QThread>
 
 #include "Theme.h"
+#include "SplashScreen.h"
 
 int main(int argc, char *argv[])
 {
     QApplication app(argc, argv);
 
+    /*********************  SPLASHSCREEN **********************/
+    SplashScreen splash(QPixmap(":/img/img/splashscreen.png"));
+    splash.show();
+    app.processEvents();
 
     /*********************  INIT **********************/
     QSettings().setPath(QSettings::NativeFormat, QSettings::UserScope, Config::pathToConfigFile() );
@@ -22,6 +28,7 @@ int main(int argc, char *argv[])
     /***  GIT_VERSION defined in .pro file ***/
     QCoreApplication::setApplicationVersion( GIT_VERSION );
     Config::init();
+    app.processEvents();
     /*********************  Translation **********************/
     QTranslator qtTranslator;
 
@@ -35,12 +42,17 @@ int main(int argc, char *argv[])
     if(!QFile::exists(Config::translationPath()+"/polybox_fr.qm"))
         qWarning(Config::translationPath().toStdString().c_str());
 
+    app.processEvents();
+
     /*********************  THEMES **********************/
     Theme::installTheme();
+    app.processEvents();
 
     /*********************  Starting EXE **********************/
+    splash.connectingProcess();
     MainWindow w;
-    w.show();    
+    w.show();
+    splash.finish( &w );
 
     return app.exec();
 }

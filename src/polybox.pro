@@ -98,7 +98,8 @@ SOURCES += main.cpp\
     TCPServer.cpp \
     AbstractClient.cpp \
     TCPClient.cpp \
-    Widget/DialogClient.cpp
+    Widget/DialogClient.cpp \
+    Widget/SplashScreen.cpp
 
 HEADERS  += MainWindow.h \
         Updater.h \
@@ -157,7 +158,8 @@ HEADERS  += MainWindow.h \
     TCPServer.h \
     AbstractClient.h \
     TCPClient.h \
-    Widget/DialogClient.h
+    Widget/DialogClient.h \
+    Widget/SplashScreen.h
 
 FORMS    += MainWindow.ui \
     PrinterSmallUI.ui \
