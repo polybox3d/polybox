@@ -39,6 +39,14 @@ ModulePage::~ModulePage()
 
 void ModulePage::changeLogo()
 {
+    if ( PolyboxModule::getInstance()->isConnected() )
+    {
+        ui->homeButton->setEnabled( true );
+    }
+    else
+    {
+        ui->homeButton->setEnabled( false );
+    }
     PolyboxModule::ConnectorType type = PolyboxModule::getInstance()->connectorType();
     if ( type == PolyboxModule::ServerTCP)
     {
@@ -117,7 +125,16 @@ bool ModulePage::eventFilter(QObject *obj, QEvent *event)
         }
         else if ( event->type() == QEvent::MouseButtonRelease )
         {
+#ifdef WELCOME_PAGE
             back();
+#endif
+#ifndef WELCOME_PAGE
+            if ( ! PolyboxModule::getInstance()->isConnected() )
+            {
+                PolyboxModule::getInstance()->connectToPrinter();
+            }
+#endif
+
             return true;
         }
         else if ( event->type() == QEvent::Leave )
