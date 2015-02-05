@@ -29,6 +29,7 @@ int main(int argc, char *argv[])
     QCoreApplication::setApplicationVersion( GIT_VERSION );
     Config::init();
     app.processEvents();
+
     /*********************  Translation **********************/
     QTranslator qtTranslator;
 
