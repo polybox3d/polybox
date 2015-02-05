@@ -346,7 +346,7 @@ You should have received a copy of the GNU General Public License along with thi
        </font>
       </property>
       <property name="text">
-       <string>v0.1</string>
+       <string notr="true">v0.1</string>
       </property>
      </widget>
     </item>
@@ -377,7 +377,7 @@ You should have received a copy of the GNU General Public License along with thi
        </font>
       </property>
       <property name="text">
-       <string>v5.3</string>
+       <string notr="true">v5.3</string>
       </property>
      </widget>
     </item>

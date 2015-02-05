@@ -73,7 +73,6 @@ SOURCES += main.cpp\
     Checker/SCannerChecker.cpp \
     Checker/PrinterChecker.cpp \
     Checker/GlobalChecker.cpp \
-    Page/DynamicTestPage.cpp \
     Page/WarningPage.cpp \
     Page/CNCPage.cpp \
     Page/ConfigCNCPage.cpp \
@@ -133,7 +132,6 @@ HEADERS  += MainWindow.h \
     Checker/AbstractChecker.h \
     Checker/GlobalChecker.h \
     Page/WarningPage.h \
-    Page/DynamicTestPage.h \
     Page/ConfigCNCPage.h \
     Page/CNCPage.h \
     Page/PrinterPage.h \
@@ -178,7 +176,6 @@ FORMS    += MainWindow.ui \
     Page/CNCPage.ui \
     Page/ConfigCNCPage.ui \
     Page/WarningPage.ui \
-    Page/DynamicTestPage.ui \
     Page/OpenPage.ui \
     Page/ModulePage.ui \
     Page/HelpPage.ui \

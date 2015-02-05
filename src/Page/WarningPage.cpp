@@ -66,11 +66,6 @@ void WarningPage::on_configuration_clicked()
     QDesktopServices::openUrl(QUrl(Config::pathToConfigFile()+"/"+QCoreApplication::organizationName()+"/"+QCoreApplication::applicationName()+".conf"));
 }
 
-void WarningPage::on_dynamicTest_clicked()
-{
-    CHANGE_PAGE( DynamicTest );
-}
-
 void WarningPage::on_console_clicked()
 {
     MainWindow::getMainWindow()->startConsoleWindow();

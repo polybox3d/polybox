@@ -481,9 +481,6 @@ void MainWindow::updateStatePage()
     case ConfigureCNC :
         this->setCentralWidget( new ConfigCNCPage( this ) );
         break;
-    case DynamicTest :
-        this->setCentralWidget( new DynamicTestPage( this ) );
-        break;
     case ScannerLaser :
     {
 #if !defined NO_SCAN

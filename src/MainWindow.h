@@ -19,7 +19,6 @@
 #include "CNCPage.h"
 #include "ConfigCNCPage.h"
 #include "WarningPage.h"
-#include "DynamicTestPage.h"
 #include "DialogConfigSoft.h"
 #include "PolyboxModule.h"
 #include "polyplexer.h"

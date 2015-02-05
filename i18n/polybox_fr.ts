@@ -20,7 +20,7 @@
     <message utf8="true">
         <location filename="../src/Checker/CNCChecker.ui" line="26"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Module CN prêt à l&apos;emploi :&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Module CN prêt à l&apos;emploi :&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message utf8="true">
         <location filename="../src/Checker/CNCChecker.ui" line="58"/>
@@ -173,7 +173,7 @@ Configuration &gt; Paramètres logiciel
     <message>
         <location filename="../src/Page/ConfigCNCPage.ui" line="64"/>
         <source>Tableau</source>
-        <translation type="unfinished"></translation>
+        <translation>Tableau</translation>
     </message>
     <message utf8="true">
         <location filename="../src/Page/ConfigCNCPage.ui" line="77"/>
@@ -286,7 +286,7 @@ Vous pouvez configurer votre maentte par le biais de l&apos;outil suivant.</sour
     <message>
         <location filename="../src/Widget/DebugPin.cpp" line="86"/>
         <source>Select a value</source>
-        <translation>Choisisser une valeur </translation>
+        <translation>Choisisser une valeur</translation>
     </message>
 </context>
 <context>
@@ -299,37 +299,37 @@ Vous pouvez configurer votre maentte par le biais de l&apos;outil suivant.</sour
     <message>
         <location filename="../src/Widget/DialogBroadcast.ui" line="26"/>
         <source>If your computer is plugged on a local network (or internet), you can broadcast the webcam. This is the current settings used by the software.</source>
-        <translation type="unfinished"></translation>
+        <translation>Si votre ordinateur est connecté à un reseau local (ou à internet), vous pouvez diffuser la vidéo de votre camera. Configuration actuelle du logiciel.</translation>
     </message>
     <message>
         <location filename="../src/Widget/DialogBroadcast.ui" line="50"/>
         <source>You can open the webcam on a distant computer using VLC. If you want to broadcast the stream on internet, you might need to configure your firewall/gateway to route the current Port to the local IP.</source>
-        <translation type="unfinished"></translation>
+        <translation>Vous pouvez visualiser la caméra sur un ordinateur distant en utilisant VLC. Si vous souhaitez diffuser sur internet, il est probable qu&apos;une configuration de votre pare-feu/passerelle soit nécéssaire pour router votre port vers l&apos;IP de la machine.</translation>
     </message>
     <message>
         <location filename="../src/Widget/DialogBroadcast.ui" line="66"/>
         <source>Broadcast</source>
-        <translation type="unfinished"></translation>
+        <translation>Diffuser</translation>
     </message>
     <message>
         <location filename="../src/Widget/DialogBroadcast.ui" line="83"/>
         <source>Close</source>
-        <translation type="unfinished"></translation>
+        <translation>Fermer</translation>
     </message>
     <message>
         <location filename="../src/Widget/DialogBroadcast.ui" line="103"/>
         <source>Local IP :</source>
-        <translation type="unfinished"></translation>
+        <translation>IP locale : </translation>
     </message>
     <message>
         <location filename="../src/Widget/DialogBroadcast.ui" line="117"/>
         <source>Port : </source>
-        <translation type="unfinished"></translation>
+        <translation>Port:</translation>
     </message>
     <message>
         <location filename="../src/Widget/DialogBroadcast.cpp" line="43"/>
         <source>You must enter a port number.</source>
-        <translation type="unfinished"></translation>
+        <translation>Vous devez entrer un nombre pour le port</translation>
     </message>
 </context>
 <context>
@@ -337,32 +337,32 @@ Vous pouvez configurer votre maentte par le biais de l&apos;outil suivant.</sour
     <message>
         <location filename="../src/Widget/DialogCNC.ui" line="14"/>
         <source>Information sur le module CNC</source>
-        <translation type="unfinished"></translation>
+        <translation>Informations sur le module CNC</translation>
     </message>
     <message utf8="true">
         <location filename="../src/Widget/DialogCNC.ui" line="33"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Différentes actions sont possibles sur le module CNC.&lt;/p&gt;&lt;p&gt;Il est très fortement conseillé de vérifier le paramétrage de votre machine et son bon fonctionnement avant sa première utilisation. Différent outils et aides vous sont disponibles pour une meilleur prise en main du module&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Différentes actions sont possibles sur le module CNC.&lt;/p&gt;&lt;p&gt;Il est très fortement conseillé de vérifier le paramétrage de votre machine et son bon fonctionnement avant sa première utilisation. Différent outils et aides vous sont disponibles pour une meilleur prise en main du module&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../src/Widget/DialogCNC.ui" line="110"/>
         <source>Configuration</source>
-        <translation type="unfinished"></translation>
+        <translation>Configuration</translation>
     </message>
     <message>
         <location filename="../src/Widget/DialogCNC.ui" line="65"/>
         <source>Lancer </source>
-        <translation type="unfinished"></translation>
+        <translation>Lancer </translation>
     </message>
     <message>
         <location filename="../src/Widget/DialogCNC.ui" line="76"/>
         <source>Aide</source>
-        <translation type="unfinished"></translation>
+        <translation>Aide</translation>
     </message>
     <message>
         <location filename="../src/Widget/DialogCNC.ui" line="87"/>
         <source>Fermer</source>
-        <translation type="unfinished"></translation>
+        <translation>Fermer</translation>
     </message>
 </context>
 <context>
@@ -370,47 +370,47 @@ Vous pouvez configurer votre maentte par le biais de l&apos;outil suivant.</sour
     <message>
         <location filename="../src/Widget/DialogClient.ui" line="14"/>
         <source>Dialog</source>
-        <translation type="unfinished"></translation>
+        <translation>Connexion à un serveur distant</translation>
     </message>
     <message utf8="true">
         <location filename="../src/Widget/DialogClient.ui" line="34"/>
         <source>Connexion à un serveur distant</source>
-        <translation type="unfinished"></translation>
+        <translation>Connexion à un serveur distant</translation>
     </message>
     <message utf8="true">
         <location filename="../src/Widget/DialogClient.ui" line="55"/>
         <source>Paramètres :</source>
-        <translation type="unfinished"></translation>
+        <translation>Paramètres :</translation>
     </message>
     <message utf8="true">
         <location filename="../src/Widget/DialogClient.ui" line="76"/>
         <source>Serveurs trouvés :</source>
-        <translation type="unfinished"></translation>
+        <translation>Serveurs trouvés :</translation>
     </message>
     <message>
         <location filename="../src/Widget/DialogClient.ui" line="92"/>
         <source>Connexion</source>
-        <translation type="unfinished"></translation>
+        <translation>Connexion</translation>
     </message>
     <message>
         <location filename="../src/Widget/DialogClient.ui" line="109"/>
         <source>Fermer</source>
-        <translation type="unfinished"></translation>
+        <translation>Fermer</translation>
     </message>
     <message>
         <location filename="../src/Widget/DialogClient.ui" line="139"/>
         <source>Addresse du Reseau</source>
-        <translation type="unfinished"></translation>
+        <translation>Addresse du Reseau</translation>
     </message>
     <message>
         <location filename="../src/Widget/DialogClient.ui" line="149"/>
         <source>Port : </source>
-        <translation type="unfinished"></translation>
+        <translation>Port : </translation>
     </message>
     <message>
         <location filename="../src/Widget/DialogClient.cpp" line="9"/>
         <source>Remote Connection</source>
-        <translation type="unfinished"></translation>
+        <translation>Connexion distante</translation>
     </message>
 </context>
 <context>
@@ -418,142 +418,142 @@ Vous pouvez configurer votre maentte par le biais de l&apos;outil suivant.</sour
     <message>
         <location filename="../src/Widget/DialogConfigSoft.ui" line="14"/>
         <source>Panneau de configuration</source>
-        <translation type="unfinished"></translation>
+        <translation>Panneau de configuration</translation>
     </message>
     <message>
         <location filename="../src/Widget/DialogConfigSoft.ui" line="26"/>
         <source>Fermer</source>
-        <translation type="unfinished"></translation>
+        <translation>Fermer</translation>
     </message>
     <message>
         <location filename="../src/Widget/DialogConfigSoft.ui" line="43"/>
         <source>Appliquer</source>
-        <translation type="unfinished"></translation>
+        <translation>Appliquer</translation>
     </message>
     <message>
         <location filename="../src/Widget/DialogConfigSoft.ui" line="60"/>
         <source>CNC</source>
-        <translation type="unfinished"></translation>
+        <translation>CNC</translation>
     </message>
     <message utf8="true">
         <location filename="../src/Widget/DialogConfigSoft.ui" line="75"/>
         <source>Répertoire LinuxCNC :</source>
-        <translation type="unfinished"></translation>
+        <translation>Répertoire LinuxCNC :</translation>
     </message>
     <message utf8="true">
         <location filename="../src/Widget/DialogConfigSoft.ui" line="82"/>
         <source>Exécutable LinuxCNC :</source>
-        <translation type="unfinished"></translation>
+        <translation>Exécutable LinuxCNC :</translation>
     </message>
     <message utf8="true">
         <location filename="../src/Widget/DialogConfigSoft.ui" line="137"/>
         <source>Générale</source>
-        <translation type="unfinished"></translation>
+        <translation>Générale</translation>
     </message>
     <message>
         <location filename="../src/Widget/DialogConfigSoft.ui" line="152"/>
         <source>Executable PolyPlexer :</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message utf8="true">
         <location filename="../src/Widget/DialogConfigSoft.ui" line="159"/>
         <source>Périphérique Virtuel : </source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message utf8="true">
         <location filename="../src/Widget/DialogConfigSoft.ui" line="188"/>
         <source>Répertoire périphériques :</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../src/Widget/DialogConfigSoft.ui" line="201"/>
         <source>Repertoire Home :</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message utf8="true">
         <location filename="../src/Widget/DialogConfigSoft.ui" line="208"/>
         <source>Nom périphérique série :</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../src/Widget/DialogConfigSoft.ui" line="257"/>
         <source>Baudrate : </source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message utf8="true">
         <location filename="../src/Widget/DialogConfigSoft.ui" line="283"/>
         <source>Désactiver les contrôles :</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message utf8="true">
         <location filename="../src/Widget/DialogConfigSoft.ui" line="290"/>
         <source>Désactiver Polyplexer</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../src/Widget/DialogConfigSoft.ui" line="297"/>
         <source> (Pour les experts)</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../src/Widget/DialogConfigSoft.ui" line="314"/>
         <source>Configuration</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../src/Widget/DialogConfigSoft.ui" line="326"/>
         <source>Sauvegarder sous...</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../src/Widget/DialogConfigSoft.ui" line="339"/>
         <source>Charger</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message utf8="true">
         <location filename="../src/Widget/DialogConfigSoft.ui" line="352"/>
         <source>Sauvegarder défaut</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../src/Widget/DialogConfigSoft.ui" line="365"/>
         <source>Charger Valeurs usines</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../src/Widget/DialogConfigSoft.ui" line="379"/>
         <source>Imprimante</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../src/Widget/DialogConfigSoft.ui" line="403"/>
         <source>Executable :</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message utf8="true">
         <location filename="../src/Widget/DialogConfigSoft.ui" line="410"/>
         <source>Répertoire de travail :</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../src/Widget/DialogConfigSoft.cpp" line="96"/>
         <source>Enregistrer la configuration</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../src/Widget/DialogConfigSoft.cpp" line="98"/>
         <source>Config File (*.xml)</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../src/Widget/DialogConfigSoft.cpp" line="108"/>
         <source>Selectionner une configuration</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../src/Widget/DialogConfigSoft.cpp" line="108"/>
         <source>Config Files (*.xml)</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
 </context>
 <context>
@@ -561,22 +561,22 @@ Vous pouvez configurer votre maentte par le biais de l&apos;outil suivant.</sour
     <message>
         <location filename="../src/Widget/DialogCredits.ui" line="14"/>
         <source>Dialog</source>
-        <translation type="unfinished"></translation>
+        <translation>A propos</translation>
     </message>
     <message>
         <location filename="../src/Widget/DialogCredits.ui" line="51"/>
         <source>Versions</source>
-        <translation type="unfinished"></translation>
+        <translation>Versions</translation>
     </message>
     <message>
         <location filename="../src/Widget/DialogCredits.ui" line="73"/>
         <source>Credits</source>
-        <translation type="unfinished"></translation>
+        <translation>Credits</translation>
     </message>
     <message>
         <location filename="../src/Widget/DialogCredits.ui" line="95"/>
         <source>Contacts : </source>
-        <translation type="unfinished"></translation>
+        <translation>Contactes : </translation>
     </message>
     <message>
         <location filename="../src/Widget/DialogCredits.ui" line="117"/>
@@ -607,37 +607,37 @@ You should have received a copy of the GNU General Public License along with thi
     <message>
         <location filename="../src/Widget/DialogCredits.ui" line="217"/>
         <source>CNC Software </source>
-        <translation type="unfinished"></translation>
+        <translation>logiciel CNC </translation>
     </message>
     <message>
         <location filename="../src/Widget/DialogCredits.ui" line="236"/>
         <source>LinuxCNC</source>
-        <translation type="unfinished"></translation>
+        <translation>LinuxCNC</translation>
     </message>
     <message>
         <location filename="../src/Widget/DialogCredits.ui" line="252"/>
         <source>Printer Software </source>
-        <translation type="unfinished"></translation>
+        <translation>Logiciel d&apos;impression</translation>
     </message>
     <message>
         <location filename="../src/Widget/DialogCredits.ui" line="271"/>
         <source>Repetier Host</source>
-        <translation type="unfinished"></translation>
+        <translation>Repetier-Host</translation>
     </message>
     <message>
         <location filename="../src/Widget/DialogCredits.ui" line="287"/>
         <source>Scanner Software</source>
-        <translation type="unfinished"></translation>
+        <translation>Logiciel de scan</translation>
     </message>
     <message>
         <location filename="../src/Widget/DialogCredits.ui" line="306"/>
         <source>FabScan100</source>
-        <translation type="unfinished"></translation>
+        <translation>FabScan100</translation>
     </message>
     <message>
         <location filename="../src/Widget/DialogCredits.ui" line="333"/>
         <source>PolySoftware</source>
-        <translation type="unfinished"></translation>
+        <translation>PolySoftware</translation>
     </message>
     <message>
         <location filename="../src/Widget/DialogCredits.ui" line="349"/>
@@ -660,32 +660,32 @@ You should have received a copy of the GNU General Public License along with thi
     <message utf8="true">
         <location filename="../src/Widget/DialogScanner.ui" line="14"/>
         <source>Sélection du mode Scanner</source>
-        <translation type="unfinished"></translation>
+        <translation>Sélection du mode Scanner</translation>
     </message>
     <message utf8="true">
         <location filename="../src/Widget/DialogScanner.ui" line="30"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;Sélectionner le type de scanner que vous souhaitez utiliser.&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;&lt;br/&gt;Pour plus d&apos;information, Référez-vous à l&apos;aide.&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;Sélectionner le type de scanner que vous souhaitez utiliser.&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;&lt;br/&gt;Pour plus d&apos;information, Référez-vous à l&apos;aide.&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../src/Widget/DialogScanner.ui" line="49"/>
         <source>Aide</source>
-        <translation type="unfinished"></translation>
+        <translation>Aide</translation>
     </message>
     <message>
         <location filename="../src/Widget/DialogScanner.ui" line="60"/>
         <source>Fermer</source>
-        <translation type="unfinished"></translation>
+        <translation>Fermer</translation>
     </message>
     <message>
         <location filename="../src/Widget/DialogScanner.ui" line="83"/>
         <source>Scanner Laser</source>
-        <translation type="unfinished"></translation>
+        <translation>Scanner Laser</translation>
     </message>
     <message>
         <location filename="../src/Widget/DialogScanner.ui" line="100"/>
         <source>Capteur PrimeSense</source>
-        <translation type="unfinished"></translation>
+        <translation>Capteur PrimeSense</translation>
     </message>
 </context>
 <context>
@@ -739,17 +739,17 @@ You should have received a copy of the GNU General Public License along with thi
     <message>
         <location filename="../src/Widget/FolderButton.cpp" line="30"/>
         <source>Selectionner le fichier</source>
-        <translation type="unfinished"></translation>
+        <translation>Selectionner le fichier</translation>
     </message>
     <message>
         <location filename="../src/Widget/FolderButton.cpp" line="30"/>
         <source>(*)</source>
-        <translation type="unfinished"></translation>
+        <translation>(*)</translation>
     </message>
     <message>
         <location filename="../src/Widget/FolderButton.cpp" line="40"/>
         <source>Selectionner un rÃ©pertoire</source>
-        <translation type="unfinished"></translation>
+        <translation>Selectionner un répertoire</translation>
     </message>
 </context>
 <context>
@@ -757,105 +757,107 @@ You should have received a copy of the GNU General Public License along with thi
     <message utf8="true">
         <location filename="../src/Checker/GlobalChecker.ui" line="14"/>
         <source>Contrôle général</source>
-        <translation type="unfinished"></translation>
+        <translation>Contrôle général</translation>
     </message>
     <message>
         <location filename="../src/Checker/GlobalChecker.ui" line="26"/>
         <source>Branchements</source>
-        <translation type="unfinished"></translation>
+        <translation>Branchements</translation>
     </message>
     <message utf8="true">
         <location filename="../src/Checker/GlobalChecker.ui" line="57"/>
         <source>Arduino #2 connectée</source>
-        <translation type="unfinished"></translation>
+        <translation>Arduino #2 connectée</translation>
     </message>
     <message utf8="true">
         <location filename="../src/Checker/GlobalChecker.ui" line="89"/>
         <source>Arduino #1 connectée</source>
-        <translation type="unfinished"></translation>
+        <translation>Arduino #1 connectée</translation>
     </message>
     <message utf8="true">
         <location filename="../src/Checker/GlobalChecker.ui" line="140"/>
         <source>Webcam surveillance
  branché</source>
-        <translation type="unfinished"></translation>
+        <translation>Webcam surveillance
+ branché</translation>
     </message>
     <message utf8="true">
         <location filename="../src/Checker/GlobalChecker.ui" line="157"/>
         <source>Arduino #3 connectée</source>
-        <translation type="unfinished"></translation>
+        <translation>Arduino #3 connectée</translation>
     </message>
     <message utf8="true">
         <location filename="../src/Checker/GlobalChecker.ui" line="189"/>
         <source>Arduino #4 connectée</source>
-        <translation type="unfinished"></translation>
+        <translation>Arduino #4 connectée</translation>
     </message>
     <message utf8="true">
         <location filename="../src/Checker/GlobalChecker.ui" line="221"/>
         <source>Bloc outil branché</source>
-        <translation type="unfinished"></translation>
+        <translation>Bloc outil branché</translation>
     </message>
     <message>
         <location filename="../src/Checker/GlobalChecker.ui" line="235"/>
         <source>Etats</source>
-        <translation type="unfinished"></translation>
+        <translation>Etats</translation>
     </message>
     <message>
         <location filename="../src/Checker/GlobalChecker.ui" line="247"/>
         <source>Porte ouverte</source>
-        <translation type="unfinished"></translation>
+        <translation>Porte ouverte</translation>
     </message>
     <message utf8="true">
         <location filename="../src/Checker/GlobalChecker.ui" line="279"/>
         <source>Alimenté</source>
-        <translation type="unfinished"></translation>
+        <translation>Alimenté</translation>
     </message>
     <message utf8="true">
         <location filename="../src/Checker/GlobalChecker.ui" line="311"/>
         <source>Temperature 
 carte électronique</source>
-        <translation type="unfinished"></translation>
+        <translation>Temperature 
+carte électronique</translation>
     </message>
     <message utf8="true">
         <location filename="../src/Checker/GlobalChecker.ui" line="344"/>
         <source>--°C</source>
-        <translation type="unfinished"></translation>
+        <translation>--°C</translation>
     </message>
     <message>
         <location filename="../src/Checker/GlobalChecker.ui" line="376"/>
         <source>Capot ouvert</source>
-        <translation type="unfinished"></translation>
+        <translation>Capot ouvert</translation>
     </message>
     <message>
         <location filename="../src/Checker/GlobalChecker.ui" line="389"/>
         <source>PRE-ASI ATU</source>
-        <translation type="unfinished"></translation>
+        <translation>PRE-ASI ATU</translation>
     </message>
     <message utf8="true">
         <location filename="../src/Checker/GlobalChecker.ui" line="440"/>
         <source>Connecté</source>
-        <translation type="unfinished"></translation>
+        <translation>Connecté</translation>
     </message>
     <message>
         <location filename="../src/Checker/GlobalChecker.ui" line="462"/>
         <source>RAM:</source>
-        <translation type="unfinished"></translation>
+        <translation>RAM : </translation>
     </message>
     <message>
         <location filename="../src/Checker/GlobalChecker.ui" line="481"/>
         <location filename="../src/Checker/GlobalChecker.ui" line="513"/>
         <source>0</source>
-        <translation type="unfinished"></translation>
+        <translation>0</translation>
     </message>
     <message>
         <location filename="../src/Checker/GlobalChecker.ui" line="494"/>
         <source>Time: </source>
-        <translation type="unfinished"></translation>
+        <translation>Temps : </translation>
     </message>
     <message utf8="true">
         <location filename="../src/Checker/GlobalChecker.ui" line="530"/>
         <source>&lt;b&gt;Polybox prête à l&apos;emploi : &lt;/b&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;b&gt;Polybox prête à l&apos;emploi : &lt;/b&gt;</translation>
     </message>
 </context>
 <context>
@@ -863,7 +865,7 @@ carte électronique</source>
     <message>
         <location filename="../src/Page/HelpPage.ui" line="14"/>
         <source>Page d&apos;aide</source>
-        <translation type="unfinished"></translation>
+        <translation>Page d&apos;aide</translation>
     </message>
 </context>
 <context>
@@ -871,17 +873,17 @@ carte électronique</source>
     <message>
         <location filename="../src/Widget/interbutton.ui" line="14"/>
         <source>Bouton Inter</source>
-        <translation type="unfinished"></translation>
+        <translation>Bouton Inter</translation>
     </message>
     <message>
         <location filename="../src/Widget/interbutton.ui" line="26"/>
         <source>Arret/Marche </source>
-        <translation type="unfinished"></translation>
+        <translation>Arret/Marche</translation>
     </message>
     <message utf8="true">
         <location filename="../src/Widget/interbutton.ui" line="49"/>
         <source>ATU général</source>
-        <translation type="unfinished"></translation>
+        <translation>ATU général</translation>
     </message>
 </context>
 <context>
@@ -889,17 +891,17 @@ carte électronique</source>
     <message>
         <location filename="../src/Module/LabViewModule.cpp" line="157"/>
         <source>VidÃ©o de sortie</source>
-        <translation type="unfinished"></translation>
+        <translation>Vidéo de sortie</translation>
     </message>
     <message>
         <location filename="../src/Module/LabViewModule.cpp" line="359"/>
         <source>Save to XML file</source>
-        <translation type="unfinished"></translation>
+        <translation>Enregistrer XML</translation>
     </message>
     <message>
         <location filename="../src/Module/LabViewModule.cpp" line="360"/>
         <source>Couldn&apos;t write to </source>
-        <translation type="unfinished"></translation>
+        <translation>Impossible d&apos;écrire le fichier </translation>
     </message>
 </context>
 <context>
@@ -907,37 +909,37 @@ carte électronique</source>
     <message>
         <location filename="../src/Page/LabViewPage.ui" line="20"/>
         <source>LabView</source>
-        <translation type="unfinished"></translation>
+        <translation>LabView</translation>
     </message>
     <message utf8="true">
         <location filename="../src/Page/LabViewPage.ui" line="32"/>
         <source>Ambiance Générale</source>
-        <translation type="unfinished"></translation>
+        <translation>Ambiance Générale</translation>
     </message>
     <message utf8="true">
         <location filename="../src/Page/LabViewPage.ui" line="55"/>
         <source>Couleur Générale</source>
-        <translation type="unfinished"></translation>
+        <translation>Couleur Générale</translation>
     </message>
     <message>
         <location filename="../src/Page/LabViewPage.ui" line="87"/>
         <source>V :</source>
-        <translation type="unfinished"></translation>
+        <translation>V :</translation>
     </message>
     <message>
         <location filename="../src/Page/LabViewPage.ui" line="94"/>
         <source>R :</source>
-        <translation type="unfinished"></translation>
+        <translation>R :</translation>
     </message>
     <message>
         <location filename="../src/Page/LabViewPage.ui" line="128"/>
         <source>B :</source>
-        <translation type="unfinished"></translation>
+        <translation>B :</translation>
     </message>
     <message>
         <location filename="../src/Page/LabViewPage.ui" line="142"/>
         <source>Int. :</source>
-        <translation type="unfinished"></translation>
+        <translation>Int. :</translation>
     </message>
     <message>
         <location filename="../src/Page/LabViewPage.ui" line="175"/>
@@ -947,12 +949,12 @@ carte électronique</source>
     <message>
         <location filename="../src/Page/LabViewPage.ui" line="188"/>
         <source>Code RGB (#) :</source>
-        <translation type="unfinished"></translation>
+        <translation>Code RGB (#) :</translation>
     </message>
     <message utf8="true">
         <location filename="../src/Page/LabViewPage.ui" line="215"/>
         <source>Lumière blanche</source>
-        <translation type="unfinished"></translation>
+        <translation>Lumière blanche</translation>
     </message>
     <message utf8="true">
         <location filename="../src/Page/LabViewPage.ui" line="230"/>
@@ -962,137 +964,137 @@ carte électronique</source>
     <message>
         <location filename="../src/Page/LabViewPage.ui" line="240"/>
         <source>Individuelle</source>
-        <translation type="unfinished"></translation>
+        <translation>Individuelle</translation>
     </message>
     <message>
         <location filename="../src/Page/LabViewPage.ui" line="259"/>
         <source>Verticale :</source>
-        <translation type="unfinished"></translation>
+        <translation>Verticale :</translation>
     </message>
     <message>
         <location filename="../src/Page/LabViewPage.ui" line="283"/>
         <source>Horizontale :</source>
-        <translation type="unfinished"></translation>
+        <translation>Horizontale :</translation>
     </message>
     <message>
         <location filename="../src/Page/LabViewPage.ui" line="338"/>
         <source>Profile</source>
-        <translation type="unfinished"></translation>
+        <translation>Profile</translation>
     </message>
     <message>
         <location filename="../src/Page/LabViewPage.ui" line="350"/>
         <source>Enregistrer</source>
-        <translation type="unfinished"></translation>
+        <translation>Enregistrer</translation>
     </message>
     <message>
         <location filename="../src/Page/LabViewPage.ui" line="363"/>
         <source>Charger</source>
-        <translation type="unfinished"></translation>
+        <translation>Charger</translation>
     </message>
     <message>
         <location filename="../src/Page/LabViewPage.ui" line="376"/>
         <source>Profile par defaut</source>
-        <translation type="unfinished"></translation>
+        <translation>Profile par défaut</translation>
     </message>
     <message>
         <location filename="../src/Page/LabViewPage.ui" line="393"/>
         <source>Selection des faces</source>
-        <translation type="unfinished"></translation>
+        <translation>Sélection des faces</translation>
     </message>
     <message>
         <location filename="../src/Page/LabViewPage.ui" line="408"/>
         <source>Fond</source>
-        <translation type="unfinished"></translation>
+        <translation>Fond</translation>
     </message>
     <message>
         <location filename="../src/Page/LabViewPage.ui" line="439"/>
         <source>Haut</source>
-        <translation type="unfinished"></translation>
+        <translation>Haut</translation>
     </message>
     <message>
         <location filename="../src/Page/LabViewPage.ui" line="458"/>
         <source>Gauche</source>
-        <translation type="unfinished"></translation>
+        <translation>Gauche</translation>
     </message>
     <message>
         <location filename="../src/Page/LabViewPage.ui" line="477"/>
         <source>Droite</source>
-        <translation type="unfinished"></translation>
+        <translation>Droite</translation>
     </message>
     <message>
         <location filename="../src/Page/LabViewPage.ui" line="496"/>
         <source>Face Avant</source>
-        <translation type="unfinished"></translation>
+        <translation>Face Avant</translation>
     </message>
     <message>
         <location filename="../src/Page/LabViewPage.ui" line="658"/>
         <source>Diffuser</source>
-        <translation type="unfinished"></translation>
+        <translation>Diffuser</translation>
     </message>
     <message>
         <location filename="../src/Page/LabViewPage.ui" line="518"/>
         <source>Face avant</source>
-        <translation type="unfinished"></translation>
+        <translation>Face avant</translation>
     </message>
     <message>
         <location filename="../src/Page/LabViewPage.ui" line="538"/>
         <source>Visualiser</source>
-        <translation type="unfinished"></translation>
+        <translation>Visualiser</translation>
     </message>
     <message utf8="true">
         <location filename="../src/Page/LabViewPage.ui" line="564"/>
         <source>Enregistrer la vidéo</source>
-        <translation type="unfinished"></translation>
+        <translation>Enregistrer la vidéo</translation>
     </message>
     <message>
         <location filename="../src/Page/LabViewPage.ui" line="597"/>
         <source>Camera : </source>
-        <translation type="unfinished"></translation>
+        <translation>Caméra : </translation>
     </message>
     <message utf8="true">
         <location filename="../src/Page/LabViewPage.ui" line="610"/>
         <source>Contrôle : </source>
-        <translation type="unfinished"></translation>
+        <translation>Contrôle : </translation>
     </message>
     <message>
         <location filename="../src/Page/LabViewPage.ui" line="626"/>
         <source>Logiciel</source>
-        <translation type="unfinished"></translation>
+        <translation>Logiciel</translation>
     </message>
     <message utf8="true">
         <location filename="../src/Page/LabViewPage.ui" line="636"/>
         <source>Télécommande</source>
-        <translation type="unfinished"></translation>
+        <translation>Télécommande</translation>
     </message>
     <message>
         <location filename="../src/Page/LabViewPage.cpp" line="131"/>
         <source>Save to XML file</source>
-        <translation type="unfinished"></translation>
+        <translation>Enregistrer XML</translation>
     </message>
     <message>
         <location filename="../src/Page/LabViewPage.cpp" line="132"/>
         <source>Couldn&apos;t read from </source>
-        <translation type="unfinished"></translation>
+        <translation>Impossible de lire le fichier</translation>
     </message>
     <message>
         <location filename="../src/Page/LabViewPage.cpp" line="198"/>
         <source>Selectionner un profile</source>
-        <translation type="unfinished"></translation>
+        <translation>Selectionner un profile</translation>
     </message>
     <message>
         <location filename="../src/Page/LabViewPage.cpp" line="198"/>
         <source>Profile Files (*.xml)</source>
-        <translation type="unfinished"></translation>
+        <translation>Profile Files (*.xml)</translation>
     </message>
     <message>
         <location filename="../src/Page/LabViewPage.cpp" line="211"/>
         <source>Enregistrer le profile</source>
-        <translation type="unfinished"></translation>
+        <translation>Enregistrer le profile</translation>
     </message>
     <message>
         <location filename="../src/Page/LabViewPage.cpp" line="213"/>
         <source>Profile File (*.xml)</source>
-        <translation type="unfinished"></translation>
+        <translation>Profile File (*.xml)</translation>
     </message>
 </context>
 <context>
@@ -1100,185 +1102,185 @@ carte électronique</source>
     <message utf8="true">
         <location filename="../src/MainWindow.ui" line="14"/>
         <source>PolyBox - Centre de contrôle</source>
-        <translation type="unfinished"></translation>
+        <translation>PolyBox - Centre de contrôle</translation>
     </message>
     <message>
         <location filename="../src/MainWindow.ui" line="38"/>
         <source>Modules</source>
-        <translation type="unfinished"></translation>
+        <translation>Modules</translation>
     </message>
     <message>
         <location filename="../src/MainWindow.ui" line="48"/>
         <source>Outils</source>
-        <translation type="unfinished"></translation>
+        <translation>Outils</translation>
     </message>
     <message>
         <location filename="../src/MainWindow.ui" line="52"/>
         <source>Visualiser</source>
-        <translation type="unfinished"></translation>
+        <translation>Visualiser</translation>
     </message>
     <message>
         <location filename="../src/MainWindow.ui" line="57"/>
         <source>Connexion Machine</source>
-        <translation type="unfinished"></translation>
+        <translation>Connexion Machine</translation>
     </message>
     <message>
         <location filename="../src/MainWindow.ui" line="73"/>
         <source>Aide</source>
-        <translation type="unfinished"></translation>
+        <translation>Aide</translation>
     </message>
     <message>
         <location filename="../src/MainWindow.ui" line="77"/>
         <location filename="../src/MainWindow.ui" line="168"/>
         <source>Langage</source>
-        <translation type="unfinished"></translation>
+        <translation>Langage</translation>
     </message>
     <message utf8="true">
         <location filename="../src/MainWindow.ui" line="82"/>
         <source>Thèmes</source>
-        <translation type="unfinished"></translation>
+        <translation>Thèmes</translation>
     </message>
     <message>
         <location filename="../src/MainWindow.ui" line="90"/>
         <source>A propos</source>
-        <translation type="unfinished"></translation>
+        <translation>A propos</translation>
     </message>
     <message>
         <location filename="../src/MainWindow.ui" line="102"/>
         <source>CNC</source>
-        <translation type="unfinished"></translation>
+        <translation>CNC</translation>
     </message>
     <message>
         <location filename="../src/MainWindow.ui" line="105"/>
         <source>Ctrl+Shift+C</source>
-        <translation type="unfinished"></translation>
+        <translation>Ctrl+Shift+C</translation>
     </message>
     <message>
         <location filename="../src/MainWindow.ui" line="110"/>
         <source>Imprimante</source>
-        <translation type="unfinished"></translation>
+        <translation>Imprimante</translation>
     </message>
     <message>
         <location filename="../src/MainWindow.ui" line="113"/>
         <source>Ctrl+Shift+P</source>
-        <translation type="unfinished"></translation>
+        <translation>Ctrl+Shift+P</translation>
     </message>
     <message>
         <location filename="../src/MainWindow.ui" line="118"/>
         <source>Scanner</source>
-        <translation type="unfinished"></translation>
+        <translation>Scanner</translation>
     </message>
     <message>
         <location filename="../src/MainWindow.ui" line="121"/>
         <source>Ctrl+Shift+S</source>
-        <translation type="unfinished"></translation>
+        <translation>Ctrl+Shift+S</translation>
     </message>
     <message>
         <location filename="../src/MainWindow.ui" line="126"/>
         <source>LabView</source>
-        <translation type="unfinished"></translation>
+        <translation>LabView</translation>
     </message>
     <message>
         <location filename="../src/MainWindow.ui" line="129"/>
         <source>Ctrl+Shift+L</source>
-        <translation type="unfinished"></translation>
+        <translation>Ctrl+Shift+L</translation>
     </message>
     <message>
         <location filename="../src/MainWindow.ui" line="134"/>
         <source>Activer Manette</source>
-        <translation type="unfinished"></translation>
+        <translation>Activer Manette</translation>
     </message>
     <message>
         <location filename="../src/MainWindow.ui" line="137"/>
         <source>Ctrl+Shift+M</source>
-        <translation type="unfinished"></translation>
+        <translation>Ctrl+Shift+M</translation>
     </message>
     <message>
         <location filename="../src/MainWindow.ui" line="142"/>
         <source>LabView (dock)</source>
-        <translation type="unfinished"></translation>
+        <translation>LabView (dock)</translation>
     </message>
     <message>
         <location filename="../src/MainWindow.ui" line="145"/>
         <source>Ctrl+Shift+L, L</source>
-        <translation type="unfinished"></translation>
+        <translation>Ctrl+Shift+L, L</translation>
     </message>
     <message>
         <location filename="../src/MainWindow.ui" line="173"/>
         <source>Credits</source>
-        <translation type="unfinished"></translation>
+        <translation>Crédits</translation>
     </message>
     <message>
         <location filename="../src/MainWindow.ui" line="181"/>
         <location filename="../src/MainWindow.cpp" line="606"/>
         <source>Start Server Mode</source>
-        <translation type="unfinished"></translation>
+        <translation>Start Server Mode</translation>
     </message>
     <message>
         <location filename="../src/MainWindow.ui" line="189"/>
         <source>Start Client Mode</source>
-        <translation type="unfinished"></translation>
+        <translation>Start Client Mode</translation>
     </message>
     <message>
         <location filename="../src/MainWindow.ui" line="150"/>
         <location filename="../src/MainWindow.cpp" line="109"/>
         <source>Console</source>
-        <translation type="unfinished"></translation>
+        <translation>Console</translation>
     </message>
     <message>
         <location filename="../src/MainWindow.ui" line="153"/>
         <source>Ctrl+Shift+O</source>
-        <translation type="unfinished"></translation>
+        <translation>Ctrl+Shift+O</translation>
     </message>
     <message>
         <location filename="../src/MainWindow.ui" line="158"/>
         <source>Visualisation</source>
-        <translation type="unfinished"></translation>
+        <translation>Visualisation</translation>
     </message>
     <message utf8="true">
         <location filename="../src/MainWindow.ui" line="163"/>
         <source>Paramètres</source>
-        <translation type="unfinished"></translation>
+        <translation>Paramètres</translation>
     </message>
     <message>
         <location filename="../src/MainWindow.cpp" line="83"/>
         <source>La connexion est active avec la machine.Quitter le programme va intÃ©rompte toute imprÃ©ssion ou usinage en activitÃ©. </source>
-        <translation type="unfinished"></translation>
+        <translation>La connexion est active avec la machine. Quitter le programme va intérrompre toutes impréssions ou usinages en activités.</translation>
     </message>
     <message>
         <location filename="../src/MainWindow.cpp" line="274"/>
         <source>Status : Connected</source>
-        <translation type="unfinished"></translation>
+        <translation>Status : Connecté</translation>
     </message>
     <message>
         <location filename="../src/MainWindow.cpp" line="279"/>
         <source>Status : Unconnected</source>
-        <translation type="unfinished"></translation>
+        <translation>Status : Déconnecté</translation>
     </message>
     <message>
         <location filename="../src/MainWindow.cpp" line="287"/>
         <source>Status : Mode Server</source>
-        <translation type="unfinished"></translation>
+        <translation>Status : Mode Server</translation>
     </message>
     <message>
         <location filename="../src/MainWindow.cpp" line="293"/>
         <source>Status : Mode Client</source>
-        <translation type="unfinished"></translation>
+        <translation>Status : Mode Client</translation>
     </message>
     <message>
         <location filename="../src/MainWindow.cpp" line="514"/>
         <source>Activer manette</source>
-        <translation type="unfinished"></translation>
+        <translation>Activer manette</translation>
     </message>
     <message>
         <location filename="../src/MainWindow.cpp" line="522"/>
         <source>DÃ©sactiver manette</source>
-        <translation type="unfinished"></translation>
+        <translation>Désactiver manette</translation>
     </message>
     <message>
         <location filename="../src/MainWindow.cpp" line="595"/>
         <source>Stop Server Mode</source>
-        <translation type="unfinished"></translation>
+        <translation>Stop Server Mode</translation>
     </message>
 </context>
 <context>
@@ -1286,37 +1288,37 @@ carte électronique</source>
     <message>
         <location filename="../src/Page/ModulePage.ui" line="14"/>
         <source>Modules</source>
-        <translation type="unfinished"></translation>
+        <translation>Modules</translation>
     </message>
     <message>
         <location filename="../src/Page/ModulePage.ui" line="65"/>
         <source>Imprimante</source>
-        <translation type="unfinished"></translation>
+        <translation>Imprimante</translation>
     </message>
     <message>
         <location filename="../src/Page/ModulePage.ui" line="98"/>
         <source>CNC</source>
-        <translation type="unfinished"></translation>
+        <translation>CNC</translation>
     </message>
     <message>
         <location filename="../src/Page/ModulePage.ui" line="124"/>
         <source>Scanner</source>
-        <translation type="unfinished"></translation>
+        <translation>Scanner</translation>
     </message>
     <message>
         <location filename="../src/Page/ModulePage.ui" line="150"/>
         <source>LabView</source>
-        <translation type="unfinished"></translation>
+        <translation>LabView</translation>
     </message>
     <message>
         <location filename="../src/Page/ModulePage.ui" line="179"/>
         <source>Sharing</source>
-        <translation type="unfinished"></translation>
+        <translation>Partage</translation>
     </message>
     <message>
         <location filename="../src/Page/ModulePage.ui" line="224"/>
         <source>Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Configuration</translation>
     </message>
 </context>
 <context>
@@ -1324,7 +1326,7 @@ carte électronique</source>
     <message>
         <location filename="../src/Page/OpenPage.ui" line="14"/>
         <source>PolyboxSoftware</source>
-        <translation type="unfinished"></translation>
+        <translation>PolyboxSoftware</translation>
     </message>
     <message>
         <location filename="../src/Page/OpenPage.ui" line="26"/>
@@ -1334,22 +1336,22 @@ carte électronique</source>
     <message>
         <location filename="../src/Page/OpenPage.ui" line="45"/>
         <source>Configuration</source>
-        <translation type="unfinished"></translation>
+        <translation>Configuration</translation>
     </message>
     <message>
         <location filename="../src/Page/OpenPage.ui" line="58"/>
         <source>Commencez</source>
-        <translation type="unfinished"></translation>
+        <translation>Commencez</translation>
     </message>
     <message>
         <location filename="../src/Page/OpenPage.ui" line="71"/>
         <source>Aide</source>
-        <translation type="unfinished"></translation>
+        <translation>Aide</translation>
     </message>
     <message>
         <location filename="../src/Page/OpenPage.cpp" line="73"/>
         <source>Etat de la machine</source>
-        <translation type="unfinished"></translation>
+        <translation>État de la machine</translation>
     </message>
 </context>
 <context>
@@ -1357,26 +1359,30 @@ carte électronique</source>
     <message>
         <location filename="../src/Module/PolyboxModule.cpp" line="104"/>
         <source>Le logiciel est correctement connectÃ© Ã  la machine. </source>
-        <translation type="unfinished"></translation>
+        <translation>Le logiciel est correctement connecté à la machine.</translation>
     </message>
     <message>
         <location filename="../src/Module/PolyboxModule.cpp" line="112"/>
         <source>Impossible de se connecter Ã  la machine.
  Error 0xff34&apos; </source>
-        <translation type="unfinished"></translation>
+        <translation>Impossible de se connecter à  la machine.
+ Error 0xff34&apos;</translation>
     </message>
     <message>
         <location filename="../src/Module/PolyboxModule.cpp" line="117"/>
         <source>Impossible de se connecter Ã  la machine.
  Erreur au lancement du sous-programme Polyplexer. 0xff30&apos; </source>
-        <translation type="unfinished"></translation>
+        <translation>Impossible de se connecter à la machine.
+ Erreur au lancement du sous-programme Polyplexer. 0xff30&apos;</translation>
     </message>
     <message>
         <location filename="../src/Module/PolyboxModule.cpp" line="172"/>
         <source>Une erreur est survenue. La machine ne rÃ©pond plus aux messages depuis un certain temps.
  Veuillez vous reconnecter.
 </source>
-        <translation type="unfinished"></translation>
+        <translation>Une erreur est survenue. La machine ne répond plus aux messages depuis un certain temps.
+ Veuillez vous reconnecter.
+</translation>
     </message>
 </context>
 <context>
@@ -1386,7 +1392,9 @@ carte électronique</source>
         <source>
 
 Mauvaise configuration du logiciel...Ca n&apos;aurait pas du se passer Ã  part si vous avez modifier tout et n&apos;importequoi dans les configurations ou les sources...</source>
-        <translation type="unfinished"></translation>
+        <translation>
+
+Mauvaise configuration du logiciel...Ca n&apos;aurait pas du se passer à  part si vous avez modifié tout et n&apos;importe quoi dans les configurations ou les sources...</translation>
     </message>
     <message>
         <location filename="../src/polyplexer.cpp" line="95"/>
@@ -1394,7 +1402,10 @@ Mauvaise configuration du logiciel...Ca n&apos;aurait pas du se passer Ã  part
 
 Impossible de se connecter Ã  la machine. Connexion serie/USB introuvable.
 Verifiez les branchements, l&apos;alimentation electrique et les paramÃ¨tres (device name, path, permission).</source>
-        <translation type="unfinished"></translation>
+        <translation>
+
+Can not connect to the machine. Log serial / USB not found.
+ Check the connections, the power supply and the parameters (device name, path, permission).</translation>
     </message>
     <message>
         <location filename="../src/polyplexer.cpp" line="100"/>
@@ -1402,7 +1413,10 @@ Verifiez les branchements, l&apos;alimentation electrique et les paramÃ¨tres (
 
 Impossible de se connecter Ã  la machine. Connexion serie/USB introuvable.
 Verifiez les parametres (device name, path, permission).</source>
-        <translation type="unfinished"></translation>
+        <translation>
+
+Impossible de se connecter à  la machine. Connexion serie/USB introuvable.
+Verifiez les paramètres (device name, path, permission).</translation>
     </message>
     <message>
         <location filename="../src/polyplexer.cpp" line="105"/>
@@ -1410,7 +1424,10 @@ Verifiez les parametres (device name, path, permission).</source>
 
 Impossible de se connecter au peripherique virtuel. Connexion introuvable.
 Verifiez les parametres (device name, path, permission).</source>
-        <translation type="unfinished"></translation>
+        <translation>
+
+Impossible de se connecter au péripherique virtuel. Connexion introuvable.
+Vérifiez les paramètres (device name, path, permission).</translation>
     </message>
 </context>
 <context>
@@ -1418,18 +1435,18 @@ Verifiez les parametres (device name, path, permission).</source>
     <message utf8="true">
         <location filename="../src/Checker/PrinterChecker.ui" line="14"/>
         <source>Contrôle imprimante</source>
-        <translation type="unfinished"></translation>
+        <translation>Contrôle imprimante</translation>
     </message>
     <message utf8="true">
         <location filename="../src/Checker/PrinterChecker.ui" line="26"/>
         <source>Capteurs de Température</source>
-        <translation type="unfinished"></translation>
+        <translation>Capteurs de Température</translation>
     </message>
     <message>
         <location filename="../src/Checker/PrinterChecker.ui" line="38"/>
         <location filename="../src/Checker/PrinterChecker.ui" line="535"/>
         <source>Buse #1</source>
-        <translation type="unfinished"></translation>
+        <translation>Buse #1</translation>
     </message>
     <message utf8="true">
         <location filename="../src/Checker/PrinterChecker.ui" line="88"/>
@@ -1441,79 +1458,79 @@ Verifiez les parametres (device name, path, permission).</source>
         <location filename="../src/Checker/PrinterChecker.ui" line="320"/>
         <location filename="../src/Checker/PrinterChecker.ui" line="378"/>
         <source>-°C</source>
-        <translation type="unfinished"></translation>
+        <translation>-°C</translation>
     </message>
     <message>
         <location filename="../src/Checker/PrinterChecker.ui" line="115"/>
         <location filename="../src/Checker/PrinterChecker.ui" line="542"/>
         <source>Buse #2</source>
-        <translation type="unfinished"></translation>
+        <translation>Buse #2</translation>
     </message>
     <message>
         <location filename="../src/Checker/PrinterChecker.ui" line="192"/>
         <location filename="../src/Checker/PrinterChecker.ui" line="424"/>
         <source>Boitier</source>
-        <translation type="unfinished"></translation>
+        <translation>Boitier</translation>
     </message>
     <message>
         <location filename="../src/Checker/PrinterChecker.ui" line="264"/>
         <source>Haut     </source>
-        <translation type="unfinished"></translation>
+        <translation>Haut </translation>
     </message>
     <message>
         <location filename="../src/Checker/PrinterChecker.ui" line="271"/>
         <source>Milieu    </source>
-        <translation type="unfinished"></translation>
+        <translation>Milieu </translation>
     </message>
     <message>
         <location filename="../src/Checker/PrinterChecker.ui" line="278"/>
         <source>Bas</source>
-        <translation type="unfinished"></translation>
+        <translation>Bas </translation>
     </message>
     <message>
         <location filename="../src/Checker/PrinterChecker.ui" line="334"/>
         <source>Lits</source>
-        <translation type="unfinished"></translation>
+        <translation>Lits </translation>
     </message>
     <message>
         <location filename="../src/Checker/PrinterChecker.ui" line="365"/>
         <source>Moyenne</source>
-        <translation type="unfinished"></translation>
+        <translation>Moyenne </translation>
     </message>
     <message>
         <location filename="../src/Checker/PrinterChecker.ui" line="393"/>
         <source>Bloc de refroidissement</source>
-        <translation type="unfinished"></translation>
+        <translation>Bloc de refroidissement </translation>
     </message>
     <message utf8="true">
         <location filename="../src/Checker/PrinterChecker.ui" line="559"/>
         <source>Mécanique</source>
-        <translation type="unfinished"></translation>
+        <translation>Mécanique </translation>
     </message>
     <message utf8="true">
         <location filename="../src/Checker/PrinterChecker.ui" line="571"/>
         <source>Fil détecté</source>
-        <translation type="unfinished"></translation>
+        <translation>Fil détecté</translation>
     </message>
     <message utf8="true">
         <location filename="../src/Checker/PrinterChecker.ui" line="622"/>
         <source>Outil branché (1&amp;2)</source>
-        <translation type="unfinished"></translation>
+        <translation>Outil branché (1&amp;2)</translation>
     </message>
     <message utf8="true">
         <location filename="../src/Checker/PrinterChecker.ui" line="654"/>
         <source>Lit chauffant branché</source>
-        <translation type="unfinished"></translation>
+        <translation>Lit chauffant branché</translation>
     </message>
     <message utf8="true">
         <location filename="../src/Checker/PrinterChecker.ui" line="667"/>
         <source>Buse bouchée</source>
-        <translation type="unfinished"></translation>
+        <translation>Buse bouchée</translation>
     </message>
     <message utf8="true">
         <location filename="../src/Checker/PrinterChecker.ui" line="719"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Module Imprimante prêt à l&apos;emploi : &lt;br/&gt;&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Module Imprimante prêt à l&apos;emploi : &lt;br/&gt;&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
 </context>
 <context>
@@ -1527,12 +1544,18 @@ Impossible de lancer le programme d&apos;impression.Veuillez vÃ©rifier que le 
 Configuration &gt; ParamÃ¨tres logiciel 
 
 </source>
-        <translation type="unfinished"></translation>
+        <translation>
+
+Impossible de lancer le programme d&apos;impression. Veuillez vérifier que le chemin d&apos;accès est correct.
+
+Configuration &gt; Paramètres logiciel 
+
+</translation>
     </message>
     <message>
         <location filename="../src/Module/PrinterModule.cpp" line="40"/>
         <source>Open Printer Executable</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Executable </translation>
     </message>
 </context>
 <context>
@@ -1540,65 +1563,65 @@ Configuration &gt; ParamÃ¨tres logiciel
     <message>
         <location filename="../src/Page/PrinterPage.ui" line="14"/>
         <source>Module Imprimante</source>
-        <translation type="unfinished"></translation>
+        <translation>Module Imprimante</translation>
     </message>
     <message>
         <location filename="../src/Page/PrinterPage.ui" line="26"/>
         <source>Selection des lits</source>
-        <translation type="unfinished"></translation>
+        <translation>Sélection des lits</translation>
     </message>
     <message>
         <location filename="../src/Page/PrinterPage.ui" line="132"/>
         <source>Selectionner tout</source>
-        <translation type="unfinished"></translation>
+        <translation>Sélectionner tout</translation>
     </message>
     <message>
         <location filename="../src/Page/PrinterPage.ui" line="142"/>
         <source>Aucun</source>
-        <translation type="unfinished"></translation>
+        <translation>Aucun</translation>
     </message>
     <message utf8="true">
         <location filename="../src/Page/PrinterPage.ui" line="159"/>
         <source>Temperature des lits activés </source>
-        <translation type="unfinished"></translation>
+        <translation>Temperature des lits activés</translation>
     </message>
     <message>
         <location filename="../src/Page/PrinterPage.ui" line="174"/>
         <location filename="../src/Page/PrinterPage.ui" line="346"/>
         <source>Inactif</source>
-        <translation type="unfinished"></translation>
+        <translation>Inactif</translation>
     </message>
     <message>
         <location filename="../src/Page/PrinterPage.ui" line="184"/>
         <source>PLA</source>
-        <translation type="unfinished"></translation>
+        <translation>PLA</translation>
     </message>
     <message>
         <location filename="../src/Page/PrinterPage.ui" line="194"/>
         <source>ABS</source>
-        <translation type="unfinished"></translation>
+        <translation>ABS</translation>
     </message>
     <message>
         <location filename="../src/Page/PrinterPage.ui" line="201"/>
         <source>Nylon</source>
-        <translation type="unfinished"></translation>
+        <translation>Nylon</translation>
     </message>
     <message>
         <location filename="../src/Page/PrinterPage.ui" line="208"/>
         <location filename="../src/Page/PrinterPage.ui" line="373"/>
         <source>Perso.</source>
-        <translation type="unfinished"></translation>
+        <translation>Perso.</translation>
     </message>
     <message utf8="true">
         <location filename="../src/Page/PrinterPage.ui" line="250"/>
         <location filename="../src/Page/PrinterPage.ui" line="327"/>
         <source>( °C )</source>
-        <translation type="unfinished"></translation>
+        <translation>( °C )</translation>
     </message>
     <message utf8="true">
         <location filename="../src/Page/PrinterPage.ui" line="267"/>
         <source>Temperatures des élements</source>
-        <translation type="unfinished"></translation>
+        <translation>Températures des élements</translation>
     </message>
     <message utf8="true">
         <location filename="../src/Page/PrinterPage.ui" line="356"/>
@@ -1613,44 +1636,44 @@ Configuration &gt; ParamÃ¨tres logiciel
     <message>
         <location filename="../src/Page/PrinterPage.ui" line="392"/>
         <source>Ventilateur Cellules Chauffantes </source>
-        <translation type="unfinished"></translation>
+        <translation>Ventilateur Cellules Chauffantes </translation>
     </message>
     <message>
         <location filename="../src/Page/PrinterPage.ui" line="437"/>
         <location filename="../src/Page/PrinterPage.ui" line="491"/>
         <location filename="../src/Page/PrinterPage.ui" line="545"/>
         <source>%</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../src/Page/PrinterPage.ui" line="446"/>
         <source>Ventilateur pulseur</source>
-        <translation type="unfinished"></translation>
+        <translation>Ventilateur pulseur</translation>
     </message>
     <message>
         <location filename="../src/Page/PrinterPage.ui" line="500"/>
         <source>Ventilateur extracteur</source>
-        <translation type="unfinished"></translation>
+        <translation>Ventilateur extracteur</translation>
     </message>
     <message>
         <location filename="../src/Page/PrinterPage.ui" line="563"/>
         <source>Lits Chauffants</source>
-        <translation type="unfinished"></translation>
+        <translation>Lits Chauffants</translation>
     </message>
     <message>
         <location filename="../src/Page/PrinterPage.ui" line="577"/>
         <source>Lancer L&apos;impression</source>
-        <translation type="unfinished"></translation>
+        <translation>Lancer L&apos;impression</translation>
     </message>
     <message>
         <location filename="../src/Page/PrinterPage.ui" line="594"/>
         <source>Aide</source>
-        <translation type="unfinished"></translation>
+        <translation>Aide</translation>
     </message>
     <message utf8="true">
         <location filename="../src/Page/PrinterPage.ui" line="640"/>
         <source>Filament non bloqué</source>
-        <translation type="unfinished"></translation>
+        <translation>Filament non bloqué</translation>
     </message>
 </context>
 <context>
@@ -1658,12 +1681,12 @@ Configuration &gt; ParamÃ¨tres logiciel
     <message>
         <location filename="../src/PrinterSmallUI.ui" line="14"/>
         <source>Imprimante</source>
-        <translation type="unfinished"></translation>
+        <translation>Imprimante</translation>
     </message>
     <message>
         <location filename="../src/PrinterSmallUI.ui" line="29"/>
         <source>Lits :</source>
-        <translation type="unfinished"></translation>
+        <translation>Lits :</translation>
     </message>
     <message utf8="true">
         <location filename="../src/PrinterSmallUI.ui" line="42"/>
@@ -1674,7 +1697,7 @@ Configuration &gt; ParamÃ¨tres logiciel
     <message>
         <location filename="../src/PrinterSmallUI.ui" line="49"/>
         <source>Chambre : </source>
-        <translation type="unfinished"></translation>
+        <translation>Chambre : </translation>
     </message>
 </context>
 <context>
@@ -1682,7 +1705,7 @@ Configuration &gt; ParamÃ¨tres logiciel
     <message>
         <location filename="../src/qjoystickenumerator.ui" line="26"/>
         <source>Select a Joystick</source>
-        <translation type="unfinished"></translation>
+        <translation>Sélectionner un joystick</translation>
     </message>
 </context>
 <context>
@@ -1690,7 +1713,7 @@ Configuration &gt; ParamÃ¨tres logiciel
     <message>
         <location filename="../externals/qextserialport/src/qextserialport.cpp" line="718"/>
         <source>No Error has occurred</source>
-        <translation type="unfinished"></translation>
+        <translation>Aucune erreur ne s&apos;est produite</translation>
     </message>
     <message>
         <location filename="../externals/qextserialport/src/qextserialport.cpp" line="720"/>
@@ -1788,43 +1811,43 @@ Configuration &gt; ParamÃ¨tres logiciel
     <message utf8="true">
         <location filename="../src/Checker/SCannerChecker.ui" line="14"/>
         <source>Contrôle Scanner</source>
-        <translation type="unfinished"></translation>
+        <translation>Contrôle Scanner</translation>
     </message>
     <message>
         <location filename="../src/Checker/SCannerChecker.ui" line="26"/>
         <source>Laser</source>
-        <translation type="unfinished"></translation>
+        <translation>Laser</translation>
     </message>
     <message>
         <location filename="../src/Checker/SCannerChecker.ui" line="111"/>
         <location filename="../src/Checker/SCannerChecker.ui" line="243"/>
         <source>Plateau tournant</source>
-        <translation type="unfinished"></translation>
+        <translation>Plateau tournant</translation>
     </message>
     <message>
         <location filename="../src/Checker/SCannerChecker.ui" line="85"/>
         <source>Branchement WebCam</source>
-        <translation type="unfinished"></translation>
+        <translation>Branchement WebCam</translation>
     </message>
     <message utf8="true">
         <location filename="../src/Checker/SCannerChecker.ui" line="137"/>
         <source>Détection Laser 1</source>
-        <translation type="unfinished"></translation>
+        <translation>Détection Laser 1</translation>
     </message>
     <message utf8="true">
         <location filename="../src/Checker/SCannerChecker.ui" line="163"/>
         <source>Détection Laser 2</source>
-        <translation type="unfinished"></translation>
+        <translation>Détection Laser 2</translation>
     </message>
     <message>
         <location filename="../src/Checker/SCannerChecker.ui" line="180"/>
         <source>PrimeSense</source>
-        <translation type="unfinished"></translation>
+        <translation>PrimeSense</translation>
     </message>
     <message>
         <location filename="../src/Checker/SCannerChecker.ui" line="211"/>
         <source>Branchement Capteur</source>
-        <translation type="unfinished"></translation>
+        <translation>Branchement Capteur</translation>
     </message>
 </context>
 <context>
@@ -1832,22 +1855,22 @@ Configuration &gt; ParamÃ¨tres logiciel
     <message>
         <location filename="../src/TCPServer.cpp" line="15"/>
         <source>Unable to start the server: %1.</source>
-        <translation type="unfinished"></translation>
+        <translation>Impossible de lancer le serveur: %1.</translation>
     </message>
     <message>
         <location filename="../src/TCPServer.cpp" line="25"/>
         <source>Server started.</source>
-        <translation type="unfinished"></translation>
+        <translation>Serveur lancé.</translation>
     </message>
     <message>
         <location filename="../src/TCPServer.cpp" line="44"/>
         <source>Server stopped.</source>
-        <translation type="unfinished"></translation>
+        <translation>Serveur arrêté.</translation>
     </message>
     <message>
         <location filename="../src/TCPServer.cpp" line="53"/>
         <source>New Client connected.</source>
-        <translation type="unfinished"></translation>
+        <translation>Nouveau client connecté.</translation>
     </message>
 </context>
 <context>
@@ -1855,37 +1878,37 @@ Configuration &gt; ParamÃ¨tres logiciel
     <message utf8="true">
         <location filename="../src/Page/WarningPage.ui" line="14"/>
         <source>Panneau de Contrôle</source>
-        <translation type="unfinished"></translation>
+        <translation>Panneau de Contrôle</translation>
     </message>
     <message>
         <location filename="../src/Page/WarningPage.ui" line="79"/>
         <source>Aide</source>
-        <translation type="unfinished"></translation>
+        <translation>Aide</translation>
     </message>
     <message>
         <location filename="../src/Page/WarningPage.ui" line="99"/>
         <source>Configuration logicielle</source>
-        <translation type="unfinished"></translation>
+        <translation>Configuration logicielle</translation>
     </message>
     <message>
         <location filename="../src/Page/WarningPage.ui" line="119"/>
         <source>Tests Dynamiques</source>
-        <translation type="unfinished"></translation>
+        <translation>Tests Dynamiques</translation>
     </message>
     <message>
         <location filename="../src/Page/WarningPage.ui" line="136"/>
         <source>Console</source>
-        <translation type="unfinished"></translation>
+        <translation>Console</translation>
     </message>
     <message>
         <location filename="../src/Page/WarningPage.ui" line="149"/>
         <source>Pin Editeur</source>
-        <translation type="unfinished"></translation>
+        <translation>Pin Editeur</translation>
     </message>
     <message>
         <location filename="../src/Page/WarningPage.cpp" line="83"/>
         <source>Editeur de pins</source>
-        <translation type="unfinished"></translation>
+        <translation>Editeur de pins</translation>
     </message>
 </context>
 </TS>

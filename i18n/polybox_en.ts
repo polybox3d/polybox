@@ -7,7 +7,7 @@
         <location filename="../src/Widget/ATUButton.cpp" line="40"/>
         <location filename="../src/Widget/ATUButton.cpp" line="45"/>
         <source>ATU</source>
-        <translation>ESTOP</translation>
+        <translation>ESTP</translation>
     </message>
 </context>
 <context>
@@ -24,7 +24,7 @@
     <message utf8="true">
         <location filename="../src/Checker/CNCChecker.ui" line="26"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Module CN prêt à l&apos;emploi :&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;CNC module ready :&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message utf8="true">
         <location filename="../src/Checker/CNCChecker.ui" line="58"/>
@@ -293,7 +293,7 @@ You can setup your manette through the next tool.</translation>
     <message>
         <location filename="../src/Widget/DebugPin.cpp" line="86"/>
         <source>Select a value</source>
-        <translation type="unfinished">Select a value</translation>
+        <translation>Select a value</translation>
     </message>
 </context>
 <context>
@@ -311,32 +311,32 @@ You can setup your manette through the next tool.</translation>
     <message>
         <location filename="../src/Widget/DialogBroadcast.ui" line="50"/>
         <source>You can open the webcam on a distant computer using VLC. If you want to broadcast the stream on internet, you might need to configure your firewall/gateway to route the current Port to the local IP.</source>
-        <translation type="unfinished"></translation>
+        <translation>You can open the webcam on a distant computer using VLC. If you want to broadcast the stream on internet, you might need to configure your firewall/gateway to route the current Port to the local IP.</translation>
     </message>
     <message>
         <location filename="../src/Widget/DialogBroadcast.ui" line="66"/>
         <source>Broadcast</source>
-        <translation type="unfinished"></translation>
+        <translation>Broadcast</translation>
     </message>
     <message>
         <location filename="../src/Widget/DialogBroadcast.ui" line="83"/>
         <source>Close</source>
-        <translation type="unfinished"></translation>
+        <translation>Close</translation>
     </message>
     <message>
         <location filename="../src/Widget/DialogBroadcast.ui" line="103"/>
         <source>Local IP :</source>
-        <translation type="unfinished"></translation>
+        <translation>Local IP: </translation>
     </message>
     <message>
         <location filename="../src/Widget/DialogBroadcast.ui" line="117"/>
         <source>Port : </source>
-        <translation type="unfinished"></translation>
+        <translation>Port: </translation>
     </message>
     <message>
         <location filename="../src/Widget/DialogBroadcast.cpp" line="43"/>
         <source>You must enter a port number.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">You must enter a port number.</translation>
     </message>
 </context>
 <context>
@@ -359,7 +359,7 @@ You can setup your manette through the next tool.</translation>
     <message>
         <location filename="../src/Widget/DialogCNC.ui" line="65"/>
         <source>Lancer </source>
-        <translation>Start</translation>
+        <translation>Start </translation>
     </message>
     <message>
         <location filename="../src/Widget/DialogCNC.ui" line="76"/>
@@ -377,47 +377,47 @@ You can setup your manette through the next tool.</translation>
     <message>
         <location filename="../src/Widget/DialogClient.ui" line="14"/>
         <source>Dialog</source>
-        <translation type="unfinished"></translation>
+        <translation>Connect to a remote server</translation>
     </message>
     <message utf8="true">
         <location filename="../src/Widget/DialogClient.ui" line="34"/>
         <source>Connexion à un serveur distant</source>
-        <translation type="unfinished"></translation>
+        <translation>Connect to a remote server</translation>
     </message>
     <message utf8="true">
         <location filename="../src/Widget/DialogClient.ui" line="55"/>
         <source>Paramètres :</source>
-        <translation type="unfinished"></translation>
+        <translation>Parameters: </translation>
     </message>
     <message utf8="true">
         <location filename="../src/Widget/DialogClient.ui" line="76"/>
         <source>Serveurs trouvés :</source>
-        <translation type="unfinished"></translation>
+        <translation>Servers found:</translation>
     </message>
     <message>
         <location filename="../src/Widget/DialogClient.ui" line="92"/>
         <source>Connexion</source>
-        <translation type="unfinished"></translation>
+        <translation>Connection</translation>
     </message>
     <message>
         <location filename="../src/Widget/DialogClient.ui" line="109"/>
         <source>Fermer</source>
-        <translation type="unfinished">Close</translation>
+        <translation>Close</translation>
     </message>
     <message>
         <location filename="../src/Widget/DialogClient.ui" line="139"/>
         <source>Addresse du Reseau</source>
-        <translation type="unfinished"></translation>
+        <translation>Network Address</translation>
     </message>
     <message>
         <location filename="../src/Widget/DialogClient.ui" line="149"/>
         <source>Port : </source>
-        <translation type="unfinished"></translation>
+        <translation>Port: </translation>
     </message>
     <message>
         <location filename="../src/Widget/DialogClient.cpp" line="9"/>
         <source>Remote Connection</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Remote Connection</translation>
     </message>
 </context>
 <context>
@@ -435,7 +435,7 @@ You can setup your manette through the next tool.</translation>
     <message>
         <location filename="../src/Widget/DialogConfigSoft.ui" line="43"/>
         <source>Appliquer</source>
-        <translation>Aply</translation>
+        <translation>Apply</translation>
     </message>
     <message>
         <location filename="../src/Widget/DialogConfigSoft.ui" line="60"/>
@@ -503,7 +503,7 @@ You can setup your manette through the next tool.</translation>
     <message utf8="true">
         <location filename="../src/Widget/DialogConfigSoft.ui" line="290"/>
         <source>Désactiver Polyplexer</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../src/Widget/DialogConfigSoft.ui" line="297"/>
@@ -576,22 +576,22 @@ You can setup your manette through the next tool.</translation>
     <message>
         <location filename="../src/Widget/DialogCredits.ui" line="14"/>
         <source>Dialog</source>
-        <translation type="unfinished"></translation>
+        <translation>About</translation>
     </message>
     <message>
         <location filename="../src/Widget/DialogCredits.ui" line="51"/>
         <source>Versions</source>
-        <translation type="unfinished"></translation>
+        <translation>Versions</translation>
     </message>
     <message>
         <location filename="../src/Widget/DialogCredits.ui" line="73"/>
         <source>Credits</source>
-        <translation type="unfinished"></translation>
+        <translation>Credits</translation>
     </message>
     <message>
         <location filename="../src/Widget/DialogCredits.ui" line="95"/>
         <source>Contacts : </source>
-        <translation type="unfinished"></translation>
+        <translation>Contacts: </translation>
     </message>
     <message>
         <location filename="../src/Widget/DialogCredits.ui" line="117"/>
@@ -622,37 +622,37 @@ You should have received a copy of the GNU General Public License along with thi
     <message>
         <location filename="../src/Widget/DialogCredits.ui" line="217"/>
         <source>CNC Software </source>
-        <translation type="unfinished"></translation>
+        <translation>CNC Software</translation>
     </message>
     <message>
         <location filename="../src/Widget/DialogCredits.ui" line="236"/>
         <source>LinuxCNC</source>
-        <translation type="unfinished"></translation>
+        <translation>LinuxCNC</translation>
     </message>
     <message>
         <location filename="../src/Widget/DialogCredits.ui" line="252"/>
         <source>Printer Software </source>
-        <translation type="unfinished"></translation>
+        <translation>Printer Software</translation>
     </message>
     <message>
         <location filename="../src/Widget/DialogCredits.ui" line="271"/>
         <source>Repetier Host</source>
-        <translation type="unfinished"></translation>
+        <translation>Repetier-Host</translation>
     </message>
     <message>
         <location filename="../src/Widget/DialogCredits.ui" line="287"/>
         <source>Scanner Software</source>
-        <translation type="unfinished"></translation>
+        <translation>Scanner Software</translation>
     </message>
     <message>
         <location filename="../src/Widget/DialogCredits.ui" line="306"/>
         <source>FabScan100</source>
-        <translation type="unfinished"></translation>
+        <translation>FabScan100</translation>
     </message>
     <message>
         <location filename="../src/Widget/DialogCredits.ui" line="333"/>
         <source>PolySoftware</source>
-        <translation type="unfinished"></translation>
+        <translation>PolySoftware</translation>
     </message>
     <message>
         <location filename="../src/Widget/DialogCredits.ui" line="349"/>
@@ -764,7 +764,7 @@ You should have received a copy of the GNU General Public License along with thi
     <message>
         <location filename="../src/Widget/FolderButton.cpp" line="40"/>
         <source>Selectionner un rÃ©pertoire</source>
-        <translation type="unfinished"></translation>
+        <translation>Select a folder</translation>
     </message>
     <message>
         <source>Selectionner un répertoire</source>
@@ -853,7 +853,7 @@ Circuit Board</translation>
     <message>
         <location filename="../src/Checker/GlobalChecker.ui" line="389"/>
         <source>PRE-ASI ATU</source>
-        <translation>PRE-ASI ATU</translation>
+        <translation>PRE-ASI ESTOP</translation>
     </message>
     <message utf8="true">
         <location filename="../src/Checker/GlobalChecker.ui" line="440"/>
@@ -863,7 +863,7 @@ Circuit Board</translation>
     <message>
         <location filename="../src/Checker/GlobalChecker.ui" line="462"/>
         <source>RAM:</source>
-        <translation>RAM:</translation>
+        <translation>RAM: </translation>
     </message>
     <message>
         <location filename="../src/Checker/GlobalChecker.ui" line="481"/>
@@ -921,17 +921,17 @@ Circuit Board</translation>
     <message>
         <location filename="../src/Module/LabViewModule.cpp" line="157"/>
         <source>VidÃ©o de sortie</source>
-        <translation type="unfinished"></translation>
+        <translation>Output file</translation>
     </message>
     <message>
         <location filename="../src/Module/LabViewModule.cpp" line="359"/>
         <source>Save to XML file</source>
-        <translation type="unfinished"></translation>
+        <translation>Save to XML file</translation>
     </message>
     <message>
         <location filename="../src/Module/LabViewModule.cpp" line="360"/>
         <source>Couldn&apos;t write to </source>
-        <translation type="unfinished"></translation>
+        <translation>Couldn&apos;t write to</translation>
     </message>
 </context>
 <context>
@@ -1063,7 +1063,7 @@ Circuit Board</translation>
     <message>
         <location filename="../src/Page/LabViewPage.ui" line="658"/>
         <source>Diffuser</source>
-        <translation type="unfinished"></translation>
+        <translation>Broadcast</translation>
     </message>
     <message>
         <source>Dessous</source>
@@ -1111,12 +1111,12 @@ Circuit Board</translation>
     <message>
         <location filename="../src/Page/LabViewPage.cpp" line="131"/>
         <source>Save to XML file</source>
-        <translation type="unfinished"></translation>
+        <translation>Save to XML file</translation>
     </message>
     <message>
         <location filename="../src/Page/LabViewPage.cpp" line="132"/>
         <source>Couldn&apos;t read from </source>
-        <translation type="unfinished"></translation>
+        <translation>Couldn&apos;t read from</translation>
     </message>
     <message>
         <location filename="../src/Page/LabViewPage.cpp" line="198"/>
@@ -1180,7 +1180,7 @@ Circuit Board</translation>
     <message utf8="true">
         <location filename="../src/MainWindow.ui" line="82"/>
         <source>Thèmes</source>
-        <translation type="unfinished"></translation>
+        <translation>Skins</translation>
     </message>
     <message>
         <location filename="../src/MainWindow.ui" line="90"/>
@@ -1250,18 +1250,18 @@ Circuit Board</translation>
     <message>
         <location filename="../src/MainWindow.ui" line="173"/>
         <source>Credits</source>
-        <translation type="unfinished"></translation>
+        <translation>Credits</translation>
     </message>
     <message>
         <location filename="../src/MainWindow.ui" line="181"/>
         <location filename="../src/MainWindow.cpp" line="606"/>
         <source>Start Server Mode</source>
-        <translation type="unfinished"></translation>
+        <translation>Start Server Mode</translation>
     </message>
     <message>
         <location filename="../src/MainWindow.ui" line="189"/>
         <source>Start Client Mode</source>
-        <translation type="unfinished"></translation>
+        <translation>Start Client Mode</translation>
     </message>
     <message>
         <source>ddd</source>
@@ -1295,27 +1295,27 @@ Circuit Board</translation>
     <message>
         <location filename="../src/MainWindow.cpp" line="83"/>
         <source>La connexion est active avec la machine.Quitter le programme va intÃ©rompte toute imprÃ©ssion ou usinage en activitÃ©. </source>
-        <translation type="unfinished"></translation>
+        <translation>The connection is active with the machine. Exit the program will stop all prints or machining activities.</translation>
     </message>
     <message>
         <location filename="../src/MainWindow.cpp" line="274"/>
         <source>Status : Connected</source>
-        <translation type="unfinished"></translation>
+        <translation>Status : Connected</translation>
     </message>
     <message>
         <location filename="../src/MainWindow.cpp" line="279"/>
         <source>Status : Unconnected</source>
-        <translation type="unfinished"></translation>
+        <translation>Status : Unconnected</translation>
     </message>
     <message>
         <location filename="../src/MainWindow.cpp" line="287"/>
         <source>Status : Mode Server</source>
-        <translation type="unfinished"></translation>
+        <translation>Status : Mode Server</translation>
     </message>
     <message>
         <location filename="../src/MainWindow.cpp" line="293"/>
         <source>Status : Mode Client</source>
-        <translation type="unfinished"></translation>
+        <translation>Status : Mode Client</translation>
     </message>
     <message>
         <location filename="../src/MainWindow.cpp" line="514"/>
@@ -1325,12 +1325,12 @@ Circuit Board</translation>
     <message>
         <location filename="../src/MainWindow.cpp" line="522"/>
         <source>DÃ©sactiver manette</source>
-        <translation type="unfinished"></translation>
+        <translation>Disable remote control</translation>
     </message>
     <message>
         <location filename="../src/MainWindow.cpp" line="595"/>
         <source>Stop Server Mode</source>
-        <translation type="unfinished"></translation>
+        <translation>Stop Server Mode</translation>
     </message>
     <message>
         <source>Désactiver manette</source>
@@ -1367,12 +1367,12 @@ Circuit Board</translation>
     <message>
         <location filename="../src/Page/ModulePage.ui" line="179"/>
         <source>Sharing</source>
-        <translation type="unfinished"></translation>
+        <translation>Sharing</translation>
     </message>
     <message>
         <location filename="../src/Page/ModulePage.ui" line="224"/>
         <source>Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Settings</translation>
     </message>
 </context>
 <context>
@@ -1405,7 +1405,7 @@ Circuit Board</translation>
     <message>
         <location filename="../src/Page/OpenPage.cpp" line="73"/>
         <source>Etat de la machine</source>
-        <translation type="unfinished"></translation>
+        <translation>Machine Status</translation>
     </message>
 </context>
 <context>
@@ -1437,26 +1437,29 @@ Circuit Board</translation>
     <message>
         <location filename="../src/Module/PolyboxModule.cpp" line="104"/>
         <source>Le logiciel est correctement connectÃ© Ã  la machine. </source>
-        <translation type="unfinished"></translation>
+        <translation>The software is connected to the machine.</translation>
     </message>
     <message>
         <location filename="../src/Module/PolyboxModule.cpp" line="112"/>
         <source>Impossible de se connecter Ã  la machine.
  Error 0xff34&apos; </source>
-        <translation type="unfinished"></translation>
+        <translation>Can not connect to the machine.
+ Error 0xff34&apos;</translation>
     </message>
     <message>
         <location filename="../src/Module/PolyboxModule.cpp" line="117"/>
         <source>Impossible de se connecter Ã  la machine.
  Erreur au lancement du sous-programme Polyplexer. 0xff30&apos; </source>
-        <translation type="unfinished"></translation>
+        <translation>Can not connect to the machine.
+ Error launch Polyplexer subroutine. 0xff30</translation>
     </message>
     <message>
         <location filename="../src/Module/PolyboxModule.cpp" line="172"/>
         <source>Une erreur est survenue. La machine ne rÃ©pond plus aux messages depuis un certain temps.
  Veuillez vous reconnecter.
 </source>
-        <translation type="unfinished"></translation>
+        <translation>An error has occurred. The machine does not respond to messages for some time.
+ Please reconnect.</translation>
     </message>
 </context>
 <context>
@@ -1494,7 +1497,8 @@ Check parameters (device name, path, permission).</translation>
         <source>
 
 Mauvaise configuration du logiciel...Ca n&apos;aurait pas du se passer Ã  part si vous avez modifier tout et n&apos;importequoi dans les configurations ou les sources...</source>
-        <translation type="unfinished"></translation>
+        <translation>
+Bad software configuration ... It should not have happened except if you have changed everything and anything in configurations or sources ...</translation>
     </message>
     <message>
         <location filename="../src/polyplexer.cpp" line="95"/>
@@ -1502,7 +1506,10 @@ Mauvaise configuration du logiciel...Ca n&apos;aurait pas du se passer Ã  part
 
 Impossible de se connecter Ã  la machine. Connexion serie/USB introuvable.
 Verifiez les branchements, l&apos;alimentation electrique et les paramÃ¨tres (device name, path, permission).</source>
-        <translation type="unfinished"></translation>
+        <translation>
+
+Can not connect to the machine. Log serial / USB not found.
+Check the connections, the power supply and the parameters (device name, path, permission).</translation>
     </message>
     <message>
         <location filename="../src/polyplexer.cpp" line="100"/>
@@ -1510,7 +1517,10 @@ Verifiez les branchements, l&apos;alimentation electrique et les paramÃ¨tres (
 
 Impossible de se connecter Ã  la machine. Connexion serie/USB introuvable.
 Verifiez les parametres (device name, path, permission).</source>
-        <translation type="unfinished"></translation>
+        <translation>
+
+Can not connect to the machine. Log serial / USB not found.
+Check the settings (device name, path, permission).</translation>
     </message>
     <message>
         <location filename="../src/polyplexer.cpp" line="105"/>
@@ -1642,12 +1652,18 @@ Impossible de lancer le programme d&apos;impression.Veuillez vÃ©rifier que le 
 Configuration &gt; ParamÃ¨tres logiciel 
 
 </source>
-        <translation type="unfinished"></translation>
+        <translation>
+
+Can not start printing program. Please verify that the path is correct.
+
+Configuration&gt; Software Settings
+
+</translation>
     </message>
     <message>
         <location filename="../src/Module/PrinterModule.cpp" line="40"/>
         <source>Open Printer Executable</source>
-        <translation type="unfinished"></translation>
+        <translation>Open Printer Executable</translation>
     </message>
 </context>
 <context>
@@ -1805,7 +1821,7 @@ Configuration &gt; ParamÃ¨tres logiciel
     <message>
         <location filename="../externals/qextserialport/src/qextserialport.cpp" line="718"/>
         <source>No Error has occurred</source>
-        <translation>No Error has occurred</translation>
+        <translation>No errors occur</translation>
     </message>
     <message>
         <location filename="../externals/qextserialport/src/qextserialport.cpp" line="720"/>
@@ -1947,22 +1963,22 @@ Configuration &gt; ParamÃ¨tres logiciel
     <message>
         <location filename="../src/TCPServer.cpp" line="15"/>
         <source>Unable to start the server: %1.</source>
-        <translation type="unfinished"></translation>
+        <translation>Unable to start the server: %1.</translation>
     </message>
     <message>
         <location filename="../src/TCPServer.cpp" line="25"/>
         <source>Server started.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Server started.</translation>
     </message>
     <message>
         <location filename="../src/TCPServer.cpp" line="44"/>
         <source>Server stopped.</source>
-        <translation type="unfinished"></translation>
+        <translation>Server stopped.</translation>
     </message>
     <message>
         <location filename="../src/TCPServer.cpp" line="53"/>
         <source>New Client connected.</source>
-        <translation type="unfinished"></translation>
+        <translation>New Client connected.</translation>
     </message>
 </context>
 <context>

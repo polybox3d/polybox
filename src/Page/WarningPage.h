@@ -46,10 +46,6 @@ private slots:
      * @brief on_configuration_clicked Called when the user click on Configuration button. Open a DialogConfigSoft pop-up to ask for some information.
      */
     void on_configuration_clicked();
-    /**
-     * @brief on_dynamicTest_clicked Called when the user click on Run Tests. Open a new ConfigCNCPage, which allows the user to run CNCTest.
-     */
-    void on_dynamicTest_clicked();
 
     void on_console_clicked();
 

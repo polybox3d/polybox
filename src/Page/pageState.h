@@ -7,7 +7,7 @@
 enum PageState
 {
 
-    Start, Module, Help , Warning, LabView, LabViewDock, Scanner, CNC, Printer, ScannerLaser, ScannerPrimesense, ConfigureCNC, DynamicTest, Update
+    Start, Module, Help , Warning, LabView, LabViewDock, Scanner, CNC, Printer, ScannerLaser, ScannerPrimesense, ConfigureCNC, Update
 };
 /**
  * @brief The ReturnDialog enum <DERP>

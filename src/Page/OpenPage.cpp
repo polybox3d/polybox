@@ -61,7 +61,7 @@ void OpenPage::on_module_clicked()
 {
 
     bool is_ok = _polybox->isCommonReady();
-    if ( is_ok || Config::bypassCheck )
+    if ( is_ok || Config::bypassCheck() )
     {
         ((MainWindow*)this->parent())->changeStatePage( Module );
     }
