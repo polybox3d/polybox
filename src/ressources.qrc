@@ -51,6 +51,10 @@
         <file>img/moins_border.png</file>
         <file>img/moins_border_disable.png</file>
         <file>img/settings.png</file>
+        <file>img/splashscreen_connected_fitted.png</file>
+        <file>img/splashscreen_unconnected_error_fitted.png</file>
+        <file>img/splashscreen_unconnected_fitted.png</file>
+        <file>img/splashscreen_wait_fitted.png</file>
     </qresource>
     <qresource prefix="/xml">
         <file>ambiances/Autumn.xml</file>
