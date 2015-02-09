@@ -237,7 +237,8 @@ void MainWindow::startConnexion()
         }
         else
         {
-            bool connected = _polybox->connectToPrinter( Config::pathToSerialDevice(), act->text().split('/').last() );
+            _polybox->setupConnection( Config::pathToSerialDevice(), act->text().split('/').last() );
+            int connected = _polybox->connectionGUI( true );
             _atu->setEnabled( connected );
             _atu->setState( !connected ); // false => ATU off, machine works/ON
             //act->setChecked( connected ) ;

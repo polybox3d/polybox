@@ -39,7 +39,7 @@ void SplashScreen::drawContents(QPainter *painter)
 void SplashScreen::connectingProcess()
 {
     this->showStatusMessage(tr("Attempt to connect..."), Qt::white);
-    bool connected = PolyboxModule::getInstance( qApp )->connectToPrinter();
+    bool connected = PolyboxModule::getInstance( qApp )->connection( true );
     // If connected, we gonna check ping/pong process and swap
     if ( connected )
     {
@@ -49,9 +49,8 @@ void SplashScreen::connectingProcess()
 
         /** We need to wait the end of ping/pong process. It's an closed loop, we process QtEvent and check if the connection is active **/
         ClosedLoopTimer closed_loop;
-        closed_loop.startClosedLoop( 15000, PolyboxModule::isConnected );
 
-        if ( PolyboxModule::getInstance()->isConnected() )
+        if ( closed_loop.startClosedLoop( 15000, PolyboxModule::isConnected ) )
         {
             this->setPixmap(QPixmap(":/img/img/splashscreen_connected_fitted.png"));
             this->showStatusMessage(tr("Connected !"), Qt::white);

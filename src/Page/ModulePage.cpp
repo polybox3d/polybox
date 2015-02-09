@@ -131,7 +131,7 @@ bool ModulePage::eventFilter(QObject *obj, QEvent *event)
 #ifndef WELCOME_PAGE
             if ( ! PolyboxModule::getInstance()->isConnected() )
             {
-                PolyboxModule::getInstance()->connectToPrinter();
+                PolyboxModule::getInstance()->connectionGUI(true);
             }
 #endif
 

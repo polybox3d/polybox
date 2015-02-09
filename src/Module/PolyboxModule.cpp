@@ -82,14 +82,36 @@ void PolyboxModule::setConnector(AbstractClient *connector, ConnectorType type)
     _connector = connector;
 }
 
-bool PolyboxModule::connectToPrinter(QString path, QString port)
+void PolyboxModule::setupConnection(QString path, QString port)
 {
     _polyplexer->setPathMachine(path);
     _polyplexer->setPortMachine(port);
-    return connectToPrinter();
 }
 
-bool PolyboxModule::connectToPrinter()
+PolyboxModule::ConnectionStatus PolyboxModule::connectionGUI(bool blocked_thread)
+{
+ ConnectionStatus connection_status = this->connection( blocked_thread);
+ switch (connection_status) {
+ case Connected:
+     MainWindow::textWindow( tr("Le logiciel est correctement connecté à la machine. ") );
+     break;
+ case ErrorPolyplexer:
+     MainWindow::errorWindow( tr("Impossible de se connecter à la machine.\n Erreur au lancement du sous-programme Polyplexer. 0xff30' ") );
+
+     break;
+ case ErrorConnection:
+     MainWindow::errorWindow( tr("Impossible de se connecter à la machine.\n Error 0xff34' ") );
+     break;
+ case TimeOut:
+     MainWindow::errorWindow( tr("La machine ne repond pas...\n Error 0xff34' ") );
+     break;
+ default:
+     break;
+ }
+ return connection_status;
+}
+
+PolyboxModule::ConnectionStatus PolyboxModule::connection( bool blocked_thread)
 {
     _connected = _polyplexer->start();
     if ( _connected )
@@ -101,22 +123,39 @@ bool PolyboxModule::connectToPrinter()
 
         if ( _connected && _connector->isConnected()  )
         {
-            MainWindow::textWindow( tr("Le logiciel est correctement connecté à la machine. ") );
             QTimer* timer_connect = new QTimer(this);
             connect( timer_connect, SIGNAL(timeout()), _labview, SLOT(setConnectedColor()) );
             timer_connect->setSingleShot(true);
             timer_connect->start( 1000 );
+
+            if ( blocked_thread )
+            {
+                /** We need to wait the end of ping/pong process. It's an closed loop, we process QtEvent and check if the connection is active **/
+                ClosedLoopTimer closed_loop;
+                if ( closed_loop.startClosedLoop( 15000, PolyboxModule::isConnected ))
+                {
+                    return Connected;
+                }
+                else
+                {
+                    return TimeOut;
+                }
+            }
+            else
+            {
+                return Connected;
+            }
         }
         else
         {
-            MainWindow::errorWindow( tr("Impossible de se connecter à la machine.\n Error 0xff34' ") );
+            return ErrorConnection;
         }
     }
     else
     {
-        MainWindow::errorWindow( tr("Impossible de se connecter à la machine.\n Erreur au lancement du sous-programme Polyplexer. 0xff30' ") );
+        return ErrorPolyplexer;
     }
-    return _connected;
+    return ErrorPolyplexer;
 }
 
 
@@ -169,7 +208,11 @@ void PolyboxModule::pingPong()
         // too much missing ping/pong or still not connected status (when just connected and waiting for 1st pong back)
         if ( _numberOfMissingPingPong > PINGPONG_MAX_TRIES && _numberOfMissingPingPong > PINGPONG_NOT_CONNECTED+PINGPONG_MAX_TRIES )
         {
-            MainWindow::errorWindow( tr("Une erreur est survenue. La machine ne répond plus aux messages depuis un certain temps.\n Veuillez vous reconnecter.\n"));
+            if ( _numberOfMissingPingPong < PINGPONG_NOT_CONNECTED )
+            {
+                MainWindow::errorWindow( tr("Une erreur est survenue. La machine ne répond plus aux messages depuis un certain temps.\n Veuillez vous reconnecter.\n"));
+            }
+            _numberOfMissingPingPong = PINGPONG_NOT_CONNECTED;
             _polyplexer->stop();
         }
     }

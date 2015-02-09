@@ -14,6 +14,7 @@
 #include "PrinterModule.h"
 */
 #include "polyplexer.h"
+#include "ClosedLoopTimer.h"
 
 #include "Qjoystick.h"
 #include "qjoystickenumerator.h"
@@ -30,6 +31,7 @@ class PolyboxModule : public QObject
 public:
 
     enum ConnectorType{ Serial, ServerTCP, CLientTCP, Abstract};
+    enum ConnectionStatus{ Connected=0, ErrorPolyplexer=2, ErrorConnection=4, Permission=8, NotFound=16, TimeOut=32};
 
     static PolyboxModule* getInstance(QObject *parent=0);
 
@@ -50,8 +52,9 @@ public:
     static QJoystick* getJoypad();
     static bool loadJoypad();
     static void unloadJoypad();
-    bool connectToPrinter();
-    bool connectToPrinter(QString path, QString port);
+    ConnectionStatus connection( bool blocked_thread=false);
+    ConnectionStatus connectionGUI( bool blocked_thread=false);
+    void setupConnection(QString path, QString port);
 
     AbstractClient* connector();
     void setConnector( AbstractClient* connector, ConnectorType type = Abstract );

@@ -6,29 +6,32 @@ ClosedLoopTimer::ClosedLoopTimer(QObject *parent) :
 }
 
 
-void ClosedLoopTimer::startClosedLoop( int msec )
+bool ClosedLoopTimer::startClosedLoop( int msec )
 {
     this->setSingleShot( true );
     this->start( msec );
-
+    int c=0;
     while ( this->isActive() )
     {
         qApp->processEvents();
     }
+    return 0;
 }
 
 
-void ClosedLoopTimer::startClosedLoop( int msec,  bool (*feedback_func)() )
+bool ClosedLoopTimer::startClosedLoop( int msec,  bool (*feedback_func)() )
 {
     this->setSingleShot( true );
     this->start( msec );
-
+    int c=0;
     while ( this->isActive() )
     {
-        if ( (*feedback_func)() )
+        if ( (c=(*feedback_func)()) )
         {
             this->stop();
+            return c;
         }
         qApp->processEvents();
     }
+    return 0;
 }

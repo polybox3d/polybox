@@ -9,8 +9,9 @@ class ClosedLoopTimer : public QTimer
     Q_OBJECT
 public:
     explicit ClosedLoopTimer(QObject *parent = 0);
-    void startClosedLoop(int msec);
-    void startClosedLoop(int msec, bool (*feedback_func)() );
+    /** return 0 or feedback return value**/
+    bool startClosedLoop(int msec);
+    bool startClosedLoop(int msec, bool (*feedback_func)() );
 
 signals:
 
