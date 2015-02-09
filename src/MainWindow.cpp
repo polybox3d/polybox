@@ -57,14 +57,15 @@ MainWindow::MainWindow(Qt::WindowFlags window_flags, QWidget *parent) :
     _dockLV = NULL;
 
     /**             ATU BUTTON              **/
-    _atuON = true;
+    _atuON = !PolyboxModule::isConnected();
     toggleATU();
     _atu = new ATUButton( 60, 30, _atuON, this );
     _atu->setGeometry( this->width()-_atu->width()-10,
                      ui->menuBar->height()+2,
                      _atu->width(), _atu->height());
     connect ( _atu, SIGNAL(released()), this, SLOT(toggleATU()));
-    _atu->setEnabled( false );
+
+    _atu->setEnabled( _atuON );
 
     changeStatePage( Start );
     
