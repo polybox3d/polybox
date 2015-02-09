@@ -234,7 +234,7 @@ PrinterModule* PolyboxModule::printerModule()
 
 bool PolyboxModule::isConnected()
 {
-    return _connected && _connector->isConnected() && _numberOfMissingPingPong <= PINGPONG_MAX_TRIES;
+    return PolyboxModule::getInstance()->_connected && PolyboxModule::getInstance()->_connector->isConnected() && PolyboxModule::getInstance()->_numberOfMissingPingPong <= PINGPONG_MAX_TRIES;
 }
 
 bool PolyboxModule::isCommonReady()

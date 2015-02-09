@@ -38,6 +38,8 @@ MainWindow::MainWindow(Qt::WindowFlags window_flags, QWidget *parent) :
     QMainWindow(parent, window_flags),
     ui(new Ui::MainWindow)
 {
+    _dockLV = NULL;
+    _dockCNC = NULL;
     mainwindow = this;
     ui->setupUi(this);
     ui->statusBar->addPermanentWidget( &_connectedLed);

@@ -36,7 +36,7 @@ public:
     ConnectorType connectorType() const;
     void setConnectorType( ConnectorType type);
     bool isCommonReady();
-    bool isConnected();
+    static bool isConnected();
     bool isCncReady();
     bool isPrinterReady();
     bool isScannerReady();

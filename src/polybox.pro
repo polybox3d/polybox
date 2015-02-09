@@ -98,7 +98,8 @@ SOURCES += main.cpp\
     AbstractClient.cpp \
     TCPClient.cpp \
     Widget/DialogClient.cpp \
-    Widget/SplashScreen.cpp
+    Widget/SplashScreen.cpp \
+    ClosedLoopTimer.cpp
 
 HEADERS  += MainWindow.h \
         Updater.h \
@@ -157,7 +158,8 @@ HEADERS  += MainWindow.h \
     AbstractClient.h \
     TCPClient.h \
     Widget/DialogClient.h \
-    Widget/SplashScreen.h
+    Widget/SplashScreen.h \
+    ClosedLoopTimer.h
 
 FORMS    += MainWindow.ui \
     PrinterSmallUI.ui \
