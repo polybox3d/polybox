@@ -83,6 +83,11 @@ bool Config::bypassCheck()
 {
     return Config::get(SETTINGS_GROUP,"bypassCheck", true).toBool();
 }
+bool Config::blockedConnectionThread()
+{
+    return Config::get(SETTINGS_GROUP,"blockedConnectionThread", true).toBool();
+}
+
 /**************************************************************************
  *              GLOBAL_GROUP
  * ***********************************************************************/

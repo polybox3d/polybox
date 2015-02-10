@@ -238,7 +238,7 @@ void MainWindow::startConnexion()
         else
         {
             _polybox->setupConnection( Config::pathToSerialDevice(), act->text().split('/').last() );
-            int connected = _polybox->connectionGUI( true );
+            int connected = _polybox->connectionGUI( Config::blockedConnectionThread() );
             _atu->setEnabled( connected );
             _atu->setState( !connected ); // false => ATU off, machine works/ON
             //act->setChecked( connected ) ;

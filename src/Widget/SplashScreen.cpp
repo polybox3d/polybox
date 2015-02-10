@@ -39,7 +39,7 @@ void SplashScreen::drawContents(QPainter *painter)
 void SplashScreen::connectingProcess()
 {
     this->showStatusMessage(tr("Attempt to connect..."), Qt::white);
-    bool connected = PolyboxModule::getInstance( qApp )->connection( true );
+    bool connected = PolyboxModule::getInstance( qApp )->connection( Config::blockedConnectionThread() );
     // If connected, we gonna check ping/pong process and swap
     if ( connected )
     {
