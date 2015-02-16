@@ -97,7 +97,10 @@ public:
      * @brief bypassCheck disable check, so the user can acces to everything, withotu printer/cnc controle (atu, NTC, etc...)
      */
     static bool bypassCheck();
+
     static bool blockedConnectionThread();
+
+    static bool disableSplashScreen();
 
 
     static bool disablePolyplexer();

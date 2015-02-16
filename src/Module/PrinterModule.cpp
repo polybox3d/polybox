@@ -10,6 +10,7 @@ PrinterModule::PrinterModule(PolyboxModule* polybox,QObject *parent) :
 
 void PrinterModule::initAll()
 {
+    _wireClogged = false;
     _printerE0Plugged = false;
     _printerE1Plugged = false;
     _detectPlastic = true;

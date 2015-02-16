@@ -6,13 +6,11 @@ CheckerModele::CheckerModele( QWidget *parent) :
     ui(new Ui::CheckerModele)
 {
     ui->setupUi(this);
-    /* this->setWindowModality( Qt::ApplicationModal );
-    this->setWindowFlags( Qt::Dialog );*/
 }
 void CheckerModele::setContentWidget(QWidget *content)
 {
     this->ui->contentWidget = content;
-    //content->show();
+    ((AbstractChecker*)(ui->contentWidget))->updateModuleValues();
     update();
 
 }

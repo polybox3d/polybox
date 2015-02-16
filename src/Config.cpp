@@ -83,9 +83,15 @@ bool Config::bypassCheck()
 {
     return Config::get(SETTINGS_GROUP,"bypassCheck", true).toBool();
 }
+
 bool Config::blockedConnectionThread()
 {
     return Config::get(SETTINGS_GROUP,"blockedConnectionThread", true).toBool();
+}
+
+bool Config::disableSplashScreen()
+{
+    return Config::get(SETTINGS_GROUP,"disableSplashScreen", false).toBool();
 }
 
 /**************************************************************************

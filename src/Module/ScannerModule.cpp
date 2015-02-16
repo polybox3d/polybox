@@ -60,7 +60,7 @@ void ScannerModule::updateComponents()
 {
     updateGlobalStatus();
     updateTurntablePlugged();
-
+    emit updateUI();
 }
 void ScannerModule::updateGlobalStatus()
 {

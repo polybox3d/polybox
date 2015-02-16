@@ -14,7 +14,9 @@ class SplashScreen : public QSplashScreen
 {
     Q_OBJECT
 public:
-    explicit SplashScreen(const QPixmap& pixmap);
+    explicit SplashScreen();
+    SplashScreen(const QPixmap& pixmap);
+    void init(const QPixmap& pixmap);
     ~SplashScreen();
     virtual void drawContents(QPainter *painter);
     void setFont(const QFont &f);

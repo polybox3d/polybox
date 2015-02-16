@@ -51,6 +51,7 @@ PolyboxModule::PolyboxModule(QObject *parent) :
     QObject(parent)
 {
     _connector = NULL ;
+    _connected = false;
     _numberOfMissingPingPong = PINGPONG_NOT_CONNECTED;
 
     this->setConnector( SerialPort::getSerial(), Serial );

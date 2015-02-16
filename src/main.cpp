@@ -18,18 +18,6 @@ int main(int argc, char *argv[])
 {
     QApplication app(argc, argv);
 
-    /*QString fontName(QLatin1String("../../src/style/fonts/Xperia.ttf"));
-    int appFontId = QFontDatabase::addApplicationFont(fontName);
-    if (appFontId < 0)
-    {
-        qWarning() << "Attempt to load application font: "<< fontName << " failed.";
-    }*/
-    /*********************  SPLASHSCREEN **********************/
-    SplashScreen splash( QPixmap(":/img/img/splashscreen_unconnected_fitted.png") );
-    splash.show();
-    splash.showStatusMessage(QObject::tr("                   Initialization..."),Qt::white);
-    qApp->processEvents();
-
     /*********************  INIT **********************/
     QSettings().setPath(QSettings::NativeFormat, QSettings::UserScope, Config::pathToConfigFile() );
     QCoreApplication::setOrganizationName("Polybox3D");
@@ -38,7 +26,16 @@ int main(int argc, char *argv[])
     /***  GIT_VERSION defined in .pro file ***/
     QCoreApplication::setApplicationVersion( GIT_VERSION );
     Config::init();
-    app.processEvents();
+
+    /*********************  SPLASHSCREEN **********************/
+    SplashScreen splash;
+    if ( ! Config::disableSplashScreen())
+    {
+        splash.init( QPixmap(":/img/img/splashscreen_unconnected_fitted.png") );
+        splash.show();
+        splash.showStatusMessage(QObject::tr("                   Initialization..."),Qt::white);
+    }
+    qApp->processEvents();
 
     /*********************  Translation **********************/
     QTranslator qtTranslator;
@@ -56,23 +53,26 @@ int main(int argc, char *argv[])
     app.processEvents();
 
     /*********************  THEMES **********************/
-    splash.showStatusMessage("                   Loading Skins...",Qt::white);
     Theme::installTheme();
-    app.processEvents();
 
     /*********************  Starting EXE **********************/
-    qApp->processEvents();
-    splash.connectingProcess();
+    if ( ! Config::disableSplashScreen())
+    {
+        qApp->processEvents();
+        splash.connectingProcess();
 
-    ClosedLoopTimer closed_loop;
-    closed_loop.startClosedLoop( 4000 );
+        ClosedLoopTimer closed_loop;
+        closed_loop.startClosedLoop( 4000 );
+
+    }
 
 
     MainWindow w;
-
-
     w.show();
-    splash.finish( &w );
+    if ( ! Config::disableSplashScreen())
+    {
+        splash.finish( &w );
+    }
 
     return app.exec();
 }

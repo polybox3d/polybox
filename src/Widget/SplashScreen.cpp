@@ -2,6 +2,15 @@
 
 SplashScreen::SplashScreen(const QPixmap& pixmap)
 {
+    init(pixmap);
+}
+SplashScreen::SplashScreen()
+{
+
+}
+void SplashScreen::init(const QPixmap &pixmap)
+{
+
     QSplashScreen::setPixmap(pixmap);
     _font = qApp->font();
     //_font = QFont("Xperia");

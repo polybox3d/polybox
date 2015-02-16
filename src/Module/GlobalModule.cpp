@@ -8,8 +8,12 @@ GlobalModule::GlobalModule(PolyboxModule *polybox, QObject *parent) :
 
 void GlobalModule::initAll()
 {
+    _icOpen = true;
+    _toolATUok = false;
+    _preasiATUok = false;
     _boxOpen = true;
     _ATUok = false;
+    _arduinoMaitre = false;
     _arduino1 = false;
     _arduino2 = false;
     _arduino3 = false;
@@ -17,9 +21,7 @@ void GlobalModule::initAll()
     _command = false;
     _power = false;
     _webcamPlugged = false;
-    _toolATUok = false;
-    _preasiATUok = false;
-    _icOpen = true;
+    _ram = 0;
 }
 
 void GlobalModule::parseMCode(QByteArray stream)
