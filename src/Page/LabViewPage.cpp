@@ -123,8 +123,8 @@ void LabViewPage::on_startBroadcast_clicked()
 
 void LabViewPage::importFromXmlFile(QString filename)
 {
-    ui->individualLightRadio->setChecked( true );
-    ui->globalLightRadio->setChecked( false );
+    //ui->individualLightRadio->setChecked( true );
+    //ui->globalLightRadio->setChecked( false );
     QFile* file = new QFile(filename);
     if (!file->open(QIODevice::ReadOnly | QIODevice::Text)) {
         QMessageBox::critical(this,
