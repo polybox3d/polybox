@@ -176,12 +176,12 @@ QString Config::linuxCNCCommand()
 }
 QString Config::linuxCNCConfig()
 {
-    return Config::get(CNC_GROUP,"linuxCNCConfig", Config::pathToHomeDirectory()+"linuxcnc/configs/mesa_official1/mesa_official1.ini").toString();
+    return Config::get(CNC_GROUP,"linuxCNCConfig", Config::pathToHomeDirectory()+"linuxcnc/configs/").toString();
 }
 
 QString Config::linuxCNCDefaultConfigFile()
 {
-    return Config::get(CNC_GROUP,"linuxCNCDefaultConfigFile", Config::linuxCNCConfig()+"/mesa_official1/mesa_official1.ini").toString();
+    return Config::get(CNC_GROUP,"linuxCNCDefaultConfigFile", Config::linuxCNCConfig()+"/Polybox/Polybox-v1/Polybox-v1.ini").toString();
 }
 void Config::setLinuxCNCDefaultConfigFile(QString ini_file)
 {
