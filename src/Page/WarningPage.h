@@ -51,6 +51,8 @@ private slots:
 
     void on_pinEditor_clicked();
 
+    void on_touchscreen_clicked();
+
 private:
     /**
      * @brief ui Graphical Layer.

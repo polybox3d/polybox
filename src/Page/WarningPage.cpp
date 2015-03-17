@@ -78,3 +78,24 @@ void WarningPage::on_pinEditor_clicked()
     debugpin->setWindowTitle(tr("Editeur de pins"));
     debugpin->show();
 }
+
+void WarningPage::on_touchscreen_clicked()
+{
+    if ( ! QFile::exists( Config::pathToTouchScreenCalibrator()) )
+    {
+        QMessageBox::critical(0, QWidget::tr("Error, missing folder: TouchScreenCalibrator"), QWidget::tr("Error, TouchScreenCalibrator folder not found.  \n \n Commands :  \t cd ~; git clone https://github.com/polybox3d/TouchScreenCalibrator.git && cd ~/TouchScreenCalibrator && qmake && make \n") );
+        return;
+    }
+    else if ( ! QFile::exists( Config::pathToTouchScreenCalibrator()+"/TouchScreenCalibrator") )
+    {
+        QMessageBox::critical(0, tr("Error, missing executable: TouchScreenCalibrator"), tr("Error, TouchScreenCalibrator executable not found.  \n Path: ")+Config::pathToTouchScreenCalibrator()+"/TouchScreenCalibrator" +tr(" \n Commands :  \t cd ~/TouchScreenCalibrator && qmake && make \n") );
+        return;
+    }
+
+    QString command = Config::pathToTouchScreenCalibrator()+"/TouchScreenCalibrator";
+    QStringList parameters;
+
+    QProcess* touchscreen = new QProcess( this );
+    touchscreen->execute( command, parameters);
+
+}

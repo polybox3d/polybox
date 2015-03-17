@@ -93,6 +93,8 @@ public:
     static QString linuxCNCDefaultConfigFile();
     static void setLinuxCNCDefaultConfigFile( QString ini_file);
 
+    static QString pathToTouchScreenCalibrator();
+
     /**
      * @brief bypassCheck disable check, so the user can acces to everything, withotu printer/cnc controle (atu, NTC, etc...)
      */

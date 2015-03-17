@@ -66,96 +66,89 @@
     <enum>Qt::Horizontal</enum>
    </property>
   </widget>
-  <widget class="QPushButton" name="help">
+  <widget class="QWidget" name="layoutWidget">
    <property name="geometry">
     <rect>
-     <x>640</x>
+     <x>10</x>
      <y>520</y>
-     <width>81</width>
-     <height>25</height>
+     <width>701</width>
+     <height>26</height>
     </rect>
    </property>
-   <property name="text">
-    <string>Aide</string>
-   </property>
-   <property name="icon">
-    <iconset resource="../ressources.qrc">
-     <normaloff>:/img/img/help.png</normaloff>:/img/img/help.png</iconset>
-   </property>
-  </widget>
-  <widget class="QPushButton" name="configuration">
-   <property name="enabled">
-    <bool>true</bool>
-   </property>
-   <property name="geometry">
-    <rect>
-     <x>450</x>
-     <y>520</y>
-     <width>181</width>
-     <height>25</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>Configuration logicielle</string>
-   </property>
-   <property name="icon">
-    <iconset resource="../ressources.qrc">
-     <normaloff>:/img/img/conf.png</normaloff>:/img/img/conf.png</iconset>
-   </property>
-  </widget>
-  <widget class="QPushButton" name="dynamicTest">
-   <property name="enabled">
-    <bool>false</bool>
-   </property>
-   <property name="geometry">
-    <rect>
-     <x>300</x>
-     <y>520</y>
-     <width>141</width>
-     <height>25</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>Tests Dynamiques</string>
-   </property>
-   <property name="icon">
-    <iconset resource="../ressources.qrc">
-     <normaloff>:/img/img/test.png</normaloff>:/img/img/test.png</iconset>
-   </property>
-  </widget>
-  <widget class="QPushButton" name="console">
-   <property name="geometry">
-    <rect>
-     <x>190</x>
-     <y>520</y>
-     <width>99</width>
-     <height>25</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>Console</string>
-   </property>
-   <property name="icon">
-    <iconset resource="../ressources.qrc">
-     <normaloff>:/img/img/terminal.png</normaloff>:/img/img/terminal.png</iconset>
-   </property>
-  </widget>
-  <widget class="QPushButton" name="pinEditor">
-   <property name="geometry">
-    <rect>
-     <x>90</x>
-     <y>520</y>
-     <width>91</width>
-     <height>25</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>Pin Editeur</string>
-   </property>
-   <property name="icon">
-    <iconset resource="../ressources.qrc">
-     <normaloff>:/img/img/pineditor.png</normaloff>:/img/img/pineditor.png</iconset>
-   </property>
+   <layout class="QHBoxLayout" name="horizontalLayout">
+    <item>
+     <widget class="QPushButton" name="touchscreen">
+      <property name="text">
+       <string>Calibrate Screen</string>
+      </property>
+      <property name="icon">
+       <iconset resource="../ressources.qrc">
+        <normaloff>:/img/img/touchscreen.png</normaloff>:/img/img/touchscreen.png</iconset>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QPushButton" name="pinEditor">
+      <property name="text">
+       <string>Pin Editeur</string>
+      </property>
+      <property name="icon">
+       <iconset resource="../ressources.qrc">
+        <normaloff>:/img/img/pineditor.png</normaloff>:/img/img/pineditor.png</iconset>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QPushButton" name="console">
+      <property name="text">
+       <string>Console</string>
+      </property>
+      <property name="icon">
+       <iconset resource="../ressources.qrc">
+        <normaloff>:/img/img/terminal.png</normaloff>:/img/img/terminal.png</iconset>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QPushButton" name="dynamicTest">
+      <property name="enabled">
+       <bool>false</bool>
+      </property>
+      <property name="text">
+       <string>Tests</string>
+      </property>
+      <property name="icon">
+       <iconset resource="../ressources.qrc">
+        <normaloff>:/img/img/test.png</normaloff>:/img/img/test.png</iconset>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QPushButton" name="configuration">
+      <property name="enabled">
+       <bool>true</bool>
+      </property>
+      <property name="text">
+       <string>Configuration logicielle</string>
+      </property>
+      <property name="icon">
+       <iconset resource="../ressources.qrc">
+        <normaloff>:/img/img/conf.png</normaloff>:/img/img/conf.png</iconset>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QPushButton" name="help">
+      <property name="text">
+       <string>Aide</string>
+      </property>
+      <property name="icon">
+       <iconset resource="../ressources.qrc">
+        <normaloff>:/img/img/help.png</normaloff>:/img/img/help.png</iconset>
+      </property>
+     </widget>
+    </item>
+   </layout>
   </widget>
  </widget>
  <customwidgets>

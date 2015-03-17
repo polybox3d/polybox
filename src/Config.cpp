@@ -101,6 +101,12 @@ float Config::webCamRotation()
 {
     return Config::get(GLOBAL_GROUP,"webCamRotation", 0).toFloat();
 }
+
+QString Config::pathToTouchScreenCalibrator()
+{
+    return Config::get(GLOBAL_GROUP,"pathToTouchScreenCalibrator", Config::pathToHomeDirectory()+"TouchScreenCalibrator/").toString();
+}
+
 /**************************************************************************
  *              CONNECTION_GROUP
  * ***********************************************************************/

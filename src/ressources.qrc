@@ -60,6 +60,7 @@
         <file>img/pineditor.png</file>
         <file>img/save.png</file>
         <file>img/upload.png</file>
+        <file>img/touchscreen.png</file>
     </qresource>
     <qresource prefix="/xml">
         <file>ambiances/Autumn.xml</file>
