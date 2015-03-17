@@ -135,6 +135,10 @@
    <property name="text">
     <string>Console</string>
    </property>
+   <property name="icon">
+    <iconset resource="../ressources.qrc">
+     <normaloff>:/img/img/terminal.png</normaloff>:/img/img/terminal.png</iconset>
+   </property>
   </widget>
   <widget class="QPushButton" name="pinEditor">
    <property name="geometry">
@@ -147,6 +151,10 @@
    </property>
    <property name="text">
     <string>Pin Editeur</string>
+   </property>
+   <property name="icon">
+    <iconset resource="../ressources.qrc">
+     <normaloff>:/img/img/pineditor.png</normaloff>:/img/img/pineditor.png</iconset>
    </property>
   </widget>
  </widget>

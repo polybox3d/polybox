@@ -67,7 +67,7 @@
    </property>
    <property name="icon">
     <iconset resource="../ressources.qrc">
-     <normaloff>:/img/img/play_green.png</normaloff>:/img/img/play_green.png</iconset>
+     <normaloff>:/img/img/broadcast.png</normaloff>:/img/img/broadcast.png</iconset>
    </property>
   </widget>
   <widget class="QPushButton" name="closeButton">
@@ -87,7 +87,7 @@
      <normaloff>:/img/img/close.png</normaloff>:/img/img/close.png</iconset>
    </property>
   </widget>
-  <widget class="QWidget" name="">
+  <widget class="QWidget" name="layoutWidget">
    <property name="geometry">
     <rect>
      <x>20</x>

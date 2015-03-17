@@ -342,12 +342,16 @@
      <rect>
       <x>240</x>
       <y>30</y>
-      <width>80</width>
+      <width>101</width>
       <height>25</height>
      </rect>
     </property>
     <property name="text">
      <string>Enregistrer</string>
+    </property>
+    <property name="icon">
+     <iconset resource="../ressources.qrc">
+      <normaloff>:/img/img/save.png</normaloff>:/img/img/save.png</iconset>
     </property>
    </widget>
    <widget class="QPushButton" name="loadProfil">
@@ -355,12 +359,16 @@
      <rect>
       <x>140</x>
       <y>30</y>
-      <width>80</width>
+      <width>91</width>
       <height>25</height>
      </rect>
     </property>
     <property name="text">
      <string>Charger</string>
+    </property>
+    <property name="icon">
+     <iconset resource="../ressources.qrc">
+      <normaloff>:/img/img/upload.png</normaloff>:/img/img/upload.png</iconset>
     </property>
    </widget>
    <widget class="QLabel" name="currentProfil">

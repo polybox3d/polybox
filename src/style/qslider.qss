@@ -64,3 +64,4 @@ QSpinBox::down-button:pressed  {
 top: 1px;
 left: 1px;
 }
+

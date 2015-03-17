@@ -55,6 +55,11 @@
         <file>img/splashscreen_unconnected_error_fitted.png</file>
         <file>img/splashscreen_unconnected_fitted.png</file>
         <file>img/splashscreen_wait_fitted.png</file>
+        <file>img/back.png</file>
+        <file>img/terminal.png</file>
+        <file>img/pineditor.png</file>
+        <file>img/save.png</file>
+        <file>img/upload.png</file>
     </qresource>
     <qresource prefix="/xml">
         <file>ambiances/Autumn.xml</file>
