@@ -37,6 +37,10 @@ public slots:
      */
     void goBack();
     void updateModules();
+public slots:
+
+    static void on_touchscreen_clicked();
+
 private slots:
     /**
      * @brief on_help_clicked Called when the user click on Help button. Go back to the Help page
@@ -51,7 +55,7 @@ private slots:
 
     void on_pinEditor_clicked();
 
-    void on_touchscreen_clicked();
+    void on_pushButton_clicked();
 
 private:
     /**

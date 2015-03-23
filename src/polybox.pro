@@ -99,7 +99,9 @@ SOURCES += main.cpp\
     TCPClient.cpp \
     Widget/DialogClient.cpp \
     Widget/SplashScreen.cpp \
-    ClosedLoopTimer.cpp
+    ClosedLoopTimer.cpp \
+    Widget/PlateCalibratorWidget.cpp \
+    Module/PlaterCalibrator.cpp
 
 HEADERS  += MainWindow.h \
         Updater.h \
@@ -159,7 +161,9 @@ HEADERS  += MainWindow.h \
     TCPClient.h \
     Widget/DialogClient.h \
     Widget/SplashScreen.h \
-    ClosedLoopTimer.h
+    ClosedLoopTimer.h \
+    Widget/PlateCalibratorWidget.h \
+    Module/PlaterCalibrator.h
 
 FORMS    += MainWindow.ui \
     PrinterSmallUI.ui \
@@ -186,7 +190,8 @@ FORMS    += MainWindow.ui \
     Widget/DialogCredits.ui \
     Widget/DialogBroadcast.ui \
     Widget/DialogWidget.ui \
-    Widget/DialogClient.ui
+    Widget/DialogClient.ui \
+    Widget/PlateCalibratorWidget.ui
 
 RESOURCES += \
     ressources.qrc

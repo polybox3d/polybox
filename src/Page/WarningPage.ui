@@ -71,7 +71,7 @@
     <rect>
      <x>10</x>
      <y>520</y>
-     <width>701</width>
+     <width>721</width>
      <height>26</height>
     </rect>
    </property>
@@ -84,6 +84,17 @@
       <property name="icon">
        <iconset resource="../ressources.qrc">
         <normaloff>:/img/img/touchscreen.png</normaloff>:/img/img/touchscreen.png</iconset>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QPushButton" name="pushButton">
+      <property name="text">
+       <string>Calibrate Plate</string>
+      </property>
+      <property name="icon">
+       <iconset resource="../ressources.qrc">
+        <normaloff>:/img/img/plate_icon.png</normaloff>:/img/img/plate_icon.png</iconset>
       </property>
      </widget>
     </item>
@@ -114,6 +125,12 @@
       <property name="enabled">
        <bool>false</bool>
       </property>
+      <property name="maximumSize">
+       <size>
+        <width>1</width>
+        <height>1</height>
+       </size>
+      </property>
       <property name="text">
        <string>Tests</string>
       </property>
@@ -139,6 +156,12 @@
     </item>
     <item>
      <widget class="QPushButton" name="help">
+      <property name="maximumSize">
+       <size>
+        <width>1</width>
+        <height>1</height>
+       </size>
+      </property>
       <property name="text">
        <string>Aide</string>
       </property>

@@ -95,7 +95,12 @@ void WarningPage::on_touchscreen_clicked()
     QString command = Config::pathToTouchScreenCalibrator()+"/TouchScreenCalibrator";
     QStringList parameters;
 
-    QProcess* touchscreen = new QProcess( this );
+    QProcess* touchscreen = new QProcess( qApp );
     touchscreen->execute( command, parameters);
 
+}
+
+void WarningPage::on_pushButton_clicked()
+{
+    CHANGE_PAGE( CalibratePlate );
 }

@@ -27,6 +27,7 @@
 #include "Theme.h"
 #include "TCPServer.h"
 #include "Led.h"
+#include "PlateCalibratorWidget.h"
 
 #if !defined NO_SCAN
  #include "fsmainwindow.h"
@@ -102,6 +103,10 @@ private slots:
     void on_actionMode_Serveur_toggled(bool arg1);
 
     void on_actionStart_Client_Mode_toggled(bool arg1);
+
+    void on_actionCalibration_Ecran_triggered();
+
+    void on_actionCalibration_Plateau_triggered();
 
 private:
     void updateStatePage();

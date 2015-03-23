@@ -61,6 +61,17 @@
         <file>img/save.png</file>
         <file>img/upload.png</file>
         <file>img/touchscreen.png</file>
+        <file>img/fa-minus.png</file>
+        <file>img/fa-plus.png</file>
+        <file>img/plate.png</file>
+        <file>img/to-top-green.png</file>
+        <file>img/to-right-green.png</file>
+        <file>img/to-left-red.png</file>
+        <file>img/to-bottom-red.png</file>
+        <file>img/plate_icon.png</file>
+        <file>img/gamepad.png</file>
+        <file>img/flag.png</file>
+        <file>img/skin.png</file>
     </qresource>
     <qresource prefix="/xml">
         <file>ambiances/Autumn.xml</file>

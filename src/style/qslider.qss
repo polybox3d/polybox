@@ -1,4 +1,4 @@
-QSpinBox {
+QSpinBox, QDoubleSpinBox {
 margin-left: 22px;  /* make room for the arrows */
 margin-right: 22px;  /* make room for the arrows */
 padding-right: -20px;
@@ -9,7 +9,7 @@ min-height: 23px;
 border-radius: 4px;
 }
 
-QSpinBox::up-button  {
+QSpinBox::up-button,   QDoubleSpinBox::up-button {
 subcontrol-origin: margin;
 subcontrol-position: center right;
 width: 19px;
@@ -17,7 +17,7 @@ height: 19px;
 border-width: 1px;
 }
 
-QSpinBox::up-arrow  {
+QSpinBox::up-arrow, QDoubleSpinBox::up-arrow  {
 min-width: 19px;
 min-height: 19px;
 max-width: 19px;
@@ -27,17 +27,17 @@ width: 19px;
 background-image: url(:/img/img/plus_border.png);
 }
 
-QSpinBox::up-arrow:disabled, QSpinBox::up-arrow:off 
+QSpinBox::up-arrow:disabled, QSpinBox::up-arrow:off, QDoubleSpinBox::up-arrow:disabled, QDoubleSpinBox::up-arrow:off
 {
         background-image: url(:/img/img/plus_border_disable.png);
 }
 
-QSpinBox::up-button:pressed  {
+QSpinBox::up-button:pressed, QDoubleSpinBox::up-button:pressed {
 top: 1px;
 right: 1px;
 }
 
-QSpinBox::down-button  {
+QSpinBox::down-button, QDoubleSpinBox::down-button  {
 subcontrol-origin: margin;
 subcontrol-position: center left;
 width: 19px;
@@ -45,7 +45,7 @@ height: 19px;
 border-width: 1px;
 }
 
-QSpinBox::down-arrow  {
+QSpinBox::down-arrow, QDoubleSpinBox::down-arrow  {
 min-width: 19px;
 min-height: 19px;
 max-width: 19px;
@@ -55,12 +55,12 @@ width: 19px;
 background-image: url(:/img/img/moins_border.png);
 }
 
-QSpinBox::down-arrow:disabled, QSpinBox::down-arrow:off 
+QSpinBox::down-arrow:disabled, QSpinBox::down-arrow:off, QDoubleSpinBox::down-arrow:disabled, QDoubleSpinBox::down-arrow:off
 {
         background-image: url(:/img/img/moins_border_disable.png);
 }
 
-QSpinBox::down-button:pressed  {
+QSpinBox::down-button:pressed, QDoubleSpinBox::down-button:pressed  {
 top: 1px;
 left: 1px;
 }

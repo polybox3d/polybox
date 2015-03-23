@@ -497,6 +497,9 @@ void MainWindow::updateStatePage()
         laser->start( Config::scannerLaserPath );*/
         break;
     }
+    case CalibratePlate :
+        this->setCentralWidget( new PlateCalibratorWidget( this ) );
+        break;
     default:
         break;
         
@@ -632,4 +635,14 @@ void MainWindow::on_actionStart_Client_Mode_toggled(bool arg1)
         }
     }
 
+}
+
+void MainWindow::on_actionCalibration_Ecran_triggered()
+{
+    WarningPage::on_touchscreen_clicked();
+}
+
+void MainWindow::on_actionCalibration_Plateau_triggered()
+{
+    CHANGE_PAGE( CalibratePlate );
 }

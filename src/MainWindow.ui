@@ -51,6 +51,10 @@
      <property name="title">
       <string>Visualiser</string>
      </property>
+     <property name="icon">
+      <iconset resource="ressources.qrc">
+       <normaloff>:/img/img/record.png</normaloff>:/img/img/record.png</iconset>
+     </property>
     </widget>
     <widget class="QMenu" name="menuConnexion">
      <property name="title">
@@ -67,6 +71,9 @@
     <addaction name="menuConnexion"/>
     <addaction name="actionMode_Serveur"/>
     <addaction name="actionStart_Client_Mode"/>
+    <addaction name="separator"/>
+    <addaction name="actionCalibration_Ecran"/>
+    <addaction name="actionCalibration_Plateau"/>
    </widget>
    <widget class="QMenu" name="menuAide">
     <property name="title">
@@ -76,10 +83,18 @@
      <property name="title">
       <string>Langage</string>
      </property>
+     <property name="icon">
+      <iconset resource="ressources.qrc">
+       <normaloff>:/img/img/flag.png</normaloff>:/img/img/flag.png</iconset>
+     </property>
     </widget>
     <widget class="QMenu" name="menuThemes">
      <property name="title">
       <string>Thèmes</string>
+     </property>
+     <property name="icon">
+      <iconset resource="ressources.qrc">
+       <normaloff>:/img/img/skin.png</normaloff>:/img/img/skin.png</iconset>
      </property>
     </widget>
     <addaction name="menuLangage"/>
@@ -98,6 +113,10 @@
   </widget>
   <widget class="QStatusBar" name="statusBar"/>
   <action name="actionCNC">
+   <property name="icon">
+    <iconset resource="ressources.qrc">
+     <normaloff>:/img/img/linuxcnc_logo.png</normaloff>:/img/img/linuxcnc_logo.png</iconset>
+   </property>
    <property name="text">
     <string>CNC</string>
    </property>
@@ -106,6 +125,10 @@
    </property>
   </action>
   <action name="actionImprimante">
+   <property name="icon">
+    <iconset resource="ressources.qrc">
+     <normaloff>:/img/img/heater.png</normaloff>:/img/img/heater.png</iconset>
+   </property>
    <property name="text">
     <string>Imprimante</string>
    </property>
@@ -114,6 +137,10 @@
    </property>
   </action>
   <action name="actionScanner">
+   <property name="icon">
+    <iconset resource="ressources.qrc">
+     <normaloff>:/img/img/laser.png</normaloff>:/img/img/laser.png</iconset>
+   </property>
    <property name="text">
     <string>Scanner</string>
    </property>
@@ -122,6 +149,10 @@
    </property>
   </action>
   <action name="actionLabView">
+   <property name="icon">
+    <iconset resource="ressources.qrc">
+     <normaloff>:/img/img/record.png</normaloff>:/img/img/record.png</iconset>
+   </property>
    <property name="text">
     <string>LabView</string>
    </property>
@@ -130,6 +161,10 @@
    </property>
   </action>
   <action name="actionActiver_Manette">
+   <property name="icon">
+    <iconset resource="ressources.qrc">
+     <normaloff>:/img/img/gamepad.png</normaloff>:/img/img/gamepad.png</iconset>
+   </property>
    <property name="text">
     <string>Activer Manette</string>
    </property>
@@ -138,6 +173,10 @@
    </property>
   </action>
   <action name="actionLabView_dock">
+   <property name="icon">
+    <iconset resource="ressources.qrc">
+     <normaloff>:/img/img/test.png</normaloff>:/img/img/test.png</iconset>
+   </property>
    <property name="text">
     <string>LabView (dock)</string>
    </property>
@@ -146,6 +185,10 @@
    </property>
   </action>
   <action name="actionConsole">
+   <property name="icon">
+    <iconset resource="ressources.qrc">
+     <normaloff>:/img/img/terminal.png</normaloff>:/img/img/terminal.png</iconset>
+   </property>
    <property name="text">
     <string>Console</string>
    </property>
@@ -154,21 +197,37 @@
    </property>
   </action>
   <action name="actionVisualisation">
+   <property name="icon">
+    <iconset resource="ressources.qrc">
+     <normaloff>:/img/img/record.png</normaloff>:/img/img/record.png</iconset>
+   </property>
    <property name="text">
     <string>Visualisation</string>
    </property>
   </action>
   <action name="actionParametres">
+   <property name="icon">
+    <iconset resource="ressources.qrc">
+     <normaloff>:/img/img/conf.png</normaloff>:/img/img/conf.png</iconset>
+   </property>
    <property name="text">
     <string>Paramètres</string>
    </property>
   </action>
   <action name="actionLangage">
+   <property name="icon">
+    <iconset resource="ressources.qrc">
+     <normaloff>:/img/img/flag.png</normaloff>:/img/img/flag.png</iconset>
+   </property>
    <property name="text">
     <string>Langage</string>
    </property>
   </action>
   <action name="actionCredits">
+   <property name="icon">
+    <iconset resource="ressources.qrc">
+     <normaloff>:/img/img/help.png</normaloff>:/img/img/help.png</iconset>
+   </property>
    <property name="text">
     <string>Credits</string>
    </property>
@@ -176,6 +235,10 @@
   <action name="actionMode_Serveur">
    <property name="checkable">
     <bool>true</bool>
+   </property>
+   <property name="icon">
+    <iconset resource="ressources.qrc">
+     <normaloff>:/img/img/broadcast.png</normaloff>:/img/img/broadcast.png</iconset>
    </property>
    <property name="text">
     <string>Start Server Mode</string>
@@ -187,6 +250,24 @@
    </property>
    <property name="text">
     <string>Start Client Mode</string>
+   </property>
+  </action>
+  <action name="actionCalibration_Ecran">
+   <property name="icon">
+    <iconset resource="ressources.qrc">
+     <normaloff>:/img/img/touchscreen.png</normaloff>:/img/img/touchscreen.png</iconset>
+   </property>
+   <property name="text">
+    <string>Calibration Ecran</string>
+   </property>
+  </action>
+  <action name="actionCalibration_Plateau">
+   <property name="icon">
+    <iconset resource="ressources.qrc">
+     <normaloff>:/img/img/plate_icon.png</normaloff>:/img/img/plate_icon.png</iconset>
+   </property>
+   <property name="text">
+    <string>Calibration Plateau</string>
    </property>
   </action>
  </widget>
