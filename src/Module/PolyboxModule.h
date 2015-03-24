@@ -62,6 +62,7 @@ public:
 signals:
     void updateHardware();
     void newType(PolyboxModule::ConnectorType type);
+    void newData( QByteArray stream );
 
 public slots:
     void parseData();

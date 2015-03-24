@@ -83,6 +83,11 @@ enum MCodeFlags
 #define MCODE_GLOBAL_SET_POWER_STATUS           690
 #define MCODE_GLOBAL_SET_PAUSE                  691
 
+#define MCODE_GLOBAL_GET_GYRO_ABSOLU            693
+#define MCODE_GLOBAL_GET_GYRO_RELATIF           694
+#define MCODE_GLOBAL_SET_GYRO_OFFSET            695
+#define MCODE_GLOBAL_MOVE_MOTOR_ANGLE           696
+
 #define MCODE_PING_PONG                         703
 #define MCODE_END_CONNECTION                    705
 #define MCODE_START_CONNECTION                  706

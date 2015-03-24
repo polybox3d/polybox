@@ -32,6 +32,8 @@ INCLUDEPATH += Checker
 INCLUDEPATH += Page
 INCLUDEPATH += Module
 INCLUDEPATH += Widget
+INCLUDEPATH += Wizard
+
 
 
 DEFINES += NO_SCAN
@@ -101,7 +103,10 @@ SOURCES += main.cpp\
     Widget/SplashScreen.cpp \
     ClosedLoopTimer.cpp \
     Widget/PlateCalibratorWidget.cpp \
-    Module/PlaterCalibrator.cpp
+    Module/PlaterCalibrator.cpp \
+    Wizard/LevelingWizard.cpp \
+    Wizard/IntroLevelingPage.cpp \
+    Wizard/ContactPointLevelingPage.cpp
 
 HEADERS  += MainWindow.h \
         Updater.h \
@@ -163,7 +168,10 @@ HEADERS  += MainWindow.h \
     Widget/SplashScreen.h \
     ClosedLoopTimer.h \
     Widget/PlateCalibratorWidget.h \
-    Module/PlaterCalibrator.h
+    Module/PlaterCalibrator.h \
+    Wizard/LevelingWizard.h \
+    Wizard/IntroLevelingPage.h \
+    Wizard/ContactPointLevelingPage.h
 
 FORMS    += MainWindow.ui \
     PrinterSmallUI.ui \
@@ -191,7 +199,9 @@ FORMS    += MainWindow.ui \
     Widget/DialogBroadcast.ui \
     Widget/DialogWidget.ui \
     Widget/DialogClient.ui \
-    Widget/PlateCalibratorWidget.ui
+    Widget/PlateCalibratorWidget.ui \
+    Wizard/IntroLevelingPage.ui \
+    Wizard/ContactPointLevelingPage.ui
 
 RESOURCES += \
     ressources.qrc

@@ -172,13 +172,16 @@ void PolyboxModule::parseData()
     /*int start_idx = 0;
     int idx = str.indexOf( start_idx,'#') ;*/
     QStringList datas_listed = str.split("#", QString::SkipEmptyParts );
+    QByteArray stream;
     foreach ( QString current_mcode, datas_listed )
     {
-        this->parseMCode( current_mcode.toStdString().c_str() );
-        _cnc->parseMCode( current_mcode.toStdString().c_str() );
-        _global->parseMCode( current_mcode.toStdString().c_str() );
-        _scanner->parseMCode( current_mcode.toStdString().c_str() );
-        _printer->parseMCode( current_mcode.toStdString().c_str() );
+        stream = current_mcode.toStdString().c_str();
+        this->parseMCode( stream );
+        _cnc->parseMCode( stream );
+        _global->parseMCode( stream );
+        _scanner->parseMCode( stream );
+        _printer->parseMCode( stream );
+        emit newData( stream );
     }
 
 }
