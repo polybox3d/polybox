@@ -91,6 +91,10 @@ enum MCodeFlags
 #define MCODE_PING_PONG                         703
 #define MCODE_END_CONNECTION                    705
 #define MCODE_START_CONNECTION                  706
+#define MCODE_SEND_GCODE                        710
+
+#define GCODE_SINGLE_ZPROBE                     30
+#define GCODE_ZPROBE_CAPTOR_VALUE               31
 
 }
 

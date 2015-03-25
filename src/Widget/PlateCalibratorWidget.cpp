@@ -89,6 +89,6 @@ void PlateCalibratorWidget::on_setCurrentOrigin_clicked()
 
 void PlateCalibratorWidget::on_startCalibration_clicked()
 {
-    LevelingWizard *lw = new LevelingWizard();
+    LevelingWizard *lw = new LevelingWizard(this);
     lw->show();
 }

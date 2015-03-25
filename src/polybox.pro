@@ -106,7 +106,8 @@ SOURCES += main.cpp\
     Module/PlaterCalibrator.cpp \
     Wizard/LevelingWizard.cpp \
     Wizard/IntroLevelingPage.cpp \
-    Wizard/ContactPointLevelingPage.cpp
+    Wizard/ContactPointLevelingPage.cpp \
+    Wizard/ProcessLevelingPage.cpp
 
 HEADERS  += MainWindow.h \
         Updater.h \
@@ -171,7 +172,8 @@ HEADERS  += MainWindow.h \
     Module/PlaterCalibrator.h \
     Wizard/LevelingWizard.h \
     Wizard/IntroLevelingPage.h \
-    Wizard/ContactPointLevelingPage.h
+    Wizard/ContactPointLevelingPage.h \
+    Wizard/ProcessLevelingPage.h
 
 FORMS    += MainWindow.ui \
     PrinterSmallUI.ui \
@@ -201,7 +203,8 @@ FORMS    += MainWindow.ui \
     Widget/DialogClient.ui \
     Widget/PlateCalibratorWidget.ui \
     Wizard/IntroLevelingPage.ui \
-    Wizard/ContactPointLevelingPage.ui
+    Wizard/ContactPointLevelingPage.ui \
+    Wizard/ProcessLevelingPage.ui
 
 RESOURCES += \
     ressources.qrc

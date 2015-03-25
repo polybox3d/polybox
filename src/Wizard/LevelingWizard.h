@@ -2,9 +2,12 @@
 #define LEVELINGWIZARD_H
 
 #include <QWizard>
+#include <QDate>
 
 #include "IntroLevelingPage.h"
 #include "ContactPointLevelingPage.h"
+#include "ProcessLevelingPage.h"
+#include "Config.h"
 
 namespace Ui {
 class LevelingWizard;
