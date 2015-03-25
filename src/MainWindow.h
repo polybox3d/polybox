@@ -38,6 +38,8 @@
 #include "DialogClient.h"
 #include "Led.h"
 
+#include "MaintenanceChecker.h"
+
 namespace Ui {
 class MainWindow;
 }

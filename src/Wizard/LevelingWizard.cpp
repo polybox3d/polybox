@@ -18,7 +18,7 @@ void LevelingWizard::accept()
     Config::set(SETTINGS_GROUP,"contactPointA_z", field("Az") );
     Config::set(SETTINGS_GROUP,"contactPointA_z", field("Bz") );
     Config::set(SETTINGS_GROUP,"contactPointA_z", field("Cz") );
-    Config::set(SETTINGS_GROUP,"lastLevelingDate", QDate::currentDate().toString("ddMMyyyy") );
+    Config::set(CHECKER_GROUP,"lastLevelingDate", QDate::currentDate().toString("ddMMyyyy") );
 
     QDialog::accept();
 }

@@ -107,7 +107,8 @@ SOURCES += main.cpp\
     Wizard/LevelingWizard.cpp \
     Wizard/IntroLevelingPage.cpp \
     Wizard/ContactPointLevelingPage.cpp \
-    Wizard/ProcessLevelingPage.cpp
+    Wizard/ProcessLevelingPage.cpp \
+    Checker/MaintenanceChecker.cpp
 
 HEADERS  += MainWindow.h \
         Updater.h \
@@ -173,7 +174,8 @@ HEADERS  += MainWindow.h \
     Wizard/LevelingWizard.h \
     Wizard/IntroLevelingPage.h \
     Wizard/ContactPointLevelingPage.h \
-    Wizard/ProcessLevelingPage.h
+    Wizard/ProcessLevelingPage.h \
+    Checker/MaintenanceChecker.h
 
 FORMS    += MainWindow.ui \
     PrinterSmallUI.ui \

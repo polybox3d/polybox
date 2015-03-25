@@ -73,6 +73,8 @@ MainWindow::MainWindow(Qt::WindowFlags window_flags, QWidget *parent) :
     setupThemes();
     setupWebcamMenu();
     setupSerialMenu();
+
+    MaintenanceChecker::check();
 }
 void MainWindow::displayStatusMessage(QString mess)
 {
