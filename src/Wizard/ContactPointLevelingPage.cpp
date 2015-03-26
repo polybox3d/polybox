@@ -47,6 +47,47 @@ void ContactPointLevelingPage::parseMCode(QByteArray stream)
            }
        }
     }
+    if ( stream.contains("Z-probe:"))
+    {
+        SerialPort::nextValue( str, idx);
+
+        float z = SerialPort::embeddedstr2l( str, idx );
+        float x, y = 0.0;
+        SerialPort::nextField( str, idx);
+        if ( str[idx] == 'X' )
+        {
+            SerialPort::nextValue( str, idx);
+             x = SerialPort::embeddedstr2l( str, idx );
+        }
+        else if ( str[idx] == 'Y' )
+        {
+            SerialPort::nextValue( str, idx);
+            y = SerialPort::embeddedstr2l( str, idx );
+        }
+    }
+
+}
+void ContactPointLevelingPage::saveProbing(float x, float  y, float z)
+{
+    if ( this->_id == 0 )
+    {
+        ui->a_x->setText( QString::number(x) );
+        ui->a_y->setText( QString::number(y) );
+        ui->a_z->setText( QString::number(z) );
+    }
+    else if ( this->_id == 1 )
+    {
+        ui->b_x->setText( QString::number(x) );
+        ui->b_y->setText( QString::number(y) );
+        ui->b_z->setText( QString::number(z) );
+    }
+    else if ( this->_id == 1 )
+    {
+        ui->c_x->setText( QString::number(x) );
+        ui->c_y->setText( QString::number(y) );
+        ui->c_z->setText( QString::number(z) );
+    }
+
 }
 
 void ContactPointLevelingPage::setupField()

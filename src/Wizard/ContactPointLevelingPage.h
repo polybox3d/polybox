@@ -30,6 +30,7 @@ private slots:
     void on_startContactProcess_clicked();
 
 private:
+    void saveProbing(float x, float  y, float z);
     Ui::ContactPointLevelingPage *ui;
     int _id;
     static int next_id;

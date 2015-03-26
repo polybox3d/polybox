@@ -25,14 +25,14 @@ void PlaterCalibrator::updateComponents()
 
 void PlaterCalibrator::defineOffsetFromCurrentPos()
 {
-    defineOffset( 0, 0, 0);
+    defineOffset( (_ax - _rx), (_ay - _ry), (_az - _rz));
 }
 
 void PlaterCalibrator::defineOffset(float x_offset, float y_offset, float z_offset)
 {
-    _polybox->connector()->sendMCode( QString::number(MCODE_GLOBAL_SET_GYRO_OFFSET)+" E"+QString::number(x_offset)
-                           +" P"+QString::number(y_offset)
-                           +" I"+QString::number(z_offset));
+    _polybox->connector()->sendMCode( QString::number(MCODE_GLOBAL_SET_GYRO_OFFSET)+" X"+QString::number(x_offset)
+                           +" Y"+QString::number(y_offset)
+                           +" Z"+QString::number(z_offset));
 
 }
 
@@ -74,19 +74,19 @@ void PlaterCalibrator::parseMCode(QByteArray stream)
         while ( idx < size )
         {
             SerialPort::nextField( str, idx);
-            if ( str[idx] == 'A')
+            if ( str[idx] == 'Z')
             {
-                if ( str[idx+1]=='1')
+                if ( str[idx+1]=='0')
                 {
                     SerialPort::nextValue( str, idx);
                     this->setAx( SerialPort::embeddedstr2l( str, idx ) );
                 }
-                else if ( str[idx+1]=='2')
+                else if ( str[idx+1]=='1')
                 {
                     SerialPort::nextValue( str, idx);
                     this->setAy( SerialPort::embeddedstr2l( str, idx ) );
                 }
-                else if ( str[idx+1]=='3')
+                else if ( str[idx+1]=='2')
                 {
                     SerialPort::nextValue( str, idx);
                     this->setAz( SerialPort::embeddedstr2l( str, idx ) );
