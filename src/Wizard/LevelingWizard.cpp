@@ -1,5 +1,4 @@
 #include "LevelingWizard.h"
-#include "ui_LevelingWizard.h"
 
 LevelingWizard::LevelingWizard(QWidget *parent) :
     QWizard(parent)
