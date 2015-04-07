@@ -148,7 +148,7 @@ QStringList CNCModule::getAllCNCConfigs(QString path)
     QStringList cnc_configs;
     QDir dir(Config::linuxCNCConfig());
 
-    QDirIterator iterator(dir.absolutePath(), QDirIterator::Subdirectories);
+    QDirIterator iterator(dir.canonicalPath(), QDirIterator::Subdirectories);
     while (iterator.hasNext())
     {
         iterator.next();

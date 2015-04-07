@@ -48,9 +48,9 @@ void SplashScreen::drawContents(QPainter *painter)
 void SplashScreen::connectingProcess()
 {
     this->showStatusMessage(tr("Attempt to connect..."), Qt::white);
-    bool connected = PolyboxModule::getInstance( qApp )->connection( Config::blockedConnectionThread() );
+    PolyboxModule::ConnectionStatus connection_status = PolyboxModule::getInstance( qApp )->connection( Config::blockedConnectionThread() );
     // If connected, we gonna check ping/pong process and swap
-    if ( connected )
+    if ( connection_status == PolyboxModule::Connected )
     {
         this->showStatusMessage(tr("     Polyplexer started. \nWaiting for Polybox3D response..."), Qt::white);
         this->setPixmap(QPixmap(":/img/img/splashscreen_wait_fitted.png"));
