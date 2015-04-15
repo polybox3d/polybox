@@ -15,6 +15,7 @@
 
 PolyboxModule* PolyboxModule::polyboxModuleInstance = NULL;
 QJoystick* PolyboxModule::_joypad=NULL;
+QMap<int, QString> PolyboxModule::connectionStatusMessage;
 
 PolyboxModule* PolyboxModule::getInstance(QObject *parent)
 {
@@ -47,6 +48,16 @@ void PolyboxModule::setConnectorType(ConnectorType type)
     emit( newType(type));
 }
 
+void PolyboxModule::initConnectionStatusMessage()
+{
+    connectionStatusMessage.insert( PolyboxModule::Connected, tr("Le logiciel est correctement connecté à la machine. "));
+    connectionStatusMessage.insert( PolyboxModule::ErrorPolyplexer, tr("Impossible de se connecter à la machine.\n Erreur au lancement du sous-programme Polyplexer. \n 0xff30'"));
+    connectionStatusMessage.insert( PolyboxModule::ErrorConnection, tr("Impossible de se connecter à la machine.\n Error 0xff34'"));
+    connectionStatusMessage.insert( PolyboxModule::Permission, tr("Erreur au lancement. Verifiez vos droits"));
+    connectionStatusMessage.insert( PolyboxModule::NotFound, tr("Programme non trouvable"));
+    connectionStatusMessage.insert( PolyboxModule::TimeOut, tr("La machine ne repond pas...\n Error 0xff34'"));
+}
+
 PolyboxModule::PolyboxModule(QObject *parent) :
     QObject(parent)
 {
@@ -54,6 +65,7 @@ PolyboxModule::PolyboxModule(QObject *parent) :
     _connected = false;
     _numberOfMissingPingPong = PINGPONG_NOT_CONNECTED;
 
+    initConnectionStatusMessage();
     this->setConnector( SerialPort::getSerial(), Serial );
     _polyplexer = Polyplexer::getInstance();
     connect ( _connector, SIGNAL(dataReady()), this, SLOT(parseData()) );
@@ -94,22 +106,23 @@ PolyboxModule::ConnectionStatus PolyboxModule::connectionGUI(bool blocked_thread
  ConnectionStatus connection_status = this->connection( blocked_thread);
  switch (connection_status) {
  case Connected:
-     MainWindow::textWindow( tr("Le logiciel est correctement connecté à la machine. ") );
-     break;
- case ErrorPolyplexer:
-     MainWindow::errorWindow( tr("Impossible de se connecter à la machine.\n Erreur au lancement du sous-programme Polyplexer. 0xff30' ") );
-
-     break;
- case ErrorConnection:
-     MainWindow::errorWindow( tr("Impossible de se connecter à la machine.\n Error 0xff34' ") );
-     break;
- case TimeOut:
-     MainWindow::errorWindow( tr("La machine ne repond pas...\n Error 0xff34' ") );
+     MainWindow::textWindow( this->connectionStatusMessage.value(connection_status) );
      break;
  default:
+     MainWindow::errorWindow( this->connectionStatusMessage.value(connection_status) );
      break;
  }
  return connection_status;
+}
+
+
+int PolyboxModule::error()
+{
+    if ( this->_polyplexer != NULL )
+    {
+        return this->_polyplexer->error();
+    }
+    return 99;
 }
 
 PolyboxModule::ConnectionStatus PolyboxModule::connection( bool blocked_thread)

@@ -27,16 +27,6 @@ int main(int argc, char *argv[])
     QCoreApplication::setApplicationVersion( GIT_VERSION );
     Config::init();
 
-    /*********************  SPLASHSCREEN **********************/
-    SplashScreen splash;
-    if ( ! Config::disableSplashScreen())
-    {
-        splash.init( QPixmap(":/img/img/splashscreen_unconnected_fitted.png") );
-        splash.show();
-        splash.showStatusMessage(QObject::tr("                   Initialization..."),Qt::white);
-    }
-    qApp->processEvents();
-
     /*********************  Translation **********************/
     QTranslator qtTranslator;
 
@@ -51,6 +41,18 @@ int main(int argc, char *argv[])
         qWarning(Config::translationPath().toStdString().c_str());
 
     app.processEvents();
+
+    /*********************  SPLASHSCREEN **********************/
+    SplashScreen splash;
+    if ( ! Config::disableSplashScreen())
+    {
+        splash.init( QPixmap(":/img/img/splashscreen_unconnected_fitted.png") );
+        splash.show();
+        splash.showStatusMessage(QObject::tr("                   Initialization..."),Qt::white);
+    }
+    qApp->processEvents();
+
+
 
     /*********************  THEMES **********************/
     Theme::installTheme();

@@ -64,6 +64,7 @@ public:
     bool restart();
     bool kill();
     void useWindowOutput(bool use_window );
+    int error();
 
     QString portMachine() const { return _portMachine; }
     void setPortMachine( QString port ) { _portMachine = port ; }

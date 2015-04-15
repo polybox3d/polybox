@@ -2,6 +2,8 @@
 #define POLYBOXMODULE_H
 
 #include <QObject>
+#include <QString>
+#include <QMap>
 #include <QByteArray>
 #include <QTimer>
 
@@ -32,9 +34,12 @@ public:
 
     enum ConnectorType{ Serial, ServerTCP, CLientTCP, Abstract};
     enum ConnectionStatus{ Connected=0, ErrorPolyplexer=2, ErrorConnection=4, Permission=8, NotFound=16, TimeOut=32};
+    static QMap<int, QString> connectionStatusMessage;
+
 
     static PolyboxModule* getInstance(QObject *parent=0);
 
+    void initConnectionStatusMessage();
     ConnectorType connectorType() const;
     void setConnectorType( ConnectorType type);
     bool isCommonReady();
@@ -58,6 +63,7 @@ public:
 
     AbstractClient* connector();
     void setConnector( AbstractClient* connector, ConnectorType type = Abstract );
+    int error();
 
 signals:
     void updateHardware();

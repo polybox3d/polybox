@@ -43,6 +43,13 @@ bool Polyplexer::start(QString path, QString port)
     setPathMachine( path );
     return this->start();
 }
+int Polyplexer::error()
+{
+    if ( _polyplexer != NULL )
+    {
+        return _polyplexer->exitCode();
+    }
+}
 
 bool Polyplexer::start()
 {
@@ -57,14 +64,14 @@ bool Polyplexer::start()
         arguments << QString("--serial=")+this->_pathMachine+this->_portMachine << QString("--polybox_sock=")+DEAMON_POLY_POLYPLEXER << QString("--printer_sock=")+DEAMON_PRINTER_POLYPLEXER;
         _polyplexer = new QProcess( this );
         connect( _polyplexer, SIGNAL(finished(int,QProcess::ExitStatus)), this,SLOT(finished(int,QProcess::ExitStatus)));
-        //connect( _polyplexer, SIGNAL(finished(int)), this,SLOT(stop()));
-        _polyplexer->start( program, arguments );
 
-        isRunning = _polyplexer->waitForStarted(3000) ;
+        _polyplexer->start( program, arguments );
+        cout << (QString("--serial=")+this->_pathMachine+this->_portMachine).toStdString() << (QString("--polybox_sock=")+DEAMON_POLY_POLYPLEXER).toStdString() << (QString("--printer_sock=")+DEAMON_PRINTER_POLYPLEXER).toStdString() << endl;
+        isRunning = _polyplexer->waitForStarted(1000) ;
     }
     else
     {
-        cout << (QString("--serial=")+this->_pathMachine+this->_portMachine).toStdString() << (QString("--polybox_sock=")+DEAMON_POLY_POLYPLEXER).toStdString() << (QString("--printer_sock=")+DEAMON_PRINTER_POLYPLEXER).toStdString() << endl;
+        cout <<"Polyplexer is DISABLE. Starting software as stand-alone process. "<< (QString("--serial=")+this->_pathMachine+this->_portMachine).toStdString() << (QString("--polybox_sock=")+DEAMON_POLY_POLYPLEXER).toStdString() << (QString("--printer_sock=")+DEAMON_PRINTER_POLYPLEXER).toStdString() << endl;
         isRunning = true;
     }
 

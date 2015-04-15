@@ -21,7 +21,7 @@ void SplashScreen::init(const QPixmap &pixmap)
     _fontVersion.setPointSize( 8 );
     _fontVersion.setItalic( true );
 
-    this->setMessageRect(QRect(this->width()/2-200,this->height()/2+50,275,200));
+    this->setMessageRect(QRect(this->width()/2-300,this->height()/2+50,450,200));
 }
 
 SplashScreen::~SplashScreen()
@@ -47,7 +47,7 @@ void SplashScreen::drawContents(QPainter *painter)
 
 void SplashScreen::connectingProcess()
 {
-    this->showStatusMessage(tr("Attempt to connect..."), Qt::white);
+    this->showStatusMessage(tr("Start connection process..."), Qt::white);
     PolyboxModule::ConnectionStatus connection_status = PolyboxModule::getInstance( qApp )->connection( Config::blockedConnectionThread() );
     // If connected, we gonna check ping/pong process and swap
     if ( connection_status == PolyboxModule::Connected )
@@ -73,7 +73,7 @@ void SplashScreen::connectingProcess()
     else
     {
         this->setPixmap(QPixmap(":/img/img/splashscreen_unconnected_fitted.png"));
-        this->showStatusMessage(tr("Error when starting Polyplexer"), Qt::white);
+        this->showStatusMessage( PolyboxModule::connectionStatusMessage.value(connection_status), Qt::white);
     }
 }
 
