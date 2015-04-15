@@ -52,7 +52,7 @@ void ContactPointLevelingPage::parseMCode(QByteArray stream)
         SerialPort::nextValue( str, idx);
 
         float z = SerialPort::embeddedstr2l( str, idx );
-        float x, y = 0.0;
+        float x =0.0 , y = 0.0;
         SerialPort::nextField( str, idx);
         if ( str[idx] == 'X' )
         {
@@ -64,6 +64,11 @@ void ContactPointLevelingPage::parseMCode(QByteArray stream)
             SerialPort::nextValue( str, idx);
             y = SerialPort::embeddedstr2l( str, idx );
         }
+        this->saveProbing( x, y, z);
+
+        ui->x_pos->setText(QString::number(x));
+        ui->y_pos->setText(QString::number(y));
+        ui->z_pos->setText(QString::number(z));
     }
 
 }
