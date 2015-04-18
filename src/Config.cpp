@@ -138,6 +138,13 @@ QString Config::pathToPolyplexerDaemon()
 {
     return Config::get(CONNECTION_GROUP,"pathToPolyplexerDaemon", Config::runtimePath()+"externals/Polyplexer/PolyPlexer").toString();
 }
+void Config::setPathToPolyplexerDaemon(QString path)
+{
+    if ( QFile::exists( path ) )
+    {
+        Config::set(CONNECTION_GROUP,"pathToPolyplexerDaemon", path);
+    }
+}
 int Config::connectionUptimeDelay()
 {
     return Config::get(CONNECTION_GROUP,"connectionUptimeDelay", 1000).toInt();

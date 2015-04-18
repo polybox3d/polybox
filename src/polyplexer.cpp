@@ -85,6 +85,18 @@ bool Polyplexer::start()
         if ( !Config::disablePolyplexer() )
         {
             isRunning = !(_polyplexer->waitForFinished(1000));
+
+            if ( !isRunning && _polyplexer->exitCode() == 2 )
+            {
+                MainWindow::errorWindow( tr("\n\nImpossible de lancer le programme Polyplexer."
+                                            "Veuillez vérifier que le chemin d'accès est correct.\n\n"
+                                            "Configuration > Paramètres logiciel \n\n")+_polyplexer->readAllStandardError()+"\n\n" );
+
+                QString path = QFileDialog::getOpenFileName(MainWindow::getMainWindow(),
+                                                            tr("Open Polyplexer Executable"),
+                                              Config::pathToHomeDirectory());
+                Config::setPathToPolyplexerDaemon( path );
+            }
         }
     }
     return isRunning;
