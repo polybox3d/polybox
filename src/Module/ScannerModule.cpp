@@ -69,7 +69,7 @@ void ScannerModule::updateGlobalStatus()
 
 void ScannerModule::updateTurntablePlugged()
 {
-    _polybox->connector()->sendMCode( MCODE_SCANNER_TURNTABLE_PLUGGED );
+    //_polybox->connector()->sendMCode( MCODE_SCANNER_TURNTABLE_PLUGGED );
 }
 
 bool ScannerModule::isReady() const

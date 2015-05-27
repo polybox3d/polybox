@@ -148,15 +148,18 @@ PolyboxModule::ConnectionStatus PolyboxModule::connection( bool blocked_thread)
                 ClosedLoopTimer closed_loop;
                 if ( closed_loop.startClosedLoop( 15000, PolyboxModule::isConnected ))
                 {
+                    Logger::startConnection( true );
                     return Connected;
                 }
                 else
                 {
+                    Logger::startConnection( false );
                     return TimeOut;
                 }
             }
             else
             {
+                Logger::startConnection( true );
                 return Connected;
             }
         }

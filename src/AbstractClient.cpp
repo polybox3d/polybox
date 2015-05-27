@@ -1,4 +1,5 @@
 #include "AbstractClient.h"
+#include "Logger.h"
 
 AbstractClient::AbstractClient(QObject *parent) :
     QObject(parent)
@@ -7,6 +8,7 @@ AbstractClient::AbstractClient(QObject *parent) :
     connectionUptime = 0 ;
     _uptimeTimer.start( Config::connectionUptimeDelay() );
     connect( &_uptimeTimer, SIGNAL(timeout()), this, SLOT(connectionUptimeProcess()));
+    connect( this, SIGNAL(disconnected()), Logger::getInstance(), SLOT(disconnect()));
 }
 
 
@@ -45,6 +47,7 @@ void AbstractClient::parseSerialDatas()
     if ( QString(_rcp_datas).contains("\r") || QString(_rcp_datas).contains("\n"))
     {
         _datas = _rcp_datas;
+        Logger::writeInputCommand( _datas );
         _rcp_datas.clear();
         emit dataReady();
     }
@@ -60,7 +63,8 @@ void AbstractClient::sendCode(QString code)
 {
     if ( _connector != NULL && _connector->isWritable() && _connector->isOpen() )
     {
-        code = code +"\r\n";
+        code = code +"\n";
+        Logger::writeOutputCommand( code );
         _connector->write( code.toStdString().c_str() );
     }
 }

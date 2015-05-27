@@ -17,6 +17,7 @@
 */
 #include "polyplexer.h"
 #include "ClosedLoopTimer.h"
+#include "Logger.h"
 
 #include "Qjoystick.h"
 #include "qjoystickenumerator.h"

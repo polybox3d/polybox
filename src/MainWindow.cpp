@@ -191,6 +191,7 @@ void MainWindow::toggleATU()
 
 MainWindow::~MainWindow()
 {
+    Logger::stop();
     delete ui;
 }
 void MainWindow::setupSerialMenu()

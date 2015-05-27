@@ -102,12 +102,12 @@ void CNCModule::updateGlobalStatus()
 
 void CNCModule::updateToolPlugged()
 {
-    _polybox->connector()->sendMCode( MCODE_CNC_TOOL_PLUGGED );
+    //_polybox->connector()->sendMCode( MCODE_CNC_TOOL_PLUGGED );
 }
 
 void CNCModule::updateLubricantLevel()
 {
-    _polybox->connector()->sendMCode( MCODE_CNC_LUBRICANT_LEVEL );
+    //_polybox->connector()->sendMCode( MCODE_CNC_LUBRICANT_LEVEL );
 }
 
 void CNCModule::updateVacummPlugged()

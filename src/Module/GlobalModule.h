@@ -33,6 +33,7 @@ public:
     bool power() const;
     bool webcamPlugged() const;
     int ram() const;
+    unsigned int error() const;
 
     Temperature tempIC();
 
@@ -60,6 +61,7 @@ private:
     bool _power;
     bool _webcamPlugged;
     int _ram;
+    unsigned int _error;
 
     Temperature _tempIC;
     ///tempIC

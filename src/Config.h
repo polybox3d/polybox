@@ -69,6 +69,8 @@ public:
     static QString serialVirtualPolySerialPort();
     static QString pathToConfigFile();
 
+    static QString pathToLogFile();
+
     static QHostAddress serverListeningAddress();
     static quint16 serverListeningPort();
 
@@ -131,6 +133,8 @@ public:
     static int hardwareTimer();
     static int updateConfigModuleTimer();
     static int updateModuleTimer();
+
+    static int loggerLevel();
 
     static int broadcastPort();
     static QString broadcastIP();

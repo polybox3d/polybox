@@ -37,6 +37,7 @@
 #include "ATUButton.h"
 #include "DialogClient.h"
 #include "Led.h"
+#include "Logger.h"
 
 #include "MaintenanceChecker.h"
 

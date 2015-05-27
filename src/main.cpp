@@ -10,6 +10,7 @@
 #include <QTranslator>
 
 #include "Theme.h"
+#include "Logger.h"
 #include "ClosedLoopTimer.h"
 #include "SplashScreen.h"
 
@@ -27,6 +28,7 @@ int main(int argc, char *argv[])
     QCoreApplication::setApplicationVersion( GIT_VERSION );
     Config::init();
 
+    Logger::start();
     /*********************  Translation **********************/
     QTranslator qtTranslator;
 

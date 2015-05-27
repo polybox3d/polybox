@@ -22,6 +22,7 @@ void GlobalModule::initAll()
     _power = false;
     _webcamPlugged = false;
     _ram = 0;
+    _error = 0;
 }
 
 void GlobalModule::parseMCode(QByteArray stream)
@@ -43,6 +44,13 @@ void GlobalModule::parseMCode(QByteArray stream)
         SerialPort::nextField( str, idx);
 
         _ram = SerialPort::embeddedstr2l( str, idx );
+    }
+    break;
+    case 666:
+    {
+        SerialPort::nextField( str, idx);
+
+        _error++;
     }
     break;
     case MCODE_GLOBAL_GET_STATUS:
@@ -255,4 +263,8 @@ Temperature GlobalModule::tempIC()
 int GlobalModule::ram() const
 {
     return _ram;
+}
+unsigned int GlobalModule::error() const
+{
+    return _error;
 }

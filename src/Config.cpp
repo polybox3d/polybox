@@ -94,6 +94,9 @@ bool Config::disableSplashScreen()
     return Config::get(SETTINGS_GROUP,"disableSplashScreen", false).toBool();
 }
 
+
+
+
 /**************************************************************************
  *              GLOBAL_GROUP
  * ***********************************************************************/
@@ -250,6 +253,24 @@ Config::Config()
 {
 }
 
+QString Config::pathToLogFile()
+{
+    return Config::get("LOG", "pathToLogFile",
+                "./log-1.txt" ).toString();
+}
+
+/*
+ * 6 range of logger level
+ *
+ * 0 : no log
+ * 6 : full
+ *
+ * */
+int Config::loggerLevel()
+{
+    return Config::get("LOG", "loggerLevel",
+                "5" ).toInt();
+}
 
 void Config::init()
 {

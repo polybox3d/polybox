@@ -235,11 +235,11 @@ void PrinterModule::updateComponents()
     _polybox->connector()->sendMCode( MCODE_PRINTER_BED_PLUGGED );
     _polybox->connector()->sendMCode( MCODE_PRINTER_PEL_PLUGGED );
     //_polybox->connector()->sendMCode( MCODE_PRINTER_GET_COOLER_BOX_STATUS );
-    _polybox->connector()->sendMCode( MCODE_PRINTER_GET_COLDEND_STATUS );
-    _polybox->connector()->sendMCode( MCODE_PRINTER_GET_BED_TEMP_C );
-    _polybox->connector()->sendMCode( MCODE_PRINTER_GET_CHAMBER_TEMP_ALL );
+    //_polybox->connector()->sendMCode( MCODE_PRINTER_GET_COLDEND_STATUS );
+    //_polybox->connector()->sendMCode( MCODE_PRINTER_GET_BED_TEMP_C );
+    //_polybox->connector()->sendMCode( MCODE_PRINTER_GET_CHAMBER_TEMP_ALL );
     //_polybox->connector()->sendMCode( MCODE_PRINTER_GET_CHAMBER_TEMP );
-    _polybox->connector()->sendMCode( MCODE_PRINTER_GET_BUSE_CLOGGED );
+    //_polybox->connector()->sendMCode( MCODE_PRINTER_GET_BUSE_CLOGGED );
 
 }
 void PrinterModule::toggleInter()
