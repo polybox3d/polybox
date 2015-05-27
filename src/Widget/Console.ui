@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>389</width>
+    <width>468</width>
     <height>312</height>
    </rect>
   </property>
@@ -16,7 +16,7 @@
   <widget class="QPushButton" name="sendCodeButton">
    <property name="geometry">
     <rect>
-     <x>280</x>
+     <x>230</x>
      <y>280</y>
      <width>101</width>
      <height>25</height>
@@ -31,7 +31,7 @@
     <rect>
      <x>10</x>
      <y>280</y>
-     <width>261</width>
+     <width>211</width>
      <height>25</height>
     </rect>
    </property>
@@ -54,12 +54,61 @@
     <rect>
      <x>10</x>
      <y>30</y>
-     <width>371</width>
+     <width>411</width>
      <height>241</height>
     </rect>
    </property>
   </widget>
+  <widget class="QPushButton" name="clearLog">
+   <property name="geometry">
+    <rect>
+     <x>340</x>
+     <y>280</y>
+     <width>81</width>
+     <height>25</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Effacer Log</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="scrollToTop">
+   <property name="geometry">
+    <rect>
+     <x>430</x>
+     <y>30</y>
+     <width>31</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="icon">
+    <iconset resource="../ressources.qrc">
+     <normaloff>:/img/img/to-top-green.png</normaloff>:/img/img/to-top-green.png</iconset>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="scrollToBot">
+   <property name="geometry">
+    <rect>
+     <x>430</x>
+     <y>240</y>
+     <width>31</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="icon">
+    <iconset resource="../ressources.qrc">
+     <normaloff>:/img/img/to-bottom-red.png</normaloff>:/img/img/to-bottom-red.png</iconset>
+   </property>
+  </widget>
  </widget>
- <resources/>
+ <resources>
+  <include location="../ressources.qrc"/>
+ </resources>
  <connections/>
 </ui>
