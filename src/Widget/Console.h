@@ -6,6 +6,11 @@
 
 #include "PolyboxModule.h"
 
+/**
+ * Input : green
+ * Output : yellow
+ */
+
 namespace Ui {
 class Console;
 }
@@ -19,6 +24,8 @@ public:
     ~Console();
 public slots:
     void parseData();
+    void dataWritten(QString data);
+
 private slots:
     void on_sendCodeButton_clicked();
 
@@ -30,8 +37,14 @@ private slots:
 
     void on_scrollToBot_clicked();
 
+    void on_outputCB_toggled(bool checked);
+
+    void on_inputCB_toggled(bool checked);
+
 private:
     Ui::Console *ui;
+    bool _displayInput;
+    bool _displayOutput;
 };
 
 #endif // CONSOLE_H

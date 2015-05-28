@@ -146,6 +146,9 @@ public:
     static void setPathToPrinterSoftware( QString path_to_printer_software );
     static QString pathToPrinterWorkingDir();
 
+    static int sendBufferTimer();
+    static int sendBufferSize();
+
     static void set(QString group_name, QString key, const QVariant &value )
     {
          QSettings().setValue( group_name+"/"+key, value );

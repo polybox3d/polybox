@@ -43,6 +43,14 @@ void Logger::writeInputCommand(QString command)
         Logger::getInstance()->logSteam.flush();
     }
 }
+void Logger::write(QString text)
+{
+    if ( Config::loggerLevel() >= 2)
+    {
+        Logger::getInstance()->logSteam << "-> "+text;
+        Logger::getInstance()->logSteam.flush();
+    }
+}
 
 void Logger::start()
 {

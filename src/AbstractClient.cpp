@@ -6,9 +6,15 @@ AbstractClient::AbstractClient(QObject *parent) :
 {
     _connector = NULL;
     connectionUptime = 0 ;
+
     _uptimeTimer.start( Config::connectionUptimeDelay() );
     connect( &_uptimeTimer, SIGNAL(timeout()), this, SLOT(connectionUptimeProcess()));
+
+    _sendTimer.start( Config::sendBufferTimer() );
+    connect( &_sendTimer, SIGNAL(timeout()), this, SLOT(sendBufferedData()));
+
     connect( this, SIGNAL(disconnected()), Logger::getInstance(), SLOT(disconnect()));
+
 }
 
 
@@ -20,6 +26,25 @@ QByteArray AbstractClient::datas()
 void AbstractClient::connectionUptimeProcess()
 {
     connectionUptime++;
+}
+
+void AbstractClient::sendBufferedData()
+{
+    /** Is Connected ? **/
+    if ( _connector != NULL && _connector->isWritable() && _connector->isOpen() )
+    {
+        if ( ! _sendBuffer.isEmpty() )
+        {
+            QString data = _sendBuffer.dequeue();
+            Logger::writeOutputCommand( data );
+            _connector->write( data.toStdString().c_str() );
+            emit dataWritten( data );
+        }
+    }
+    else
+    {
+        _sendBuffer.clear();
+    }
 }
 
 bool AbstractClient::isConnected() const
@@ -64,8 +89,14 @@ void AbstractClient::sendCode(QString code)
     if ( _connector != NULL && _connector->isWritable() && _connector->isOpen() )
     {
         code = code +"\n";
-        Logger::writeOutputCommand( code );
-        _connector->write( code.toStdString().c_str() );
+        if ( _sendBuffer.size() <= Config::sendBufferSize() )
+        {
+            _sendBuffer.enqueue( code );
+        }
+        else
+        {
+            Logger::write("Buffer Full\n");
+        }
     }
 }
 

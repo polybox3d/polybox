@@ -5,6 +5,7 @@
 #include <QByteArray>
 #include <QTimer>
 #include <QIODevice>
+#include <QQueue>
 
 #include "Config.h"
 
@@ -38,13 +39,18 @@ protected:
 signals:
     void dataReady();
     void disconnected();
+    void dataWritten( QString data);
 
 public slots:
     void parseSerialDatas();
     void connectionUptimeProcess();
+    void sendBufferedData();
 
 protected:
     QIODevice* _connector;
+    QQueue<QString> _sendBuffer;
+    QTimer _sendTimer;
+
 };
 
 #endif // ABSTRACTCLIENT_H

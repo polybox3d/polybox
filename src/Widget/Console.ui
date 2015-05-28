@@ -55,7 +55,7 @@
      <x>10</x>
      <y>30</y>
      <width>411</width>
-     <height>241</height>
+     <height>231</height>
     </rect>
    </property>
   </widget>
@@ -105,6 +105,38 @@
     <iconset resource="../ressources.qrc">
      <normaloff>:/img/img/to-bottom-red.png</normaloff>:/img/img/to-bottom-red.png</iconset>
    </property>
+  </widget>
+  <widget class="QWidget" name="">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>260</y>
+     <width>151</width>
+     <height>22</height>
+    </rect>
+   </property>
+   <layout class="QHBoxLayout" name="horizontalLayout">
+    <item>
+     <widget class="QCheckBox" name="inputCB">
+      <property name="text">
+       <string>Input</string>
+      </property>
+      <property name="checked">
+       <bool>true</bool>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QCheckBox" name="outputCB">
+      <property name="text">
+       <string>Output</string>
+      </property>
+      <property name="checked">
+       <bool>false</bool>
+      </property>
+     </widget>
+    </item>
+   </layout>
   </widget>
  </widget>
  <resources>

@@ -19,6 +19,7 @@ public:
     static void startConnection(bool connected);
     static void writeOutputCommand(QString command);
     static void writeInputCommand(QString command);
+    static void write(QString text);
 
 
     QFile* logFile;
