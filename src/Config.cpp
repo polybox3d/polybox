@@ -96,7 +96,7 @@ bool Config::disableSplashScreen()
 
 int Config::sendBufferTimer()
 {
-    return Config::get(SETTINGS_GROUP,"sendBufferTimer", 1).toInt();
+    return Config::get(SETTINGS_GROUP,"sendBufferTimer", 10).toInt();
 }
 int Config::sendBufferSize()
 {
