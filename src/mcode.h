@@ -10,6 +10,8 @@ enum MCodeFlags
     ASK_CNC_UPDATE=600, ASK_PRINTER_UPDATE=630, ASK_LABVIEW_UPDATE=620, ASK_SCANNER_UPDATE=610
 };
 
+#define MCODE_RESET_LINE_NUMBER                 110
+
 /**      CNC MCODE    **/
 
 #define MCODE_CNC_TOOL_PLUGGED                  601

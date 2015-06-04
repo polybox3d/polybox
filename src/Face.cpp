@@ -47,8 +47,8 @@ void Face::setColor( QColor c)
 
 void Face::sendValues()
 {
-    sendColor();
-    sendIntensity();
+    //sendColor();
+    //sendIntensity();
 }
 
 void Face::sendColor()

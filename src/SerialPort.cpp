@@ -39,7 +39,7 @@ bool SerialPort::connectToSerialPort()
     _connector = new QextSerialPort(_path+_name, QextSerialPort::EventDriven);
 
     QextSerialPort* port = static_cast<QextSerialPort*>(_connector);
-    port->setBaudRate( (BaudRateType)(Config::motherboardBaudrate()) );
+    port->setBaudRate( (BaudRateType)(38400) );
     port->setFlowControl(FLOW_OFF);
     port->setParity(PAR_NONE);
     port->setDataBits(DATA_8);

@@ -6,6 +6,7 @@ AbstractClient::AbstractClient(QObject *parent) :
 {
     _connector = NULL;
     connectionUptime = 0 ;
+    _currentLineNumber = 0;
 
     _uptimeTimer.start( Config::connectionUptimeDelay() );
     connect( &_uptimeTimer, SIGNAL(timeout()), this, SLOT(connectionUptimeProcess()));
@@ -36,6 +37,14 @@ void AbstractClient::sendBufferedData()
         if ( ! _sendBuffer.isEmpty() )
         {
             QString data = _sendBuffer.dequeue();
+
+            _currentLineNumber++;
+            // Add lien number
+            data = "#N"+QString::number(_currentLineNumber) + " " + data + " ";
+            // Add checksum
+            data = data + "*" + QString::number(AbstractClient::checksum(data.toStdString().c_str(), data.size())) + "\n";
+
+
             Logger::writeOutputCommand( data );
             _connector->write( data.toStdString().c_str() );
             emit dataWritten( data );
@@ -82,13 +91,14 @@ void AbstractClient::startConnection()
 {
     connect ( _connector, SIGNAL(readyRead()), this, SLOT(parseSerialDatas()) );
     this->connectionUptime = 0 ;
+    this->_currentLineNumber = 0;
+    this->sendMCode( MCODE_RESET_LINE_NUMBER );
 }
 
 void AbstractClient::sendCode(QString code)
 {
     if ( _connector != NULL && _connector->isWritable() && _connector->isOpen() )
     {
-        code = code +"\n";
         if ( _sendBuffer.size() <= Config::sendBufferSize() )
         {
             _sendBuffer.enqueue( code );

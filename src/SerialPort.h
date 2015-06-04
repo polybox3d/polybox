@@ -71,6 +71,7 @@ public:
     void setPath( QString path );
     void disconnectPort();
 
+
     virtual QextSerialPort* getConnector();
 
 

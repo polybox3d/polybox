@@ -13,131 +13,97 @@
   <property name="windowTitle">
    <string>Console</string>
   </property>
-  <widget class="QPushButton" name="sendCodeButton">
-   <property name="geometry">
-    <rect>
-     <x>230</x>
-     <y>280</y>
-     <width>101</width>
-     <height>25</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>Envoyer Code</string>
-   </property>
-  </widget>
-  <widget class="QLineEdit" name="inputCode">
-   <property name="geometry">
-    <rect>
-     <x>10</x>
-     <y>280</y>
-     <width>211</width>
-     <height>25</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QLabel" name="label">
-   <property name="geometry">
-    <rect>
-     <x>10</x>
-     <y>10</y>
-     <width>57</width>
-     <height>14</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>Console</string>
-   </property>
-  </widget>
-  <widget class="QTextEdit" name="displaySerial">
-   <property name="geometry">
-    <rect>
-     <x>10</x>
-     <y>30</y>
-     <width>411</width>
-     <height>231</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QPushButton" name="clearLog">
-   <property name="geometry">
-    <rect>
-     <x>340</x>
-     <y>280</y>
-     <width>81</width>
-     <height>25</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>Effacer Log</string>
-   </property>
-  </widget>
-  <widget class="QPushButton" name="scrollToTop">
-   <property name="geometry">
-    <rect>
-     <x>430</x>
-     <y>30</y>
-     <width>31</width>
-     <height>31</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string/>
-   </property>
-   <property name="icon">
-    <iconset resource="../ressources.qrc">
-     <normaloff>:/img/img/to-top-green.png</normaloff>:/img/img/to-top-green.png</iconset>
-   </property>
-  </widget>
-  <widget class="QPushButton" name="scrollToBot">
-   <property name="geometry">
-    <rect>
-     <x>430</x>
-     <y>240</y>
-     <width>31</width>
-     <height>31</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string/>
-   </property>
-   <property name="icon">
-    <iconset resource="../ressources.qrc">
-     <normaloff>:/img/img/to-bottom-red.png</normaloff>:/img/img/to-bottom-red.png</iconset>
-   </property>
-  </widget>
-  <widget class="QWidget" name="">
-   <property name="geometry">
-    <rect>
-     <x>10</x>
-     <y>260</y>
-     <width>151</width>
-     <height>22</height>
-    </rect>
-   </property>
-   <layout class="QHBoxLayout" name="horizontalLayout">
-    <item>
-     <widget class="QCheckBox" name="inputCB">
-      <property name="text">
-       <string>Input</string>
-      </property>
-      <property name="checked">
-       <bool>true</bool>
-      </property>
-     </widget>
-    </item>
-    <item>
-     <widget class="QCheckBox" name="outputCB">
-      <property name="text">
-       <string>Output</string>
-      </property>
-      <property name="checked">
-       <bool>false</bool>
-      </property>
-     </widget>
-    </item>
-   </layout>
-  </widget>
+  <property name="autoFillBackground">
+   <bool>true</bool>
+  </property>
+  <layout class="QGridLayout" name="gridLayout">
+   <item row="2" column="3">
+    <spacer name="verticalSpacer">
+     <property name="orientation">
+      <enum>Qt::Vertical</enum>
+     </property>
+     <property name="sizeHint" stdset="0">
+      <size>
+       <width>20</width>
+       <height>40</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+   <item row="0" column="0">
+    <widget class="QLabel" name="label">
+     <property name="text">
+      <string>Console</string>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="3">
+    <widget class="QPushButton" name="scrollToTop">
+     <property name="text">
+      <string/>
+     </property>
+     <property name="icon">
+      <iconset resource="../ressources.qrc">
+       <normaloff>:/img/img/to-top-green.png</normaloff>:/img/img/to-top-green.png</iconset>
+     </property>
+    </widget>
+   </item>
+   <item row="5" column="2">
+    <widget class="QPushButton" name="clearLog">
+     <property name="text">
+      <string>Effacer Log</string>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="0" rowspan="3" colspan="3">
+    <widget class="QTextEdit" name="displaySerial"/>
+   </item>
+   <item row="4" column="0">
+    <layout class="QHBoxLayout" name="horizontalLayout">
+     <item>
+      <widget class="QCheckBox" name="inputCB">
+       <property name="text">
+        <string>Input</string>
+       </property>
+       <property name="checked">
+        <bool>true</bool>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QCheckBox" name="outputCB">
+       <property name="text">
+        <string>Output</string>
+       </property>
+       <property name="checked">
+        <bool>false</bool>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item row="5" column="0">
+    <widget class="QLineEdit" name="inputCode"/>
+   </item>
+   <item row="5" column="1">
+    <widget class="QPushButton" name="sendCodeButton">
+     <property name="text">
+      <string>Envoyer Code</string>
+     </property>
+    </widget>
+   </item>
+   <item row="3" column="3">
+    <widget class="QPushButton" name="scrollToBot">
+     <property name="text">
+      <string/>
+     </property>
+     <property name="icon">
+      <iconset resource="../ressources.qrc">
+       <normaloff>:/img/img/to-bottom-red.png</normaloff>:/img/img/to-bottom-red.png</iconset>
+     </property>
+    </widget>
+   </item>
+  </layout>
  </widget>
  <resources>
   <include location="../ressources.qrc"/>

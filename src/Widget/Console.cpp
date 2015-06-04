@@ -11,7 +11,7 @@ Console::Console(QWidget *parent) :
     ui->setupUi(this);
     connect( PolyboxModule::getInstance()->connector(), SIGNAL(dataReady()), this, SLOT(parseData()) );
     connect( PolyboxModule::getInstance()->connector(), SIGNAL(disconnected()), this, SLOT(deleteLater()) );
-    connect( PolyboxModule::getInstance()->connector(), SIGNAL(dataWritten(QString)), this, SLOT(dataWritten()) );
+    connect( PolyboxModule::getInstance()->connector(), SIGNAL(dataWritten(QString)), this, SLOT(dataWritten(QString)) );
 }
 
 Console::~Console()
@@ -25,7 +25,7 @@ void Console::parseData()
     if ( ! ui->inputCB->isChecked() )
         return;
     /** Clear buffer sometime **/
-    if (ui->displaySerial->toPlainText().size() > 1000000)
+    if (ui->displaySerial->toPlainText().size() > 100000000)
     {
         ui->displaySerial->clear();
     }
@@ -40,7 +40,7 @@ void Console::dataWritten(QString data)
     if ( ! ui->outputCB->isChecked() )
         return;
     /** Clear buffer sometime **/
-    if (ui->displaySerial->toPlainText().size() > 1000000)
+    if (ui->displaySerial->toPlainText().size() > 100000000)
     {
         ui->displaySerial->clear();
     }
@@ -68,12 +68,19 @@ void Console::on_clearLog_clicked()
 
 void Console::on_scrollToTop_clicked()
 {
+    ui->displaySerial->moveCursor(QTextCursor::Start);
+    ui->displaySerial->ensureCursorVisible();
+
     QScrollBar *vScrollBar = ui->displaySerial->verticalScrollBar();
     vScrollBar->triggerAction(QScrollBar::SliderToMinimum);
 }
 
 void Console::on_scrollToBot_clicked()
 {
+
+    ui->displaySerial->moveCursor(QTextCursor::End);
+    ui->displaySerial->ensureCursorVisible();
+
     QScrollBar *vScrollBar = ui->displaySerial->verticalScrollBar();
     vScrollBar->triggerAction(QScrollBar::SliderToMaximum);
 }

@@ -7,6 +7,7 @@
 #include <QIODevice>
 #include <QQueue>
 
+#include "mcode.h"
 #include "Config.h"
 
 class AbstractClient : public QObject
@@ -31,6 +32,24 @@ public:
     void sendCode(QString code);
     void startConnection();
 
+    static u_int16_t Fletcher16( const char* data, int count ) {
+       u_int16_t sum1 = 0; u_int16_t sum2 = 0;
+       int index;
+       for( index = 0; index < count; ++index ) {
+          sum1 = (sum1 + data[index]) % 255;
+          sum2 = (sum2 + sum1) % 255;
+       }
+       return (sum2 << 8) | sum1;
+    }
+    static u_int8_t checksum( const char* data, int count ) {
+       u_int8_t sum = 0;
+       int index;
+       for( index = 0; index < count; ++index ) {
+          sum ^= data[index];
+       }
+       return sum;
+    }
+
 protected:
     QByteArray _datas;
     QByteArray _rcp_datas;
@@ -50,6 +69,8 @@ protected:
     QIODevice* _connector;
     QQueue<QString> _sendBuffer;
     QTimer _sendTimer;
+
+    int _currentLineNumber;
 
 };
 
