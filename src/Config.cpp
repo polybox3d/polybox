@@ -252,6 +252,25 @@ float Config::bedTempNylon()
     return Config::get(PRINTER_GROUP,"bedTempNylon", 65).toInt();
 }
 
+
+QUrl Config::printerWebInterfaceUrl()
+{
+    return Config::get(PRINTER_GROUP, "printerWebInterfaceUrl","http://localhost" ).toUrl();
+}
+
+int Config::printerWebInterfacePort()
+{
+    return Config::get(PRINTER_GROUP, "printerWebInterfacePort", 3344).toInt();
+}
+
+QString Config::printerWebInterfacePath()
+{
+    return Config::get(PRINTER_GROUP, "printerWebInterfacePath", "/etc/init.d/RepetierServer").toString();
+}
+
+
+
+
 QString Config::pathToJoypadOverlay=Config::pathToHomeDirectory()+"joypadoverlay/src/JoypadOverlay";
 
 

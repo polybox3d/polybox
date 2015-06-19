@@ -5,6 +5,7 @@ PrinterPage::PrinterPage(PrinterModule* printer, QWidget *parent) :
     QWidget(parent),
     ui(new Ui::PrinterPage)
 {
+    _webPrinterInterface = NULL;
     _printer = printer;
     _update = false;
     ui->setupUi(this);
@@ -48,6 +49,7 @@ PrinterPage::PrinterPage(PrinterModule* printer, QWidget *parent) :
 
 PrinterPage::~PrinterPage()
 {
+    delete  _webPrinterInterface ;
     delete ui;
 }
 
@@ -292,3 +294,14 @@ void PrinterPage::on_extractorSpin_valueChanged(int arg1)
     repaintComponents();
 }
 
+
+void PrinterPage::on_startWebInterface_clicked()
+{
+    if ( _webPrinterInterface != NULL )
+    {
+        delete _webPrinterInterface;
+    }
+    _webPrinterInterface = new WebPrinterPage();
+    _webPrinterInterface->setWindowFlags( Qt::CustomizeWindowHint );
+    _webPrinterInterface->show();
+}

@@ -14,13 +14,13 @@ enum MCodeFlags
 
 /**      CNC MCODE    **/
 
-#define MCODE_CNC_TOOL_PLUGGED                  601
-#define MCODE_CNC_LUBRICANT_PLUGGED             602
-#define MCODE_CNC_LUBRICANT_LEVEL               603
-#define MCODE_CNC_VACUUM_DETECTED               604
-#define MCODE_CNC_RECYCLE_STATE                 605
-#define MCODE_CNC_VACUUM_STATE                  606
-#define MCODE_CNC_LUBRICANT_STATE               607
+#define MCODE_CNC_TOOL_PLUGGED                  611
+#define MCODE_CNC_LUBRICANT_PLUGGED             612
+#define MCODE_CNC_LUBRICANT_LEVEL               613
+#define MCODE_CNC_VACUUM_DETECTED               614
+#define MCODE_CNC_RECYCLE_STATE                 615
+#define MCODE_CNC_VACUUM_STATE                  616
+#define MCODE_CNC_LUBRICANT_STATE               617
 
 /**      SCANNER MCODE    **/
 
@@ -57,7 +57,6 @@ enum MCodeFlags
 #define MCODE_PRINTER_WIRE_DETECTED             663
 #define MCODE_PRINTER_BED_PLUGGED               664
 #define MCODE_PRINTER_PEL_PLUGGED               665
-#define MCODE_PRINTER_GET_COOLER_BOX_STATUS     666
 #define MCODE_PRINTER_SET_FAN_SPEED             667
 #define MCODE_PRINTER_GET_COLDEND_STATUS        668
 #define MCODE_PRINTER_GET_BED_TEMP_C            669
@@ -69,6 +68,7 @@ enum MCodeFlags
 #define MCODE_PRINTER_SET_CHAMBER_FAST          675
 #define MCODE_PRINTER_GET_BUSE_CLOGGED          676
 #define MCODE_PRINTER_GET_CHAMBER_TEMP_ALL      677
+#define MCODE_PRINTER_GET_COOLER_BOX_STATUS     679
 
 /**      GLOBAL MCODE    **/
 
@@ -91,12 +91,27 @@ enum MCodeFlags
 #define MCODE_GLOBAL_MOVE_MOTOR_ANGLE           696
 
 #define MCODE_PING_PONG                         703
+#define MCODE_RESET_SLAVES                      704
 #define MCODE_END_CONNECTION                    705
 #define MCODE_START_CONNECTION                  706
 #define MCODE_SEND_GCODE                        710
 
+
+#define GCODE_MOVE_AXIS_RAPID                   0
+#define GCODE_MOVE_AXIS_LINEAR                  1
+
+#define GCODE_HOMING                            28
 #define GCODE_SINGLE_ZPROBE                     30
 #define GCODE_ZPROBE_CAPTOR_VALUE               31
+
+#define GCODE_ATX_POWER_ON                      80
+#define GCODE_ATX_POWER_OFF                     81
+#define GCODE_DISABLE_MOTOR                     84
+
+#define GCODE_SET_ABSOLUTE_POSITIONING          90
+#define GCODE_SET_RELATIVE_POSITIONING          91
+
+#define MCODE_ERROR_COM_SLAVE_SIDE              666
 
 }
 

@@ -28,6 +28,7 @@
 #include "TCPServer.h"
 #include "Led.h"
 #include "PlateCalibratorWidget.h"
+#include "AxisControlDock.h"
 
 #if !defined NO_SCAN
  #include "fsmainwindow.h"
@@ -38,6 +39,7 @@
 #include "DialogClient.h"
 #include "Led.h"
 #include "Logger.h"
+#include "DockHost.h"
 
 #include "MaintenanceChecker.h"
 
@@ -127,6 +129,7 @@ private:
     ATUButton* _atu;
     QDockWidget* _dockLV;
     QDockWidget* _dockCNC;
+    QMainWindow* _dockHost;
     TCPServer _tcp_server;
     Led _connectedLed;
     QLabel* _statusMessage;

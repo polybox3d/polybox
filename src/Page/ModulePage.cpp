@@ -185,3 +185,8 @@ void ModulePage::on_configButton_clicked()
 {
     CHANGE_PAGE( Warning );
 }
+
+void ModulePage::on_shareButton_2_clicked()
+{
+    CHANGE_PAGE( DockPage );
+}

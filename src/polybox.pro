@@ -6,7 +6,7 @@
 
 QT       += core gui xml multimedia multimediawidgets
 
-greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
+greaterThan(QT_MAJOR_VERSION, 4): QT += widgets webkitwidgets
 
 TARGET = polybox
 TEMPLATE = app
@@ -109,7 +109,13 @@ SOURCES += main.cpp\
     Wizard/ContactPointLevelingPage.cpp \
     Wizard/ProcessLevelingPage.cpp \
     Checker/MaintenanceChecker.cpp \
-    Checker/Logger.cpp
+    Checker/Logger.cpp \
+    Page/WebPrinterPage.cpp \
+    Page/AxisControlDock.cpp \
+    Page/RotationControlDock.cpp \
+    Page/LaserDock.cpp \
+    Widget/DockHost.cpp \
+    Module/MovementModule.cpp
 
 HEADERS  += MainWindow.h \
         Updater.h \
@@ -177,7 +183,13 @@ HEADERS  += MainWindow.h \
     Wizard/ContactPointLevelingPage.h \
     Wizard/ProcessLevelingPage.h \
     Checker/MaintenanceChecker.h \
-    Checker/Logger.h
+    Checker/Logger.h \
+    Page/WebPrinterPage.h \
+    Page/AxisControlDock.h \
+    Page/RotationControlDock.h \
+    Page/LaserDock.h \
+    Widget/DockHost.h \
+    Module/MovementModule.h
 
 FORMS    += MainWindow.ui \
     PrinterSmallUI.ui \
@@ -208,7 +220,12 @@ FORMS    += MainWindow.ui \
     Widget/PlateCalibratorWidget.ui \
     Wizard/IntroLevelingPage.ui \
     Wizard/ContactPointLevelingPage.ui \
-    Wizard/ProcessLevelingPage.ui
+    Wizard/ProcessLevelingPage.ui \
+    Page/WebPrinterPage.ui \
+    Page/RotationControlDock.ui \
+    Page/LaserDock.ui \
+    Page/AxisControlDock.ui \
+    Widget/DockHost.ui
 
 RESOURCES += \
     ressources.qrc

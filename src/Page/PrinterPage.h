@@ -3,19 +3,24 @@
 
 #include <QWidget>
 #include <QProcess>
+#include <iostream>
+#include <QTimer>
 
 #include "MainWindow.h"
 #include "PrinterModule.h"
 #include "ATUButton.h"
 #include "OnOffButton.h"
-#include <iostream>
-#include <QTimer>
+#include "WebPrinterPage.h"
+
+
 
 using namespace std;
 namespace Ui {
 class PrinterPage;
 }
 
+
+class WebPrinterPage;
 
 #define DEFAULT_SOFTWARE_PRINTER_PATH "./repetier-host"
 #define MIN_TEMP_VALUE 20
@@ -87,6 +92,8 @@ private slots:
     void on_startPrint_clicked();
 
 
+    void on_startWebInterface_clicked();
+
 private:
     Ui::PrinterPage *ui;
     PrinterModule* _printer;
@@ -98,6 +105,7 @@ private:
 
     QTimer _updateModuleTimer;
     bool _update;
+    WebPrinterPage* _webPrinterInterface;
 };
 
 #endif // PRINTERPAGE_H

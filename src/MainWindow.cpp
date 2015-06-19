@@ -40,6 +40,7 @@ MainWindow::MainWindow(Qt::WindowFlags window_flags, QWidget *parent) :
 {
     _dockLV = NULL;
     _dockCNC = NULL;
+    _dockHost = NULL;
     mainwindow = this;
     ui->setupUi(this);
     ui->statusBar->addPermanentWidget( &_connectedLed);
@@ -503,6 +504,12 @@ void MainWindow::updateStatePage()
     case CalibratePlate :
         this->setCentralWidget( new PlateCalibratorWidget( this ) );
         break;
+    case DockPage :
+    {
+        _dockHost = new DockHost( this );
+        _dockHost->show();
+        break;
+    }
     default:
         break;
         

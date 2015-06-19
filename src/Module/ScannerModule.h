@@ -51,8 +51,13 @@ public:
     bool laser0Plugged() const;
     bool laser1Plugged() const;
 
+    int laser0Power() const;
+    int laser1Power() const;
+
     void updateGlobalStatus();
     void updateTurntablePlugged();
+
+    void setLaserPower(u_int8_t laser_id, int power_percent);
 
     virtual void parseMCode(QByteArray stream);
 
@@ -68,6 +73,8 @@ private:
     bool _turntablePlugged;
     bool _laser0Plugged;
     bool _laser1Plugged;
+    int _laser0Power;
+    int _laser1Power;
 };
 
 #endif // SCANNERMODULE_H

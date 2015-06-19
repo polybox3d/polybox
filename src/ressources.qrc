@@ -72,6 +72,8 @@
         <file>img/gamepad.png</file>
         <file>img/flag.png</file>
         <file>img/skin.png</file>
+        <file>img/axis_icon.png</file>
+        <file>img/home.png</file>
     </qresource>
     <qresource prefix="/xml">
         <file>ambiances/Autumn.xml</file>
@@ -82,4 +84,5 @@
     <qresource prefix="/style">
         <file>style/qslider.qss</file>
     </qresource>
+    <qresource prefix="/"/>
 </RCC>

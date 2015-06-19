@@ -80,6 +80,12 @@ public:
 
     virtual void parseMCode(QByteArray stream);
 
+    static void executePrinterWebInterfaceCommand( QProcess& process, QString command );
+    static bool printerWebInterfaceIsRunning();
+    static bool printerWebInterfaceStart();
+    static bool printerWebInterfaceStop();
+    static bool printerWebInterfaceRestart();
+
 signals:
     void updateUI();
 

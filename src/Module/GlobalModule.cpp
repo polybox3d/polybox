@@ -46,7 +46,8 @@ void GlobalModule::parseMCode(QByteArray stream)
         _ram = SerialPort::embeddedstr2l( str, idx );
     }
     break;
-    case 666:
+    case 707:
+    case MCODE_ERROR_COM_SLAVE_SIDE:
     {
         SerialPort::nextField( str, idx);
 

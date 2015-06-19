@@ -124,6 +124,10 @@ public:
 
     static QString pathToJoypadOverlay;
 
+    static QUrl printerWebInterfaceUrl();
+    static int printerWebInterfacePort();
+    static QString printerWebInterfacePath();
+
     static float webCamRotation();
 
     static float bedTempPla();

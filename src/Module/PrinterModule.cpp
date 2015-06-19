@@ -1,6 +1,59 @@
 #include "PrinterModule.h"
 
 
+void PrinterModule::executePrinterWebInterfaceCommand(QProcess &process, QString command)
+{
+    QString precommand = "kdesudo";
+    QStringList parameters;
+    QByteArray data;
+
+    parameters << Config::printerWebInterfacePath() << command;
+
+    process.start( precommand, parameters );
+}
+
+bool PrinterModule::printerWebInterfaceIsRunning()
+{
+    QProcess printerWebInterfaceProcess;
+
+    PrinterModule::executePrinterWebInterfaceCommand( printerWebInterfaceProcess, "status");
+    QByteArray data;
+
+    while ( printerWebInterfaceProcess.waitForReadyRead() )
+    {
+        data.append( printerWebInterfaceProcess.readAll() );
+    }
+    QTextStream list(data);
+    QString device;
+    while ( !list.atEnd())
+    {
+        device = list.readLine();
+        if ( device.indexOf("is running.") != -1 )
+        {
+            return true;
+        }
+    }
+}
+bool PrinterModule::printerWebInterfaceStart()
+{
+    QProcess printerWebInterfaceProcess;
+    PrinterModule::executePrinterWebInterfaceCommand( printerWebInterfaceProcess, "start");
+
+}
+bool PrinterModule::printerWebInterfaceStop()
+{
+    QProcess printerWebInterfaceProcess;
+    PrinterModule::executePrinterWebInterfaceCommand( printerWebInterfaceProcess, "stop");
+
+}
+bool PrinterModule::printerWebInterfaceRestart()
+{
+    QProcess printerWebInterfaceProcess;
+    PrinterModule::executePrinterWebInterfaceCommand( printerWebInterfaceProcess, "restart");
+}
+
+
+
 PrinterModule::PrinterModule(PolyboxModule* polybox,QObject *parent) :
     QObject(parent), AbstractModule(polybox)
 {
@@ -44,7 +97,7 @@ void PrinterModule::startPrinterSoftware()
         }
     }
 
-    cout<<"----"<<Config::pathToPrinterSoftware().toStdString()<<endl;
+    cout<<Config::pathToPrinterSoftware().toStdString()<<endl;
 }
 
 
@@ -234,7 +287,7 @@ void PrinterModule::updateComponents()
     _polybox->connector()->sendMCode( MCODE_PRINTER_WIRE_DETECTED );
     _polybox->connector()->sendMCode( MCODE_PRINTER_BED_PLUGGED );
     _polybox->connector()->sendMCode( MCODE_PRINTER_PEL_PLUGGED );
-    //_polybox->connector()->sendMCode( MCODE_PRINTER_GET_COOLER_BOX_STATUS );
+    /*_polybox->connector()->sendMCode( MCODE_PRINTER_GET_COOLER_BOX_STATUS );*/
     //_polybox->connector()->sendMCode( MCODE_PRINTER_GET_COLDEND_STATUS );
     //_polybox->connector()->sendMCode( MCODE_PRINTER_GET_BED_TEMP_C );
     //_polybox->connector()->sendMCode( MCODE_PRINTER_GET_CHAMBER_TEMP_ALL );

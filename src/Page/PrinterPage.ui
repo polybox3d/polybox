@@ -640,6 +640,23 @@
     <string>Filament non bloqué</string>
    </property>
   </widget>
+  <widget class="QPushButton" name="startWebInterface">
+   <property name="geometry">
+    <rect>
+     <x>410</x>
+     <y>470</y>
+     <width>191</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Lancer l'interface Web</string>
+   </property>
+   <property name="icon">
+    <iconset resource="../ressources.qrc">
+     <normaloff>:/img/img/broadcast.png</normaloff>:/img/img/broadcast.png</iconset>
+   </property>
+  </widget>
  </widget>
  <customwidgets>
   <customwidget>

@@ -37,13 +37,8 @@ void AbstractClient::sendBufferedData()
         if ( ! _sendBuffer.isEmpty() )
         {
             QString data = _sendBuffer.dequeue();
-
-            _currentLineNumber++;
-            // Add lien number
-            data = "#N"+QString::number(_currentLineNumber) + " " + data + " ";
             // Add checksum
             data = data + "*" + QString::number(AbstractClient::checksum(data.toStdString().c_str(), data.size())) + "\n";
-
 
             Logger::writeOutputCommand( data );
             _connector->write( data.toStdString().c_str() );
@@ -90,7 +85,9 @@ void AbstractClient::parseSerialDatas()
 void AbstractClient::startConnection()
 {
     connect ( _connector, SIGNAL(readyRead()), this, SLOT(parseSerialDatas()) );
-    this->connectionUptime = 0 ;
+    this->connectionUptime = 0 ;  
+    this->_currentLineNumber = 0;
+    this->sendMCode( MCODE_RESET_SLAVES );
     this->_currentLineNumber = 0;
     this->sendMCode( MCODE_RESET_LINE_NUMBER );
 }
@@ -101,6 +98,9 @@ void AbstractClient::sendCode(QString code)
     {
         if ( _sendBuffer.size() <= Config::sendBufferSize() )
         {
+            _currentLineNumber++;
+            // Add line number
+            code = "#N"+QString::number(_currentLineNumber) + " " + code + " ";
             _sendBuffer.enqueue( code );
         }
         else

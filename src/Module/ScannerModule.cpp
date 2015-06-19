@@ -13,6 +13,28 @@ void ScannerModule::initAll()
     _primesencePlugged = false;
     _laser0Plugged = false;
     _laser1Plugged = false;
+    _laser0Power = 0;
+    _laser1Power = 0;
+}
+
+void ScannerModule::setLaserPower(u_int8_t laser_id, int power_percent)
+{
+    if ( laser_id == 0 )
+    {
+        if ( this->laser0Plugged() )
+        {
+            _laser0Power = power_percent;
+            _polybox->connector()->sendMCode( QString::number(MCODE_SCANNER_SET_LASER_STATE)+" P0 S" + QString::number(power_percent*255/100));
+        }
+    }
+    if ( laser_id == 1 )
+    {
+        if ( this->laser1Plugged() )
+        {
+            _laser1Power = power_percent;
+            _polybox->connector()->sendMCode( QString::number(MCODE_SCANNER_SET_LASER_STATE)+" P1 S" + QString::number(power_percent*255/100) );
+        }
+    }
 }
 
 void ScannerModule::parseMCode(QByteArray stream)
@@ -93,9 +115,19 @@ bool ScannerModule::turntablePlugged() const
 
 bool ScannerModule::laser0Plugged() const
 {
+    return 1;
     return _laser0Plugged;
 }
 bool ScannerModule::laser1Plugged() const
 {
+    return 1;
     return _laser1Plugged;
+}
+int ScannerModule::laser0Power() const
+{
+    return _laser0Power;
+}
+int ScannerModule::laser1Power() const
+{
+    return _laser1Power;
 }
