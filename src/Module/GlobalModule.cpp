@@ -188,8 +188,8 @@ bool GlobalModule::isReady() const
 
 void GlobalModule::updateComponents()
 {
-    AbstractClient* connector = PolyboxModule::getInstance()->connector();
-    _arduinoMaitre = connector->isConnected();
+    ComModule* connector = ComModule::getInstance();
+    _arduinoMaitre = Polyplexer::isConnected();
     connector->sendMCode(MCODE_GLOBAL_GET_BOX_OPEN);
     connector->sendMCode(MCODE_GLOBAL_GET_STATUS);
     connector->sendMCode(MCODE_GLOBAL_GET_ARDUINO_DETECTED);

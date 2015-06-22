@@ -25,7 +25,7 @@ WarningPage::WarningPage(PolyboxModule *polybox, QWidget *parent) :
 void WarningPage::updateModules()
 {
     bool running;
-    running = Polyplexer::getInstance()->isRunning();
+    running = Polyplexer::isConnected();
 
     ui->generalWidget->setEnabled( running );
     ui->scannerWidget->setEnabled( running );

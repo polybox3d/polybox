@@ -4,7 +4,7 @@
 #include <QWidget>
 #include <QScrollBar>
 
-#include "PolyboxModule.h"
+#include "ComModule.h"
 
 /**
  * Input : green
@@ -23,7 +23,7 @@ public:
     explicit Console(QWidget *parent = 0);
     ~Console();
 public slots:
-    void parseData();
+    void parseData(QByteArray data);
     void dataWritten(QString data);
 
 private slots:

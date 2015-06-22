@@ -9,9 +9,9 @@ Console::Console(QWidget *parent) :
     _displayInput = false;
     _displayOutput = false;
     ui->setupUi(this);
-    connect( PolyboxModule::getInstance()->connector(), SIGNAL(dataReady()), this, SLOT(parseData()) );
-    connect( PolyboxModule::getInstance()->connector(), SIGNAL(disconnected()), this, SLOT(deleteLater()) );
-    connect( PolyboxModule::getInstance()->connector(), SIGNAL(dataWritten(QString)), this, SLOT(dataWritten(QString)) );
+    connect( ComModule::getInstance(), SIGNAL(newData(QByteArray)), this, SLOT(parseData(QByteArray)) );
+    connect( ComModule::getInstance(), SIGNAL(disconnected()), this, SLOT(deleteLater()) );
+    connect( ComModule::getInstance(), SIGNAL(dataWritten(QString)), this, SLOT(dataWritten(QString)) );
 }
 
 Console::~Console()
@@ -19,7 +19,7 @@ Console::~Console()
     delete ui;
 }
 
-void Console::parseData()
+void Console::parseData(QByteArray data)
 {
     /** User doesn't want to display input data **/
     if ( ! ui->inputCB->isChecked() )
@@ -31,7 +31,7 @@ void Console::parseData()
     }
     /** append data with specific color **/
     ui->displaySerial->setTextColor( QColor( "green" ) );
-    ui->displaySerial->append(PolyboxModule::getInstance()->connector()->datas());
+    ui->displaySerial->append( data );
 }
 
 void Console::dataWritten(QString data)
@@ -51,13 +51,13 @@ void Console::dataWritten(QString data)
 
 void Console::on_sendCodeButton_clicked()
 {
-    PolyboxModule::getInstance()->connector()->sendCode( ui->inputCode->text() );
+    ComModule::getInstance()->sendCode( ui->inputCode->text() );
     ui->inputCode->setText("");
 }
 
 void Console::on_inputCode_returnPressed()
 {
-    PolyboxModule::getInstance()->connector()->sendCode( ui->inputCode->text() );
+    ComModule::getInstance()->sendCode( ui->inputCode->text() );
     ui->inputCode->setText("");
 }
 

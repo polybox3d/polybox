@@ -115,7 +115,8 @@ SOURCES += main.cpp\
     Page/RotationControlDock.cpp \
     Page/LaserDock.cpp \
     Widget/DockHost.cpp \
-    Module/MovementModule.cpp
+    Module/MovementModule.cpp \
+    Module/ComModule.cpp
 
 HEADERS  += MainWindow.h \
         Updater.h \
@@ -172,7 +173,6 @@ HEADERS  += MainWindow.h \
     Widget/DialogWidget.h \
     TCPServer.h \
     AbstractClient.h \
-    TCPClient.h \
     Widget/DialogClient.h \
     Widget/SplashScreen.h \
     ClosedLoopTimer.h \
@@ -189,7 +189,9 @@ HEADERS  += MainWindow.h \
     Page/RotationControlDock.h \
     Page/LaserDock.h \
     Widget/DockHost.h \
-    Module/MovementModule.h
+    Module/MovementModule.h \
+    Module/ComModule.h \
+    TCPClient.h
 
 FORMS    += MainWindow.ui \
     PrinterSmallUI.ui \

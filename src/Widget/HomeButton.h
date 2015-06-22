@@ -2,7 +2,7 @@
 #define HOMEBUTTON_H
 
 #include <QPushButton>
-#include "PolyboxModule.h"
+#include "ComModule.h"
 
 /**
  * @brief The HomeButton class Cosntruct the Home button using the logo. Th size can be updated.
@@ -20,7 +20,7 @@ signals:
 
 public slots:
     void changeIcon(QPixmap img);
-    void changeIconOnConnectorType(PolyboxModule::ConnectorType type);
+    void changeIconOnConnectorType(Polyplexer::ConnectorType type);
 
 };
 

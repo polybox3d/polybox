@@ -46,5 +46,6 @@ void ATUButton::toggleState()
         setText(tr("ATU"));
     }
     _atuActivated = !_atuActivated;
-    PolyboxModule::getInstance()->connector()->sendMCode( QString::number(MCODE_GLOBAL_SET_STATUS)+" S"+QString::number(_atuActivated) );
+
+    ComModule::getInstance(this)->sendMCode( QString::number(MCODE_GLOBAL_SET_STATUS)+" S"+QString::number(_atuActivated) );
 }

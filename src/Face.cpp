@@ -53,7 +53,7 @@ void Face::sendValues()
 
 void Face::sendColor()
 {
-    PolyboxModule::getInstance()->connector()->sendMCode(QString::number(MCODE_LABVIEW_SET_FACE_RGB)
+    ComModule::getInstance()->sendMCode(QString::number(MCODE_LABVIEW_SET_FACE_RGB)
                                        +" S"+QString::number(this->id)
                                        +" R"+QString::number(_color.red())
                                        +" E"+QString::number(_color.green())
@@ -76,7 +76,7 @@ void Face::setVIntensity( int v )
 }
 void Face::sendIntensity()
 {
-    PolyboxModule::getInstance()->connector()->sendMCode(QString::number(MCODE_LABVIEW_SET_FACE_I)+" S"+QString::number(id)+" X"+QString::number(_h)+" Y"+QString::number(_v));
+    ComModule::getInstance()->sendMCode(QString::number(MCODE_LABVIEW_SET_FACE_I)+" S"+QString::number(id)+" X"+QString::number(_h)+" Y"+QString::number(_v));
 }
 
 int Face::h()

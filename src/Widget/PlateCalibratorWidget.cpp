@@ -32,19 +32,19 @@ PlateCalibratorWidget::~PlateCalibratorWidget()
 
 void PlateCalibratorWidget::moveMotorAngle(int axes_id, float angle)
 {
-    PolyboxModule::getInstance()->connector()->sendMCode( QString::number(MCODE_GLOBAL_MOVE_MOTOR_ANGLE)+" P"+QString::number(axes_id)+" S"+QString::number(angle) );
+    ComModule::getInstance()->sendMCode( QString::number(MCODE_GLOBAL_MOVE_MOTOR_ANGLE)+" P"+QString::number(axes_id)+" S"+QString::number(angle) );
 }
 
 void PlateCalibratorWidget::updateUi()
 {
     if ( !Config::bypassCheck() )
     {
-        ui->plate->setEnabled( PolyboxModule::getInstance()->isConnected() );
-        ui->x_minus->setEnabled( PolyboxModule::getInstance()->isConnected() );
-        ui->x_plus->setEnabled( PolyboxModule::getInstance()->isConnected() );
+        ui->plate->setEnabled( Polyplexer::isConnected() );
+        ui->x_minus->setEnabled( Polyplexer::isConnected() );
+        ui->x_plus->setEnabled( Polyplexer::isConnected() );
 
-        ui->y_minus->setEnabled( PolyboxModule::getInstance()->isConnected() );
-        ui->y_plus->setEnabled( PolyboxModule::getInstance()->isConnected() );
+        ui->y_minus->setEnabled( Polyplexer::isConnected() );
+        ui->y_plus->setEnabled( Polyplexer::isConnected() );
     }
     ui->xValue->setText( QString::number(_plater->rx()) );
     ui->yValue->setText( QString::number(_plater->ry()) );

@@ -24,7 +24,7 @@ void ScannerModule::setLaserPower(u_int8_t laser_id, int power_percent)
         if ( this->laser0Plugged() )
         {
             _laser0Power = power_percent;
-            _polybox->connector()->sendMCode( QString::number(MCODE_SCANNER_SET_LASER_STATE)+" P0 S" + QString::number(power_percent*255/100));
+            ComModule::getInstance(this)->sendMCode( QString::number(MCODE_SCANNER_SET_LASER_STATE)+" P0 S" + QString::number(power_percent*255/100));
         }
     }
     if ( laser_id == 1 )
@@ -32,7 +32,7 @@ void ScannerModule::setLaserPower(u_int8_t laser_id, int power_percent)
         if ( this->laser1Plugged() )
         {
             _laser1Power = power_percent;
-            _polybox->connector()->sendMCode( QString::number(MCODE_SCANNER_SET_LASER_STATE)+" P1 S" + QString::number(power_percent*255/100) );
+            ComModule::getInstance(this)->sendMCode( QString::number(MCODE_SCANNER_SET_LASER_STATE)+" P1 S" + QString::number(power_percent*255/100) );
         }
     }
 }
@@ -86,12 +86,12 @@ void ScannerModule::updateComponents()
 }
 void ScannerModule::updateGlobalStatus()
 {
-    _polybox->connector()->sendMCode( MCODE_SCANNER_GET_LASER_PLUGGED );
+    ComModule::getInstance(this)->sendMCode( MCODE_SCANNER_GET_LASER_PLUGGED );
 }
 
 void ScannerModule::updateTurntablePlugged()
 {
-    //_polybox->connector()->sendMCode( MCODE_SCANNER_TURNTABLE_PLUGGED );
+    //ComModule::getInstance(this)->sendMCode( MCODE_SCANNER_TURNTABLE_PLUGGED );
 }
 
 bool ScannerModule::isReady() const

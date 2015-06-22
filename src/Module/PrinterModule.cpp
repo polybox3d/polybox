@@ -283,22 +283,22 @@ void PrinterModule::parseMCode(QByteArray stream)
 
 void PrinterModule::updateComponents()
 {
-    _polybox->connector()->sendMCode( MCODE_PRINTER_TOOL_PLUGGED );
-    _polybox->connector()->sendMCode( MCODE_PRINTER_WIRE_DETECTED );
-    _polybox->connector()->sendMCode( MCODE_PRINTER_BED_PLUGGED );
-    _polybox->connector()->sendMCode( MCODE_PRINTER_PEL_PLUGGED );
-    /*_polybox->connector()->sendMCode( MCODE_PRINTER_GET_COOLER_BOX_STATUS );*/
-    //_polybox->connector()->sendMCode( MCODE_PRINTER_GET_COLDEND_STATUS );
-    //_polybox->connector()->sendMCode( MCODE_PRINTER_GET_BED_TEMP_C );
-    //_polybox->connector()->sendMCode( MCODE_PRINTER_GET_CHAMBER_TEMP_ALL );
-    //_polybox->connector()->sendMCode( MCODE_PRINTER_GET_CHAMBER_TEMP );
-    //_polybox->connector()->sendMCode( MCODE_PRINTER_GET_BUSE_CLOGGED );
+    ComModule::getInstance(this)->sendMCode( MCODE_PRINTER_TOOL_PLUGGED );
+    ComModule::getInstance(this)->sendMCode( MCODE_PRINTER_WIRE_DETECTED );
+    ComModule::getInstance(this)->sendMCode( MCODE_PRINTER_BED_PLUGGED );
+    ComModule::getInstance(this)->sendMCode( MCODE_PRINTER_PEL_PLUGGED );
+    /*ComModule::getInstance(this)->sendMCode( MCODE_PRINTER_GET_COOLER_BOX_STATUS );*/
+    //ComModule::getInstance(this)->sendMCode( MCODE_PRINTER_GET_COLDEND_STATUS );
+    //ComModule::getInstance(this)->sendMCode( MCODE_PRINTER_GET_BED_TEMP_C );
+    //ComModule::getInstance(this)->sendMCode( MCODE_PRINTER_GET_CHAMBER_TEMP_ALL );
+    //ComModule::getInstance(this)->sendMCode( MCODE_PRINTER_GET_CHAMBER_TEMP );
+    //ComModule::getInstance(this)->sendMCode( MCODE_PRINTER_GET_BUSE_CLOGGED );
 
 }
 void PrinterModule::toggleInter()
 {
     _isOn = !_isOn;
-    _polybox->connector()->sendMCode( QString::number(MCODE_PRINTER_SET_STATUS)+" S"+QString::number(_isOn) );
+    ComModule::getInstance(this)->sendMCode( QString::number(MCODE_PRINTER_SET_STATUS)+" S"+QString::number(_isOn) );
 }
 
 void PrinterModule::activateAllBed(bool activated)
@@ -478,7 +478,7 @@ bool PrinterModule::wireClogged() const
 void PrinterModule::setFanByMask(u_int8_t mask, u_int8_t speed)
 {
 
-    PolyboxModule::getInstance()->connector()->sendMCode(QString::number(MCODE_PRINTER_SET_FAN_SPEED)+" P"+QString::number(mask)+ " S"+QString::number(speed*255/100) );
+    ComModule::getInstance(this)->sendMCode(QString::number(MCODE_PRINTER_SET_FAN_SPEED)+" P"+QString::number(mask)+ " S"+QString::number(speed*255/100) );
 }
 
 void PrinterModule::setFanPelletierSpeed(int speed)

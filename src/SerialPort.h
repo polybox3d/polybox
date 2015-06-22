@@ -13,7 +13,7 @@
 /**
  * @brief The SerialPort class Constructs a classs based of QextSerialPort. Provides an overlay for Serial Communication through USB/COM
  */
-class SerialPort : public AbstractClient
+class SerialPort : public QObject
 {
     Q_OBJECT
 public:
@@ -74,12 +74,14 @@ public:
 
     virtual QextSerialPort* getConnector();
 
-
+signals:
+    void disconnected();
 private:
     explicit SerialPort(QObject *parent = 0);
     static SerialPort* serialPortInstance;
     QString _path;
     QString _name;
+    QextSerialPort* _connector;
 
 
 };

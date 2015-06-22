@@ -83,7 +83,7 @@ void Logger::disconnect()
 {
 
     Logger::getInstance()->logSteam << "[RAM]\t\t-> "+QString::number(PolyboxModule::getInstance()->globalModule()->ram())+" \n";
-    Logger::getInstance()->logSteam << "[UPTIME]\t-> "+QString::number(PolyboxModule::getInstance()->connector()->connectionUptime/60)+" \n";
+    Logger::getInstance()->logSteam << "[UPTIME]\t-> "+QString::number(ComModule::getInstance()->_connectionUptime/60)+" \n";
     Logger::getInstance()->logSteam << "====> Disconnected \n";
 
     Logger::getInstance()->logSteam.flush();

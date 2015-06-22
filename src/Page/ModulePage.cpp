@@ -39,7 +39,7 @@ ModulePage::~ModulePage()
 
 void ModulePage::changeLogo()
 {
-    if ( PolyboxModule::getInstance()->isConnected() )
+    if ( Polyplexer::isConnected() )
     {
         ui->homeButton->setEnabled( true );
     }
@@ -47,12 +47,12 @@ void ModulePage::changeLogo()
     {
         ui->homeButton->setEnabled( false );
     }
-    PolyboxModule::ConnectorType type = PolyboxModule::getInstance()->connectorType();
-    if ( type == PolyboxModule::ServerTCP)
+    Polyplexer::ConnectorType type = Polyplexer::getInstance()->connectorType();
+    if ( type == Polyplexer::Tcp)
     {
         ui->homeButton->setPixmap( QPixmap(":/img/img/logo_400_blu.png") );
     }
-    else if ( type == PolyboxModule::CLientTCP)
+    else if ( type == Polyplexer::Tcp)
     {
         ui->homeButton->setPixmap( QPixmap(":/img/img/logo_400_yellow.png") );
     }
@@ -129,9 +129,9 @@ bool ModulePage::eventFilter(QObject *obj, QEvent *event)
             back();
 #endif
 #ifndef WELCOME_PAGE
-            if ( ! PolyboxModule::getInstance()->isConnected() )
+            if ( ! Polyplexer::isConnected() )
             {
-                PolyboxModule::getInstance()->connectionGUI(true);
+                //PolyboxModule::getInstance()->connectionGUI(true);
             }
 #endif
 

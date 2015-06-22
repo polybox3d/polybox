@@ -13,7 +13,7 @@ DebugPin::DebugPin(QWidget *parent) :
     _updtaeTimer.start(500);
     connect(&_updtaeTimer,SIGNAL(timeout()),this,SLOT(updateComponents()));
 
-    connect( PolyboxModule::getInstance()->connector(), SIGNAL(dataReady()), this, SLOT(parseData()) );
+    connect( ComModule::getInstance(this), SIGNAL(newData(QByteArray)), this, SLOT(parseData(QByteArray)) );
 }
 
 DebugPin::~DebugPin()
@@ -37,11 +37,8 @@ void DebugPin::setupComponents()
 
 }
 
-void DebugPin::parseData()
+void DebugPin::parseData(QByteArray data)
 {
-    QByteArray data = PolyboxModule::getInstance()->connector()->datas();
-
-
     QString str(data);
     int idx = str.indexOf('#') ;
     if ( idx == -1 ) // # Code bot found
@@ -88,7 +85,7 @@ void DebugPin::updateComponents()
     }
     else
     {
-        PolyboxModule::getInstance()->connector()->sendCode( QString("M700")+" P"+QString::number((ui->pinNumber->text().toInt()+(70*ui->boardCombo->currentIndex()))) );
+        ComModule::getInstance(this)->sendCode( QString("M700")+" P"+QString::number((ui->pinNumber->text().toInt()+(70*ui->boardCombo->currentIndex()))) );
     }
 
 }
@@ -109,17 +106,17 @@ void DebugPin::on_sendPinValue_clicked()
     }
     else
     {
-        PolyboxModule::getInstance()->connector()->sendCode( QString("M701")+" P"+QString::number((ui->pinNumber->text().toInt()+(70*ui->boardCombo->currentIndex())))+" S"+ui->pinValue->text() );
+        ComModule::getInstance(this)->sendCode( QString("M701")+" P"+QString::number((ui->pinNumber->text().toInt()+(70*ui->boardCombo->currentIndex())))+" S"+ui->pinValue->text() );
         ui->pinValue->setText("");
     }
 }
 
 void DebugPin::on_send0_clicked()
 {
-    PolyboxModule::getInstance()->connector()->sendCode( QString("M701")+" P"+QString::number((ui->pinNumber->text().toInt()+(70*ui->boardCombo->currentIndex())))+" S0" );
+    ComModule::getInstance(this)->sendCode( QString("M701")+" P"+QString::number((ui->pinNumber->text().toInt()+(70*ui->boardCombo->currentIndex())))+" S0" );
 }
 
 void DebugPin::on_send255_clicked()
 {
-    PolyboxModule::getInstance()->connector()->sendCode( QString("M701")+" P"+QString::number((ui->pinNumber->text().toInt()+(70*ui->boardCombo->currentIndex())))+" S255" );
+    ComModule::getInstance(this)->sendCode( QString("M701")+" P"+QString::number((ui->pinNumber->text().toInt()+(70*ui->boardCombo->currentIndex())))+" S255" );
 }

@@ -31,12 +31,12 @@ OpenPage::~OpenPage()
 
 void OpenPage::changeLogo()
 {
-    PolyboxModule::ConnectorType type = PolyboxModule::getInstance()->connectorType();
-    if ( type == PolyboxModule::ServerTCP)
+    Polyplexer::ConnectorType type = Polyplexer::connectorType();
+    if ( type == Polyplexer::Tcp)
     {
         ui->logo->setPixmap( QPixmap(":/img/img/logo_400_blu.png") );
     }
-    else if ( type == PolyboxModule::CLientTCP)
+    else if ( type == Polyplexer::Tcp)
     {
         ui->logo->setPixmap( QPixmap(":/img/img/logo_400_yellow.png") );
     }

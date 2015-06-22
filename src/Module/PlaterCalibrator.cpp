@@ -30,7 +30,7 @@ void PlaterCalibrator::defineOffsetFromCurrentPos()
 
 void PlaterCalibrator::defineOffset(float x_offset, float y_offset, float z_offset)
 {
-    _polybox->connector()->sendMCode( QString::number(MCODE_GLOBAL_SET_GYRO_OFFSET)+" X"+QString::number(x_offset)
+    ComModule::getInstance()->sendMCode( QString::number(MCODE_GLOBAL_SET_GYRO_OFFSET)+" X"+QString::number(x_offset)
                            +" Y"+QString::number(y_offset)
                            +" Z"+QString::number(z_offset));
 

@@ -8,6 +8,7 @@
 #include <QMessageBox>
 #include <QLibraryInfo>
 #include <QThread>
+#include <QTcpSocket>
 
 #include "Config.h"
 

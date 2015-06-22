@@ -21,7 +21,7 @@ ContactPointLevelingPage::~ContactPointLevelingPage()
 void ContactPointLevelingPage::initializePage()
 {
     setupField();
-    connect(PolyboxModule::getInstance(), SIGNAL(newData(QByteArray)),this,SLOT(parseMCode(QByteArray)));
+    connect(ComModule::getInstance(), SIGNAL(newData(QByteArray)),this,SLOT(parseMCode(QByteArray)));
 }
 
 void ContactPointLevelingPage::parseMCode(QByteArray stream)
@@ -127,6 +127,6 @@ void ContactPointLevelingPage::setupField()
 
 void ContactPointLevelingPage::on_startContactProcess_clicked()
 {
-    PolyboxModule::getInstance()->connector()->sendMCode(QString::number(MCODE_SEND_GCODE)+" "+QString::number(GCODE_SINGLE_ZPROBE));
+    ComModule::getInstance()->sendMCode(QString::number(MCODE_SEND_GCODE)+" "+QString::number(GCODE_SINGLE_ZPROBE));
 }
 

@@ -11,32 +11,6 @@
 
 #include "SerialPort.h"
 
-/***
- * Connection flowchart
- *
- * PolyboxModule::connectToPrinter()
- *          |
- *          +----> Polyplexer::start()   // Create pipes and multiplexer for packets
- *          |
- *          +----> SerialPort::connectToSerialPort()  // Create connection between this software and a given pipe (serial/Tcp connection)
- *
- * ====================== PingPong process =====================
- *
- * PolyboxModule::_pingPongTimer.start( PINGPONG_DELAY_MS )
- *                             Timer, periodically call PolyboxModule::pingPong() method.
- *
- * PolyboxModule::pingPong() : Send a ping to the server.
- *                             Server can be printer firmware or remote server software.
- *
- * PolyboxModule::parseMCode() : Parse incoming datas. If PONG_M_CODE, reset ping-pong counter.
- *
- * PingPong value :
- *                  idle, or new connection start :
- *                    PolyboxModule::_numberOfMissingPingPong = PINGPONG_NOT_CONNECTED
- *                  New pong parsed with PolyboxModule::parseMCode() :
- *                    PolyboxModule::_numberOfMissingPingPong = PINGPONG_OK
- *                  pingPong() : increment current value of _numberOfMissingPingPong
- ***/
 
 class Polyplexer : public QObject
 {
@@ -45,61 +19,50 @@ public:
 #define DEAMON_POLY_POLYPLEXER "/dev/ttyDEAMONPOLY"
 #define DEAMON_PRINTER_POLYPLEXER "/dev/ttyDEAMONPRINTER"
 
-    enum PrinterSocketType {
-        Serial, Tcp
+    enum ConnectorType {
+        Noone, Serial, Tcp
     };
 
-    static Polyplexer* getInstance()
-    {
-        if ( polyplexerInstance == NULL )
-            polyplexerInstance = new Polyplexer();
-        return polyplexerInstance;
-    }
-
     ~Polyplexer();
+    static Polyplexer* getInstance(QObject* parent = NULL);
 
-    bool isRunning();
-    bool start();
-    bool start(QString path, QString port);
-    bool restart();
-    bool kill();
-    void useWindowOutput(bool use_window );
-    int error();
+    /** Connection **/
+    static bool isConnected();
+    static ConnectorType connectorType ();
+    static void send(QString data);
 
-    QString portMachine() const { return _portMachine; }
-    void setPortMachine( QString port ) { _portMachine = port ; }
+    void setConnector(QIODevice* connector);
+    void setConnectorType(ConnectorType connector_type);
+    bool start(QIODevice* connector, ConnectorType connector_type);
 
-    QString pathMachine() const { return _pathMachine; }
-    void setPathMachine( QString path ) { _pathMachine = path ; }
-
-    void setPrinterSocketType(PrinterSocketType type ) { _printerSocketType = type ; }
-    PrinterSocketType printerSocketType( ) { return _printerSocketType ; }
+    /** Data & Parse **/
+    QByteArray dataPolybox();
+    QByteArray dataBasic();
 
 
 signals:
+    QByteArray dataPolyboxReady();
+    QByteArray dataBasicReady();
+
 public slots:
-    bool stop();
-    void finished(int exitCode, QProcess::ExitStatus exitStatus);
+    void parseData();
+    void sendData(QString data);
+    void disconnect();
+
+
 
 private:
 
-    explicit Polyplexer(QObject *parent = 0);
-    /** Link between Polybox Machine(board) and the PC    **/
-    QString _portMachine;
-    QString _pathMachine;
+    explicit Polyplexer(QObject *parent);
+    static Polyplexer* _instance;
+
+    QIODevice* _connector;
+    QByteArray _rcp_data;
+    QByteArray _dataBasic;
+    QByteArray _dataPolybox;
+    ConnectorType _connectorType;
 
 
-    /**  Link between Pc and PrinterDaemon. TCP or Serial ? **/
-    PrinterSocketType _printerSocketType;
-
-    /** Unique static instance of this Class (Polyplexer)**/
-    static Polyplexer* polyplexerInstance;
-
-    /** store and handle the external program as separate (Q)Process **/
-    QProcess* _polyplexer;
-    bool _useOutputWindow;
-
-    void manageWindow();
 };
 
 #endif // POLYPLEXER_H

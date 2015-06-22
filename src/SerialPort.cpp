@@ -8,7 +8,7 @@ using namespace std;
 SerialPort* SerialPort::serialPortInstance = NULL;
 
 SerialPort::SerialPort(QObject *parent) :
-    AbstractClient(parent)
+    QObject(parent)
   //QextSerialPort("/dev/ttyACM0", QextSerialPort::EventDriven, parent)
 {
     _path = Config::pathToVirtualPolySerialDevice();
@@ -53,8 +53,6 @@ bool SerialPort::connectToSerialPort()
             qDebug() << "warning: device is not turned on"<<lineStatus();
             return false;
         }*/
-
-        this->startConnection();
         return true;
     }
     else
@@ -75,7 +73,7 @@ void SerialPort::disconnectPort()
     QextSerialPort* port = SerialPort::getConnector();
     if ( port != NULL && port->isOpen() )
     {
-        this->sendMCode( MCODE_END_CONNECTION );
+        //this->sendMCode( MCODE_END_CONNECTION );
         port->flush();
         port->close();
         emit disconnected();

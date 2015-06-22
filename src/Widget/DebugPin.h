@@ -4,7 +4,7 @@
 #include <QWidget>
 #include <QTimer>
 
-#include "PolyboxModule.h"
+#include "ComModule.h"
 
 namespace Ui {
 class DebugPin;
@@ -22,7 +22,7 @@ public:
 private slots:
     void on_boardCombo_currentIndexChanged(int index);
     void updateComponents();
-    void parseData();
+    void parseData(QByteArray data);
 
     void on_sendPinValue_clicked();
 

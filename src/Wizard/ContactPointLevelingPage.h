@@ -6,7 +6,7 @@
 #include <QByteArray>
 
 #include "Config.h"
-#include "PolyboxModule.h"
+#include "ComModule.h"
 
 
 namespace Ui {

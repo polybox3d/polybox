@@ -38,15 +38,15 @@ void LabViewModule::sendController(LabViewController c)
     int mcode = MCODE_LABVIEW_SET_CONTROLLER;
     if ( c == Software )
     {
-        PolyboxModule::getInstance()->connector()->sendMCode( QString::number(mcode) + " S1" );
+        ComModule::getInstance(this)->sendMCode( QString::number(mcode) + " S1" );
     }
     else if ( c == Manual)
     {
-        PolyboxModule::getInstance()->connector()->sendMCode( QString::number(mcode) + " H1" );
+        ComModule::getInstance(this)->sendMCode( QString::number(mcode) + " H1" );
     }
     else
     {
-        PolyboxModule::getInstance()->connector()->sendMCode( QString::number(mcode) + " H1" );
+        ComModule::getInstance(this)->sendMCode( QString::number(mcode) + " H1" );
     }
 }
 
@@ -67,12 +67,12 @@ QStringList LabViewModule::getAllCamera(QString path_directory)
 void LabViewModule::toggleInter()
 {
     _isOn = !_isOn;
-    _polybox->connector()->sendMCode( QString::number(MCODE_LABVIEW_SET_STATUS)+" S"+QString::number(_isOn) );
+    ComModule::getInstance(this)->sendMCode( QString::number(MCODE_LABVIEW_SET_STATUS)+" S"+QString::number(_isOn) );
 }
 
 void LabViewModule::setConnectedColor()
 {
-    PolyboxModule::getInstance()->connector()->sendMCode( MCODE_START_CONNECTION );
+    ComModule::getInstance(this)->sendMCode( MCODE_START_CONNECTION );
     //setAllFacesColor( QColor(0,150,120,255) );
     //setAllFacesLight( 120, true, true );
 }

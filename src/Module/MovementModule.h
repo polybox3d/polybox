@@ -3,7 +3,7 @@
 
 #include <QObject>
 
-#include "PolyboxModule.h"
+#include "ComModule.h"
 
 #define TABLE_SIZE_X 440
 #define TABLE_SIZE_Y 440

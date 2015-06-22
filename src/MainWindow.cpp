@@ -58,7 +58,7 @@ MainWindow::MainWindow(Qt::WindowFlags window_flags, QWidget *parent) :
     _dockLV = NULL;
 
     /**             ATU BUTTON              **/
-    _atuON = !PolyboxModule::isConnected();
+    _atuON = !Polyplexer::isConnected();
     toggleATU();
     _atu = new ATUButton( 60, 30, _atuON, this );
     _atu->setGeometry( this->width()-_atu->width()-10,
@@ -84,17 +84,14 @@ void MainWindow::displayStatusMessage(QString mess)
 
 void MainWindow::closeEvent(QCloseEvent *event)
 {
-    if ( _polybox->isConnected() )
+    if ( Polyplexer::isConnected() )
     {
         DialogWidget m_close( tr("La connexion est active avec la machine."
                                  "Quitter le programme va intérompte toute impréssion ou usinage en activité. ")
                               , this );
         if ( m_close.exec() )
         {
-            SerialPort* con = dynamic_cast<SerialPort*>(PolyboxModule::getInstance()->connector());
-            if ( con )
-                con->disconnectPort();
-            event->accept();
+            Polyplexer::getInstance( this )->disconnect();
         }
         else
         {
@@ -109,7 +106,7 @@ void MainWindow::closeEvent(QCloseEvent *event)
 
 void MainWindow::startConsoleWindow()
 {
-    if ( PolyboxModule::getInstance()->connector()->isConnected() )
+    if ( Polyplexer::isConnected() )
     {
         Console* c = new Console();
         c->setWindowTitle(tr("Console"));
@@ -210,14 +207,14 @@ void MainWindow::setupSerialMenu()
                 {
                     act = ui->menuConnexion->addAction( serial );
                     act->setCheckable( true );
-                    if ( _polybox->connectorType() == PolyboxModule::Serial )
+/*                    if ( _polybox->connectorType() == PolyboxModule::Serial )
                     {
                         connect( act, SIGNAL(triggered()),this,SLOT(startConnexion()) );
                     }
                     if ( ! serial.compare(Polyplexer::getInstance()->portMachine() ) && PolyboxModule::getInstance()->connector()->isConnected() ) // We are already connected to this serial !
                     {
                         act->setChecked( true );
-                    }
+                    }*/
                 }
             }
         }
@@ -230,7 +227,7 @@ void MainWindow::startConnexion()
     if ( QAction* act = dynamic_cast<QAction*>(sender()) )
     {
         Polyplexer* poly = Polyplexer::getInstance();
-
+/*
         if ( ! poly->portMachine().compare( act->text().split('/').last() ) && PolyboxModule::getInstance()->connector()->isConnected() ) //already connected
         {
             _atu->setState( true ); // true => activate ATU
@@ -246,7 +243,7 @@ void MainWindow::startConnexion()
             _atu->setEnabled( connected );
             _atu->setState( !connected ); // false => ATU off, machine works/ON
             //act->setChecked( connected ) ;
-        }
+        }*/
     }
 }
 
@@ -272,11 +269,11 @@ void MainWindow::startCamera()
 void MainWindow::updateHardware()
 {
     setupSerialMenu();
-    if ( _polybox->connectorType() == PolyboxModule::Serial )
+    if ( Polyplexer::connectorType() == Polyplexer::Serial )
     {
         ui->actionMode_Serveur->setVisible( true );
         ui->actionStart_Client_Mode->setVisible( true );
-        if ( _polybox->isConnected() )
+        if ( Polyplexer::isConnected() )
         {
             _connectedLed.setActivated( true );
             this->displayStatusMessage( tr("Status : Connected") );
@@ -288,13 +285,13 @@ void MainWindow::updateHardware()
 
         }
     }
-    else if ( _polybox->connectorType() == PolyboxModule::ServerTCP && _polybox->isConnected())
+    else if ( Polyplexer::isConnected() && _tcp_server.isListening() )
     {
         ui->actionMode_Serveur->setVisible( true );
         ui->actionStart_Client_Mode->setVisible( false );
         this->displayStatusMessage( tr("Status : Mode Server") );
     }
-    else if ( _polybox->connectorType() == PolyboxModule::CLientTCP )
+    else if ( Polyplexer::connectorType() == Polyplexer::Tcp )
     {
         ui->actionMode_Serveur->setVisible( false );
         ui->actionStart_Client_Mode->setVisible( true );
@@ -603,11 +600,11 @@ void MainWindow::on_actionMode_Serveur_toggled(bool arg1)
 {
     if ( arg1 )
     {
-        if ( _polybox->isConnected() )
+        if ( Polyplexer::isConnected() )
         {
             _tcp_server.startListening( Config::serverListeningAddress(), Config::serverListeningPort() );
             ui->actionMode_Serveur->setText(tr("Stop Server Mode"));
-            _polybox->setConnectorType( PolyboxModule::ServerTCP );
+            //_polybox->setConnectorType( PolyboxModule::ServerTCP );
             this->updateHardware();
         }
         else
@@ -619,7 +616,7 @@ void MainWindow::on_actionMode_Serveur_toggled(bool arg1)
     {
         ui->actionMode_Serveur->setText(tr("Start Server Mode"));
         _tcp_server.stopListening();
-        _polybox->setConnectorType( PolyboxModule::Serial );
+      //  _polybox->setConnectorType( PolyboxModule::Serial );
         this->updateHardware();
     }
 }
@@ -634,13 +631,13 @@ void MainWindow::on_actionStart_Client_Mode_toggled(bool arg1)
         {
             QTcpSocket* client = new QTcpSocket();
             client->connectToHost( Config::broadcastIP(), Config::broadcastPort());
-            PolyboxModule::getInstance()->setConnector( new TCPClient(client), PolyboxModule::CLientTCP);
+            Polyplexer::getInstance(this)->start( client, Polyplexer::Tcp);
             this->updateHardware();
         }
         else
         {
              ui->actionStart_Client_Mode->setChecked( false );
-             _polybox->setConnectorType( PolyboxModule::Serial );
+             Polyplexer::getInstance(this)->setConnectorType( Polyplexer::Serial );
              this->updateHardware();
         }
     }

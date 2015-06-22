@@ -5,7 +5,7 @@
 #include <QByteArray>
 
 #include "AbstractModule.h"
-#include "PolyboxModule.h"
+#include "ComModule.h"
 
 #define MAX_PLATER_ANGLE 45
 

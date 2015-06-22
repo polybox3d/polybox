@@ -1,5 +1,5 @@
 #include "TCPClient.h"
-
+/*
 TCPClient::TCPClient(QObject *parent) :
     AbstractClient(parent)
 {
@@ -19,3 +19,4 @@ QTcpSocket* TCPClient::getConnector()
 {
     return static_cast<QTcpSocket*>(_connector);
 }
+*/
