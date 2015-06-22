@@ -207,14 +207,14 @@ void MainWindow::setupSerialMenu()
                 {
                     act = ui->menuConnexion->addAction( serial );
                     act->setCheckable( true );
-/*                    if ( _polybox->connectorType() == PolyboxModule::Serial )
-                    {
+                    /*if ( Polyplexer::connectorType() == Polyplexer::Serial )
+                    {*/
                         connect( act, SIGNAL(triggered()),this,SLOT(startConnexion()) );
-                    }
-                    if ( ! serial.compare(Polyplexer::getInstance()->portMachine() ) && PolyboxModule::getInstance()->connector()->isConnected() ) // We are already connected to this serial !
+                   // }
+                    if ( Polyplexer::connectorType() == Polyplexer::Serial  && ! serial.compare(static_cast<SerialPort*>(Polyplexer::getInstance()->connector())->name() ) && Polyplexer::isConnected()  ) // We are already connected to this serial !
                     {
                         act->setChecked( true );
-                    }*/
+                    }
                 }
             }
         }
@@ -227,23 +227,25 @@ void MainWindow::startConnexion()
     if ( QAction* act = dynamic_cast<QAction*>(sender()) )
     {
         Polyplexer* poly = Polyplexer::getInstance();
-/*
-        if ( ! poly->portMachine().compare( act->text().split('/').last() ) && PolyboxModule::getInstance()->connector()->isConnected() ) //already connected
+
+        if ( poly->connectorType() == Polyplexer::Serial && ! static_cast<SerialPort*>(poly->connector())->name().compare( act->text().split('/').last() ) && poly->isConnected() ) //already connected
         {
             _atu->setState( true ); // true => activate ATU
             _atu->setEnabled( false );
-            poly->stop();
+            poly->disconnect();
             act->setChecked(false);
 
         }
         else
         {
-            _polybox->setupConnection( Config::pathToSerialDevice(), act->text().split('/').last() );
-            int connected = _polybox->connectionGUI( Config::blockedConnectionThread() );
+            poly->disconnect();
+            Config::setSerialPortName( act->text().split('/').last() );
+
+            int connected = ComModule::getInstance()->connectionGUI( Config::blockedConnectionThread() );
             _atu->setEnabled( connected );
             _atu->setState( !connected ); // false => ATU off, machine works/ON
             //act->setChecked( connected ) ;
-        }*/
+        }
     }
 }
 

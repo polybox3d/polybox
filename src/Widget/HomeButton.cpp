@@ -19,9 +19,9 @@ HomeButton::HomeButton( int w, int h, QWidget *parent) :
     setSize( w, h);
     setFlat( true );
     connect( Polyplexer::getInstance( this ),
-            SIGNAL(newType(PolyboxModule::ConnectorType)),
+            SIGNAL(newType(Polyplexer::ConnectorType)),
             this,
-            SLOT(changeIconOnConnectorType(PolyboxModule::ConnectorType)));
+            SLOT(changeIconOnConnectorType(Polyplexer::ConnectorType)));
 }
 
 void HomeButton::setSize(int w, int h)
@@ -43,12 +43,12 @@ void HomeButton::changeIconOnConnectorType(Polyplexer::ConnectorType type)
     {
         changeIcon( QPixmap(":/img/img/logo_400_blu.png") );
     }
-    else if ( type == PolyboxModule::CLientTCP)
+    else*/ if ( type == Polyplexer::Tcp)
     {
         changeIcon( QPixmap(":/img/img/logo_400_yellow.png") );
     }
     else //if ( type == Serial)
     {
         changeIcon( QPixmap(":/img/img/logo_400.png") );
-    }*/
+    }
 }

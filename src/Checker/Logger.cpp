@@ -67,8 +67,8 @@ void Logger::startConnection(bool connected)
     Logger::getInstance()->logSteam << "====> Start Connection \n";
     if ( connected )
     {
-        Logger::getInstance()->logSteam << "-->"+SerialPort::getSerial()->path()+"\n";
-        Logger::getInstance()->logSteam << "-->"+SerialPort::getSerial()->name()+"\n";
+        //Logger::getInstance()->logSteam << "-->"+SerialPort::getSerial()->path()+"\n";
+        //Logger::getInstance()->logSteam << "-->"+SerialPort::getSerial()->name()+"\n";
         Logger::getInstance()->logSteam << "-->"+QString::number(Config::motherboardBaudrate())+"\n";
 
     }

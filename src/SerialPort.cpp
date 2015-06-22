@@ -5,14 +5,12 @@
 
 using namespace std;
 
-SerialPort* SerialPort::serialPortInstance = NULL;
-
 SerialPort::SerialPort(QObject *parent) :
-    QObject(parent)
+    QextSerialPort()
   //QextSerialPort("/dev/ttyACM0", QextSerialPort::EventDriven, parent)
 {
-    _path = Config::pathToVirtualPolySerialDevice();
-    _name = Config::serialVirtualPolySerialPort();
+    _path = Config::pathToSerialDevice();
+    _name = Config::serialPortName();
 }
 
 QString SerialPort::path()
@@ -35,17 +33,14 @@ void SerialPort::setPath(QString path)
 
 bool SerialPort::connectToSerialPort()
 {
-    disconnectPort();
-    _connector = new QextSerialPort(_path+_name, QextSerialPort::EventDriven);
+    this->setPortName(_path+_name );
+    this->setBaudRate( (BaudRateType)(Config::motherboardBaudrate()) );
+    this->setFlowControl(FLOW_OFF);
+    this->setParity(PAR_NONE);
+    this->setDataBits(DATA_8);
+    this->setStopBits(STOP_1);
 
-    QextSerialPort* port = static_cast<QextSerialPort*>(_connector);
-    port->setBaudRate( (BaudRateType)(38400) );
-    port->setFlowControl(FLOW_OFF);
-    port->setParity(PAR_NONE);
-    port->setDataBits(DATA_8);
-    port->setStopBits(STOP_1);
-
-    if ( port->open(QIODevice::ReadWrite) == true)
+    if ( this->open(QIODevice::ReadWrite) == true)
     {
         //connect(this, SIGNAL(readyRead()), this, SLOT(onReadyRead()) );
         //      connect(this, SIGNAL(dsrChanged(bool)), this, SLOT(onDsrChanged(bool)) );
@@ -57,25 +52,19 @@ bool SerialPort::connectToSerialPort()
     }
     else
     {
-        qDebug() << "device failed to open:" << port->errorString();
+        qDebug() << "device failed to open:" << this->errorString();
         return false;
     }
 
 }
 
-QextSerialPort* SerialPort::getConnector()
-{
-    return static_cast<QextSerialPort*>(_connector);
-}
-
 void SerialPort::disconnectPort()
 {
-    QextSerialPort* port = SerialPort::getConnector();
-    if ( port != NULL && port->isOpen() )
+    if ( this->isOpen() )
     {
         //this->sendMCode( MCODE_END_CONNECTION );
-        port->flush();
-        port->close();
+        this->flush();
+        this->close();
         emit disconnected();
     }
 }

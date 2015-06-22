@@ -20,8 +20,8 @@ ModulePage::ModulePage(PolyboxModule* poly, QWidget *parent) :
     ui->homeButton->installEventFilter( this );
     _updateTimer.start( Config::updateModuleTimer() );
     connect( &_updateTimer, SIGNAL(timeout()), this, SLOT(repaintComponents()) );
-    connect(PolyboxModule::getInstance(),
-            SIGNAL(newType(PolyboxModule::ConnectorType)),
+    connect(Polyplexer::getInstance(),
+            SIGNAL(newType(Polyplexer::ConnectorType)),
             this,
             SLOT(changeLogo()));
 

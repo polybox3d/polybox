@@ -22,6 +22,7 @@ public:
     enum ConnectorType {
         Noone, Serial, Tcp
     };
+    enum ConnectionStatus{ Connected=0, ErrorPolyplexer=2, ErrorConnection=4, Permission=8, NotFound=16, TimeOut=32, NothingToDo=64};
 
     ~Polyplexer();
     static Polyplexer* getInstance(QObject* parent = NULL);
@@ -30,10 +31,12 @@ public:
     static bool isConnected();
     static ConnectorType connectorType ();
     static void send(QString data);
+    QIODevice* connector();
 
     void setConnector(QIODevice* connector);
     void setConnectorType(ConnectorType connector_type);
-    bool start(QIODevice* connector, ConnectorType connector_type);
+    Polyplexer::ConnectionStatus start(QIODevice* connector, ConnectorType connector_type);
+    Polyplexer::ConnectionStatus start(ConnectorType connector_type);
 
     /** Data & Parse **/
     QByteArray dataPolybox();
@@ -41,8 +44,9 @@ public:
 
 
 signals:
-    QByteArray dataPolyboxReady();
-    QByteArray dataBasicReady();
+    void dataPolyboxReady();
+    void dataBasicReady();
+    void newType(Polyplexer::ConnectorType);
 
 public slots:
     void parseData();
@@ -53,7 +57,7 @@ public slots:
 
 private:
 
-    explicit Polyplexer(QObject *parent);
+    explicit Polyplexer(QObject *parent=NULL);
     static Polyplexer* _instance;
 
     QIODevice* _connector;

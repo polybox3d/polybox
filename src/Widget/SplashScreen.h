@@ -7,7 +7,7 @@
 #include <QApplication>
 
 
-#include "PolyboxModule.h"
+#include "ComModule.h"
 #include "ClosedLoopTimer.h"
 
 class SplashScreen : public QSplashScreen

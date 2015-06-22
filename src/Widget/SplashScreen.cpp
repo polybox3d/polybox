@@ -48,9 +48,9 @@ void SplashScreen::drawContents(QPainter *painter)
 void SplashScreen::connectingProcess()
 {
     this->showStatusMessage(tr("Start connection process..."), Qt::white);
-    //PolyboxModule::ConnectionStatus connection_status = PolyboxModule::getInstance( qApp )->connection( Config::blockedConnectionThread() );
+    Polyplexer::ConnectionStatus connection_status = ComModule::getInstance( qApp )->connection( Config::blockedConnectionThread() );
     // If connected, we gonna check ping/pong process and swap
-    /*if ( connection_status == PolyboxModule::Connected )
+    if ( connection_status == Polyplexer::Connected )
     {
         this->showStatusMessage(tr("     Polyplexer started. \nWaiting for Polybox3D response..."), Qt::white);
         this->setPixmap(QPixmap(":/img/img/splashscreen_wait_fitted.png"));
@@ -59,7 +59,7 @@ void SplashScreen::connectingProcess()
         // We need to wait the end of ping/pong process. It's an closed loop, we process QtEvent and check if the connection is active
         ClosedLoopTimer closed_loop;
 
-        if ( closed_loop.startClosedLoop( 15000, PolyboxModule::isConnected ) )
+        if ( closed_loop.startClosedLoop( 15000, Polyplexer::isConnected ) )
         {
             this->setPixmap(QPixmap(":/img/img/splashscreen_connected_fitted.png"));
             this->showStatusMessage(tr("Connected !"), Qt::white);
@@ -73,8 +73,8 @@ void SplashScreen::connectingProcess()
     else
     {
         this->setPixmap(QPixmap(":/img/img/splashscreen_unconnected_fitted.png"));
-        this->showStatusMessage( PolyboxModule::connectionStatusMessage.value(connection_status), Qt::white);
-    }*/
+        this->showStatusMessage( ComModule::connectionStatusMessage.value(connection_status), Qt::white);
+    }
 }
 
 void SplashScreen::showStatusMessage(const QString &message, const QColor &color)

@@ -22,8 +22,6 @@ class ComModule : public QObject
 
 public:
     static ComModule* getInstance(QObject *parent = 0);
-    enum ConnectorType{ Serial, ServerTCP, CLientTCP, Abstract};
-    enum ConnectionStatus{ Connected=0, ErrorPolyplexer=2, ErrorConnection=4, Permission=8, NotFound=16, TimeOut=32};
     static QMap<int, QString> connectionStatusMessage;
 
     int _connectionUptime;
@@ -58,9 +56,15 @@ public:
     void sendCode(QString code);
     void parseMCode(QByteArray stream);
 
+    static bool isConnected();
+
+    Polyplexer::ConnectionStatus connection( bool blocked_thread );
+    Polyplexer::ConnectionStatus connectionGUI(bool blocked_thread);
+
 signals:
     void newData( QByteArray stream );
     void dataWritten( QString data );
+    void disconnected();
 
 public slots:
     void parseData();

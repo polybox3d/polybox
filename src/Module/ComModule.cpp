@@ -31,14 +31,6 @@ ComModule::ComModule(QObject *parent) :
 
     initConnectionStatusMessage();
 
-
-    /*
-     *     connect ( _connector, SIGNAL(readyRead()), this, SLOT(parseSerialDatas()) );
-    this->connectionUptime = 0 ;
-    this->_currentLineNumber = 0;
-    this->sendMCode( MCODE_RESET_SLAVES );
-    this->_currentLineNumber = 0;
-    this->sendMCode( MCODE_RESET_LINE_NUMBER );*/
 }
 
 
@@ -63,15 +55,63 @@ void ComModule::parseData()
 
 void ComModule::initConnectionStatusMessage()
 {
-    connectionStatusMessage.insert( ComModule::Connected, tr("Le logiciel est correctement connecté à la machine. "));
-    connectionStatusMessage.insert( ComModule::ErrorPolyplexer, tr("Impossible de se connecter à la machine.\n Erreur au lancement du sous-programme Polyplexer. \n 0xff30'"));
-    connectionStatusMessage.insert( ComModule::ErrorConnection, tr("Impossible de se connecter à la machine.\n Error 0xff34'"));
-    connectionStatusMessage.insert( ComModule::Permission, tr("Erreur au lancement. Verifiez vos droits"));
-    connectionStatusMessage.insert( ComModule::NotFound, tr("Programme non trouvable"));
-    connectionStatusMessage.insert( ComModule::TimeOut, tr("La machine ne repond pas...\n Error 0xff34'"));
+    connectionStatusMessage.insert( Polyplexer::Connected, tr("Le logiciel est correctement connecté à la machine. "));
+    connectionStatusMessage.insert( Polyplexer::ErrorPolyplexer, tr("Impossible de se connecter à la machine.\n Erreur au lancement du sous-programme Polyplexer. \n 0xff30'"));
+    connectionStatusMessage.insert( Polyplexer::ErrorConnection, tr("Impossible de se connecter à la machine.\n Error 0xff34'"));
+    connectionStatusMessage.insert( Polyplexer::Permission, tr("Erreur au lancement. Verifiez vos droits"));
+    connectionStatusMessage.insert( Polyplexer::NotFound, tr("Programme non trouvable"));
+    connectionStatusMessage.insert( Polyplexer::TimeOut, tr("La machine ne repond pas...\n Error 0xff34'"));
 }
 
 
+bool ComModule::isConnected()
+{
+    return Polyplexer::isConnected() && ComModule::getInstance()->_numberOfMissingPingPong <= PINGPONG_MAX_TRIES;
+}
+
+Polyplexer::ConnectionStatus ComModule::connectionGUI(bool blocked_thread)
+{
+ Polyplexer::ConnectionStatus connection_status = this->connection( blocked_thread);
+ switch (connection_status) {
+ case Polyplexer::Connected:
+     MainWindow::textWindow( this->connectionStatusMessage.value(connection_status) );
+     break;
+ default:
+     MainWindow::errorWindow( this->connectionStatusMessage.value(connection_status) );
+     break;
+ }
+ return connection_status;
+}
+
+Polyplexer::ConnectionStatus ComModule::connection(bool blocked_thread)
+{
+    Polyplexer::ConnectionStatus code = Polyplexer::getInstance()->start( Polyplexer::Serial );
+    if ( code == Polyplexer::Connected )
+    {
+        _numberOfMissingPingPong = PINGPONG_NOT_CONNECTED;
+        if ( blocked_thread )
+        {
+            // We need to wait the end of ping/pong process. It's an closed loop, we process QtEvent and check if the connection is active
+            ClosedLoopTimer closed_loop;
+            if ( closed_loop.startClosedLoop( 15000, ComModule::isConnected ))
+            {
+                Logger::startConnection( true );
+                return Polyplexer::Connected;
+            }
+            else
+            {
+                Logger::startConnection( false );
+                return Polyplexer::TimeOut;
+            }
+        }
+        else
+        {
+            Logger::startConnection( true );
+            return Polyplexer::Connected;
+        }
+    }
+    return code;
+}
 
 void ComModule::parseMCode(QByteArray stream)
 {

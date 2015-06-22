@@ -16,7 +16,7 @@ class LaserDock : public QDockWidget
     Q_OBJECT
 
 public:
-    explicit LaserDock(ScannerModule* scanner_module, QWidget *parent = 0);
+    explicit LaserDock(ScannerModule* scanner_module = NULL, QWidget *parent = 0);
     ~LaserDock();
     bool eventFilter(QObject* watched, QEvent* event);
 

@@ -36,8 +36,6 @@ class PolyboxModule : public QObject
     Q_OBJECT
 public:
 
-
-
     static PolyboxModule* getInstance(QObject *parent=0);
 
     bool isCommonReady();

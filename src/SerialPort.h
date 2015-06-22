@@ -8,21 +8,16 @@
 
 #include "qextserialport.h"
 #include "Config.h"
-#include "AbstractClient.h"
 #include "mcode.h"
 /**
  * @brief The SerialPort class Constructs a classs based of QextSerialPort. Provides an overlay for Serial Communication through USB/COM
  */
-class SerialPort : public QObject
+class SerialPort : public QextSerialPort
 {
     Q_OBJECT
 public:
-    static SerialPort* getSerial()
-    {
-        if ( serialPortInstance == NULL )
-            serialPortInstance = new SerialPort();
-        return serialPortInstance;
-    }
+
+    explicit SerialPort(QObject *parent = 0);
     /**
      * @brief connectToSerialPort Connect the current serial with defautl value and setting (115200baudrate, 8b, no parity, 1 stop)
      * @return
@@ -72,16 +67,11 @@ public:
     void disconnectPort();
 
 
-    virtual QextSerialPort* getConnector();
-
 signals:
     void disconnected();
 private:
-    explicit SerialPort(QObject *parent = 0);
-    static SerialPort* serialPortInstance;
     QString _path;
     QString _name;
-    QextSerialPort* _connector;
 
 
 };

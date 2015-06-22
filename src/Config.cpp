@@ -144,6 +144,11 @@ QString Config::serialPortName()
     return Config::get(CONNECTION_GROUP,"serialPortName", "ttyACM0").toString();
 }
 
+void Config::setSerialPortName(QString name)
+{
+    Config::set(CONNECTION_GROUP,"serialPortName", name);
+}
+
 QString Config::pathToPolyplexerDaemon()
 {
     return Config::get(CONNECTION_GROUP,"pathToPolyplexerDaemon", Config::runtimePath()+"externals/Polyplexer/PolyPlexer").toString();

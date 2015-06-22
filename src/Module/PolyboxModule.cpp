@@ -36,73 +36,6 @@ PolyboxModule::PolyboxModule(QObject *parent) :
     connect( &_hardwareTimer, SIGNAL(timeout()), this, SLOT(hardwareTimerTimeout()));
 
 }
-/*
-PolyboxModule::ConnectionStatus PolyboxModule::connectionGUI(bool blocked_thread)
-{
- ConnectionStatus connection_status = this->connection( blocked_thread);
- switch (connection_status) {
- case Connected:
-     MainWindow::textWindow( this->connectionStatusMessage.value(connection_status) );
-     break;
- default:
-     MainWindow::errorWindow( this->connectionStatusMessage.value(connection_status) );
-     break;
- }
- return connection_status;
-}
-
-
-PolyboxModule::ConnectionStatus PolyboxModule::connection( bool blocked_thread)
-{
-    _connected = _polyplexer->start();
-    if ( _connected )
-    {
-        _numberOfMissingPingPong = PINGPONG_NOT_CONNECTED;
-        SerialPort* con = dynamic_cast<SerialPort*>( _connector );
-        // Start VirtualSerial Connexion
-        _connected = con->connectToSerialPort() ;
-
-        if ( _connected && _connector->isConnected()  )
-        {
-            QTimer* timer_connect = new QTimer(this);
-            connect( timer_connect, SIGNAL(timeout()), _labview, SLOT(setConnectedColor()) );
-            timer_connect->setSingleShot(true);
-            timer_connect->start( 1000 );
-
-            if ( blocked_thread )
-            {
-                // We need to wait the end of ping/pong process. It's an closed loop, we process QtEvent and check if the connection is active
-                ClosedLoopTimer closed_loop;
-                if ( closed_loop.startClosedLoop( 15000, PolyboxModule::isConnected ))
-                {
-                    Logger::startConnection( true );
-                    return Connected;
-                }
-                else
-                {
-                    Logger::startConnection( false );
-                    return TimeOut;
-                }
-            }
-            else
-            {
-                Logger::startConnection( true );
-                return Connected;
-            }
-        }
-        else
-        {
-            return ErrorConnection;
-        }
-    }
-    else
-    {
-        return ErrorPolyplexer;
-    }
-    return ErrorPolyplexer;
-}
-
-*/
 void PolyboxModule::hardwareTimerTimeout()
 {
     emit updateHardware();
@@ -155,12 +88,7 @@ PrinterModule* PolyboxModule::printerModule()
 {
     return _printer;
 }
-/*
-bool PolyboxModule::isConnected()
-{
-    return PolyboxModule::getInstance()->_connected && PolyboxModule::getInstance()->_connector->isConnected() && PolyboxModule::getInstance()->_numberOfMissingPingPong <= PINGPONG_MAX_TRIES;
-}
-*/
+
 bool PolyboxModule::isCommonReady()
 {
     return _global->isReady();

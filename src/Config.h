@@ -60,6 +60,7 @@ public:
     static QString pathToSerialDevice();
 
     static QString serialPortName();
+    static void setSerialPortName(QString name);
 
     static QString pathToPolyplexerDaemon();
     static void setPathToPolyplexerDaemon(QString path);
