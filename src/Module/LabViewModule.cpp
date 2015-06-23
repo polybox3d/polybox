@@ -73,6 +73,9 @@ void LabViewModule::toggleInter()
 void LabViewModule::setConnectedColor()
 {
     PolyboxModule::getInstance()->connector()->sendMCode( MCODE_START_CONNECTION );
+
+    PolyboxModule::getInstance()->connector()->sendMCode( "M701 P51 S0" );
+    PolyboxModule::getInstance()->connector()->sendMCode( "M701 P53 S0" );
     //setAllFacesColor( QColor(0,150,120,255) );
     //setAllFacesLight( 120, true, true );
 }
