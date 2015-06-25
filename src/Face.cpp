@@ -47,18 +47,21 @@ void Face::setColor( QColor c)
 
 void Face::sendValues()
 {
-    //sendColor();
-    //sendIntensity();
+    sendColor();
+    sendIntensity();
 }
 
 void Face::sendColor()
 {
-    PolyboxModule::getInstance()->connector()->sendMCode(QString::number(MCODE_LABVIEW_SET_FACE_RGB)
-                                       +" S"+QString::number(this->id)
-                                       +" R"+QString::number(_color.red())
-                                       +" E"+QString::number(_color.green())
-                                       +" P"+QString::number(_color.blue())
-                                       +" I"+QString::number(_color.alpha()));
+    if ( PolyboxModule::getInstance()->isConnected() )
+    {
+        PolyboxModule::getInstance()->connector()->sendMCode(QString::number(MCODE_LABVIEW_SET_FACE_RGB)
+                                                             +" S"+QString::number(this->id)
+                                                             +" R"+QString::number(_color.red())
+                                                             +" E"+QString::number(_color.green())
+                                                             +" P"+QString::number(_color.blue())
+                                                             +" I"+QString::number(_color.alpha()));
+    }
 }
 
 

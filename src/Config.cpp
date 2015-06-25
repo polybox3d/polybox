@@ -102,6 +102,10 @@ int Config::sendBufferSize()
 {
     return Config::get(SETTINGS_GROUP,"sendBufferSize", 30).toInt();
 }
+int Config::movementWatchTimer()
+{
+    return Config::get(SETTINGS_GROUP,"movementWatchTimer", 500).toInt();
+}
 
 
 /**************************************************************************

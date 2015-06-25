@@ -1,9 +1,41 @@
 #include "MovementModule.h"
 
+
+MovementModule* MovementModule::_instance = NULL;
+
+
+MovementModule* MovementModule::getInstance()
+{
+    if ( _instance == NULL )
+    {
+        _instance = new MovementModule();
+    }
+    return _instance;
+}
+
 MovementModule::MovementModule(QObject *parent) :
     QObject(parent)
 {
 }
+
+void MovementModule::sendWatchEndstop()
+{
+    //PolyboxModule::getInstance()->connector()->sendMCode();
+}
+
+void MovementModule::startWatchEndstop(int ms)
+{
+    MovementModule* mm = MovementModule::getInstance();
+
+    mm->_endstopTimer.start( Config::movementWatchTimer() );
+    connect( &mm->_endstopTimer, SIGNAL(timeout()), mm, SLOT(sendWatchEndstop()));
+}
+
+void MovementModule::stopWatchEndstop(int ms)
+{
+
+}
+
 
 
 

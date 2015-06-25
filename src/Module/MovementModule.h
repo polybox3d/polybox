@@ -2,6 +2,7 @@
 #define MOVEMENTMODULE_H
 
 #include <QObject>
+#include <QTimer>
 
 #include "PolyboxModule.h"
 
@@ -21,7 +22,7 @@ public:
 
 
 
-    explicit MovementModule(QObject *parent = 0);
+    static MovementModule* getInstance();
 
     static void homing( char axis );
     static void disableAllMotors();
@@ -29,12 +30,19 @@ public:
     static void setAbsolutePositioning();
     static void moveAxis(char axis, bool relative, int distance, int speed);
     static void moveAxisByMask(int axis_mask, bool relative, int distance, int speed);
+    static void startWatchEndstop(int ms);
+    static void stopWatchEndstop(int ms);
+    void sendWatchEndstop();
 
 
 signals:
 
 public slots:
 
+private:
+    explicit MovementModule(QObject *parent = 0);
+    static MovementModule* _instance;
+    QTimer _endstopTimer;
 };
 
 #endif // MOVEMENTMODULE_H

@@ -115,12 +115,10 @@ bool ScannerModule::turntablePlugged() const
 
 bool ScannerModule::laser0Plugged() const
 {
-    return 1;
     return _laser0Plugged;
 }
 bool ScannerModule::laser1Plugged() const
 {
-    return 1;
     return _laser1Plugged;
 }
 int ScannerModule::laser0Power() const
