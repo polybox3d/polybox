@@ -64,6 +64,7 @@ public slots:
     void parseSerialDatas();
     void connectionUptimeProcess();
     void sendBufferedData();
+    bool isSendBufferEmpty();
 
 protected:
     QIODevice* _connector;

@@ -115,7 +115,8 @@ SOURCES += main.cpp\
     Page/RotationControlDock.cpp \
     Page/LaserDock.cpp \
     Widget/DockHost.cpp \
-    Module/MovementModule.cpp
+    Module/MovementModule.cpp \
+    Page/ExtruderDock.cpp
 
 HEADERS  += MainWindow.h \
         Updater.h \
@@ -189,7 +190,8 @@ HEADERS  += MainWindow.h \
     Page/RotationControlDock.h \
     Page/LaserDock.h \
     Widget/DockHost.h \
-    Module/MovementModule.h
+    Module/MovementModule.h \
+    Page/ExtruderDock.h
 
 FORMS    += MainWindow.ui \
     PrinterSmallUI.ui \
@@ -225,7 +227,8 @@ FORMS    += MainWindow.ui \
     Page/RotationControlDock.ui \
     Page/LaserDock.ui \
     Page/AxisControlDock.ui \
-    Widget/DockHost.ui
+    Widget/DockHost.ui \
+    Page/ExtruderDock.ui
 
 RESOURCES += \
     ressources.qrc

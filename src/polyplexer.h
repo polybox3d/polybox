@@ -10,6 +10,7 @@
 #include "Config.h"
 
 #include "SerialPort.h"
+#include "ClosedLoopTimer.h"
 
 /***
  * Connection flowchart

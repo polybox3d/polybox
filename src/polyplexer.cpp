@@ -17,6 +17,7 @@ Polyplexer::Polyplexer(QObject *parent) :
 
 Polyplexer::~Polyplexer()
 {
+    this->stop();
     if ( _polyplexer != NULL )
     {
         _polyplexer->close();
@@ -145,7 +146,19 @@ bool Polyplexer::restart()
 
 bool Polyplexer::stop()
 {
-    dynamic_cast<SerialPort*>(PolyboxModule::getInstance()->connector())->disconnectPort();
+    SerialPort* con = dynamic_cast<SerialPort*>(PolyboxModule::getInstance()->connector());
+    if ( con && con->isConnected() && _polyplexer != NULL )
+    {
+        con->sendMCode( MCODE_END_CONNECTION );
+        con->getConnector()->flush();
+        ClosedLoopTimer closed_loop;
+        closed_loop.startClosedLoop( 1000 );
+        {
+            qApp->processEvents();
+        }
+        con->disconnectPort();
+    }
+    //dynamic_cast<SerialPort*>(PolyboxModule::getInstance()->connector())->disconnectPort();
     /*if ( _polyplexer != NULL )
     {
         _polyplexer->kill();

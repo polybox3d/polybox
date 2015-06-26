@@ -18,6 +18,10 @@ AbstractClient::AbstractClient(QObject *parent) :
 
 }
 
+bool AbstractClient::isSendBufferEmpty()
+{
+    return _sendBuffer.empty();
+}
 
 QByteArray AbstractClient::datas()
 {
@@ -90,6 +94,7 @@ void AbstractClient::startConnection()
     this->sendMCode( MCODE_RESET_SLAVES );
     this->_currentLineNumber = 0;
     this->sendMCode( MCODE_RESET_LINE_NUMBER );
+    this->sendMCode( MCODE_START_CONNECTION );
 }
 
 void AbstractClient::sendCode(QString code)

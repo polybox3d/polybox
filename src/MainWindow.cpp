@@ -91,9 +91,8 @@ void MainWindow::closeEvent(QCloseEvent *event)
                               , this );
         if ( m_close.exec() )
         {
-            SerialPort* con = dynamic_cast<SerialPort*>(PolyboxModule::getInstance()->connector());
-            if ( con )
-                con->disconnectPort();
+
+            Polyplexer::getInstance()->stop();
             event->accept();
         }
         else
