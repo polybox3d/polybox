@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>420</width>
-    <height>220</height>
+    <height>250</height>
    </rect>
   </property>
   <property name="minimumSize">
@@ -19,7 +19,7 @@
   <property name="maximumSize">
    <size>
     <width>420</width>
-    <height>220</height>
+    <height>250</height>
    </size>
   </property>
   <property name="windowTitle">
@@ -35,6 +35,15 @@
       <height>131</height>
      </rect>
     </property>
+    <property name="wrapping">
+     <bool>false</bool>
+    </property>
+    <property name="notchTarget">
+     <double>100.000000000000000</double>
+    </property>
+    <property name="notchesVisible">
+     <bool>false</bool>
+    </property>
    </widget>
    <widget class="QDial" name="rotY">
     <property name="geometry">
@@ -45,6 +54,9 @@
       <height>131</height>
      </rect>
     </property>
+    <property name="notchesVisible">
+     <bool>false</bool>
+    </property>
    </widget>
    <widget class="QDial" name="rotZ">
     <property name="geometry">
@@ -54,6 +66,21 @@
       <width>131</width>
       <height>151</height>
      </rect>
+    </property>
+    <property name="maximum">
+     <number>360</number>
+    </property>
+    <property name="invertedControls">
+     <bool>false</bool>
+    </property>
+    <property name="wrapping">
+     <bool>true</bool>
+    </property>
+    <property name="notchTarget">
+     <double>22.500000000000000</double>
+    </property>
+    <property name="notchesVisible">
+     <bool>true</bool>
     </property>
    </widget>
    <widget class="QLabel" name="x">
@@ -159,7 +186,7 @@ color: rgb(85, 170, 255);</string>
     <property name="geometry">
      <rect>
       <x>20</x>
-      <y>170</y>
+      <y>200</y>
       <width>101</width>
       <height>22</height>
      </rect>
@@ -169,7 +196,7 @@ color: rgb(85, 170, 255);</string>
     <property name="geometry">
      <rect>
       <x>160</x>
-      <y>170</y>
+      <y>200</y>
       <width>101</width>
       <height>22</height>
      </rect>
@@ -179,10 +206,13 @@ color: rgb(85, 170, 255);</string>
     <property name="geometry">
      <rect>
       <x>300</x>
-      <y>170</y>
+      <y>200</y>
       <width>101</width>
       <height>22</height>
      </rect>
+    </property>
+    <property name="maximum">
+     <number>400</number>
     </property>
    </widget>
   </widget>

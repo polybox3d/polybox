@@ -37,8 +37,10 @@ INCLUDEPATH += Wizard
 
 
 DEFINES += NO_SCAN
-#DEFINES += WELCOME_PAGE
+
 #include(../externals/FabScan100/qtTest/qtTest.pri)
+
+#DEFINES += WELCOME_PAGE
 
 #UART Lib
 include(../externals/qextserialport/src/qextserialport.pri)

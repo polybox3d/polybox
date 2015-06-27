@@ -111,6 +111,11 @@ enum MCodeFlags
 #define GCODE_SET_ABSOLUTE_POSITIONING          90
 #define GCODE_SET_RELATIVE_POSITIONING          91
 
+#define GCODE_MOTOR_GOTO                        201
+#define GCODE_MOTOR_SET_ORIGIN                  202
+#define GCODE_MOTOR_GET_POS                     203
+#define GCODE_MOTOR_SET_ENABLE                  204
+
 #define MCODE_ERROR_COM_SLAVE_SIDE              666
 
 }

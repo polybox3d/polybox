@@ -4,6 +4,16 @@
 MovementModule* MovementModule::_instance = NULL;
 
 
+inline int MovementModule::rotMask2Id( int axis_mask )
+{
+    if ( axis_mask & RXAxis ) return 0;
+    if ( axis_mask & RYAxis ) return 1;
+    if ( axis_mask & RZAxis ) return 2;
+
+    return -1;
+}
+
+
 MovementModule* MovementModule::getInstance()
 {
     if ( _instance == NULL )
@@ -74,6 +84,37 @@ void MovementModule::moveAxis(char axis, bool relative, int distance, int speed)
         setAbsolutePositioning();
 }
 
+void MovementModule::setCurrentPosRotByMask(int rot_mask, int pos)
+{
+    QString command;
+    command = "G"+QString::number(GCODE_MOTOR_SET_ORIGIN)
+            + " P"+QString::number(rotMask2Id(rot_mask))
+            + " X"+QString::number(pos);
+
+    PolyboxModule::getInstance()->connector()->sendCode( command );
+}
+
+void MovementModule::moveRotByMask(int rot_mask, int dist)
+{
+    //move the motor
+    QString command;
+    command = "G"+QString::number(GCODE_MOTOR_GOTO)
+            + " P"+QString::number(rotMask2Id(rot_mask))
+            + " X"+QString::number(dist);
+
+    PolyboxModule::getInstance()->connector()->sendCode( command );
+}
+
+void MovementModule::setEnableRotByMask(int rot_mask, bool enable)
+{
+    QString command;
+    command = "G"+QString::number(GCODE_MOTOR_SET_ENABLE)
+            + " P"+QString::number(rotMask2Id(rot_mask))
+            + " S"+QString::number(enable);
+
+    PolyboxModule::getInstance()->connector()->sendCode( command );
+}
+
 void MovementModule::moveAxisByMask(int axis_mask, bool relative, int distance, int speed)
 {
     if (  relative )
@@ -87,7 +128,7 @@ void MovementModule::moveAxisByMask(int axis_mask, bool relative, int distance, 
         command += " X"+QString::number(distance);
     if ( axis_mask & YAxis )
         command += " Y"+QString::number(distance);
-    if ( axis_mask & YAxis )
+    if ( axis_mask & ZAxis )
         command += " Z"+QString::number(distance);
 
 
