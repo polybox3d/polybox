@@ -88,6 +88,8 @@ Polyplexer::ConnectionStatus ComModule::connection(bool blocked_thread)
     Polyplexer::ConnectionStatus code = Polyplexer::getInstance()->start( Polyplexer::Serial );
     if ( code == Polyplexer::Connected )
     {
+        connect(Polyplexer::getInstance(), SIGNAL(dataPolyboxReady()), this, SLOT(parseData()));
+
         _numberOfMissingPingPong = PINGPONG_NOT_CONNECTED;
         if ( blocked_thread )
         {

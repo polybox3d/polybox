@@ -59,7 +59,7 @@ void SplashScreen::connectingProcess()
         // We need to wait the end of ping/pong process. It's an closed loop, we process QtEvent and check if the connection is active
         ClosedLoopTimer closed_loop;
 
-        if ( closed_loop.startClosedLoop( 15000, Polyplexer::isConnected ) )
+        if ( closed_loop.startClosedLoop( 15000, ComModule::isConnected ) )
         {
             this->setPixmap(QPixmap(":/img/img/splashscreen_connected_fitted.png"));
             this->showStatusMessage(tr("Connected !"), Qt::white);
