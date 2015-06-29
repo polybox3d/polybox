@@ -30,28 +30,67 @@ int RotationControlDock::dial2dist(int current, int prev)
     {
         dist = ( delta + 360 );
     }
+    else
+    {
+        dist = delta;
+    }
     return dist;
 
 }
 
 void RotationControlDock::on_rotZ_valueChanged(int value)
 {
-    // set midle of circle, so 180°
-    MovementModule::setCurrentPosRotByMask( RZAxis, 180 );
-    ui->zIncr->setValue( ui->rotZ->sliderPosition() );
 
-    if ( value > 180 )
-        value = (360 - value) *-1;
-    if ( _zPrevPos > 180 )
-        _zPrevPos = (360 - _zPrevPos) *-1 ;
+}
 
-    int dist = (value%180) - (_zPrevPos%180);
+void RotationControlDock::changeEnableLabel( QAbstractButton* button, bool enable)
+{
 
-    MovementModule::moveRotByMask(RZAxis, 180+dist);
-    _zPrevPos = value;
 }
 
 void RotationControlDock::on_rotZ_sliderReleased()
 {
-    ui->zIncr->setValue(dial2dist(ui->rotZ->value(), _zPrevPos));
+    QString::number(dial2dist(ui->rotZ->value(), _zPrevPos));
+    _zPrevPos = ui->rotZ->value();
+    MovementModule::moveRotByMask(RZAxis, _zPrevPos );
+
+}
+void RotationControlDock::on_enableX_clicked()
+{
+    MovementModule::setEnableRotByMask(RXAxis, ui->enableX->isChecked() );
+    changeEnableLabel( ui->enableX, ui->enableX->isChecked() );
+}
+
+
+void RotationControlDock::on_enableY_clicked()
+{
+    MovementModule::setEnableRotByMask(RYAxis, ui->enableY->isChecked() );
+        changeEnableLabel( ui->enableY, ui->enableY->isChecked() );
+}
+
+
+void RotationControlDock::on_enableZ_clicked()
+{
+    MovementModule::setEnableRotByMask(RZAxis, ui->enableZ->isChecked() );
+    changeEnableLabel( ui->enableZ, ui->enableZ->isChecked() );
+}
+
+void RotationControlDock::on_setOriginX_clicked()
+{
+    ui->rotX->setSliderPosition(0);
+}
+
+void RotationControlDock::on_setOriginY_clicked()
+{
+    ui->rotY->setSliderPosition(0);
+}
+
+void RotationControlDock::on_rotY_sliderReleased()
+{
+    MovementModule::moveRotByMask( RYAxis, ui->rotY->value() );
+}
+
+void RotationControlDock::on_rotX_sliderReleased()
+{
+    MovementModule::moveRotByMask( RXAxis, ui->rotX->value() );
 }

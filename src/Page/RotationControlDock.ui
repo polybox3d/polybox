@@ -35,14 +35,20 @@
       <height>131</height>
      </rect>
     </property>
+    <property name="minimum">
+     <number>-45</number>
+    </property>
+    <property name="maximum">
+     <number>45</number>
+    </property>
     <property name="wrapping">
      <bool>false</bool>
     </property>
     <property name="notchTarget">
-     <double>100.000000000000000</double>
+     <double>5.000000000000000</double>
     </property>
     <property name="notchesVisible">
-     <bool>false</bool>
+     <bool>true</bool>
     </property>
    </widget>
    <widget class="QDial" name="rotY">
@@ -54,8 +60,20 @@
       <height>131</height>
      </rect>
     </property>
-    <property name="notchesVisible">
+    <property name="minimum">
+     <number>-45</number>
+    </property>
+    <property name="maximum">
+     <number>45</number>
+    </property>
+    <property name="wrapping">
      <bool>false</bool>
+    </property>
+    <property name="notchTarget">
+     <double>5.000000000000000</double>
+    </property>
+    <property name="notchesVisible">
+     <bool>true</bool>
     </property>
    </widget>
    <widget class="QDial" name="rotZ">
@@ -86,8 +104,8 @@
    <widget class="QLabel" name="x">
     <property name="geometry">
      <rect>
-      <x>50</x>
-      <y>80</y>
+      <x>55</x>
+      <y>85</y>
       <width>31</width>
       <height>41</height>
      </rect>
@@ -103,8 +121,8 @@ color: rgb(85, 170, 255);</string>
    <widget class="QLabel" name="y">
     <property name="geometry">
      <rect>
-      <x>200</x>
-      <y>80</y>
+      <x>195</x>
+      <y>85</y>
       <width>31</width>
       <height>41</height>
      </rect>
@@ -120,7 +138,7 @@ color: rgb(85, 170, 255);</string>
    <widget class="QLabel" name="z">
     <property name="geometry">
      <rect>
-      <x>330</x>
+      <x>335</x>
       <y>80</y>
       <width>31</width>
       <height>41</height>
@@ -137,48 +155,90 @@ color: rgb(85, 170, 255);</string>
    <widget class="QPushButton" name="enableX">
     <property name="geometry">
      <rect>
-      <x>40</x>
+      <x>54</x>
       <y>10</y>
-      <width>51</width>
-      <height>31</height>
+      <width>25</width>
+      <height>25</height>
      </rect>
     </property>
     <property name="text">
-     <string>Off</string>
+     <string/>
+    </property>
+    <property name="icon">
+     <iconset resource="../ressources.qrc">
+      <normaloff>:/img/img/off.png</normaloff>
+      <activeon>:/img/img/on.png</activeon>:/img/img/off.png</iconset>
+    </property>
+    <property name="iconSize">
+     <size>
+      <width>22</width>
+      <height>22</height>
+     </size>
     </property>
     <property name="checkable">
+     <bool>true</bool>
+    </property>
+    <property name="flat">
      <bool>true</bool>
     </property>
    </widget>
    <widget class="QPushButton" name="enableY">
     <property name="geometry">
      <rect>
-      <x>180</x>
+      <x>192</x>
       <y>10</y>
-      <width>51</width>
-      <height>31</height>
+      <width>25</width>
+      <height>25</height>
      </rect>
     </property>
     <property name="text">
-     <string>Off</string>
+     <string/>
+    </property>
+    <property name="icon">
+     <iconset resource="../ressources.qrc">
+      <normaloff>:/img/img/off.png</normaloff>
+      <activeon>:/img/img/on.png</activeon>:/img/img/off.png</iconset>
+    </property>
+    <property name="iconSize">
+     <size>
+      <width>22</width>
+      <height>22</height>
+     </size>
     </property>
     <property name="checkable">
+     <bool>true</bool>
+    </property>
+    <property name="flat">
      <bool>true</bool>
     </property>
    </widget>
    <widget class="QPushButton" name="enableZ">
     <property name="geometry">
      <rect>
-      <x>320</x>
+      <x>333</x>
       <y>10</y>
-      <width>51</width>
-      <height>31</height>
+      <width>25</width>
+      <height>25</height>
      </rect>
     </property>
     <property name="text">
-     <string>Off</string>
+     <string/>
+    </property>
+    <property name="icon">
+     <iconset resource="../ressources.qrc">
+      <normaloff>:/img/img/off.png</normaloff>
+      <activeon>:/img/img/on.png</activeon>:/img/img/off.png</iconset>
+    </property>
+    <property name="iconSize">
+     <size>
+      <width>22</width>
+      <height>22</height>
+     </size>
     </property>
     <property name="checkable">
+     <bool>true</bool>
+    </property>
+    <property name="flat">
      <bool>true</bool>
     </property>
    </widget>
@@ -191,6 +251,18 @@ color: rgb(85, 170, 255);</string>
       <height>22</height>
      </rect>
     </property>
+    <property name="minimumSize">
+     <size>
+      <width>100</width>
+      <height>0</height>
+     </size>
+    </property>
+    <property name="minimum">
+     <number>-45</number>
+    </property>
+    <property name="maximum">
+     <number>45</number>
+    </property>
    </widget>
    <widget class="QSpinBox" name="yIncr">
     <property name="geometry">
@@ -201,22 +273,57 @@ color: rgb(85, 170, 255);</string>
       <height>22</height>
      </rect>
     </property>
+    <property name="minimumSize">
+     <size>
+      <width>100</width>
+      <height>0</height>
+     </size>
+    </property>
+    <property name="minimum">
+     <number>-45</number>
+    </property>
+    <property name="maximum">
+     <number>45</number>
+    </property>
    </widget>
-   <widget class="QSpinBox" name="zIncr">
+   <widget class="QPushButton" name="setOriginX">
     <property name="geometry">
      <rect>
-      <x>300</x>
-      <y>200</y>
+      <x>20</x>
+      <y>170</y>
       <width>101</width>
       <height>22</height>
      </rect>
     </property>
-    <property name="maximum">
-     <number>400</number>
+    <property name="text">
+     <string>Set Origin</string>
+    </property>
+    <property name="icon">
+     <iconset resource="../ressources.qrc">
+      <normaloff>:/img/img/test.png</normaloff>:/img/img/test.png</iconset>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="setOriginY">
+    <property name="geometry">
+     <rect>
+      <x>160</x>
+      <y>170</y>
+      <width>101</width>
+      <height>22</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Set Origin</string>
+    </property>
+    <property name="icon">
+     <iconset resource="../ressources.qrc">
+      <normaloff>:/img/img/test.png</normaloff>:/img/img/test.png</iconset>
     </property>
    </widget>
   </widget>
  </widget>
- <resources/>
+ <resources>
+  <include location="../ressources.qrc"/>
+ </resources>
  <connections/>
 </ui>

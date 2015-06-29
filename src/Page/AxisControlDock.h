@@ -33,15 +33,25 @@ private slots:
 
     void on_homeZ_clicked();
 
-    void on_x_slider_valueChanged(int value);
+    void on_speedX_editingFinished();
 
-    void on_y_slider_valueChanged(int value);
+    void on_speedY_editingFinished();
 
-    void on_z_slider_valueChanged(int value);
+    void on_speedZ_editingFinished();
+
+    void on_x_slider_sliderReleased();
+
+    void on_y_slider_sliderReleased();
+
+    void on_z_slider_sliderReleased();
 
 private:
     Ui::AxisControlDock *ui;
     bool _update;
+
+    float _xSpeed;
+    float _ySpeed;
+    float _zSpeed;
 };
 
 #endif // AXISCONTROLDOCK_H

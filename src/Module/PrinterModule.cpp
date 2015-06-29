@@ -183,12 +183,12 @@ void PrinterModule::parseMCode(QByteArray stream)
                 if ( str[idx+1]=='0')
                 {
                     SerialPort::nextValue( str, idx);
-                    _coldBuse1.setState( SerialPort::embeddedstr2l( str, idx ) );
+                    //_coldBuse1.setValue( SerialPort::embeddedstr2l( str, idx ) );
                 }
                 else if ( str[idx+1]=='1')
                 {
                     SerialPort::nextValue( str, idx);
-                    _coldBuse2.setState( SerialPort::embeddedstr2l( str, idx ) );
+                    //_coldBuse2.setValue( SerialPort::embeddedstr2l( str, idx ) );
                 }
             }
         }
@@ -341,10 +341,10 @@ Temperature PrinterModule::getCurrentBedTemp()
 bool PrinterModule::isReady() const
 {
     return (!_tempBedExt.isDefault()) &&
-            ( !_tempTopBuse1.isDefault()) &&
+            /*( !_tempTopBuse1.isDefault()) &&
             ( !_tempBotBuse1.isDefault()) &&
             ( !_tempTopBuse2.isDefault()) &&
-            ( !_tempBotBuse2.isDefault()) &&
+            ( !_tempBotBuse2.isDefault()) &&*/
             ( !_tempBoxTop.isDefault()) &&
             ( !_tempBoxMiddle.isDefault()) &&
             ( !_tempBoxBot.isDefault()) &&
@@ -354,8 +354,8 @@ bool PrinterModule::isReady() const
             ( !_coldBox2.isDefault()) &&
             ( !_coldBox3.isDefault()) &&
             ( !_coldBox4.isDefault()) &&
-            ( !_coldBuse1.isDefault()) &&
-            ( !_coldBuse2.isDefault()) &&
+            /*( !_coldBuse1.isDefault()) &&
+            ( !_coldBuse2.isDefault()) &&*/
             _printerE0Plugged && _printerE1Plugged && _detectPlastic && _bedPlugged && _wireClogged;
 }
 
@@ -388,22 +388,22 @@ Temperature PrinterModule::getTargetChamberTemp()
     return _targetChamberTemp;
 }
 
-Temperature PrinterModule::tempTopBuse1()
+Temperature PrinterModule::coldTopBuse1()
 {
-    return _tempTopBuse1;
+    return _coldTopBuse1;
 }
 
-Temperature PrinterModule::tempBotBuse1()
+Temperature PrinterModule::coldTopBuse2()
 {
-    return _tempBotBuse1;
+    return _coldTopBuse2;
 }
-Temperature PrinterModule::tempTopBuse2()
+Temperature PrinterModule::coldBotBuse1()
 {
-    return _tempTopBuse2;
+    return _coldBotBuse1;
 }
-Temperature PrinterModule::tempBotBuse2()
+Temperature PrinterModule::coldBotBuse2()
 {
-    return _tempBotBuse2;
+    return _coldBotBuse2;
 }
 
 Temperature PrinterModule::tempBoxTop()
@@ -446,14 +446,18 @@ Temperature PrinterModule::coldBox4()
     return _coldBox4;
 }
 
-Temperature PrinterModule::coldBuse1()
+
+Temperature PrinterModule::tempHotBuse1()
 {
-    return _coldBuse1;
+    return _tempHotBuse1;
 }
-Temperature PrinterModule::coldBuse2()
+
+Temperature PrinterModule::tempHotBuse2()
 {
-    return _coldBuse2;
+    return _tempHotBuse2;
 }
+
+
 
 bool PrinterModule::printerE0Plugged() const
 {

@@ -26,9 +26,9 @@
    <widget class="QGroupBox" name="posX">
     <property name="geometry">
      <rect>
-      <x>180</x>
+      <x>190</x>
       <y>10</y>
-      <width>401</width>
+      <width>391</width>
       <height>55</height>
      </rect>
     </property>
@@ -36,11 +36,14 @@
      <string>Position</string>
     </property>
     <widget class="QSlider" name="x_slider">
+     <property name="enabled">
+      <bool>false</bool>
+     </property>
      <property name="geometry">
       <rect>
        <x>160</x>
        <y>27</y>
-       <width>231</width>
+       <width>221</width>
        <height>20</height>
       </rect>
      </property>
@@ -49,6 +52,9 @@
      </property>
     </widget>
     <widget class="QSpinBox" name="x_spin">
+     <property name="enabled">
+      <bool>false</bool>
+     </property>
      <property name="geometry">
       <rect>
        <x>60</x>
@@ -88,7 +94,7 @@
     <property name="title">
      <string>End Stop</string>
     </property>
-    <widget class="QWidget" name="">
+    <widget class="QWidget" name="layoutWidget">
      <property name="geometry">
       <rect>
        <x>10</x>
@@ -218,9 +224,9 @@ color: rgb(85, 170, 255);</string>
    <widget class="QGroupBox" name="posY">
     <property name="geometry">
      <rect>
-      <x>180</x>
+      <x>190</x>
       <y>90</y>
-      <width>401</width>
+      <width>391</width>
       <height>55</height>
      </rect>
     </property>
@@ -228,11 +234,14 @@ color: rgb(85, 170, 255);</string>
      <string>Position</string>
     </property>
     <widget class="QSlider" name="y_slider">
+     <property name="enabled">
+      <bool>false</bool>
+     </property>
      <property name="geometry">
       <rect>
        <x>160</x>
        <y>27</y>
-       <width>231</width>
+       <width>221</width>
        <height>20</height>
       </rect>
      </property>
@@ -241,6 +250,9 @@ color: rgb(85, 170, 255);</string>
      </property>
     </widget>
     <widget class="QSpinBox" name="y_spin">
+     <property name="enabled">
+      <bool>false</bool>
+     </property>
      <property name="geometry">
       <rect>
        <x>60</x>
@@ -549,9 +561,9 @@ color: rgb(85, 170, 255);</string>
    <widget class="QGroupBox" name="posZ">
     <property name="geometry">
      <rect>
-      <x>180</x>
+      <x>190</x>
       <y>160</y>
-      <width>401</width>
+      <width>391</width>
       <height>55</height>
      </rect>
     </property>
@@ -559,11 +571,14 @@ color: rgb(85, 170, 255);</string>
      <string>Position</string>
     </property>
     <widget class="QSlider" name="z_slider">
+     <property name="enabled">
+      <bool>false</bool>
+     </property>
      <property name="geometry">
       <rect>
        <x>160</x>
        <y>27</y>
-       <width>231</width>
+       <width>221</width>
        <height>20</height>
       </rect>
      </property>
@@ -572,6 +587,9 @@ color: rgb(85, 170, 255);</string>
      </property>
     </widget>
     <widget class="QSpinBox" name="z_spin">
+     <property name="enabled">
+      <bool>false</bool>
+     </property>
      <property name="geometry">
       <rect>
        <x>60</x>
@@ -604,7 +622,7 @@ color: rgb(85, 170, 255);</string>
      <rect>
       <x>40</x>
       <y>10</y>
-      <width>131</width>
+      <width>141</width>
       <height>55</height>
      </rect>
     </property>
@@ -614,24 +632,53 @@ color: rgb(85, 170, 255);</string>
     <widget class="QPushButton" name="XEnable">
      <property name="geometry">
       <rect>
-       <x>10</x>
-       <y>25</y>
-       <width>31</width>
-       <height>23</height>
+       <x>5</x>
+       <y>24</y>
+       <width>25</width>
+       <height>25</height>
       </rect>
      </property>
      <property name="text">
-      <string>Off</string>
+      <string/>
+     </property>
+     <property name="icon">
+      <iconset resource="../ressources.qrc">
+       <normaloff>:/img/img/off.png</normaloff>
+       <activeon>:/img/img/on.png</activeon>:/img/img/off.png</iconset>
+     </property>
+     <property name="iconSize">
+      <size>
+       <width>22</width>
+       <height>22</height>
+      </size>
+     </property>
+     <property name="checkable">
+      <bool>true</bool>
+     </property>
+     <property name="flat">
+      <bool>true</bool>
      </property>
     </widget>
     <widget class="QSpinBox" name="speedX">
      <property name="geometry">
       <rect>
-       <x>60</x>
+       <x>40</x>
        <y>25</y>
-       <width>61</width>
+       <width>91</width>
        <height>22</height>
       </rect>
+     </property>
+     <property name="suffix">
+      <string> mm/s</string>
+     </property>
+     <property name="maximum">
+      <number>500</number>
+     </property>
+     <property name="singleStep">
+      <number>10</number>
+     </property>
+     <property name="value">
+      <number>80</number>
      </property>
     </widget>
    </widget>
@@ -640,7 +687,7 @@ color: rgb(85, 170, 255);</string>
      <rect>
       <x>40</x>
       <y>90</y>
-      <width>131</width>
+      <width>141</width>
       <height>55</height>
      </rect>
     </property>
@@ -650,24 +697,53 @@ color: rgb(85, 170, 255);</string>
     <widget class="QSpinBox" name="speedY">
      <property name="geometry">
       <rect>
-       <x>60</x>
+       <x>40</x>
        <y>25</y>
-       <width>61</width>
+       <width>91</width>
        <height>22</height>
       </rect>
+     </property>
+     <property name="suffix">
+      <string> mm/s</string>
+     </property>
+     <property name="maximum">
+      <number>500</number>
+     </property>
+     <property name="singleStep">
+      <number>10</number>
+     </property>
+     <property name="value">
+      <number>80</number>
      </property>
     </widget>
     <widget class="QPushButton" name="YEnable">
      <property name="geometry">
       <rect>
-       <x>10</x>
-       <y>25</y>
-       <width>31</width>
-       <height>23</height>
+       <x>5</x>
+       <y>24</y>
+       <width>25</width>
+       <height>25</height>
       </rect>
      </property>
      <property name="text">
-      <string>Off</string>
+      <string/>
+     </property>
+     <property name="icon">
+      <iconset resource="../ressources.qrc">
+       <normaloff>:/img/img/off.png</normaloff>
+       <activeon>:/img/img/on.png</activeon>:/img/img/off.png</iconset>
+     </property>
+     <property name="iconSize">
+      <size>
+       <width>22</width>
+       <height>22</height>
+      </size>
+     </property>
+     <property name="checkable">
+      <bool>true</bool>
+     </property>
+     <property name="flat">
+      <bool>true</bool>
      </property>
     </widget>
    </widget>
@@ -676,7 +752,7 @@ color: rgb(85, 170, 255);</string>
      <rect>
       <x>40</x>
       <y>160</y>
-      <width>131</width>
+      <width>141</width>
       <height>55</height>
      </rect>
     </property>
@@ -686,24 +762,53 @@ color: rgb(85, 170, 255);</string>
     <widget class="QSpinBox" name="speedZ">
      <property name="geometry">
       <rect>
-       <x>60</x>
+       <x>40</x>
        <y>25</y>
-       <width>61</width>
+       <width>91</width>
        <height>22</height>
       </rect>
+     </property>
+     <property name="suffix">
+      <string> mm/s</string>
+     </property>
+     <property name="maximum">
+      <number>500</number>
+     </property>
+     <property name="singleStep">
+      <number>10</number>
+     </property>
+     <property name="value">
+      <number>80</number>
      </property>
     </widget>
     <widget class="QPushButton" name="ZEnable">
      <property name="geometry">
       <rect>
-       <x>10</x>
-       <y>25</y>
-       <width>31</width>
-       <height>23</height>
+       <x>5</x>
+       <y>24</y>
+       <width>25</width>
+       <height>25</height>
       </rect>
      </property>
      <property name="text">
-      <string>Off</string>
+      <string/>
+     </property>
+     <property name="icon">
+      <iconset resource="../ressources.qrc">
+       <normaloff>:/img/img/off.png</normaloff>
+       <activeon>:/img/img/on.png</activeon>:/img/img/off.png</iconset>
+     </property>
+     <property name="iconSize">
+      <size>
+       <width>22</width>
+       <height>22</height>
+      </size>
+     </property>
+     <property name="checkable">
+      <bool>true</bool>
+     </property>
+     <property name="flat">
+      <bool>true</bool>
      </property>
     </widget>
    </widget>
