@@ -72,7 +72,7 @@ void LabViewModule::toggleInter()
 
 void LabViewModule::setConnectedColor()
 {
-    ComModule::getInstance(this)->sendMCode( MCODE_START_CONNECTION );
+    //ComModule::getInstance(this)->sendMCode( MCODE_START_CONNECTION );
     //setAllFacesColor( QColor(0,150,120,255) );
     //setAllFacesLight( 120, true, true );
 }

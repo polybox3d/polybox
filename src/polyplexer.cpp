@@ -123,19 +123,31 @@ void Polyplexer::parseData()
     _rcp_data.append( tmp );
     // end of line/command
     QString rcpString = _rcp_data;
-    if ( rcpString.contains("\r") || rcpString.contains("\n"))
+    QString rest;
+
+    int pos = rcpString.lastIndexOf(QRegExp("[\r\n]"));
+    if ( pos != -1 )
     {
-        if ( rcpString.contains('#') ) // polybox data
+        rest = rcpString;
+        rest.remove( 0, pos+1);
+        rcpString.truncate( pos );
+    }
+
+    QStringList lines = rcpString.split(QRegExp("[\r\n]"),QString::SkipEmptyParts);
+
+    foreach (QString line, lines)
+    {
+        if ( line.contains('#') ) // polybox data
         {
-            _dataPolybox = _rcp_data;
-            _rcp_data.clear();
-            emit dataPolyboxReady(  );
+            _dataPolybox = line.toStdString().c_str();
+            _rcp_data = rest.toStdString().c_str();
+            emit dataPolyboxReady( _dataPolybox );
         }
         else // basic datas
         {
-            _dataBasic = _rcp_data;
-            _rcp_data.clear();
-            emit dataBasicReady( );
+                _dataBasic = line.toStdString().c_str();
+                _rcp_data = rest.toStdString().c_str();
+                emit dataBasicReady( _dataBasic );
         }
     }
 }

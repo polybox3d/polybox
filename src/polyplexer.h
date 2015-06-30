@@ -44,8 +44,8 @@ public:
 
 
 signals:
-    void dataPolyboxReady();
-    void dataBasicReady();
+    void dataPolyboxReady(QByteArray data);
+    void dataBasicReady(QByteArray data);
     void newType(Polyplexer::ConnectorType);
 
 public slots:

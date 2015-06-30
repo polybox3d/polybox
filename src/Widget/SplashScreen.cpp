@@ -48,32 +48,34 @@ void SplashScreen::drawContents(QPainter *painter)
 void SplashScreen::connectingProcess()
 {
     this->showStatusMessage(tr("Start connection process..."), Qt::white);
-    Polyplexer::ConnectionStatus connection_status = ComModule::getInstance( qApp )->connection( Config::blockedConnectionThread() );
-    // If connected, we gonna check ping/pong process and swap
+    Polyplexer::ConnectionStatus connection_status = Polyplexer::getInstance()->start( Polyplexer::Serial );
     if ( connection_status == Polyplexer::Connected )
     {
-        this->showStatusMessage(tr("     Polyplexer started. \nWaiting for Polybox3D response..."), Qt::white);
+        this->showStatusMessage(tr("     Polyplexer started. \nInitialize Connection..."), Qt::white);
         this->setPixmap(QPixmap(":/img/img/splashscreen_wait_fitted.png"));
         qApp->processEvents();
-
-        // We need to wait the end of ping/pong process. It's an closed loop, we process QtEvent and check if the connection is active
-        ClosedLoopTimer closed_loop;
-
-        if ( closed_loop.startClosedLoop( 15000, ComModule::isConnected ) )
+        ClosedLoopTimer loop;
+        loop.startClosedLoop( 1000 );
+        ComModule::getInstance()->beginConnection();
+        connection_status = ComModule::getInstance()->checkPingPongConnection();
+        if (  connection_status == Polyplexer::Connected )
         {
             this->setPixmap(QPixmap(":/img/img/splashscreen_connected_fitted.png"));
             this->showStatusMessage(tr("Connected !"), Qt::white);
+            qApp->processEvents();
         }
         else
         {
             this->setPixmap(QPixmap(":/img/img/splashscreen_unconnected_error_fitted.png"));
-            this->showStatusMessage(tr("Failed to establish connection"), Qt::white);
+            this->showStatusMessage(tr(QString("Failed to establish connection.\n"+ComModule::connectionStatusMessage.value(connection_status)).toStdString().c_str()), Qt::white);
+            qApp->processEvents();
         }
     }
     else
     {
         this->setPixmap(QPixmap(":/img/img/splashscreen_unconnected_fitted.png"));
         this->showStatusMessage( ComModule::connectionStatusMessage.value(connection_status), Qt::white);
+        qApp->processEvents();
     }
 }
 

@@ -66,7 +66,7 @@ int main(int argc, char *argv[])
         splash.connectingProcess();
 
         ClosedLoopTimer closed_loop;
-        closed_loop.startClosedLoop( 4000 );
+        closed_loop.startClosedLoop( 2000 );
 
     }
 

@@ -5,6 +5,9 @@
 #include <QByteArray>
 #include <QMap>
 #include <QQueue>
+#include <iostream>
+
+using namespace std;
 
 
 #include "polyplexer.h"
@@ -13,7 +16,7 @@
 #define PINGPONG_NOT_CONNECTED     42
 #define PINGPONG_MAX_TRIES         2
 #define PINGPONG_OK                0
-#define PINGPONG_DELAY_MS          4000
+#define PINGPONG_DELAY_MS          Config::connectionUptimeDelay()
 
 
 class ComModule : public QObject
@@ -57,6 +60,10 @@ public:
     void parseMCode(QByteArray stream);
 
     static bool isConnected();
+
+    /** start timer, set value & send START_CON MCode. **/
+    void beginConnection( );
+    Polyplexer::ConnectionStatus checkPingPongConnection();
 
     Polyplexer::ConnectionStatus connection( bool blocked_thread );
     Polyplexer::ConnectionStatus connectionGUI(bool blocked_thread);

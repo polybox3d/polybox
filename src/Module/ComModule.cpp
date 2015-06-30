@@ -24,10 +24,11 @@ ComModule::ComModule(QObject *parent) :
     QObject(parent)
 {
     _connectionUptime = 0;
+    _currentLineNumber = 0;
 
-    _numberOfMissingPingPong = PINGPONG_NOT_CONNECTED;
-    _pingPongTimer.start( PINGPONG_DELAY_MS );
     connect( &_pingPongTimer, SIGNAL(timeout()), this, SLOT(pingPong()));
+    connect( &_sendTimer, SIGNAL(timeout()), this, SLOT(sendBufferedData()));
+    connect(Polyplexer::getInstance(), SIGNAL(dataPolyboxReady(QByteArray)), this, SLOT(parseData()));
 
     initConnectionStatusMessage();
 
@@ -83,28 +84,49 @@ Polyplexer::ConnectionStatus ComModule::connectionGUI(bool blocked_thread)
  return connection_status;
 }
 
+void ComModule::beginConnection()
+{
+    _currentLineNumber = 0;
+    _sendTimer.start( Config::sendBufferTimer() );
+    ComModule::getInstance(this)->sendMCode( MCODE_RESET_SLAVES );
+    ClosedLoopTimer loop;
+    loop.startClosedLoop( 1000 );
+    _currentLineNumber = 0;
+    ComModule::getInstance(this)->sendMCode( MCODE_RESET_LINE_NUMBER );
+    ComModule::getInstance(this)->sendMCode( MCODE_START_CONNECTION );
+
+    loop.startClosedLoop( 1000 );
+
+    _numberOfMissingPingPong = PINGPONG_NOT_CONNECTED;
+    _pingPongTimer.start( PINGPONG_DELAY_MS );
+}
+
+Polyplexer::ConnectionStatus ComModule::checkPingPongConnection()
+{
+    // We need to wait the end of ping/pong process. It's an closed loop, we process QtEvent and check if the connection is active
+    ClosedLoopTimer closed_loop;
+    if ( closed_loop.startClosedLoop( Config::connectionUptimeDelay()*PINGPONG_MAX_TRIES*5, ComModule::isConnected ))
+    {
+        Logger::startConnection( true );
+        return Polyplexer::Connected;
+    }
+    else
+    {
+        Logger::startConnection( false );
+        return Polyplexer::TimeOut;
+    }
+}
+
 Polyplexer::ConnectionStatus ComModule::connection(bool blocked_thread)
 {
     Polyplexer::ConnectionStatus code = Polyplexer::getInstance()->start( Polyplexer::Serial );
     if ( code == Polyplexer::Connected )
     {
-        connect(Polyplexer::getInstance(), SIGNAL(dataPolyboxReady()), this, SLOT(parseData()));
+        beginConnection();
 
-        _numberOfMissingPingPong = PINGPONG_NOT_CONNECTED;
         if ( blocked_thread )
         {
-            // We need to wait the end of ping/pong process. It's an closed loop, we process QtEvent and check if the connection is active
-            ClosedLoopTimer closed_loop;
-            if ( closed_loop.startClosedLoop( 15000, ComModule::isConnected ))
-            {
-                Logger::startConnection( true );
-                return Polyplexer::Connected;
-            }
-            else
-            {
-                Logger::startConnection( false );
-                return Polyplexer::TimeOut;
-            }
+            checkPingPongConnection();
         }
         else
         {
@@ -119,7 +141,6 @@ void ComModule::parseMCode(QByteArray stream)
 {
     QString str(stream);
     long value = SerialPort::embeddedstr2l( str, 0 );
-
     switch ( value )
     {
     case MCODE_PING_PONG:
