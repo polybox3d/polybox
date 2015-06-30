@@ -40,7 +40,7 @@
     <widget class="Led" name="tempTopBuse1Led">
      <property name="geometry">
       <rect>
-       <x>10</x>
+       <x>30</x>
        <y>25</y>
        <width>15</width>
        <height>15</height>
@@ -54,44 +54,12 @@
      </property>
      <property name="scaledContents">
       <bool>true</bool>
-     </property>
-    </widget>
-    <widget class="Led" name="tempBotBuse1Led">
-     <property name="geometry">
-      <rect>
-       <x>40</x>
-       <y>25</y>
-       <width>15</width>
-       <height>15</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string/>
-     </property>
-     <property name="pixmap">
-      <pixmap resource="../ressources.qrc">:/img/img/led_off_red.png</pixmap>
-     </property>
-     <property name="scaledContents">
-      <bool>true</bool>
-     </property>
-    </widget>
-    <widget class="QLabel" name="tempBotBuse1Value">
-     <property name="geometry">
-      <rect>
-       <x>40</x>
-       <y>40</y>
-       <width>31</width>
-       <height>20</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>-°C</string>
      </property>
     </widget>
     <widget class="QLabel" name="tempTopBuse1Value">
      <property name="geometry">
       <rect>
-       <x>10</x>
+       <x>30</x>
        <y>40</y>
        <width>31</width>
        <height>20</height>
@@ -114,29 +82,10 @@
     <property name="title">
      <string>Buse #2</string>
     </property>
-    <widget class="Led" name="tempBotBuse2Led">
-     <property name="geometry">
-      <rect>
-       <x>40</x>
-       <y>25</y>
-       <width>15</width>
-       <height>15</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string/>
-     </property>
-     <property name="pixmap">
-      <pixmap resource="../ressources.qrc">:/img/img/led_off_red.png</pixmap>
-     </property>
-     <property name="scaledContents">
-      <bool>true</bool>
-     </property>
-    </widget>
     <widget class="Led" name="tempTopBuse2Led">
      <property name="geometry">
       <rect>
-       <x>10</x>
+       <x>30</x>
        <y>25</y>
        <width>15</width>
        <height>15</height>
@@ -155,20 +104,7 @@
     <widget class="QLabel" name="tempTopBuse2Value">
      <property name="geometry">
       <rect>
-       <x>10</x>
-       <y>40</y>
-       <width>31</width>
-       <height>20</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>-°C</string>
-     </property>
-    </widget>
-    <widget class="QLabel" name="tempBotBuse2Value">
-     <property name="geometry">
-      <rect>
-       <x>40</x>
+       <x>30</x>
        <y>40</y>
        <width>31</width>
        <height>20</height>
@@ -253,7 +189,7 @@
       <rect>
        <x>10</x>
        <y>20</y>
-       <width>135</width>
+       <width>138</width>
        <height>20</height>
       </rect>
      </property>
@@ -519,31 +455,31 @@
      <bool>true</bool>
     </property>
    </widget>
-   <widget class="QWidget" name="layoutWidget">
+   <widget class="QLabel" name="label_6">
     <property name="geometry">
      <rect>
-      <x>90</x>
-      <y>40</y>
-      <width>56</width>
-      <height>42</height>
+      <x>91</x>
+      <y>41</y>
+      <width>53</width>
+      <height>16</height>
      </rect>
     </property>
-    <layout class="QVBoxLayout" name="verticalLayout">
-     <item>
-      <widget class="QLabel" name="label_6">
-       <property name="text">
-        <string>Buse #1</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QLabel" name="label_7">
-       <property name="text">
-        <string>Buse #2</string>
-       </property>
-      </widget>
-     </item>
-    </layout>
+    <property name="text">
+     <string>Buse #1</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_7">
+    <property name="geometry">
+     <rect>
+      <x>91</x>
+      <y>64</y>
+      <width>53</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Buse #2</string>
+    </property>
    </widget>
   </widget>
   <widget class="QGroupBox" name="groupBox_8">

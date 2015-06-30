@@ -46,7 +46,7 @@ void PrinterChecker::updateUI()
 
         ui->tempBedMidLed->setActivated ( !_printer->tempBedMid().isDefault()) ;
         ui->tempBedMidValue->setText ( _printer->tempBedMid().str() ) ;
-
+/*
         ui->tempBotBuse1Led->setActivated( !_printer->tempBotBuse1().isDefault() );
         ui->tempBotBuse1Value->setText( _printer->tempBotBuse1().str() );
 
@@ -58,7 +58,7 @@ void PrinterChecker::updateUI()
 
         ui->tempTopBuse2Led->setActivated( !_printer->tempTopBuse2().isDefault() );
         ui->tempTopBuse2Value->setText( _printer->tempTopBuse2().str() );
-
+*/
 
         ui->tempBoxBotLed->setActivated( !_printer->tempBoxBot().isDefault() );
         ui->tempBoxBotValue->setText( _printer->tempBoxBot().str() );
@@ -74,8 +74,8 @@ void PrinterChecker::updateUI()
         ui->coldBox2Led->setActivated( !_printer->coldBox2().isDefault() );
         ui->coldBox3Led->setActivated( !_printer->coldBox3().isDefault() );
         ui->coldBox4Led->setActivated( !_printer->coldBox4().isDefault() );
-        ui->coldBuse1Led->setActivated( !_printer->coldBuse1().isDefault() );
-        ui->coldBuse2Led->setActivated( !_printer->coldBuse2().isDefault() );
+  /*      ui->coldBuse1Led->setActivated( !_printer->coldBuse1().isDefault() );
+        ui->coldBuse2Led->setActivated( !_printer->coldBuse2().isDefault() );*/
 
         ui->printerPlugLed->setActivated( _printer->printerE0Plugged() );
         ui->printerPlugLed_2->setActivated( _printer->printerE1Plugged() );

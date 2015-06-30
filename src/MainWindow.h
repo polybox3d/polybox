@@ -30,6 +30,7 @@
 #include "Led.h"
 #include "PlateCalibratorWidget.h"
 #include "AxisControlDock.h"
+#include "ClosedLoopTimer.h"
 
 #if !defined NO_SCAN
  #include "fsmainwindow.h"

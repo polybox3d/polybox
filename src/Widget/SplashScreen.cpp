@@ -49,6 +49,7 @@ void SplashScreen::connectingProcess()
 {
     this->showStatusMessage(tr("Start connection process..."), Qt::white);
     Polyplexer::ConnectionStatus connection_status = Polyplexer::getInstance()->start( Polyplexer::Serial );
+    ComModule::getInstance();
     if ( connection_status == Polyplexer::Connected )
     {
         this->showStatusMessage(tr("     Polyplexer started. \nInitialize Connection..."), Qt::white);

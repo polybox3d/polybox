@@ -124,6 +124,8 @@ private slots:
 
     void on_startBroadcast_clicked();
 
+    void on_minimizeMaximize_clicked();
+
 private:
     void setLight(int light, bool horizontale=true, bool verticale=true);
     void setRed(int value );

@@ -37,8 +37,10 @@ INCLUDEPATH += Wizard
 
 
 DEFINES += NO_SCAN
-#DEFINES += WELCOME_PAGE
+
 #include(../externals/FabScan100/qtTest/qtTest.pri)
+
+#DEFINES += WELCOME_PAGE
 
 #UART Lib
 include(../externals/qextserialport/src/qextserialport.pri)
@@ -117,6 +119,7 @@ SOURCES += main.cpp\
     Widget/DockHost.cpp \
     Module/MovementModule.cpp \
     Module/ComModule.cpp
+    Page/ExtruderDock.cpp
 
 HEADERS  += MainWindow.h \
         Updater.h \
@@ -192,6 +195,8 @@ HEADERS  += MainWindow.h \
     Module/MovementModule.h \
     Module/ComModule.h \
     TCPClient.h
+    Page/ExtruderDock.h
+
 
 FORMS    += MainWindow.ui \
     PrinterSmallUI.ui \
@@ -227,7 +232,8 @@ FORMS    += MainWindow.ui \
     Page/RotationControlDock.ui \
     Page/LaserDock.ui \
     Page/AxisControlDock.ui \
-    Widget/DockHost.ui
+    Widget/DockHost.ui \
+    Page/ExtruderDock.ui
 
 RESOURCES += \
     ressources.qrc

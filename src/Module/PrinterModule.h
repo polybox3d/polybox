@@ -41,10 +41,8 @@ public:
     void addSupprBed( int bed_mask );
     void activateAllBed( bool activated );
 
-    Temperature tempTopBuse1();
-    Temperature tempBotBuse1();
-    Temperature tempTopBuse2();
-    Temperature tempBotBuse2();
+    Temperature tempHotBuse1();
+    Temperature tempHotBuse2();
 
     Temperature tempBoxTop();
     Temperature tempBoxMiddle();
@@ -58,8 +56,10 @@ public:
     Temperature coldBox3();
     Temperature coldBox4();
 
-    Temperature coldBuse1();
-    Temperature coldBuse2();
+    Temperature coldTopBuse1();
+    Temperature coldTopBuse2();
+    Temperature coldBotBuse1();
+    Temperature coldBotBuse2();
 
     bool printerE0Plugged() const;
     bool printerE1Plugged() const;
@@ -101,10 +101,8 @@ private:
     Temperature _targetBedTemp;
     Temperature _targetChamberTemp;
 
-    Temperature _tempTopBuse1;
-    Temperature _tempBotBuse1;
-    Temperature _tempTopBuse2;
-    Temperature _tempBotBuse2;
+    Temperature _tempHotBuse1;
+    Temperature _tempHotBuse2;
 
     Temperature _tempBoxTop;
     Temperature _tempBoxMiddle;
@@ -118,8 +116,10 @@ private:
     Temperature _coldBox3;
     Temperature _coldBox4;
 
-    Temperature _coldBuse1;
-    Temperature _coldBuse2;
+    Temperature _coldTopBuse1;
+    Temperature _coldTopBuse2;
+    Temperature _coldBotBuse1;
+    Temperature _coldBotBuse2;
 
     bool _wireClogged;
     bool _printerE0Plugged;

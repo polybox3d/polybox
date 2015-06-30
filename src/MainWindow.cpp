@@ -91,7 +91,9 @@ void MainWindow::closeEvent(QCloseEvent *event)
                               , this );
         if ( m_close.exec() )
         {
-            Polyplexer::getInstance( this )->disconnect();
+            Polyplexer::getInstance( this )->disconnect(); // @todo internal_
+            //Polyplexer::getInstance()->stop();  // @todo master
+            event->accept();
         }
         else
         {

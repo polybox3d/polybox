@@ -634,3 +634,21 @@ void LabViewPage::on_lockButton_clicked()
     }
 
 }
+
+void LabViewPage::on_minimizeMaximize_clicked()
+{
+    if ( ui->minimizeMaximize->isChecked() )
+    {
+        this->parentWidget()->setMinimumWidth( 375 );
+        this->parentWidget()->setMaximumWidth( 375 );
+        this->parentWidget()->resize( 375, this->parentWidget()->height() );
+        ui->minimizeMaximize->setText(">");
+    }
+    else
+    {
+        this->parentWidget()->setMinimumWidth( 800 );
+        this->parentWidget()->setMaximumWidth( 800 );
+        this->parentWidget()->resize( 800, this->parentWidget()->height() );
+        ui->minimizeMaximize->setText("<");
+    }
+}
