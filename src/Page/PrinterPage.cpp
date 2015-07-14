@@ -308,5 +308,8 @@ void PrinterPage::on_startWebInterface_clicked()
 
 void PrinterPage::on_showPrinterDock_clicked()
 {
+    ExtruderDock* extruder_dock = new ExtruderDock;
+    extruder_dock->setAttribute(Qt::WA_DeleteOnClose);
+    extruder_dock->show();
 
 }
