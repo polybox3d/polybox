@@ -13,11 +13,6 @@ RotationControlDock::~RotationControlDock()
     delete ui;
 }
 
-void RotationControlDock::on_rotX_valueChanged(int value)
-{
-
-}
-
 int RotationControlDock::dial2dist(int current, int prev)
 {
     int delta = current - prev ;
@@ -35,11 +30,6 @@ int RotationControlDock::dial2dist(int current, int prev)
         dist = delta;
     }
     return dist;
-
-}
-
-void RotationControlDock::on_rotZ_valueChanged(int value)
-{
 
 }
 

@@ -48,6 +48,7 @@ bool SerialPort::connectToSerialPort()
             qDebug() << "warning: device is not turned on"<<lineStatus();
             return false;
         }*/
+        cout << _path.toStdString().c_str() << _name.toStdString().c_str() << endl;
         return true;
     }
     else

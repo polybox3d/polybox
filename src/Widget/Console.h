@@ -3,6 +3,7 @@
 
 #include <QWidget>
 #include <QScrollBar>
+#include "MainWindow.h"
 
 #include "ComModule.h"
 

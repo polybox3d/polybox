@@ -11,6 +11,7 @@ using namespace std;
 
 
 #include "polyplexer.h"
+#include "Connector.h"
 
 
 #define PINGPONG_NOT_CONNECTED     42
@@ -67,6 +68,8 @@ public:
 
     Polyplexer::ConnectionStatus connection( bool blocked_thread );
     Polyplexer::ConnectionStatus connectionGUI(bool blocked_thread);
+
+    void stopConnection();
 
 signals:
     void newData( QByteArray stream );

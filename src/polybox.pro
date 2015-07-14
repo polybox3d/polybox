@@ -118,8 +118,9 @@ SOURCES += main.cpp\
     Page/LaserDock.cpp \
     Widget/DockHost.cpp \
     Module/MovementModule.cpp \
-    Module/ComModule.cpp
-    Page/ExtruderDock.cpp
+    Module/ComModule.cpp\
+    Page/ExtruderDock.cpp \
+    Connector.cpp
 
 HEADERS  += MainWindow.h \
         Updater.h \
@@ -194,8 +195,9 @@ HEADERS  += MainWindow.h \
     Widget/DockHost.h \
     Module/MovementModule.h \
     Module/ComModule.h \
-    TCPClient.h
-    Page/ExtruderDock.h
+    TCPClient.h\
+    Page/ExtruderDock.h \
+    Connector.h
 
 
 FORMS    += MainWindow.ui \

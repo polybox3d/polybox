@@ -11,6 +11,7 @@
 #include "ATUButton.h"
 #include "OnOffButton.h"
 #include "WebPrinterPage.h"
+#include "ExtruderDock.h"
 
 
 
@@ -93,6 +94,8 @@ private slots:
 
 
     void on_startWebInterface_clicked();
+
+    void on_showPrinterDock_clicked();
 
 private:
     Ui::PrinterPage *ui;

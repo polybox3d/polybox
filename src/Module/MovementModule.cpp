@@ -26,24 +26,87 @@ MovementModule* MovementModule::getInstance()
 MovementModule::MovementModule(QObject *parent) :
     QObject(parent)
 {
+    _x_min = _x_max = _x_home = false;
+    _y_min = _y_max = _y_home = false;
+    _z_min = _z_max = _z_home = false;
 }
 
 void MovementModule::sendWatchEndstop()
 {
-    //PolyboxModule::getInstance()->connector()->sendMCode();
+    ComModule::getInstance()->sendCode("M"+QString(MCODE_GET_ENDSTOP_STATUS));
 }
 
 void MovementModule::startWatchEndstop(int ms)
 {
     MovementModule* mm = MovementModule::getInstance();
 
-    mm->_endstopTimer.start( Config::movementWatchTimer() );
+    mm->_endstopTimer.start( ms ); //Config::movementWatchTimer()
     connect( &mm->_endstopTimer, SIGNAL(timeout()), mm, SLOT(sendWatchEndstop()));
 }
 
-void MovementModule::stopWatchEndstop(int ms)
+void MovementModule::stopWatchEndstop()
 {
+    MovementModule* mm = MovementModule::getInstance();
+    disconnect( &mm->_endstopTimer, SIGNAL(timeout()), mm, SLOT(sendWatchEndstop()));
+}
 
+bool MovementModule::data2endstop( QString section, int start_pos )
+{
+    int colon = section.indexOf(":", start_pos);
+    return (section[colon+1] == 'L');
+}
+
+void MovementModule::parseMCode(QByteArray stream)
+{
+    QString str(stream);
+    long value = SerialPort::embeddedstr2l( str, 0 );
+    if ( value == 0L )
+    {
+        int pos;
+        foreach (QString section, str.split(" "))
+        {
+            /**      MIN      **/
+            if ( (pos = section.indexOf("x_min")) != -1 )
+            {
+                _x_min = data2endstop( section, pos );
+            }
+            if ( (pos = section.indexOf("y_min")) != -1 )
+            {
+                _y_min = data2endstop( section, pos );
+            }
+            if ( (pos = section.indexOf("z_min")) != -1 )
+            {
+                _z_min = data2endstop( section, pos );
+            }
+            /**      MAX      **/
+            if ( (pos = section.indexOf("x_max")) != -1 )
+            {
+                _x_max = data2endstop( section, pos );
+            }
+            if ( (pos = section.indexOf("y_max")) != -1 )
+            {
+                _y_max = data2endstop( section, pos );
+            }
+            if ( (pos = section.indexOf("z_max")) != -1 )
+            {
+                _z_max = data2endstop( section, pos );
+            }
+            /**      HOME      **/
+            if ( (pos = section.indexOf("x_home")) != -1 )
+            {
+                _x_home = data2endstop( section, pos );
+            }
+            if ( (pos = section.indexOf("y_home")) != -1 )
+            {
+                _y_home = data2endstop( section, pos );
+            }
+            if ( (pos = section.indexOf("z_home")) != -1 )
+            {
+                _z_home = data2endstop( section, pos );
+            }
+
+        }
+    }
 }
 
 
@@ -78,8 +141,8 @@ void MovementModule::moveAxis(char axis, bool relative, int distance, int speed)
         setRelativePositioning();
 
     ComModule::getInstance()->sendCode("G"+QString::number(GCODE_MOVE_AXIS_LINEAR)
-                                                        +" "+axis+QString::number(distance)
-                                                        +" F"+QString::number(speed));
+                                       +" "+axis+QString::number(distance)
+                                       +" F"+QString::number(speed));
     if (  relative )
         setAbsolutePositioning();
 }

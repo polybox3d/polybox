@@ -66,6 +66,7 @@ int main(int argc, char *argv[])
         splash.connectingProcess();
 
         ClosedLoopTimer closed_loop;
+        qApp->processEvents();
         closed_loop.startClosedLoop( 2000 );
 
     }

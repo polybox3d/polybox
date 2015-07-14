@@ -36,18 +36,34 @@ public:
     static void setEnableRotByMask(int rot_mask, bool enable);
 
     static void startWatchEndstop(int ms);
-    static void stopWatchEndstop(int ms);
+    static void stopWatchEndstop();
+
+    static bool data2endstop( QString section, int start_pos );
     void sendWatchEndstop();
+
+    bool _x_min;
+    bool _x_max;
+    bool _x_home;
+
+    bool _y_min;
+    bool _y_max;
+    bool _y_home;
+
+    bool _z_min;
+    bool _z_max;
+    bool _z_home;
 
 
 signals:
 
 public slots:
+    void parseMCode(QByteArray stream);
 
 private:
     explicit MovementModule(QObject *parent = 0);
     static MovementModule* _instance;
     QTimer _endstopTimer;
+
 };
 
 #endif // MOVEMENTMODULE_H

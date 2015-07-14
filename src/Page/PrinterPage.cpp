@@ -305,3 +305,8 @@ void PrinterPage::on_startWebInterface_clicked()
     _webPrinterInterface->setWindowFlags( Qt::CustomizeWindowHint );
     _webPrinterInterface->show();
 }
+
+void PrinterPage::on_showPrinterDock_clicked()
+{
+
+}

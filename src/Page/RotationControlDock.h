@@ -19,9 +19,6 @@ public:
     int dial2dist(int current, int prev);
 
 private slots:
-    void on_rotX_valueChanged(int value);
-
-    void on_rotZ_valueChanged(int value);
 
     void on_rotZ_sliderReleased();
 

@@ -7,12 +7,15 @@ ExtruderDock::ExtruderDock(QWidget *parent) :
 {
     ui->setupUi(this);
     connect(&_updateTimer, SIGNAL(timeout()), this, SLOT(updateComponents()));
-    _updateTimer.start( Config::updateModuleTimer() );
+    _updateTimer.start( Config::extruderRefreshTimer() );
 }
 
 void ExtruderDock::updateComponents()
 {
     PrinterModule* printer = PolyboxModule::getInstance()->printerModule();
+
+    // update printer module values
+    printer->updateComponents();
 
     bool extr0_activated = printer->printerE0Plugged();
 

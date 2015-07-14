@@ -11,6 +11,7 @@ enum MCodeFlags
 };
 
 #define MCODE_RESET_LINE_NUMBER                 110
+#define MCODE_GET_ENDSTOP_STATUS                119
 
 /**      CNC MCODE    **/
 

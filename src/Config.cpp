@@ -106,6 +106,10 @@ int Config::movementWatchTimer()
 {
     return Config::get(SETTINGS_GROUP,"movementWatchTimer", 500).toInt();
 }
+int Config::extruderRefreshTimer()
+{
+    return Config::get(SETTINGS_GROUP,"extruderRefreshTimer", 1000).toInt();
+}
 
 
 /**************************************************************************
@@ -147,7 +151,6 @@ QString Config::serialPortName()
 {
     return Config::get(CONNECTION_GROUP,"serialPortName", "ttyACM0").toString();
 }
-
 void Config::setSerialPortName(QString name)
 {
     Config::set(CONNECTION_GROUP,"serialPortName", name);

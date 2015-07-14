@@ -6,6 +6,7 @@ AxisControlDock::AxisControlDock(QWidget *parent) :
     ui(new Ui::AxisControlDock), _xSpeed(80), _ySpeed(80), _zSpeed(80)
 {
     ui->setupUi(this);
+    this->setAttribute(Qt::WA_DeleteOnClose);
     ui->x_slider->setMaximum( TABLE_SIZE_X);
     ui->y_slider->setMaximum( TABLE_SIZE_Y);
     ui->z_slider->setMaximum( TABLE_SIZE_Z);
@@ -17,11 +18,33 @@ AxisControlDock::AxisControlDock(QWidget *parent) :
     ui->x_slider->setTracking( false );
     ui->y_slider->setTracking( false );
     ui->z_slider->setTracking( false );
+    MovementModule::startWatchEndstop( Config::movementWatchTimer() );
+
+    QTimer* timer_repaint = new QTimer( this );
+    timer_repaint->start( Config::movementWatchTimer()  );
+    connect( timer_repaint, SIGNAL(timeout()),this,SLOT(updateComponents()) );
+
 }
 
 AxisControlDock::~AxisControlDock()
 {
+    MovementModule::stopWatchEndstop();
+
     delete ui;
+}
+void AxisControlDock::updateComponents()
+{
+    ui->minESX->setActivated( MovementModule::getInstance()->_x_min );
+    ui->minESY->setActivated( MovementModule::getInstance()->_y_min );
+    ui->minESZ->setActivated( MovementModule::getInstance()->_z_min );
+
+    ui->maxESX->setActivated( MovementModule::getInstance()->_x_max );
+    ui->maxESY->setActivated( MovementModule::getInstance()->_y_max );
+    ui->maxESZ->setActivated( MovementModule::getInstance()->_z_max );
+
+    ui->homeESX->setActivated( MovementModule::getInstance()->_x_home );
+    ui->homeESY->setActivated( MovementModule::getInstance()->_y_home );
+    ui->homeESZ->setActivated( MovementModule::getInstance()->_z_home );
 }
 
 bool AxisControlDock::eventFilter(QObject* watched, QEvent* event)

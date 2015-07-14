@@ -47,11 +47,17 @@ void TCPServer::stopListening()
 void TCPServer::addNewConnection()
 {
     QTcpSocket* tcp_client =  new QTcpSocket( _server.nextPendingConnection() );
-    _clients.append( tcp_client );
 
     MainWindow::textWindow(tr("New Client connected."));
-    connect( Polyplexer::getInstance(), SIGNAL(dataBasicReady()), tcp_client, SLOT());
-    connect( tcp_client, SIGNAL(disconnected()), tcp_client, SLOT(deleteLater()));
+
+    Connector* client = new Connector( this ) ;
+    _clients.append( client );
+    client->setConnector( tcp_client );
+
+    connect( Polyplexer::getInstance(), SIGNAL(dataBasicReady(QByteArray)), client, SLOT(sendData(QByteArray)));
+    connect( client, SIGNAL(dataReady(QByteArray)), Polyplexer::getInstance(), SLOT(sendDataArray(QByteArray)));
+    connect( Polyplexer::getInstance(), SIGNAL(connectorClosing()), client, SLOT(close()));
+
 }
 
 void TCPServer::processIncomingDatas()

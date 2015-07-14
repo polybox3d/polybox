@@ -234,7 +234,7 @@ void MainWindow::startConnexion()
         {
             _atu->setState( true ); // true => activate ATU
             _atu->setEnabled( false );
-            poly->disconnect();
+            poly->disConnect();
             act->setChecked(false);
 
         }
@@ -300,6 +300,11 @@ void MainWindow::updateHardware()
         ui->actionMode_Serveur->setVisible( false );
         ui->actionStart_Client_Mode->setVisible( true );
         this->displayStatusMessage( tr("Status : Mode Client") );
+    }
+    else
+    {
+        _connectedLed.setActivated( false );
+        this->displayStatusMessage( tr("Status : Unconnected") );
     }
 
     setupWebcamMenu();

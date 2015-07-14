@@ -154,6 +154,7 @@ public:
     static int sendBufferTimer();
     static int sendBufferSize();
     static int movementWatchTimer();
+    static int extruderRefreshTimer();
 
     static void set(QString group_name, QString key, const QVariant &value )
     {

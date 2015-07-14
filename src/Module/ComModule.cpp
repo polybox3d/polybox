@@ -50,6 +50,7 @@ void ComModule::parseData()
         PolyboxModule::getInstance()->scannerModule()->parseMCode( stream );
         PolyboxModule::getInstance()->printerModule()->parseMCode( stream );
         emit newData( stream );
+
     }
 
 }
@@ -84,6 +85,15 @@ Polyplexer::ConnectionStatus ComModule::connectionGUI(bool blocked_thread)
  return connection_status;
 }
 
+void ComModule::stopConnection()
+{
+    Polyplexer::getInstance()->stop();
+
+    _connectionUptime = 0;
+    _currentLineNumber = 0;
+    _numberOfMissingPingPong = PINGPONG_NOT_CONNECTED;
+}
+
 void ComModule::beginConnection()
 {
     _currentLineNumber = 0;
@@ -99,6 +109,7 @@ void ComModule::beginConnection()
 
     _numberOfMissingPingPong = PINGPONG_NOT_CONNECTED;
     _pingPongTimer.start( PINGPONG_DELAY_MS );
+
 }
 
 Polyplexer::ConnectionStatus ComModule::checkPingPongConnection()

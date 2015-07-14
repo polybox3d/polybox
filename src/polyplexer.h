@@ -39,6 +39,8 @@ public:
     Polyplexer::ConnectionStatus start(QIODevice* connector, ConnectorType connector_type);
     Polyplexer::ConnectionStatus start(ConnectorType connector_type);
 
+    void stop();
+
     /** Data & Parse **/
     QByteArray dataPolybox();
     QByteArray dataBasic();
@@ -48,11 +50,13 @@ signals:
     void dataPolyboxReady(QByteArray data);
     void dataBasicReady(QByteArray data);
     void newType(Polyplexer::ConnectorType);
+    void connectorClosing();
 
 public slots:
     void parseData();
     void sendData(QString data);
-    void disconnect();
+    void sendDataArray(QByteArray data);
+    void disConnect();
 
 
 

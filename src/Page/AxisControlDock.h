@@ -20,6 +20,10 @@ public:
     ~AxisControlDock();
     bool eventFilter(QObject* watched, QEvent* event);
 
+public slots:
+
+    void updateComponents();
+
 private slots:
     void on_XEnable_clicked();
 

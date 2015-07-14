@@ -8,6 +8,8 @@
 #include <QList>
 #include <QTimer>
 
+#include "Connector.h"
+
 class TCPServer : public QObject
 {
     Q_OBJECT
@@ -30,7 +32,7 @@ private:
     QTcpServer _server;
     QUdpSocket* _udpSocket;
     QTimer* _timerBroadcast;
-    QList<QTcpSocket*> _clients;
+    QList<Connector*> _clients;
 
 };
 

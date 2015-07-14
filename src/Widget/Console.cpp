@@ -12,6 +12,7 @@ Console::Console(QWidget *parent) :
     connect( ComModule::getInstance(), SIGNAL(newData(QByteArray)), this, SLOT(parseData(QByteArray)) );
     connect( ComModule::getInstance(), SIGNAL(disconnected()), this, SLOT(deleteLater()) );
     connect( ComModule::getInstance(), SIGNAL(dataWritten(QString)), this, SLOT(dataWritten(QString)) );
+    this->setAttribute(Qt::WA_DeleteOnClose);
 }
 
 Console::~Console()

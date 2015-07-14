@@ -129,9 +129,9 @@ bool ModulePage::eventFilter(QObject *obj, QEvent *event)
             back();
 #endif
 #ifndef WELCOME_PAGE
-            if ( ! Polyplexer::isConnected() )
+            if ( ! ComModule::isConnected() )
             {
-                //PolyboxModule::getInstance()->connectionGUI(true);
+                ComModule::getInstance()->connectionGUI(true);
             }
 #endif
 

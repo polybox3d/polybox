@@ -75,6 +75,7 @@
         <file>img/axis_icon.png</file>
         <file>img/home.png</file>
         <file>img/extruder_v1.png</file>
+        <file>img/stat.png</file>
     </qresource>
     <qresource prefix="/xml">
         <file>ambiances/Autumn.xml</file>

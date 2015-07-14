@@ -36,6 +36,8 @@ bool LaserDock::eventFilter(QObject* watched, QEvent* event)
 void LaserDock::repaintComponents()
 {
     _update = true;
+    // emit signal to update scanner values
+    _scannerModule->updateComponents();
 
     ui->groupBox->setEnabled( _scannerModule->laser0Plugged() );
     ui->groupBox_2->setEnabled( _scannerModule->laser1Plugged() );
