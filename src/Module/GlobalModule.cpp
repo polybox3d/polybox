@@ -269,3 +269,7 @@ unsigned int GlobalModule::error() const
 {
     return _error;
 }
+void GlobalModule::resetError()
+{
+    _error = 0;
+}

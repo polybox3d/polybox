@@ -42,6 +42,8 @@ private slots:
 
     void on_inputCB_toggled(bool checked);
 
+    void on_polyCode_clicked();
+
 private:
     Ui::Console *ui;
     bool _displayInput;

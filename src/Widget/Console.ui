@@ -103,6 +103,13 @@
      </property>
     </widget>
    </item>
+   <item row="4" column="1">
+    <widget class="QCheckBox" name="polyCode">
+     <property name="text">
+      <string>PolyCode</string>
+     </property>
+    </widget>
+   </item>
   </layout>
  </widget>
  <resources>

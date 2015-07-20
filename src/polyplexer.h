@@ -17,8 +17,8 @@ class Polyplexer : public QObject
 {
     Q_OBJECT
 public:
-#define DEAMON_POLY_POLYPLEXER "/dev/ttyDEAMONPOLY"
-#define DEAMON_PRINTER_POLYPLEXER "/dev/ttyDEAMONPRINTER"
+#define DEAMON_POLY_POLYPLEXER "ttyDEAMONPOLY"
+#define DEAMON_PRINTER_POLYPLEXER "ttyDEAMONPRINTER"
 
     enum ConnectorType {
         Noone, Serial, Tcp

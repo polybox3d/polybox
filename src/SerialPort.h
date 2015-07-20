@@ -66,6 +66,9 @@ public:
     void setPath( QString path );
     void disconnectPort();
 
+public slots:
+
+    void onDsrChanged(bool status);
 
 signals:
     void disconnected();

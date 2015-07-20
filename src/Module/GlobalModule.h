@@ -34,6 +34,7 @@ public:
     bool webcamPlugged() const;
     int ram() const;
     unsigned int error() const;
+    void resetError();
 
     Temperature tempIC();
 

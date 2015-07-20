@@ -499,7 +499,7 @@ void MainWindow::updateStatePage()
     {
 #if !defined NO_SCAN
  //this->setCentralWidget( new FsMainWindow( _polybox->port(), this ) );
-        FsMainWindow* fw = new FsMainWindow( _polybox->port(),this );
+        FsMainWindow* fw = new FsMainWindow( NULL,this );
         fw->setWindowFlags(Qt::NoDropShadowWindowHint| Qt::Window);
         fw->show();
 #endif

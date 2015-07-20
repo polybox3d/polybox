@@ -6,11 +6,12 @@
 using namespace std;
 
 SerialPort::SerialPort(QObject *parent) :
-    QextSerialPort()
+    QextSerialPort( PortSettings{(BaudRateType)Config::motherboardBaudrate(), DATA_8, PAR_NONE, STOP_1, FLOW_OFF, 10}, QextSerialPort::EventDriven, parent)
   //QextSerialPort("/dev/ttyACM0", QextSerialPort::EventDriven, parent)
 {
     _path = Config::pathToSerialDevice();
     _name = Config::serialPortName();
+
 }
 
 QString SerialPort::path()
@@ -34,29 +35,27 @@ void SerialPort::setPath(QString path)
 bool SerialPort::connectToSerialPort()
 {
     this->setPortName(_path+_name );
-    this->setBaudRate( (BaudRateType)(Config::motherboardBaudrate()) );
-    this->setFlowControl(FLOW_OFF);
-    this->setParity(PAR_NONE);
-    this->setDataBits(DATA_8);
-    this->setStopBits(STOP_1);
 
     if ( this->open(QIODevice::ReadWrite) == true)
     {
-        //connect(this, SIGNAL(readyRead()), this, SLOT(onReadyRead()) );
-        //      connect(this, SIGNAL(dsrChanged(bool)), this, SLOT(onDsrChanged(bool)) );
-     /*   if (!(lineStatus() & LS_DSR)){
-            qDebug() << "warning: device is not turned on"<<lineStatus();
-            return false;
-        }*/
         cout << _path.toStdString().c_str() << _name.toStdString().c_str() << endl;
         return true;
     }
     else
     {
-        qDebug() << "device failed to open:" << this->errorString();
+        cout << _path.toStdString().c_str() << _name.toStdString().c_str() << endl;
+        cout << "device failed to open:" << this->errorString().toStdString().c_str();
         return false;
     }
 
+}
+
+void SerialPort::onDsrChanged(bool status)
+{
+    if (status)
+        qDebug() << "device was turned on";
+    else
+        qDebug() << "device was turned off";
 }
 
 void SerialPort::disconnectPort()

@@ -52,13 +52,28 @@ void Console::dataWritten(QString data)
 
 void Console::on_sendCodeButton_clicked()
 {
-    ComModule::getInstance()->sendCode( ui->inputCode->text() );
+    if ( ui->polyCode->isChecked() )
+    {
+        ComModule::getInstance()->sendCode( ui->inputCode->text() );
+    }
+    else
+    {
+        Polyplexer::getInstance()->sendData( ui->inputCode->text() );
+    }
     ui->inputCode->setText("");
+
 }
 
 void Console::on_inputCode_returnPressed()
 {
-    ComModule::getInstance()->sendCode( ui->inputCode->text() );
+    if ( ui->polyCode->isChecked() )
+    {
+        ComModule::getInstance()->sendCode( ui->inputCode->text() );
+    }
+    else
+    {
+        Polyplexer::getInstance()->sendData( ui->inputCode->text() );
+    }
     ui->inputCode->setText("");
 }
 
@@ -94,4 +109,9 @@ void Console::on_outputCB_toggled(bool checked)
 void Console::on_inputCB_toggled(bool checked)
 {
     _displayInput = checked;
+}
+
+void Console::on_polyCode_clicked()
+{
+
 }

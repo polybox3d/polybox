@@ -33,7 +33,7 @@ MovementModule::MovementModule(QObject *parent) :
 
 void MovementModule::sendWatchEndstop()
 {
-    ComModule::getInstance()->sendCode("M"+QString(MCODE_GET_ENDSTOP_STATUS));
+    ComModule::getInstance()->sendCode("M"+QString::number(MCODE_GET_ENDSTOP_STATUS));
 }
 
 void MovementModule::startWatchEndstop(int ms)
@@ -153,6 +153,18 @@ void MovementModule::setCurrentPosRotByMask(int rot_mask, int pos)
     command = "G"+QString::number(GCODE_MOTOR_SET_ORIGIN)
             + " P"+QString::number(rotMask2Id(rot_mask))
             + " X"+QString::number(pos);
+
+    ComModule::getInstance()->sendCode( command );
+}
+
+void MovementModule::moveRotByMaskRelative(int rot_mask, int dist, int direction)
+{
+    //move the motor
+    QString command;
+    command = "M"+QString::number(MCODE_SCANNER_TURN_ROT_X_DEG)
+            + " P"+QString::number(rotMask2Id(rot_mask))
+            + " S"+QString::number(direction)
+            + " X"+QString::number(dist);
 
     ComModule::getInstance()->sendCode( command );
 }

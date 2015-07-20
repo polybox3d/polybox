@@ -32,6 +32,7 @@ public:
     static void moveAxisByMask(int axis_mask, bool relative, int distance, int speed);
 
     static void moveRotByMask(int rot_mask, int dist);
+    static void moveRotByMaskRelative(int rot_mask, int dist, int direction);
     static void setCurrentPosRotByMask(int rot_mask, int pos);
     static void setEnableRotByMask(int rot_mask, bool enable);
 
@@ -39,7 +40,6 @@ public:
     static void stopWatchEndstop();
 
     static bool data2endstop( QString section, int start_pos );
-    void sendWatchEndstop();
 
     bool _x_min;
     bool _x_max;
@@ -58,6 +58,7 @@ signals:
 
 public slots:
     void parseMCode(QByteArray stream);
+    void sendWatchEndstop();
 
 private:
     explicit MovementModule(QObject *parent = 0);

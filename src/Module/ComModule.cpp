@@ -96,19 +96,24 @@ void ComModule::stopConnection()
 
 void ComModule::beginConnection()
 {
-    _currentLineNumber = 0;
-    _sendTimer.start( Config::sendBufferTimer() );
-    ComModule::getInstance(this)->sendMCode( MCODE_RESET_SLAVES );
     ClosedLoopTimer loop;
-    loop.startClosedLoop( 1000 );
+    loop.startClosedLoop( 3000 );
     _currentLineNumber = 0;
+    _sendBuffer.clear();
+    _sendTimer.start( Config::sendBufferTimer() );
     ComModule::getInstance(this)->sendMCode( MCODE_RESET_LINE_NUMBER );
+    //ComModule::getInstance(this)->sendMCode( MCODE_RESET_SLAVES );
+
+    loop.startClosedLoop( 5000 );
+
     ComModule::getInstance(this)->sendMCode( MCODE_START_CONNECTION );
 
-    loop.startClosedLoop( 1000 );
+    loop.startClosedLoop( 2000 );
+
 
     _numberOfMissingPingPong = PINGPONG_NOT_CONNECTED;
     _pingPongTimer.start( PINGPONG_DELAY_MS );
+    PolyboxModule::getInstance()->globalModule()->resetError();
 
 }
 
@@ -199,7 +204,7 @@ void ComModule::sendBufferedData()
         {
             QString data = _sendBuffer.dequeue();
             // Add checksum
-            data = data + "*" + QString::number(ComModule::checksum(data.toStdString().c_str(), data.size())) + "\n";
+            data = data + "*" + QString::number(ComModule::checksum(data.toStdString().c_str(), data.size()));
 
             Logger::writeOutputCommand( data );
             Polyplexer::send( data );

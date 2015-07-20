@@ -52,7 +52,6 @@ void Connector::parseData()
     foreach (QString line, lines)
     {
         _dataBasic = line.toStdString().c_str();
-        cerr<<QString(_dataBasic).toStdString().c_str()<<endl;
         emit dataReady( _dataBasic );
     }
 }
@@ -62,15 +61,16 @@ void Connector::sendDataString(QString data)
 {
     if ( _connector != NULL && _connector->isOpen() )
     {
+        data+="\n";
         _connector->write( data.toStdString().c_str() );
     }
 }
 
 void Connector::sendData(QByteArray data)
 {
-    cout<<QString(data).toStdString().c_str()<<"--"<<endl;
     if ( _connector != NULL && _connector->isOpen() )
     {
-        _connector->write( data );
+        cerr<<"Connector: "<<QString(data).toStdString().c_str()<<endl;
+        _connector->write( data+"\n" );
     }
 }
