@@ -38,6 +38,7 @@ INCLUDEPATH += Wizard
 
 #DEFINES += NO_SCAN
 
+#include(../externals/FabScan100/PolyFabScan/PolyFabScan.pri)
 include(../externals/FabScan100/qtTest/qtTest.pri)
 
 #DEFINES += WELCOME_PAGE
