@@ -38,8 +38,8 @@ INCLUDEPATH += Wizard
 
 #DEFINES += NO_SCAN
 
-#include(../externals/FabScan100/PolyFabScan/PolyFabScan.pri)
-include(../externals/FabScan100/qtTest/qtTest.pri)
+include(../externals/FabScan100/PolyFabScan/PolyFabScan.pri)
+#include(../externals/FabScan100/qtTest/qtTest.pri)
 
 #DEFINES += WELCOME_PAGE
 
@@ -116,12 +116,12 @@ SOURCES += main.cpp\
     Page/WebPrinterPage.cpp \
     Page/AxisControlDock.cpp \
     Page/RotationControlDock.cpp \
-    Page/LaserDock.cpp \
     Widget/DockHost.cpp \
     Module/MovementModule.cpp \
     Module/ComModule.cpp\
     Page/ExtruderDock.cpp \
-    Connector.cpp
+    Connector.cpp \
+    Widget/LaserDockWidget.cpp
 
 HEADERS  += MainWindow.h \
         Updater.h \
@@ -192,13 +192,13 @@ HEADERS  += MainWindow.h \
     Page/WebPrinterPage.h \
     Page/AxisControlDock.h \
     Page/RotationControlDock.h \
-    Page/LaserDock.h \
     Widget/DockHost.h \
     Module/MovementModule.h \
     Module/ComModule.h \
     TCPClient.h\
     Page/ExtruderDock.h \
-    Connector.h
+    Connector.h \
+    Widget/LaserDockWidget.h
 
 
 FORMS    += MainWindow.ui \
@@ -233,10 +233,10 @@ FORMS    += MainWindow.ui \
     Wizard/ProcessLevelingPage.ui \
     Page/WebPrinterPage.ui \
     Page/RotationControlDock.ui \
-    Page/LaserDock.ui \
     Page/AxisControlDock.ui \
     Widget/DockHost.ui \
-    Page/ExtruderDock.ui
+    Page/ExtruderDock.ui \
+    Widget/LaserDockWidget.ui
 
 RESOURCES += \
     ressources.qrc

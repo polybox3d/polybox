@@ -140,7 +140,10 @@ void Polyplexer::stop()
         //static_cast<SerialPort*>(_connector)->disconnectPort();
         disconnect(_connector,SIGNAL(readyRead()),this,SLOT(parseData()));
         disconnect(_connector,SIGNAL(aboutToClose()),this,SLOT(disConnect()));
-
+        if ( _connector->isOpen() )
+        {
+            _connector->close();
+        }
         _connector = NULL;
         _connectorType = Noone;
     }

@@ -9,7 +9,7 @@ namespace Ui {
 class RotationControlDock;
 }
 
-class RotationControlDock : public QDockWidget
+class RotationControlDock : public QWidget
 {
     Q_OBJECT
 

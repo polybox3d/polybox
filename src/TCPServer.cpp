@@ -55,6 +55,7 @@ void TCPServer::addNewConnection()
     client->setConnector( tcp_client );
 
     connect( Polyplexer::getInstance(), SIGNAL(dataBasicReady(QByteArray)), client, SLOT(sendData(QByteArray)));
+    connect( Polyplexer::getInstance(), SIGNAL(dataPolyboxReady(QByteArray)), client, SLOT(sendData(QByteArray)));
     connect( client, SIGNAL(dataReady(QByteArray)), Polyplexer::getInstance(), SLOT(sendDataArray(QByteArray)));
     connect( Polyplexer::getInstance(), SIGNAL(connectorClosing()), client, SLOT(close()));
 

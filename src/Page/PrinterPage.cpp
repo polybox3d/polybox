@@ -303,6 +303,7 @@ void PrinterPage::on_startWebInterface_clicked()
     }
     _webPrinterInterface = new WebPrinterPage();
     _webPrinterInterface->setWindowFlags( Qt::CustomizeWindowHint );
+    //_webPrinterInterface->setAttribute(Qt::WA_DeleteOnClose);
     _webPrinterInterface->show();
 }
 

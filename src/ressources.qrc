@@ -76,6 +76,9 @@
         <file>img/home.png</file>
         <file>img/extruder_v1.png</file>
         <file>img/stat.png</file>
+        <file>img/laser_image.png</file>
+        <file>img/copy.png</file>
+        <file>img/picture.png</file>
     </qresource>
     <qresource prefix="/xml">
         <file>ambiances/Autumn.xml</file>

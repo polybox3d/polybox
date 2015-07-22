@@ -8,8 +8,18 @@ DockHost::DockHost(QWidget *parent) :
     ui->setupUi(this);
     this->setAttribute(Qt::WA_DeleteOnClose);
     this->addDockWidget( Qt::TopDockWidgetArea, new AxisControlDock(this));
-    this->addDockWidget( Qt::LeftDockWidgetArea, new RotationControlDock(this));
-    this->addDockWidget( Qt::RightDockWidgetArea, new LaserDock( PolyboxModule::getInstance()->scannerModule(), this));
+
+    QDockWidget* rotDock = new QDockWidget("RotationDock",this);
+    rotDock->setWidget( new RotationControlDock(rotDock) );
+    this->addDockWidget( Qt::LeftDockWidgetArea, rotDock );
+
+
+    QDockWidget* laserDock = new QDockWidget("LaserDock",this);
+    laserDock->setWidget(new LaserDockWidget( PolyboxModule::getInstance()->scannerModule(), laserDock));
+    laserDock->setFixedHeight( 180 );
+    laserDock->setFixedWidth( 350 );
+
+    this->addDockWidget( Qt::RightDockWidgetArea, laserDock);
 }
 
 DockHost::~DockHost()

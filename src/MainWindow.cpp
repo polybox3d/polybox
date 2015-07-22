@@ -50,6 +50,7 @@ MainWindow::MainWindow(Qt::WindowFlags window_flags, QWidget *parent) :
     _polybox = PolyboxModule::getInstance( this );
     connect(_polybox, SIGNAL(updateHardware()),this,SLOT(updateHardware()));
 
+    this->setAttribute(Qt::WA_DeleteOnClose);
     //_polybox->connectToPrinter();
 
 
@@ -76,7 +77,27 @@ MainWindow::MainWindow(Qt::WindowFlags window_flags, QWidget *parent) :
     setupSerialMenu();
 
     MaintenanceChecker::check();
+    _polyfabscan = PolyFabScanWindow::getInstance();
+    _polyfabscan->setWindowFlags(Qt::NoDropShadowWindowHint| Qt::Window);
+    //_polyfabscan->setAttribute(Qt::WA_DeleteOnClose);
 }
+
+void MainWindow::destroyWindow(QObject* obj)
+{
+    if ( QWidget* w = dynamic_cast<QWidget*>(obj) )
+    {
+        if ( w->windowTitle().contains("LabView", Qt::CaseInsensitive) )
+        {
+            _dockLV = NULL;
+        }
+        if ( w->windowTitle().contains("Host", Qt::CaseInsensitive) )
+        {
+            _dockHost = NULL;
+        }
+
+    }
+}
+
 void MainWindow::displayStatusMessage(QString mess)
 {
     _statusMessage->setText( mess );
@@ -112,6 +133,7 @@ void MainWindow::startConsoleWindow()
     {
         Console* c = new Console();
         c->setWindowTitle(tr("Console"));
+        c->setAttribute(Qt::WA_DeleteOnClose);
         c->show();
     }
 }
@@ -192,6 +214,14 @@ void MainWindow::toggleATU()
 MainWindow::~MainWindow()
 {
     Logger::stop();
+    if ( _polyfabscan != NULL )
+    {
+        delete _polyfabscan;
+    }
+    if ( Polyplexer::getInstance()->isConnected() )
+    {
+        Polyplexer::getInstance()->stop();
+    }
     delete ui;
 }
 void MainWindow::setupSerialMenu()
@@ -369,11 +399,17 @@ void MainWindow::updateStatePage()
         break;
     case LabViewDock :
     {
+        // already open ?
+        if ( _dockLV != NULL )
+            break;
+
         if (_polybox->isCommonReady() || Config::bypassCheck() )
         {
             _dockLV = new QDockWidget("LabView (dock) ",this);
             _dockLV->setWidget( new LabViewPage( _polybox->labViewModule(), this, true ) );
             _dockLV->setFloating( true );
+            _dockLV->setAttribute(Qt::WA_DeleteOnClose);
+            connect(_dockLV,SIGNAL(destroyed(QObject*)),this,SLOT(destroyWindow(QObject*)));
             _dockLV->show();
             _dockLV->setEnabled( _atuON );
         }
@@ -428,6 +464,8 @@ void MainWindow::updateStatePage()
         if ( printer_ok || Config::bypassCheck() )
         {
             this->setCentralWidget( new PrinterPage( _polybox->printerModule(), this ) );
+            this->centralWidget()->setAttribute(Qt::WA_DeleteOnClose);
+
         }
         else
         {
@@ -499,9 +537,10 @@ void MainWindow::updateStatePage()
     {
 #if !defined NO_SCAN
  //this->setCentralWidget( new FsMainWindow( _polybox->port(), this ) );
-        FsMainWindow* fw = new FsMainWindow( NULL,this );
-        fw->setWindowFlags(Qt::NoDropShadowWindowHint| Qt::Window);
-        fw->show();
+
+        if ( _polyfabscan->isVisible() )
+            break;
+        _polyfabscan->show();
 #endif
         /*QProcess* laser = new QProcess(this);
         laser->start( Config::scannerLaserPath );*/
@@ -512,7 +551,11 @@ void MainWindow::updateStatePage()
         break;
     case DockPage :
     {
+        if ( _dockHost != NULL )
+            return;
+
         _dockHost = new DockHost( this );
+        connect(_dockHost, SIGNAL(destroyed(QObject*)),this,SLOT(destroyWindow(QObject*)));
         _dockHost->show();
         break;
     }

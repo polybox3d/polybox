@@ -5,7 +5,7 @@
 
 #include "AxisControlDock.h"
 #include "RotationControlDock.h"
-#include "LaserDock.h"
+#include "LaserDockWidget.h"
 
 namespace Ui {
 class DockHost;
@@ -24,3 +24,4 @@ private:
 };
 
 #endif // DOCKHOST_H
+

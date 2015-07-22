@@ -33,7 +33,7 @@
 #include "ClosedLoopTimer.h"
 
 #if !defined NO_SCAN
- #include "fsmainwindow.h"
+ #include "PolyFabScanWindow.h"
 #endif
 
 #include "pageState.h"
@@ -87,6 +87,7 @@ public slots:
     void toggleATU();
     void setupLanguage();
     void setupThemes();
+    void destroyWindow(QObject *obj);
 
 private slots:
     void on_actionCNC_triggered();
@@ -132,6 +133,7 @@ private:
     QDockWidget* _dockLV;
     QDockWidget* _dockCNC;
     QMainWindow* _dockHost;
+    PolyFabScanWindow* _polyfabscan;
     TCPServer _tcp_server;
     Led _connectedLed;
     QLabel* _statusMessage;

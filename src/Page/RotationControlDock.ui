@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
  <class>RotationControlDock</class>
- <widget class="QDockWidget" name="RotationControlDock">
+ <widget class="QWidget" name="RotationControlDock">
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
     <width>420</width>
-    <height>250</height>
+    <height>230</height>
    </rect>
   </property>
   <property name="minimumSize">
@@ -25,7 +25,15 @@
   <property name="windowTitle">
    <string>Rotation Control</string>
   </property>
-  <widget class="QWidget" name="dockWidgetContents">
+  <widget class="QWidget" name="dockWidgetContents" native="true">
+   <property name="geometry">
+    <rect>
+     <x>5</x>
+     <y>0</y>
+     <width>411</width>
+     <height>232</height>
+    </rect>
+   </property>
    <widget class="QDial" name="rotX">
     <property name="geometry">
      <rect>

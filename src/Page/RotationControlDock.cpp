@@ -2,7 +2,7 @@
 #include "ui_RotationControlDock.h"
 
 RotationControlDock::RotationControlDock(QWidget *parent) :
-    QDockWidget(parent),
+    QWidget(parent),
     ui(new Ui::RotationControlDock), _zPrevPos(0)
 {
     ui->setupUi(this);
