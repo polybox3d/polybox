@@ -82,20 +82,10 @@ bool Polyplexer::isConnected()
 
 void Polyplexer::setConnector(QIODevice* connector)
 {
-
-
-
-
-
-
-
+    // @todo
+    cerr<<"Polyplexer::setConnector : Unimplemented Function ! Care !"<<endl;
 
     // !!
-
-
-
-
-
 }
 
 void Polyplexer::setConnectorType(ConnectorType connector_type)
@@ -165,7 +155,7 @@ void Polyplexer::sendData(QString data)
 {
     if ( this->isConnected() )
     {
-        cerr<<"PolySend:"<<data.toStdString()<<endl;
+        //cerr<<"PolySend:"<<data.toStdString()<<endl;
         data+="\n";
         _connector->write( data.toStdString().c_str() );
 
@@ -226,7 +216,7 @@ void Polyplexer::parseData()
             _dataBasic = line.toStdString().c_str();
             emit dataBasicReady( _dataBasic );
         }
-        cout<<line.toStdString().c_str()<<endl;
+        //cout<<line.toStdString().c_str()<<endl;
     }
 
 }

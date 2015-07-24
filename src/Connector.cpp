@@ -47,7 +47,6 @@ void Connector::parseData()
 
     // split command in line
     QStringList lines = rcpString.split(QRegExp("[\r\n]"),QString::SkipEmptyParts);
-
     // send each line ended
     foreach (QString line, lines)
     {
@@ -70,7 +69,7 @@ void Connector::sendData(QByteArray data)
 {
     if ( _connector != NULL && _connector->isOpen() )
     {
-        cerr<<"Connector: "<<QString(data).toStdString().c_str()<<endl;
+        //cerr<<"Connector: "<<QString(data).toStdString().c_str()<<endl;
         _connector->write( data+"\n" );
     }
 }

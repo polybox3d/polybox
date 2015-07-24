@@ -39,10 +39,11 @@ private slots:
     void on_laser2Spin_valueChanged(int arg1);
 
 private:
+    ScannerModule* _scannerModule;
+    Ui::LaserDockWidget *ui;
     QTimer _updateTimer;
 
-    Ui::LaserDockWidget *ui;
-    ScannerModule* _scannerModule;
+
     bool _update;
 };
 

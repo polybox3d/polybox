@@ -166,7 +166,7 @@ void LabViewPage::importFromXmlFile(QString filename)
 }
 void LabViewPage::parseFace(QXmlStreamReader *xml)
 {
-    int h, v =0;
+    int h = 0, v =0;
     QString facename="";
     while(!(xml->tokenType() == QXmlStreamReader::EndElement && xml->name() == "face"))
     {

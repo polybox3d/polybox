@@ -5,10 +5,15 @@
 
 using namespace std;
 
-SerialPort::SerialPort(QObject *parent) :
-    QextSerialPort( PortSettings{(BaudRateType)Config::motherboardBaudrate(), DATA_8, PAR_NONE, STOP_1, FLOW_OFF, 10}, QextSerialPort::EventDriven, parent)
+SerialPort::SerialPort(QObject *parent):QextSerialPort( QextSerialPort::EventDriven, parent)
   //QextSerialPort("/dev/ttyACM0", QextSerialPort::EventDriven, parent)
 {
+    this->setBaudRate( (BaudRateType)Config::motherboardBaudrate() );
+    this->setParity(PAR_NONE);
+    this->setStopBits(STOP_1);
+    this->setFlowControl( FLOW_OFF );
+    this->setTimeout( 10 );
+
     _path = Config::pathToSerialDevice();
     _name = Config::serialPortName();
 

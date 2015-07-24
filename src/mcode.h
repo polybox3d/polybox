@@ -105,6 +105,7 @@ enum MCodeFlags
 #define GCODE_HOMING                            28
 #define GCODE_SINGLE_ZPROBE                     30
 #define GCODE_ZPROBE_CAPTOR_VALUE               31
+#define GCODE_BED_LEVELING                      32
 
 #define GCODE_ATX_POWER_ON                      80
 #define GCODE_ATX_POWER_OFF                     81

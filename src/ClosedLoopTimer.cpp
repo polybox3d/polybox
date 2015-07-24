@@ -10,7 +10,6 @@ bool ClosedLoopTimer::startClosedLoop( int msec )
 {
     this->setSingleShot( true );
     this->start( msec );
-    int c=0;
     while ( this->isActive() )
     {
         qApp->processEvents();

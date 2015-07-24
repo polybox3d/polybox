@@ -48,6 +48,29 @@ void ContactPointLevelingPage::parseMCode(QByteArray stream)
     }
         break;
     default:
+        if ( stream.contains("Z-probe:"))
+        {
+            SerialPort::nextValue( str, idx);
+
+            float z = SerialPort::embeddedstr2l( str, idx );
+            float x =0.0 , y = 0.0;
+            SerialPort::nextField( str, idx);
+            if ( str[idx] == 'X' )
+            {
+                SerialPort::nextValue( str, idx);
+                 x = SerialPort::embeddedstr2l( str, idx );
+            }
+            else if ( str[idx] == 'Y' )
+            {
+                SerialPort::nextValue( str, idx);
+                y = SerialPort::embeddedstr2l( str, idx );
+            }
+            this->saveProbing( x, y, z);
+
+            ui->x_pos->setText(QString::number(x));
+            ui->y_pos->setText(QString::number(y));
+            ui->z_pos->setText(QString::number(z));
+        }
         break;
     }
 
@@ -159,6 +182,6 @@ void ContactPointLevelingPage::getUpdates()
 void ContactPointLevelingPage::on_startContactProcess_clicked()
 {
     _getUpdateTimer.stop();
-    //ComModule::getInstance()->sendMCode(QString::number(MCODE_SEND_GCODE)+" "+QString::number(GCODE_SINGLE_ZPROBE));
+    ComModule::getInstance()->sendCode("G"+QString::number(GCODE_SINGLE_ZPROBE) );
 }
 

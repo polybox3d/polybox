@@ -183,13 +183,16 @@ void ComModule::pingPong()
         {
             /*if ( _connectionFlag == Connected )
             {*/
-                MainWindow::errorWindow( tr("Une erreur est survenue. La machine ne répond plus aux messages depuis un certain temps.\n Veuillez vous reconnecter.\n"));
-
                 if ( Config::decoWhenPingPongOff() )
                 {
                     this->_sendBuffer.clear();
                     _connectionFlag = Unconnected;
                     Polyplexer::getInstance()->disconnect();
+                    MainWindow::errorWindow( tr("Une erreur est survenue. La machine ne répond plus aux messages depuis un certain temps.\n Deconnection.\n Veuillez vous reconnecter"));
+                }
+                else
+                {
+                    MainWindow::errorWindow( tr("Une erreur est survenue. La machine ne répond plus aux messages depuis un certain temps.\n"));
                 }
                 _numberOfMissingPingPong = 0;
 

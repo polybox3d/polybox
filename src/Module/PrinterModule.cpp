@@ -33,6 +33,7 @@ bool PrinterModule::printerWebInterfaceIsRunning()
             return true;
         }
     }
+    return false;
 }
 bool PrinterModule::printerWebInterfaceStart()
 {

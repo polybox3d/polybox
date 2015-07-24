@@ -11,6 +11,8 @@ greaterThan(QT_MAJOR_VERSION, 4): QT += widgets webkitwidgets
 TARGET = polybox
 TEMPLATE = app
 
+message("=> Start Building Polybox3D Software.")
+
 #-------------- WE ADD GIT VERSION----------------
 
 GIT_VERSION = $$system(git --git-dir $$PWD/../.git --work-tree $$PWD describe --always --tags)
@@ -22,11 +24,12 @@ TRANSLATIONS = ../i18n/polybox_en.ts ../i18n/polybox_fr.ts
 
 CONFIG(release, debug|release)
 {
+message("Building Release Mode")
 DEFINES += QT_NO_DEBUG_OUTPUT
 DEFINES += BYPASS_CHECK
 QMAKE_CXXFLAGS_DEBUG +=  -O3 -Ofast
 }
-
+QMAKE_CXXFLAGS_DEBUG +=  -Wno-unused-function
 
 INCLUDEPATH += Checker
 INCLUDEPATH += Page

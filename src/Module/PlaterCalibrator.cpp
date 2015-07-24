@@ -134,7 +134,7 @@ void PlaterCalibrator::setRx ( float rx ) {
   }
   if (_rx < (MAX_PLATER_ANGLE*-1.0) )
   {
-      _rx < MAX_PLATER_ANGLE *-1.0;
+      _rx = MAX_PLATER_ANGLE *-1.0;
   }
 }
 
@@ -151,7 +151,7 @@ void PlaterCalibrator::setRy ( float ry ) {
   }
   if (_ry < (MAX_PLATER_ANGLE*-1.0) )
   {
-      _ry < MAX_PLATER_ANGLE *-1.0;
+      _ry = MAX_PLATER_ANGLE *-1.0;
   }
 }
 
@@ -167,7 +167,7 @@ void PlaterCalibrator::setRz ( float rz ) {
   }
   if (_rz < (MAX_PLATER_ANGLE*-1.0) )
   {
-      _rz < MAX_PLATER_ANGLE *-1.0;
+      _rz = MAX_PLATER_ANGLE *-1.0;
   }
 }
 
