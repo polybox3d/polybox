@@ -5,6 +5,7 @@ IntroLevelingPage::IntroLevelingPage(QWidget *parent) :
     QWizardPage(parent),
     ui(new Ui::IntroLevelingPage)
 {
+    this->setAttribute(Qt::WA_DeleteOnClose);
     ui->setupUi(this);
 }
 

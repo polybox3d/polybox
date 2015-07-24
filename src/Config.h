@@ -112,6 +112,9 @@ public:
 
     static bool disablePolyplexer();
 
+    static int pingPongMaxTries();
+    static bool decoWhenPingPongOff();
+
     /**
      * @brief colorLabviewFaceSelected Color used when a face is selected in the labview module.
      */

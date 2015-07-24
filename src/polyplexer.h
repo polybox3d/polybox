@@ -51,6 +51,7 @@ signals:
     void dataBasicReady(QByteArray data);
     void newType(Polyplexer::ConnectorType);
     void connectorClosing();
+    void dataWritten( QString data );
 
 public slots:
     void parseData();

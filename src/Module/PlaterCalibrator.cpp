@@ -11,7 +11,7 @@ void PlaterCalibrator::initAll()
     _rx = 0.0;
     _ry = 0.0;
     _rz = 0.0;
-    connect(PolyboxModule::getInstance(), SIGNAL(newData(QByteArray)),this,SLOT(parseMCode(QByteArray)));
+    connect(ComModule::getInstance(), SIGNAL(newData(QByteArray)),this,SLOT(parseMCode(QByteArray)));
 }
 bool PlaterCalibrator::isReady() const
 {

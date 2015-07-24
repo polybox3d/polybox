@@ -17,6 +17,56 @@
    <bool>true</bool>
   </property>
   <layout class="QGridLayout" name="gridLayout">
+   <item row="3" column="3">
+    <widget class="QPushButton" name="scrollToBot">
+     <property name="text">
+      <string/>
+     </property>
+     <property name="icon">
+      <iconset resource="../ressources.qrc">
+       <normaloff>:/img/img/to-bottom-red.png</normaloff>:/img/img/to-bottom-red.png</iconset>
+     </property>
+    </widget>
+   </item>
+   <item row="5" column="0">
+    <widget class="QLineEdit" name="inputCode"/>
+   </item>
+   <item row="5" column="1">
+    <widget class="QPushButton" name="sendCodeButton">
+     <property name="text">
+      <string>Envoyer Code</string>
+     </property>
+     <property name="icon">
+      <iconset resource="../ressources.qrc">
+       <normaloff>:/img/img/validate.png</normaloff>:/img/img/validate.png</iconset>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="0" rowspan="3" colspan="3">
+    <widget class="QTextEdit" name="displaySerial"/>
+   </item>
+   <item row="1" column="3">
+    <widget class="QPushButton" name="scrollToTop">
+     <property name="text">
+      <string/>
+     </property>
+     <property name="icon">
+      <iconset resource="../ressources.qrc">
+       <normaloff>:/img/img/to-top-green.png</normaloff>:/img/img/to-top-green.png</iconset>
+     </property>
+    </widget>
+   </item>
+   <item row="5" column="2">
+    <widget class="QPushButton" name="clearLog">
+     <property name="text">
+      <string>Effacer Log</string>
+     </property>
+     <property name="icon">
+      <iconset resource="../ressources.qrc">
+       <normaloff>:/img/img/skin.png</normaloff>:/img/img/skin.png</iconset>
+     </property>
+    </widget>
+   </item>
    <item row="2" column="3">
     <spacer name="verticalSpacer">
      <property name="orientation">
@@ -37,26 +87,15 @@
      </property>
     </widget>
    </item>
-   <item row="1" column="3">
-    <widget class="QPushButton" name="scrollToTop">
+   <item row="4" column="2">
+    <widget class="QCheckBox" name="polyData">
      <property name="text">
-      <string/>
+      <string>Poly Code</string>
      </property>
-     <property name="icon">
-      <iconset resource="../ressources.qrc">
-       <normaloff>:/img/img/to-top-green.png</normaloff>:/img/img/to-top-green.png</iconset>
+     <property name="checked">
+      <bool>true</bool>
      </property>
     </widget>
-   </item>
-   <item row="5" column="2">
-    <widget class="QPushButton" name="clearLog">
-     <property name="text">
-      <string>Effacer Log</string>
-     </property>
-    </widget>
-   </item>
-   <item row="1" column="0" rowspan="3" colspan="3">
-    <widget class="QTextEdit" name="displaySerial"/>
    </item>
    <item row="4" column="0">
     <layout class="QHBoxLayout" name="horizontalLayout">
@@ -76,37 +115,26 @@
         <string>Output</string>
        </property>
        <property name="checked">
-        <bool>false</bool>
+        <bool>true</bool>
        </property>
       </widget>
      </item>
     </layout>
    </item>
-   <item row="5" column="0">
-    <widget class="QLineEdit" name="inputCode"/>
-   </item>
-   <item row="5" column="1">
-    <widget class="QPushButton" name="sendCodeButton">
-     <property name="text">
-      <string>Envoyer Code</string>
-     </property>
-    </widget>
-   </item>
-   <item row="3" column="3">
-    <widget class="QPushButton" name="scrollToBot">
-     <property name="text">
-      <string/>
-     </property>
-     <property name="icon">
-      <iconset resource="../ressources.qrc">
-       <normaloff>:/img/img/to-bottom-red.png</normaloff>:/img/img/to-bottom-red.png</iconset>
-     </property>
-    </widget>
-   </item>
    <item row="4" column="1">
+    <widget class="QCheckBox" name="basicData">
+     <property name="text">
+      <string>Basic Code</string>
+     </property>
+     <property name="checked">
+      <bool>true</bool>
+     </property>
+    </widget>
+   </item>
+   <item row="4" column="3">
     <widget class="QCheckBox" name="polyCode">
      <property name="text">
-      <string>PolyCode</string>
+      <string>#</string>
      </property>
     </widget>
    </item>

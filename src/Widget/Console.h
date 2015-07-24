@@ -24,7 +24,8 @@ public:
     explicit Console(QWidget *parent = 0);
     ~Console();
 public slots:
-    void parseData(QByteArray data);
+    void addPolyData(QByteArray data);
+    void addBasicData(QByteArray data);
     void dataWritten(QString data);
 
 private slots:
@@ -41,8 +42,6 @@ private slots:
     void on_outputCB_toggled(bool checked);
 
     void on_inputCB_toggled(bool checked);
-
-    void on_polyCode_clicked();
 
 private:
     Ui::Console *ui;

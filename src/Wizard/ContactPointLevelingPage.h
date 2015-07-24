@@ -4,6 +4,7 @@
 #include <iostream>
 #include <QWizardPage>
 #include <QByteArray>
+#include <QTimer>
 
 #include "Config.h"
 #include "ComModule.h"
@@ -25,6 +26,7 @@ public:
 
 public slots:
     void parseMCode(QByteArray stream);
+    void getUpdates();
 private slots:
 
     void on_startContactProcess_clicked();
@@ -35,6 +37,7 @@ private:
     int _id;
     static int next_id;
     bool _contactor;
+    QTimer _getUpdateTimer;
 };
 
 #endif // CONTACTPOINTLEVELINGPAGE_H

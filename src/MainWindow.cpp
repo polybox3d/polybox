@@ -358,12 +358,12 @@ void MainWindow::changeStatePage(PageState new_state)
 void MainWindow::updateStatePage()
 {
 
-    // @todo thing about delete the widget....
-    qApp->processEvents();
-
     switch ( _currentState )
     {
     case Start:
+        delete this->centralWidget();
+        qApp->processEvents();
+
         this->setCentralWidget( new OpenPage( _polybox, this ) );
         connect(this,SIGNAL(joypadOff()),this->centralWidget(),SLOT(disableJoypad()));
         connect(this,SIGNAL(joypadOn(QJoystick*)),this->centralWidget(),SLOT(setJoypad(QJoystick*)));
@@ -373,6 +373,9 @@ void MainWindow::updateStatePage()
         }
         break;
     case Module :
+        delete this->centralWidget();
+        qApp->processEvents();
+
         this->setCentralWidget( new ModulePage( _polybox, this ) );
 
         connect(this,SIGNAL(joypadOff()),this->centralWidget(),SLOT(disableJoypad()));
@@ -383,12 +386,21 @@ void MainWindow::updateStatePage()
         }
         break;
     case Help :
+        delete this->centralWidget();
+        qApp->processEvents();
+
         this->setCentralWidget( new HelpPage( this ) );
         break;
     case Warning :
+        delete this->centralWidget();
+        qApp->processEvents();
+
         this->setCentralWidget( new WarningPage( _polybox, this ) );
         break;
     case LabView :
+        delete this->centralWidget();
+        qApp->processEvents();
+
         this->setCentralWidget( new LabViewPage( _polybox->labViewModule(), this, false ) );
         connect(this,SIGNAL(joypadOff()),this->centralWidget(),SLOT(disableJoypad()));
         connect(this,SIGNAL(joypadOn(QJoystick*)),this->centralWidget(),SLOT(setJoypad(QJoystick*)));
@@ -463,6 +475,9 @@ void MainWindow::updateStatePage()
         bool printer_ok = _polybox->isPrinterReady();
         if ( printer_ok || Config::bypassCheck() )
         {
+            delete this->centralWidget();
+            qApp->processEvents();
+
             this->setCentralWidget( new PrinterPage( _polybox->printerModule(), this ) );
             this->centralWidget()->setAttribute(Qt::WA_DeleteOnClose);
 
@@ -531,6 +546,9 @@ void MainWindow::updateStatePage()
     }
         break;
     case ConfigureCNC :
+        delete this->centralWidget();
+        qApp->processEvents();
+
         this->setCentralWidget( new ConfigCNCPage( this ) );
         break;
     case ScannerLaser :
@@ -547,6 +565,9 @@ void MainWindow::updateStatePage()
         break;
     }
     case CalibratePlate :
+        delete this->centralWidget();
+        qApp->processEvents();
+
         this->setCentralWidget( new PlateCalibratorWidget( this ) );
         break;
     case DockPage :

@@ -168,6 +168,8 @@ void Polyplexer::sendData(QString data)
         cerr<<"PolySend:"<<data.toStdString()<<endl;
         data+="\n";
         _connector->write( data.toStdString().c_str() );
+
+        emit dataWritten(data);
     }
 }
 

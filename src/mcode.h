@@ -22,6 +22,7 @@ enum MCodeFlags
 #define MCODE_CNC_RECYCLE_STATE                 615
 #define MCODE_CNC_VACUUM_STATE                  616
 #define MCODE_CNC_LUBRICANT_STATE               617
+#define MCODE_CONTACT_POINT_STATE               618
 
 /**      SCANNER MCODE    **/
 

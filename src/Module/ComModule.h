@@ -14,17 +14,21 @@ using namespace std;
 #include "Connector.h"
 
 
-#define PINGPONG_NOT_CONNECTED     42
-#define PINGPONG_MAX_TRIES         2
+#define PINGPONG_MAX_TRIES         (Config::pingPongMaxTries())
 #define PINGPONG_OK                0
 #define PINGPONG_DELAY_MS          Config::connectionUptimeDelay()
+
 
 
 class ComModule : public QObject
 {
     Q_OBJECT
 
+    enum ComModuleFlag { Unconnected, Connected, TimeOut };
+
 public:
+    int _numberOfMissingPingPong;
+    ComModuleFlag _connectionFlag;
     static ComModule* getInstance(QObject *parent = 0);
     static QMap<int, QString> connectionStatusMessage;
 
@@ -90,8 +94,9 @@ private:
     QQueue<QString> _sendBuffer;
     QTimer _sendTimer;
     int _currentLineNumber;
-    u_int8_t _numberOfMissingPingPong;
+
     QTimer _pingPongTimer;
+
 
 };
 

@@ -6,6 +6,7 @@ ProcessLevelingPage::ProcessLevelingPage(QWidget *parent) :
     ui(new Ui::ProcessLevelingPage)
 {
     ui->setupUi(this);
+    this->setAttribute(Qt::WA_DeleteOnClose);
 }
 
 bool ProcessLevelingPage::generateRotationMatrix()

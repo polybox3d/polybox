@@ -9,9 +9,12 @@ Console::Console(QWidget *parent) :
     _displayInput = false;
     _displayOutput = false;
     ui->setupUi(this);
-    connect( ComModule::getInstance(), SIGNAL(newData(QByteArray)), this, SLOT(parseData(QByteArray)) );
+
+    connect( Polyplexer::getInstance(), SIGNAL(dataBasicReady(QByteArray)), this, SLOT(addBasicData(QByteArray)) );
+    connect( Polyplexer::getInstance(), SIGNAL(dataPolyboxReady(QByteArray)), this, SLOT(addPolyData(QByteArray)) );
+
     connect( ComModule::getInstance(), SIGNAL(disconnected()), this, SLOT(deleteLater()) );
-    connect( ComModule::getInstance(), SIGNAL(dataWritten(QString)), this, SLOT(dataWritten(QString)) );
+    connect( Polyplexer::getInstance(), SIGNAL(dataWritten(QString)), this, SLOT(dataWritten(QString)) );
     this->setAttribute(Qt::WA_DeleteOnClose);
 }
 
@@ -20,11 +23,17 @@ Console::~Console()
     delete ui;
 }
 
-void Console::parseData(QByteArray data)
+void Console::addBasicData(QByteArray data)
 {
     /** User doesn't want to display input data **/
     if ( ! ui->inputCB->isChecked() )
         return;
+
+    /** Display basic data ?**/
+    if ( !ui->basicData->isChecked() )
+    {
+        return;
+    }
     /** Clear buffer sometime **/
     if (ui->displaySerial->toPlainText().size() > 100000000)
     {
@@ -32,6 +41,26 @@ void Console::parseData(QByteArray data)
     }
     /** append data with specific color **/
     ui->displaySerial->setTextColor( QColor( "green" ) );
+    ui->displaySerial->append( data );
+}
+
+void Console::addPolyData(QByteArray data)
+{
+    /** User doesn't want to display input data **/
+    if ( ! ui->inputCB->isChecked() )
+        return;
+    /** Display poly data ?**/
+    if ( !ui->polyData->isChecked() )
+    {
+        return;
+    }
+    /** Clear buffer sometime **/
+    if (ui->displaySerial->toPlainText().size() > 100000000)
+    {
+        ui->displaySerial->clear();
+    }
+    /** append data with specific color **/
+    ui->displaySerial->setTextColor( QColor( "blue" ) );
     ui->displaySerial->append( data );
 }
 
@@ -109,9 +138,4 @@ void Console::on_outputCB_toggled(bool checked)
 void Console::on_inputCB_toggled(bool checked)
 {
     _displayInput = checked;
-}
-
-void Console::on_polyCode_clicked()
-{
-
 }

@@ -25,6 +25,8 @@ ComModule::ComModule(QObject *parent) :
 {
     _connectionUptime = 0;
     _currentLineNumber = 0;
+    _connectionFlag = Unconnected;
+    _numberOfMissingPingPong = 0;
 
     connect( &_pingPongTimer, SIGNAL(timeout()), this, SLOT(pingPong()));
     connect( &_sendTimer, SIGNAL(timeout()), this, SLOT(sendBufferedData()));
@@ -68,7 +70,7 @@ void ComModule::initConnectionStatusMessage()
 
 bool ComModule::isConnected()
 {
-    return Polyplexer::isConnected() && ComModule::getInstance()->_numberOfMissingPingPong <= PINGPONG_MAX_TRIES;
+    return Polyplexer::isConnected() && (ComModule::getInstance()->_connectionFlag == Connected);
 }
 
 Polyplexer::ConnectionStatus ComModule::connectionGUI(bool blocked_thread)
@@ -91,7 +93,8 @@ void ComModule::stopConnection()
 
     _connectionUptime = 0;
     _currentLineNumber = 0;
-    _numberOfMissingPingPong = PINGPONG_NOT_CONNECTED;
+    _numberOfMissingPingPong = 0;
+    _connectionFlag = Unconnected;
 }
 
 void ComModule::beginConnection()
@@ -104,14 +107,15 @@ void ComModule::beginConnection()
     ComModule::getInstance(this)->sendMCode( MCODE_RESET_LINE_NUMBER );
     //ComModule::getInstance(this)->sendMCode( MCODE_RESET_SLAVES );
 
-    loop.startClosedLoop( 5000 );
+    loop.startClosedLoop( 500 );
 
     ComModule::getInstance(this)->sendMCode( MCODE_START_CONNECTION );
 
-    loop.startClosedLoop( 2000 );
+    loop.startClosedLoop( 3000 );
 
 
-    _numberOfMissingPingPong = PINGPONG_NOT_CONNECTED;
+    _numberOfMissingPingPong = 0;
+    _connectionFlag = Unconnected;
     _pingPongTimer.start( PINGPONG_DELAY_MS );
     PolyboxModule::getInstance()->globalModule()->resetError();
 
@@ -121,7 +125,7 @@ Polyplexer::ConnectionStatus ComModule::checkPingPongConnection()
 {
     // We need to wait the end of ping/pong process. It's an closed loop, we process QtEvent and check if the connection is active
     ClosedLoopTimer closed_loop;
-    if ( closed_loop.startClosedLoop( Config::connectionUptimeDelay()*PINGPONG_MAX_TRIES*5, ComModule::isConnected ))
+    if ( closed_loop.startClosedLoop( Config::connectionUptimeDelay()*PINGPONG_MAX_TRIES+(Config::connectionUptimeDelay()*2), ComModule::isConnected ))
     {
         Logger::startConnection( true );
         return Polyplexer::Connected;
@@ -161,7 +165,8 @@ void ComModule::parseMCode(QByteArray stream)
     {
     case MCODE_PING_PONG:
     {
-        _numberOfMissingPingPong = PINGPONG_OK;
+        _numberOfMissingPingPong = 0;
+        _connectionFlag = Connected;
     }
         break;
     default:
@@ -174,17 +179,30 @@ void ComModule::pingPong()
 {
     if ( Polyplexer::isConnected() )
     {
-        _numberOfMissingPingPong++;
-        sendMCode( MCODE_PING_PONG );
-        // too much missing ping/pong or still not connected status (when just connected and waiting for 1st pong back)
-        if ( _numberOfMissingPingPong > PINGPONG_MAX_TRIES && _numberOfMissingPingPong > PINGPONG_NOT_CONNECTED+PINGPONG_MAX_TRIES )
+        if ( (_numberOfMissingPingPong > PINGPONG_MAX_TRIES) )
         {
-            if ( _numberOfMissingPingPong < PINGPONG_NOT_CONNECTED )
-            {
+            /*if ( _connectionFlag == Connected )
+            {*/
                 MainWindow::errorWindow( tr("Une erreur est survenue. La machine ne répond plus aux messages depuis un certain temps.\n Veuillez vous reconnecter.\n"));
-            }
-            _numberOfMissingPingPong = PINGPONG_NOT_CONNECTED;
-            Polyplexer::getInstance()->disconnect();
+
+                if ( Config::decoWhenPingPongOff() )
+                {
+                    this->_sendBuffer.clear();
+                    _connectionFlag = Unconnected;
+                    Polyplexer::getInstance()->disconnect();
+                }
+                _numberOfMissingPingPong = 0;
+
+            /*}
+            else
+            {
+
+            }*/
+        }
+        else
+        {
+            _numberOfMissingPingPong++;
+            sendMCode( MCODE_PING_PONG );
         }
     }
     else

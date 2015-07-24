@@ -11,6 +11,7 @@ LevelingWizard::LevelingWizard(QWidget *parent) :
 
     setWindowTitle(tr("Leveling Software"));
     this->setFixedSize( 540, 410 );
+    this->setAttribute(Qt::WA_DeleteOnClose);
 }
 void LevelingWizard::accept()
 {

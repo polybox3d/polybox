@@ -187,6 +187,15 @@ QHostAddress Config::serverListeningAddress()
     QHostAddress h(s);
     return h;
 }
+bool Config::decoWhenPingPongOff()
+{
+    return Config::get(CONNECTION_GROUP,"decoWhenPingPongOff", true).toBool();
+}
+
+int Config::pingPongMaxTries()
+{
+    return Config::get(CONNECTION_GROUP,"pingPongMaxTries", 5).toInt();
+}
 
 quint16 Config::serverListeningPort()
 {

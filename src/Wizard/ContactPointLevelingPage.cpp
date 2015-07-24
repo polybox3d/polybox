@@ -7,9 +7,12 @@ ContactPointLevelingPage::ContactPointLevelingPage(QWidget *parent) :
     QWizardPage(parent),
     ui(new Ui::ContactPointLevelingPage)
 {
+    this->setAttribute(Qt::WA_DeleteOnClose);
     _id = (ContactPointLevelingPage::next_id++);
     _contactor = false;
     ui->setupUi(this);
+    connect(&_getUpdateTimer,SIGNAL(timeout()),this, SLOT(getUpdates()));
+    _getUpdateTimer.start( 1000 );
 
 }
 
@@ -27,8 +30,28 @@ void ContactPointLevelingPage::initializePage()
 void ContactPointLevelingPage::parseMCode(QByteArray stream)
 {
     QString str(stream);
+    long value = SerialPort::embeddedstr2l( str, 0 );
     int idx = 0;
     int size = str.size();
+
+    switch ( value )
+    {
+    case MCODE_CONTACT_POINT_STATE:
+    {
+        SerialPort::nextField( str, idx);
+        bool z = false;
+        SerialPort::parseTrueFalse( &z, str[idx] );
+        if ( z )
+        {
+            ui->startContactProcess->setEnabled( true );
+        }
+    }
+        break;
+    default:
+        break;
+    }
+
+    /*
 
     if ( stream.contains("Z-probe state:"))
     {
@@ -69,7 +92,7 @@ void ContactPointLevelingPage::parseMCode(QByteArray stream)
         ui->x_pos->setText(QString::number(x));
         ui->y_pos->setText(QString::number(y));
         ui->z_pos->setText(QString::number(z));
-    }
+    }*/
 
 }
 void ContactPointLevelingPage::saveProbing(float x, float  y, float z)
@@ -125,8 +148,17 @@ void ContactPointLevelingPage::setupField()
 
 }
 
+void ContactPointLevelingPage::getUpdates()
+{
+    if ( this->isVisible() )
+    {
+        ComModule::getInstance()->sendMCode(QString::number(MCODE_CONTACT_POINT_STATE));
+    }
+}
+
 void ContactPointLevelingPage::on_startContactProcess_clicked()
 {
-    ComModule::getInstance()->sendMCode(QString::number(MCODE_SEND_GCODE)+" "+QString::number(GCODE_SINGLE_ZPROBE));
+    _getUpdateTimer.stop();
+    //ComModule::getInstance()->sendMCode(QString::number(MCODE_SEND_GCODE)+" "+QString::number(GCODE_SINGLE_ZPROBE));
 }
 
