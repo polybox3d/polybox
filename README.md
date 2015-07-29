@@ -1,4 +1,5 @@
-[![Stories in Ready](https://badge.waffle.io/polybox3d/polybox.png?label=ready&title=Ready)](https://waffle.io/polybox3d/polybox)
+
+[![License](http://img.shields.io/:license-gpl-blue.svg?style=flat)](http://opensource.org/licenses/GPL-2.0) [![Stories in Ready](https://badge.waffle.io/polybox3d/polybox.png?label=ready&title=Ready)](https://waffle.io/polybox3d/polybox)
 polybox
 =======
 
