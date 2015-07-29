@@ -39,18 +39,25 @@ void SerialPort::setPath(QString path)
 
 bool SerialPort::connectToSerialPort()
 {
-    this->setPortName(_path+_name );
-
-    if ( this->open(QIODevice::ReadWrite) == true)
+    if (!this->isOpen())
     {
-        cout << _path.toStdString().c_str() << _name.toStdString().c_str() << endl;
-        return true;
+        this->setPortName(_path+_name );
+
+        if ( this->open(QIODevice::ReadWrite) == true)
+        {
+            //cout << _path.toStdString().c_str() << _name.toStdString().c_str() << endl;
+            return true;
+        }
+        else
+        {
+            cout << _path.toStdString().c_str() << _name.toStdString().c_str() << endl;
+            cout << "device failed to open:" << this->errorString().toStdString().c_str();
+            return false;
+        }
     }
     else
     {
-        cout << _path.toStdString().c_str() << _name.toStdString().c_str() << endl;
-        cout << "device failed to open:" << this->errorString().toStdString().c_str();
-        return false;
+     cout << "Already Open" << endl;
     }
 
 }
@@ -68,9 +75,9 @@ void SerialPort::disconnectPort()
     if ( this->isOpen() )
     {
         //this->sendMCode( MCODE_END_CONNECTION );
-        this->flush();
+       // this->flush();
         this->close();
-        emit disconnected();
+        //emit disconnected();
     }
 }
 

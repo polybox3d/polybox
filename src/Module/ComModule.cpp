@@ -89,7 +89,7 @@ Polyplexer::ConnectionStatus ComModule::connectionGUI(bool blocked_thread)
 
 void ComModule::stopConnection()
 {
-    Polyplexer::getInstance()->stop();
+//    Polyplexer::getInstance()->stop();
 
     _connectionUptime = 0;
     _currentLineNumber = 0;
@@ -100,7 +100,7 @@ void ComModule::stopConnection()
 void ComModule::beginConnection()
 {
     ClosedLoopTimer loop;
-    loop.startClosedLoop( 3000 );
+    loop.startClosedLoop( 500 );
     _currentLineNumber = 0;
     _sendBuffer.clear();
     _sendTimer.start( Config::sendBufferTimer() );
@@ -111,7 +111,7 @@ void ComModule::beginConnection()
 
     ComModule::getInstance(this)->sendMCode( MCODE_START_CONNECTION );
 
-    loop.startClosedLoop( 3000 );
+    loop.startClosedLoop( 1000 );
 
 
     _numberOfMissingPingPong = 0;

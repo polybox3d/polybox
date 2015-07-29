@@ -36,9 +36,14 @@ public:
 
     void setConnector(QIODevice* connector);
     void setConnectorType(ConnectorType connector_type);
-    Polyplexer::ConnectionStatus start(QIODevice* connector, ConnectorType connector_type);
-    Polyplexer::ConnectionStatus start(ConnectorType connector_type);
 
+    Polyplexer::ConnectionStatus start(ConnectorType connector_type);
+    void startStop();
+
+private:
+    Polyplexer::ConnectionStatus start(QIODevice* connector, ConnectorType connector_type);
+
+    public:
     void stop();
 
     /** Data & Parse **/
@@ -58,6 +63,7 @@ public slots:
     void sendData(QString data);
     void sendDataArray(QByteArray data);
     void disConnect();
+    void onReadyRead();
 
 
 
@@ -67,6 +73,7 @@ private:
     static Polyplexer* _instance;
 
     QIODevice* _connector;
+    QextSerialPort *port;
     QByteArray _rcp_data;
     QByteArray _dataBasic;
     QByteArray _dataPolybox;

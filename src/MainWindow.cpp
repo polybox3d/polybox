@@ -112,7 +112,7 @@ void MainWindow::closeEvent(QCloseEvent *event)
                               , this );
         if ( m_close.exec() )
         {
-            Polyplexer::getInstance( this )->disconnect(); // @todo internal_
+            Polyplexer::getInstance( this )->disConnect(); // @todo internal_
             //Polyplexer::getInstance()->stop();  // @todo master
             event->accept();
         }
@@ -222,7 +222,7 @@ MainWindow::~MainWindow()
     {
         Polyplexer::getInstance()->stop();
     }
-    delete ui;
+    //delete ui;
 }
 void MainWindow::setupSerialMenu()
 {
@@ -270,7 +270,7 @@ void MainWindow::startConnexion()
         }
         else
         {
-            poly->disconnect();
+            //@todo poly->disconnect();
             Config::setSerialPortName( act->text().split('/').last() );
 
             int connected = ComModule::getInstance()->connectionGUI( Config::blockedConnectionThread() );
@@ -559,6 +559,8 @@ void MainWindow::updateStatePage()
         if ( _polyfabscan->isVisible() )
             break;
         _polyfabscan->show();
+        _polyfabscan->activateWindow();
+        _polyfabscan->raise();
 #endif
         /*QProcess* laser = new QProcess(this);
         laser->start( Config::scannerLaserPath );*/
@@ -704,7 +706,7 @@ void MainWindow::on_actionStart_Client_Mode_toggled(bool arg1)
         {
             QTcpSocket* client = new QTcpSocket();
             client->connectToHost( Config::broadcastIP(), Config::broadcastPort());
-            Polyplexer::getInstance(this)->start( client, Polyplexer::Tcp);
+            //@todo Polyplexer::getInstance(this)->start( client, Polyplexer::Tcp);
             this->updateHardware();
         }
         else
