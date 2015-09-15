@@ -19,7 +19,7 @@
      <x>200</x>
      <y>20</y>
      <width>191</width>
-     <height>211</height>
+     <height>221</height>
     </rect>
    </property>
    <property name="title">
@@ -220,6 +220,32 @@
     <property name="text">
      <string>Bloc outil branché</string>
     </property>
+   </widget>
+   <widget class="QWidget" name="horizontalLayoutWidget">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>180</y>
+      <width>171</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <layout class="QHBoxLayout" name="horizontalLayout_2">
+     <item>
+      <widget class="QRadioButton" name="printerMode">
+       <property name="text">
+        <string>Printer</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QRadioButton" name="cncMode">
+       <property name="text">
+        <string>CNC</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
    </widget>
   </widget>
   <widget class="QGroupBox" name="groupBox_2">

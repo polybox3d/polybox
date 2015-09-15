@@ -124,7 +124,10 @@ SOURCES += main.cpp\
     Module/ComModule.cpp\
     Page/ExtruderDock.cpp \
     Connector.cpp \
-    Widget/LaserDockWidget.cpp
+    Widget/LaserDockWidget.cpp \
+    Page/MonitoringPage.cpp \
+    Monitoring/ComputerMonitoring.cpp \
+    Monitoring/SelfMonitoring.cpp
 
 HEADERS  += MainWindow.h \
         Updater.h \
@@ -201,7 +204,10 @@ HEADERS  += MainWindow.h \
     TCPClient.h\
     Page/ExtruderDock.h \
     Connector.h \
-    Widget/LaserDockWidget.h
+    Widget/LaserDockWidget.h \
+    Page/MonitoringPage.h \
+    Monitoring/ComputerMonitoring.h \
+    Monitoring/SelfMonitoring.h
 
 
 FORMS    += MainWindow.ui \
@@ -239,7 +245,8 @@ FORMS    += MainWindow.ui \
     Page/AxisControlDock.ui \
     Widget/DockHost.ui \
     Page/ExtruderDock.ui \
-    Widget/LaserDockWidget.ui
+    Widget/LaserDockWidget.ui \
+    Page/MonitoringPage.ui
 
 RESOURCES += \
     ressources.qrc

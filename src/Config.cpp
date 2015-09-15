@@ -34,6 +34,28 @@ int Config::updateModuleTimer()
 }
 
 
+/**************************************************************************
+ *              MONITORING_GROUP
+ * ***********************************************************************/
+
+int Config::computerMonitoringDelay()
+{
+    return Config::get(MONITORING_GROUP,"computerMonitoringDelay", 5000).toInt();
+}
+
+int Config::softwareMonitoringDelay()
+{
+    return Config::get(MONITORING_GROUP,"softwareMonitoringDelay", 5000).toInt();
+}
+
+int Config::firmwareMonitoringDelay()
+{
+    return Config::get(MONITORING_GROUP,"firmwareMonitoringDelay", 5000).toInt();
+}
+QString Config::pathToMonitoring()
+{
+    return Config::get(MONITORING_GROUP,"pathToMonitoring", "./").toString();
+}
 
 /**************************************************************************
  *              SETTINGS_GROUP
