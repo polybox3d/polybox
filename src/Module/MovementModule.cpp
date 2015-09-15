@@ -164,6 +164,7 @@ void MovementModule::moveRotByMaskRelative(int rot_mask, int dist, int direction
     command = "M"+QString::number(MCODE_SCANNER_TURN_ROT_X_DEG)
             + " P"+QString::number(rotMask2Id(rot_mask))
             + " S"+QString::number(direction)
+            + " R1"
             + " X"+QString::number(dist);
 
     ComModule::getInstance()->sendCode( command );

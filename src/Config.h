@@ -75,6 +75,9 @@ public:
     static QHostAddress serverListeningAddress();
     static quint16 serverListeningPort();
 
+    static QString pathToHorus();
+    static void setPathToHorus( QString path_to_horus);
+
     /**
      * @brief motherboardBaudrate Default baudrate between software and Polybox.
      */

@@ -133,7 +133,11 @@ private:
     QDockWidget* _dockLV;
     QDockWidget* _dockCNC;
     QMainWindow* _dockHost;
+#if !defined NO_SCAN
     PolyFabScanWindow* _polyfabscan;
+#else
+    void* _polyfabscan;
+#endif
     TCPServer _tcp_server;
     Led _connectedLed;
     QLabel* _statusMessage;

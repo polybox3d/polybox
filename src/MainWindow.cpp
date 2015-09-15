@@ -77,8 +77,9 @@ MainWindow::MainWindow(Qt::WindowFlags window_flags, QWidget *parent) :
     setupSerialMenu();
 
     MaintenanceChecker::check();
-    _polyfabscan = PolyFabScanWindow::getInstance();
-    _polyfabscan->setWindowFlags(Qt::NoDropShadowWindowHint| Qt::Window);
+    _polyfabscan = NULL;
+    //_polyfabscan = PolyFabScanWindow::getInstance();
+    //_polyfabscan->setWindowFlags(Qt::NoDropShadowWindowHint| Qt::Window);
     //_polyfabscan->setAttribute(Qt::WA_DeleteOnClose);
 }
 
@@ -447,13 +448,13 @@ void MainWindow::updateStatePage()
         bool scanner_ok = _polybox->isScannerReady();
         if ( scanner_ok || Config::bypassCheck() )
         {
-            CHANGE_PAGE( ScannerLaser );
-           /* DialogScanner dialog((QWidget*)this->parent());
+            //CHANGE_PAGE( ScannerLaser );
+            DialogScanner dialog((QWidget*)this->parent());
             int value_ret = dialog.exec();
             if ( value_ret != 0 )
             {
                 CHANGE_PAGE( static_cast<PageState>(value_ret) );
-            }*/
+            }
         }
         else
         {
@@ -551,10 +552,13 @@ void MainWindow::updateStatePage()
 
         this->setCentralWidget( new ConfigCNCPage( this ) );
         break;
-    case ScannerLaser :
+    case FabScan :
     {
 #if !defined NO_SCAN
  //this->setCentralWidget( new FsMainWindow( _polybox->port(), this ) );
+
+        if ( _polyfabscan == NULL)
+            return;
 
         if ( _polyfabscan->isVisible() )
             break;
@@ -580,6 +584,33 @@ void MainWindow::updateStatePage()
         _dockHost = new DockHost( this );
         connect(_dockHost, SIGNAL(destroyed(QObject*)),this,SLOT(destroyWindow(QObject*)));
         _dockHost->show();
+        break;
+    }
+    case Horus:
+    {
+        QProcess* horus = new QProcess(this);
+
+        QString command = "python";
+        QStringList parameters;
+        parameters << Config::pathToHorus();
+
+        horus->start( command, parameters );
+
+        horus->waitForStarted(1000);
+        if ( horus->waitForFinished(1000) )
+        {
+            if ( horus->exitCode() == 2 )
+            {
+                MainWindow::errorWindow( tr("\n\nImpossible de lancer le programme de scan3D Horus."
+                                            "Veuillez vérifier que le chemin d'accès est correct.\n\n"
+                                            "Configuration > Paramètres logiciel \n\n")+horus->readAllStandardError()+"\n\n" );
+
+                QString path = QFileDialog::getOpenFileName(MainWindow::getMainWindow(),
+                                                            tr("Open Printer Executable"),
+                                              Config::runtimePath());
+                Config::setPathToHorus( path );
+            }
+        }
         break;
     }
     default:

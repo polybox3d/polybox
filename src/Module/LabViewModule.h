@@ -37,6 +37,7 @@ public:
     virtual void parseMCode(QByteArray stream);
 
     void setCamera( QString cam );
+    QString selectedCamera();
     void startCamera();
     void startRecording();
     void startBoardcast();

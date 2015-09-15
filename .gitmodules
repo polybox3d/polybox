@@ -8,3 +8,6 @@
 [submodule "externals/Polyplexer"]
 	path = externals/Polyplexer
 	url = https://github.com/skapin/Polyplexer.git
+[submodule "externals/horus"]
+	path = externals/horus
+	url = git://github.com/polybox3d/horus.git

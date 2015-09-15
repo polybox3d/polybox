@@ -52,7 +52,7 @@ void LabViewModule::sendController(LabViewController c)
 
 QStringList LabViewModule::getAllCamera(QString path_directory)
 {
-    /*
+/*
     QList<QByteArray> cameras = QCamera::availableDevices();
     QStringList list_cameras;
     foreach(const QByteArray &deviceName, cameras )
@@ -105,6 +105,11 @@ bool LabViewModule::isReady() const
 void LabViewModule::setCamera(QString cam)
 {
     _selectedCamera = cam;
+}
+
+QString LabViewModule::selectedCamera()
+{
+    return _selectedCamera;
 }
 
 QProcess* LabViewModule::startCamera(QProcess* process, QString camera)

@@ -205,7 +205,18 @@ quint16 Config::serverListeningPort()
 /**************************************************************************
  *              SCANNER_GROUP
  * ***********************************************************************/
+QString Config::pathToHorus()
+{
+    return Config::get(SCANNER_GROUP,"pathToHorus", Config::runtimePath()+"/externals/horus/src/horus.py").toString();
+}
 
+void Config::setPathToHorus( QString path_to_horus)
+{
+    if ( QFile::exists( path_to_horus ) )
+    {
+        Config::set(SCANNER_GROUP,"pathToHorus", path_to_horus);
+    }
+}
 /**************************************************************************
  *              CNC_GROUP
  * ***********************************************************************/

@@ -185,6 +185,7 @@ void ComModule::pingPong()
             {*/
                 if ( Config::decoWhenPingPongOff() )
                 {
+                    _connectionUptime = 0;
                     this->_sendBuffer.clear();
                     _connectionFlag = Unconnected;
                     Polyplexer::getInstance()->disconnect();
@@ -192,7 +193,7 @@ void ComModule::pingPong()
                 }
                 else
                 {
-                    MainWindow::errorWindow( tr("Une erreur est survenue. La machine ne répond plus aux messages depuis un certain temps.\n"));
+                    //MainWindow::errorWindow( tr("Une erreur est survenue. La machine ne répond plus aux messages depuis un certain temps.\n"));
                 }
                 _numberOfMissingPingPong = 0;
 
@@ -204,6 +205,7 @@ void ComModule::pingPong()
         }
         else
         {
+            _connectionUptime+= (_pingPongTimer.interval()/1000);
             _numberOfMissingPingPong++;
             sendMCode( MCODE_PING_PONG );
         }

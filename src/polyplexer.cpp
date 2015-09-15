@@ -13,8 +13,8 @@ Polyplexer::Polyplexer(QObject *parent) :
     /*PortSettings settings = {BAUD115200, DATA_8, PAR_NONE, STOP_1, FLOW_OFF, 10};
     port = new QextSerialPort("/dev/ttyACM0", settings, QextSerialPort::EventDriven);
     connect(port, SIGNAL(readyRead()), SLOT(parseData()));
-    startStop();
-/*
+    startStop();*/
+
     // external TCP connector
     Connector* printer_software = new Connector( this ) ;
     SerialPort* printer_tcp = new SerialPort( this );
@@ -50,7 +50,7 @@ Polyplexer::Polyplexer(QObject *parent) :
     connect( this, SIGNAL(dataBasicReady(QByteArray)), serial_software, SLOT(sendData(QByteArray)));
     connect( serial_software, SIGNAL(dataReady(QByteArray)), this, SLOT(sendDataArray(QByteArray)));
     connect( this, SIGNAL(connectorClosing()), serial_software, SLOT(close()));
-    */
+
 }
 
 void Polyplexer::startStop()
