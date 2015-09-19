@@ -26,6 +26,7 @@ public:
 
     QTimer _updateTimer;
 signals:
+    void updateUI();
 
 public slots:
 

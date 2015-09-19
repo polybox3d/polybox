@@ -91,7 +91,7 @@ enum MCodeFlags
 #define MCODE_GLOBAL_GET_GYRO_RELATIF           694
 #define MCODE_GLOBAL_SET_GYRO_OFFSET            695
 #define MCODE_GLOBAL_MOVE_MOTOR_ANGLE           696
-
+#define MCODE_GLOBAL_SET_MODE                   697
 #define MCODE_PING_PONG                         703
 #define MCODE_RESET_SLAVES                      704
 #define MCODE_END_CONNECTION                    705

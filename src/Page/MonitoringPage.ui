@@ -23,7 +23,7 @@
     </rect>
    </property>
    <property name="currentIndex">
-    <number>1</number>
+    <number>0</number>
    </property>
    <widget class="QWidget" name="computerTab">
     <attribute name="title">
@@ -82,8 +82,8 @@ color: rgb(85, 170, 255);</string>
        <rect>
         <x>20</x>
         <y>90</y>
-        <width>351</width>
-        <height>101</height>
+        <width>381</width>
+        <height>71</height>
        </rect>
       </property>
       <property name="text">
@@ -134,6 +134,26 @@ color: rgb(85, 170, 255);</string>
       </property>
       <property name="value">
        <number>24</number>
+      </property>
+     </widget>
+     <widget class="QLabel" name="ramDisplay">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>80</y>
+        <width>321</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">font: 75 14pt &quot;MS Shell Dlg 2&quot;;
+color: rgb(85, 170, 255);</string>
+      </property>
+      <property name="text">
+       <string>RAM</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
       </property>
      </widget>
     </widget>
@@ -292,9 +312,6 @@ color: rgb(85, 170, 255);</string>
        <string>CPU</string>
       </property>
      </widget>
-     <zorder>cpuBar_4</zorder>
-     <zorder>cpuLabel_3</zorder>
-     <zorder>ramFrame_2</zorder>
     </widget>
     <widget class="QFrame" name="infoFrame">
      <property name="geometry">

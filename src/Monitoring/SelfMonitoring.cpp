@@ -37,7 +37,7 @@ void SelfMonitoring::stop()
 
 void SelfMonitoring::update()
 {
-
+    emit updateUI();
 }
 
 

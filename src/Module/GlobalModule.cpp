@@ -27,8 +27,8 @@ void GlobalModule::initAll()
 }
 void GlobalModule::changePolyMode(PolyMode new_mode)
 {
-    _mode = new_mode;
-    ComModule::getInstance()->sendMCode("TODO");
+    _polyMode = new_mode;
+    ComModule::getInstance()->sendMCode(QString(MCODE_GLOBAL_SET_MODE)+ " S"+QString::number((int)new_mode));
 }
 
 void GlobalModule::parseMCode(QByteArray stream)

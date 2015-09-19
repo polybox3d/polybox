@@ -42,6 +42,7 @@
 #include "Led.h"
 #include "Logger.h"
 #include "DockHost.h"
+#include "MonitoringPage.h"
 
 #include "MaintenanceChecker.h"
 

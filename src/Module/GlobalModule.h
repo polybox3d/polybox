@@ -14,7 +14,7 @@ class GlobalModule : public QObject, public AbstractModule
     Q_OBJECT
 public:
 
-    enum PolyMode { PrinterMode, CNCMode };
+    enum PolyMode { PrinterMode=2, CNCMode=1 };
 
     explicit GlobalModule(PolyboxModule* polybox, QObject *parent = 0);
 
@@ -68,7 +68,7 @@ private:
     bool _webcamPlugged;
     int _ram;
     unsigned int _error;
-    polyMode _polyMode;
+    PolyMode _polyMode;
 
     Temperature _tempIC;
     ///tempIC

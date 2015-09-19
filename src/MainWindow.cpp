@@ -586,6 +586,12 @@ void MainWindow::updateStatePage()
         _dockHost->show();
         break;
     }
+    case Monitoring :
+        delete this->centralWidget();
+        qApp->processEvents();
+
+        this->setCentralWidget( new MonitoringPage( this ) );
+        break;
     case Horus:
     {
         QProcess* horus = new QProcess(this);
