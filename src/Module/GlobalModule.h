@@ -13,6 +13,9 @@ class GlobalModule : public QObject, public AbstractModule
 {
     Q_OBJECT
 public:
+
+    enum PolyMode { PrinterMode=2, CNCMode=1 };
+
     explicit GlobalModule(PolyboxModule* polybox, QObject *parent = 0);
 
     virtual bool isReady() const ;
@@ -34,9 +37,11 @@ public:
     bool webcamPlugged() const;
     int ram() const;
     unsigned int error() const;
+    PolyMode polyMode() const;
     void resetError();
 
     Temperature tempIC();
+    void changePolyMode( PolyMode new_mode );
 
     virtual void parseMCode(QByteArray stream);
 
@@ -63,6 +68,7 @@ private:
     bool _webcamPlugged;
     int _ram;
     unsigned int _error;
+    PolyMode _polyMode;
 
     Temperature _tempIC;
     ///tempIC

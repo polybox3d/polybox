@@ -36,6 +36,11 @@ public:
 
 public slots:
     void updateUI();
+private slots:
+    void on_cncMode_clicked();
+
+    void on_printerMode_clicked();
+
 private:
     /**
      * @brief ui Graphical layer.

@@ -37,6 +37,7 @@ public:
 #define GUI_TIMER_GROUP "GUI_TIMER"
 #define ERRORS_GROUP "ERRORS"
 #define CHECKER_GROUP "CHECKER"
+#define MONITORING_GROUP "MONITORING"
 #define QSETTINGS_LOAD_AND_SAVE 1
 
 #define POWER_SUPPLY_ENABLE_PIN_0 51 // pin 51 master
@@ -74,6 +75,15 @@ public:
 
     static QHostAddress serverListeningAddress();
     static quint16 serverListeningPort();
+
+    static QString pathToHorus();
+    static void setPathToHorus( QString path_to_horus);
+
+    static int computerMonitoringDelay();
+    static int softwareMonitoringDelay();
+    static int firmwareMonitoringDelay();
+
+    static QString pathToMonitoring();
 
     /**
      * @brief motherboardBaudrate Default baudrate between software and Polybox.

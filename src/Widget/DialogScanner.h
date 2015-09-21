@@ -24,11 +24,11 @@ private slots:
     /**
      * @brief on_laser_clicked Called when the user click on laser scanner. Close the dialog and return ScannerLaser value.
      */
-    void on_laser_clicked();
+//    void on_laser_clicked();
     /**
      * @brief on_primesense_clicked Called when the user click on primesense scanner. Close the dialog and return  XXX value value.
      */
-    void on_primesense_clicked();
+//    void on_primesense_clicked();
     /**
      * @brief on_close_clicked Close the dialog...
      */
@@ -37,6 +37,10 @@ private slots:
      * @brief on_goBackHelp_clicked Close the dialog and open help page.
      */
     void on_goBackHelp_clicked();
+
+    void on_horus_clicked();
+
+    void on_fabscan_clicked();
 
 private:
     /**

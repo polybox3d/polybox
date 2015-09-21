@@ -65,5 +65,22 @@ void GlobalChecker::updateUI()
        ui->ramValue->setText( QString::number(_global->ram()) );
        ui->uptime->setText(QString::number(ComModule::getInstance(this)->_connectionUptime/60)+'\'' );
        ui->errorValue->setText( QString::number(_global->error()) );
+       if ( _global->polyMode() == GlobalModule::PrinterMode )
+       {
+           ui->printerMode->setChecked( true );
+           ui->cncMode->setChecked( false );
+       }
     }
+}
+
+void GlobalChecker::on_cncMode_clicked()
+{
+    if ( ui->cncMode->isChecked() )
+        _global->changePolyMode( GlobalModule::CNCMode);
+}
+
+void GlobalChecker::on_printerMode_clicked()
+{
+    if ( ui->printerMode->isChecked() )
+        _global->changePolyMode( GlobalModule::PrinterMode);
 }

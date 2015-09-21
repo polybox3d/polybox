@@ -34,6 +34,28 @@ int Config::updateModuleTimer()
 }
 
 
+/**************************************************************************
+ *              MONITORING_GROUP
+ * ***********************************************************************/
+
+int Config::computerMonitoringDelay()
+{
+    return Config::get(MONITORING_GROUP,"computerMonitoringDelay", 5000).toInt();
+}
+
+int Config::softwareMonitoringDelay()
+{
+    return Config::get(MONITORING_GROUP,"softwareMonitoringDelay", 5000).toInt();
+}
+
+int Config::firmwareMonitoringDelay()
+{
+    return Config::get(MONITORING_GROUP,"firmwareMonitoringDelay", 5000).toInt();
+}
+QString Config::pathToMonitoring()
+{
+    return Config::get(MONITORING_GROUP,"pathToMonitoring", "./").toString();
+}
 
 /**************************************************************************
  *              SETTINGS_GROUP
@@ -205,7 +227,18 @@ quint16 Config::serverListeningPort()
 /**************************************************************************
  *              SCANNER_GROUP
  * ***********************************************************************/
+QString Config::pathToHorus()
+{
+    return Config::get(SCANNER_GROUP,"pathToHorus", Config::runtimePath()+"/externals/horus/src/horus.py").toString();
+}
 
+void Config::setPathToHorus( QString path_to_horus)
+{
+    if ( QFile::exists( path_to_horus ) )
+    {
+        Config::set(SCANNER_GROUP,"pathToHorus", path_to_horus);
+    }
+}
 /**************************************************************************
  *              CNC_GROUP
  * ***********************************************************************/

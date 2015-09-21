@@ -190,3 +190,8 @@ void ModulePage::on_shareButton_2_clicked()
 {
     CHANGE_PAGE( DockPage );
 }
+
+void ModulePage::on_monitoringButton_clicked()
+{
+    CHANGE_PAGE( Monitoring );
+}

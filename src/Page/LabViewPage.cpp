@@ -74,8 +74,17 @@ void LabViewPage::loadCameras()
     //1 or more camera detected, we setup UI
     if ( ui->cameraSelector->count() > 0 )
     {
-        _labview->setCamera( ui->cameraSelector->currentText() );
+        QString camera = _labview->selectedCamera();
+        if ( camera.isEmpty() )
+        {
+            _labview->setCamera( ui->cameraSelector->currentText() );
+        }
+        else
+        {
+            ui->cameraSelector->setCurrentText( camera );
+        }
         ui->startRecording->setEnabled( true );
+
         ui->startVisu->setEnabled( true );
         ui->startBroadcast->setEnabled( true );
     }

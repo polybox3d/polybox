@@ -23,6 +23,12 @@ void GlobalModule::initAll()
     _webcamPlugged = false;
     _ram = 0;
     _error = 0;
+    _polyMode = PrinterMode;
+}
+void GlobalModule::changePolyMode(PolyMode new_mode)
+{
+    _polyMode = new_mode;
+    ComModule::getInstance()->sendMCode(QString(MCODE_GLOBAL_SET_MODE)+ " S"+QString::number((int)new_mode));
 }
 
 void GlobalModule::parseMCode(QByteArray stream)
@@ -264,6 +270,10 @@ Temperature GlobalModule::tempIC()
 int GlobalModule::ram() const
 {
     return _ram;
+}
+GlobalModule::PolyMode GlobalModule::polyMode() const
+{
+    return _polyMode;
 }
 unsigned int GlobalModule::error() const
 {

@@ -79,6 +79,8 @@
         <file>img/laser_image.png</file>
         <file>img/copy.png</file>
         <file>img/picture.png</file>
+        <file>img/horus.ico</file>
+        <file>img/horus_logo.png</file>
     </qresource>
     <qresource prefix="/xml">
         <file>ambiances/Autumn.xml</file>

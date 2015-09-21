@@ -31,7 +31,7 @@ void Logger::writeOutputCommand(QString command)
 {
     if ( Config::loggerLevel() >= 4)
     {
-        Logger::getInstance()->logSteam << "[OUT]\t"+command;
+        Logger::getInstance()->logSteam << "[OUT]\t"+command+"\n";
         Logger::getInstance()->logSteam.flush();
     }
 }
@@ -39,7 +39,7 @@ void Logger::writeInputCommand(QString command)
 {
     if ( Config::loggerLevel() >= 4)
     {
-        Logger::getInstance()->logSteam << "[IN]"+command;
+        Logger::getInstance()->logSteam << "[IN]"+command+"\n";
         Logger::getInstance()->logSteam.flush();
     }
 }
@@ -47,7 +47,7 @@ void Logger::write(QString text)
 {
     if ( Config::loggerLevel() >= 2)
     {
-        Logger::getInstance()->logSteam << "-> "+text;
+        Logger::getInstance()->logSteam << "-> "+text+"\n";
         Logger::getInstance()->logSteam.flush();
     }
 }
