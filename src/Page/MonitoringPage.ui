@@ -574,53 +574,6 @@ color: rgb(85, 170, 255);</string>
          </property>
         </widget>
        </item>
-       <item row="1" column="1">
-        <widget class="QLabel" name="basicSend">
-         <property name="minimumSize">
-          <size>
-           <width>50</width>
-           <height>0</height>
-          </size>
-         </property>
-         <property name="text">
-          <string>0</string>
-         </property>
-        </widget>
-       </item>
-       <item row="0" column="1">
-        <widget class="QLabel" name="polySend">
-         <property name="minimumSize">
-          <size>
-           <width>50</width>
-           <height>0</height>
-          </size>
-         </property>
-         <property name="text">
-          <string>0</string>
-         </property>
-        </widget>
-       </item>
-       <item row="1" column="0">
-        <widget class="QLabel" name="frameworkVersion_4">
-         <property name="text">
-          <string>BasicCommand Send</string>
-         </property>
-        </widget>
-       </item>
-       <item row="1" column="2">
-        <widget class="QLabel" name="frameworkVersion_6">
-         <property name="text">
-          <string>BasicCommand Received</string>
-         </property>
-        </widget>
-       </item>
-       <item row="0" column="2">
-        <widget class="QLabel" name="frameworkVersion_5">
-         <property name="text">
-          <string>PolyCommand Received</string>
-         </property>
-        </widget>
-       </item>
        <item row="0" column="3">
         <widget class="QLabel" name="polyReceived">
          <property name="minimumSize">
@@ -634,8 +587,15 @@ color: rgb(85, 170, 255);</string>
          </property>
         </widget>
        </item>
-       <item row="1" column="3">
-        <widget class="QLabel" name="basicReceived">
+       <item row="0" column="2">
+        <widget class="QLabel" name="frameworkVersion_5">
+         <property name="text">
+          <string>PolyCommand Received</string>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="1">
+        <widget class="QLabel" name="polySend">
          <property name="minimumSize">
           <size>
            <width>50</width>

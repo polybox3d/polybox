@@ -6,7 +6,7 @@
 #include <QStringList>
 #include <QProcess>
 #include <QFileDialog>
-#include <QCamera>
+//#include <QCamera>
 //#include <QCameraInfo>
 
 

@@ -17,7 +17,7 @@
    <property name="geometry">
     <rect>
      <x>130</x>
-     <y>90</y>
+     <y>120</y>
      <width>81</width>
      <height>23</height>
     </rect>
@@ -30,7 +30,7 @@
    <property name="geometry">
     <rect>
      <x>10</x>
-     <y>90</y>
+     <y>120</y>
      <width>101</width>
      <height>22</height>
     </rect>
@@ -85,9 +85,9 @@
   <widget class="QLineEdit" name="pinValueInc">
    <property name="geometry">
     <rect>
-     <x>170</x>
+     <x>140</x>
      <y>55</y>
-     <width>41</width>
+     <width>71</width>
      <height>22</height>
     </rect>
    </property>
@@ -112,7 +112,7 @@
    <property name="geometry">
     <rect>
      <x>220</x>
-     <y>90</y>
+     <y>120</y>
      <width>41</width>
      <height>23</height>
     </rect>
@@ -125,13 +125,52 @@
    <property name="geometry">
     <rect>
      <x>270</x>
-     <y>90</y>
+     <y>120</y>
      <width>41</width>
      <height>23</height>
     </rect>
    </property>
    <property name="text">
     <string>255</string>
+   </property>
+  </widget>
+  <widget class="QRadioButton" name="in">
+   <property name="geometry">
+    <rect>
+     <x>230</x>
+     <y>60</y>
+     <width>102</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Input</string>
+   </property>
+  </widget>
+  <widget class="QRadioButton" name="out">
+   <property name="geometry">
+    <rect>
+     <x>230</x>
+     <y>90</y>
+     <width>102</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Output</string>
+   </property>
+  </widget>
+  <widget class="QRadioButton" name="readType">
+   <property name="geometry">
+    <rect>
+     <x>230</x>
+     <y>30</y>
+     <width>102</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>read Type</string>
    </property>
   </widget>
  </widget>

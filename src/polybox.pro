@@ -4,9 +4,9 @@
 #
 #-------------------------------------------------
 
-QT       += core gui xml multimedia multimediawidgets printsupport
+QT       += core gui xml multimedia multimediawidgets printsupport network
 
-greaterThan(QT_MAJOR_VERSION, 4): QT += widgets webkitwidgets
+greaterThan(QT_MAJOR_VERSION, 4): QT += widgets webkit webkitwidgets
 
 TARGET = polybox
 TEMPLATE = app

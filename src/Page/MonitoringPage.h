@@ -3,6 +3,7 @@
 
 #include <QWidget>
 
+#include "Module/ComModule.h"
 #include "Monitoring/ComputerMonitoring.h"
 #include "Monitoring/SelfMonitoring.h"
 #include "../externals/QCustomPlot/qcustomplot.h"

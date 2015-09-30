@@ -30,6 +30,14 @@ private slots:
 
     void on_send255_clicked();
 
+    void on_in_clicked();
+
+    void on_out_clicked();
+
+    void on_pinNumber_editingFinished();
+
+    void on_pinNumber_textChanged(const QString &arg1);
+
 private:
     Ui::DebugPin *ui;
     QTimer _updtaeTimer;

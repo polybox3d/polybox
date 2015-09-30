@@ -23,6 +23,8 @@ ComModule* ComModule::getInstance(QObject *parent)
 ComModule::ComModule(QObject *parent) :
     QObject(parent)
 {
+    _numberOfCommandReceived = 0;
+    _numberOfCommandSend = 0;
     _connectionUptime = 0;
     _currentLineNumber = 0;
     _connectionFlag = Unconnected;
@@ -39,6 +41,7 @@ ComModule::ComModule(QObject *parent) :
 
 void ComModule::parseData()
 {
+    _numberOfCommandReceived++;
     QByteArray datas = Polyplexer::getInstance()->dataPolybox();
     QString str(datas);
     QStringList datas_listed = str.split("#", QString::SkipEmptyParts );
@@ -231,6 +234,7 @@ void ComModule::sendBufferedData()
 
             Logger::writeOutputCommand( data );
             Polyplexer::send( data );
+            _numberOfCommandSend++;
             emit dataWritten( data );
         }
     }

@@ -63,6 +63,8 @@ public:
     void sendMCode(int code);
     void sendCode(QString code);
     void parseMCode(QByteArray stream);
+    int numberOfCommandSend(){ return _numberOfCommandSend; }
+    int numberOfCommandReceived(){ return _numberOfCommandReceived; }
 
     static bool isConnected();
 
@@ -87,6 +89,7 @@ public slots:
 
 
 private:
+
     explicit ComModule(QObject *parent = 0);
 
     static ComModule* _instance;
@@ -94,6 +97,8 @@ private:
     QQueue<QString> _sendBuffer;
     QTimer _sendTimer;
     int _currentLineNumber;
+    int _numberOfCommandSend;
+    int _numberOfCommandReceived;
 
     QTimer _pingPongTimer;
 

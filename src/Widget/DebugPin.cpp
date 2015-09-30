@@ -40,14 +40,8 @@ void DebugPin::setupComponents()
 void DebugPin::parseData(QByteArray data)
 {
     QString str(data);
-    int idx = str.indexOf('#') ;
-    if ( idx == -1 ) // # Code bot found
-    {
-        return;
-    }
-
-    long value = SerialPort::embeddedstr2l( &str.toStdString().c_str()[idx+1], 0 );
-    idx = 0;
+    long value = SerialPort::embeddedstr2l( str, 0 );
+    int idx = 0;
     int size = str.size();
     switch ( value )
     {
@@ -60,6 +54,27 @@ void DebugPin::parseData(QByteArray data)
             {
                 SerialPort::nextValue( str, idx);
                 ui->pinValueInc->setText( QString::number(SerialPort::embeddedstr2l( str, idx )) );
+            }
+            SerialPort::nextField( str, idx);
+        }
+    }
+        break;
+    case 712:
+    {
+        SerialPort::nextField( str, idx);
+        while ( idx < size )
+        {
+            if ( str[idx] == 'P' )
+            {
+                SerialPort::nextValue( str, idx);
+                if ( SerialPort::embeddedstr2l( str, idx ) == 0 )
+                {
+                    ui->pinValueInc->setText("Output");
+                }
+                else
+                {
+                    ui->pinValueInc->setText("Input");
+                }
             }
             SerialPort::nextField( str, idx);
         }
@@ -85,7 +100,14 @@ void DebugPin::updateComponents()
     }
     else
     {
-        ComModule::getInstance(this)->sendCode( QString("M700")+" P"+QString::number((ui->pinNumber->text().toInt()+(70*ui->boardCombo->currentIndex()))) );
+        if ( ui->readType->isChecked() )
+        {
+            ComModule::getInstance(this)->sendCode( QString("M712")+" P"+QString::number((ui->pinNumber->text().toInt()+(70*ui->boardCombo->currentIndex()))) );
+        }
+        else
+        {
+            ComModule::getInstance(this)->sendCode( QString("M700")+" P"+QString::number((ui->pinNumber->text().toInt()+(70*ui->boardCombo->currentIndex()))) );
+        }
     }
 
 }
@@ -119,4 +141,26 @@ void DebugPin::on_send0_clicked()
 void DebugPin::on_send255_clicked()
 {
     ComModule::getInstance(this)->sendCode( QString("M701")+" P"+QString::number((ui->pinNumber->text().toInt()+(70*ui->boardCombo->currentIndex())))+" S255" );
+}
+
+void DebugPin::on_in_clicked()
+{
+    ComModule::getInstance(this)->sendCode( QString("M711")+" S0" );
+}
+
+void DebugPin::on_out_clicked()
+{
+    ComModule::getInstance(this)->sendCode( QString("M711")+" S1" );
+}
+
+void DebugPin::on_pinNumber_editingFinished()
+{
+//    on_out_clicked();
+}
+
+void DebugPin::on_pinNumber_textChanged(const QString &arg1)
+{
+    ui->in->setChecked(false);
+    ui->out->setChecked(false);
+    ui->readType->setChecked(true);
 }

@@ -156,6 +156,8 @@ void MonitoringPage::updateSelf()
     ui->cpuSelfBar->setValue(SelfMonitoring::getInstance()->cpuUsed());
 
     _currentSelfTick++;
+    ui->polySend->setText( QString::number(ComModule::getInstance()->numberOfCommandSend()));
+    ui->polyReceived->setText( QString::number(ComModule::getInstance()->numberOfCommandReceived()));
 }
 
 MonitoringPage::~MonitoringPage()
