@@ -15,11 +15,32 @@ SelfMonitoring::SelfMonitoring(QObject *parent) :
     QObject(parent)
 {
     connect(&_updateTimer, SIGNAL(timeout()), this, SLOT(update()));
-    this->start();
 }
+
+
+void SelfMonitoring::updateRam()
+{
+    QProcess process;
+    process.start("/bin/bash -c  \"pidstat -r | grep polybox | awk '{print $8}' | tr -d '\n' | tr ',' '.' \"");
+    process.waitForFinished();
+    this->ramHistory.append( process.readAllStandardOutput().toFloat() );
+}
+
+void SelfMonitoring::updateCpu()
+{
+    /**  apt-get install sysstat **/
+
+    QProcess process;
+    process.start("/bin/bash -c  \"pidstat | grep polybox | awk '{print $7}' | tr -d '\n' | tr ',' '.' \"");
+    process.waitForFinished();
+    this->cpuHistory.append( process.readAllStandardOutput().toFloat() );
+}
+
 
 void SelfMonitoring::start()
 {
+    if ( _updateTimer.isActive() )
+        return;
     SelfMonitoring::getInstance()->selfMonitoringFile = new QFile(Config::pathToMonitoring());
     SelfMonitoring::getInstance()->selfMonitoringFile->open(QIODevice::WriteOnly | QIODevice::Text);
     SelfMonitoring::getInstance()->selfMonitoringStream.setDevice( SelfMonitoring::getInstance()->selfMonitoringFile );
@@ -37,18 +58,20 @@ void SelfMonitoring::stop()
 
 void SelfMonitoring::update()
 {
+    updateCpu();
+    updateRam();
     emit updateUI();
 }
 
 
-int SelfMonitoring::ramUsed()
+double SelfMonitoring::ramUsed()
 {
-
+    return ramHistory.last();
 }
 
-int SelfMonitoring::cpuUsed()
+double SelfMonitoring::cpuUsed()
 {
-
+    return cpuHistory.last();
 }
 
 int SelfMonitoring::serialByteTransferred()

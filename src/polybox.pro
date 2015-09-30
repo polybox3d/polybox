@@ -4,7 +4,7 @@
 #
 #-------------------------------------------------
 
-QT       += core gui xml multimedia multimediawidgets
+QT       += core gui xml multimedia multimediawidgets printsupport
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets webkitwidgets
 
@@ -36,8 +36,6 @@ INCLUDEPATH += Page
 INCLUDEPATH += Module
 INCLUDEPATH += Widget
 INCLUDEPATH += Wizard
-
-
 
 DEFINES += NO_SCAN
 
@@ -127,7 +125,9 @@ SOURCES += main.cpp\
     Widget/LaserDockWidget.cpp \
     Page/MonitoringPage.cpp \
     Monitoring/ComputerMonitoring.cpp \
-    Monitoring/SelfMonitoring.cpp
+    Monitoring/SelfMonitoring.cpp \
+    ../externals/QCustomPlot/qcustomplot.cpp
+
 
 HEADERS  += MainWindow.h \
         Updater.h \
@@ -207,7 +207,8 @@ HEADERS  += MainWindow.h \
     Widget/LaserDockWidget.h \
     Page/MonitoringPage.h \
     Monitoring/ComputerMonitoring.h \
-    Monitoring/SelfMonitoring.h
+    Monitoring/SelfMonitoring.h  \
+    ../externals/QCustomPlot/qcustomplot.h
 
 
 FORMS    += MainWindow.ui \

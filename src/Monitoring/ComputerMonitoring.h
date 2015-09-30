@@ -33,6 +33,8 @@ public:
     QFile* monitoringFile;
     QTextStream monitoringStream;
 
+    QVector<double> ramHistory;
+    QVector<double> cpuHistory;
 
 signals:
     void updateUI();
@@ -50,6 +52,7 @@ private:
     int _ramCurrent;
     int _ramMax;
     float _cpu;
+
     QList<int> _diskCapacity;
     QList<int> _diskUsage;
     int _lanSpeed;

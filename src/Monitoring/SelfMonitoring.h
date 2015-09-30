@@ -5,6 +5,7 @@
 #include <QObject>
 #include <QFile>
 #include <QTextStream>
+#include <QProcess>
 
 #include "Config.h"
 
@@ -14,17 +15,19 @@ class SelfMonitoring : public QObject
 public:
     static SelfMonitoring* getInstance();
 
-    static int ramUsed();
-    static int cpuUsed();
+    double ramUsed();
+    double cpuUsed();
     static int serialByteTransferred();
 
     QFile* selfMonitoringFile;
     QTextStream selfMonitoringStream;
 
-    static void start();
-    static void stop();
+    void start();
+    void stop();
 
-    QTimer _updateTimer;
+    QVector<double> ramHistory;
+    QVector<double> cpuHistory;
+
 signals:
     void updateUI();
 
@@ -35,8 +38,12 @@ public slots:
 
 private:
     explicit SelfMonitoring(QObject *parent = 0);
-    static SelfMonitoring* SelfMonitoringInstance;
 
+    void updateRam();
+    void updateCpu();
+    QTimer _updateTimer;
+
+    static SelfMonitoring* SelfMonitoringInstance;
     static int _serialByteTransferred;
 
 };

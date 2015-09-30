@@ -13,7 +13,8 @@
 #include "Logger.h"
 #include "ClosedLoopTimer.h"
 #include "SplashScreen.h"
-
+#include "Monitoring/ComputerMonitoring.h"
+#include "Monitoring/SelfMonitoring.h"
 
 int main(int argc, char *argv[])
 {
@@ -71,6 +72,8 @@ int main(int argc, char *argv[])
 
     }
 
+    ComputerMonitoring::getInstance()->start();
+    SelfMonitoring::getInstance()->start();
 
     MainWindow w;
     w.show();

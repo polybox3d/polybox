@@ -20,8 +20,6 @@ ComputerMonitoring::ComputerMonitoring(QObject *parent) :
     _lanSpeed(0)
 {
       connect(&_updateTimer, SIGNAL(timeout()), this, SLOT(update()));
-      this->start();
-      this->update();
 }
 
 
@@ -30,7 +28,6 @@ void ComputerMonitoring::update()
     updateRam();
     updateCpu();
     updateDisk();
-
     monitoringStream << _ramCurrent<<" "<<_cpu<<endl;
     emit updateUI();
 }
@@ -41,15 +38,18 @@ void ComputerMonitoring::updateRam()
     process.start("/bin/bash -c  \"/usr/bin/free | grep -e \"^Mem\" | awk '{print $3\"-\"$7}' | bc -l |tr -d '\n' \"");
     process.waitForFinished();
     _ramCurrent = process.readAllStandardOutput().toInt();
+    this->ramHistory.append( _ramCurrent );
 }
 
 void ComputerMonitoring::updateCpu()
 {
+    /**  apt-get install sysstat **/
+
     QProcess process;
-    process.start("/bin/bash -c  \"mpstat | grep all | awk '{print $11}' | tr -d '\n' | tr ',' '.' \"");
+    process.start("/bin/bash -c  \"mpstat | grep all | awk '{print $12}' | tr -d '\n' | tr ',' '.' \"");
     process.waitForFinished();
     _cpu = (100.0-process.readAllStandardOutput().toFloat());
-    //cout<<">>>>"<<QString("98.50").toFloat()<<endl;
+    this->cpuHistory.append( _cpu );
 }
 
 void ComputerMonitoring::updateDisk()
@@ -73,6 +73,8 @@ void ComputerMonitoring::updateDisk()
 
 void ComputerMonitoring::start()
 {
+    if ( _updateTimer.isActive() )
+        return;
     monitoringFile = new QFile(Config::pathToMonitoring()+COMPUTER_MONITORING_FILE_PREFIX);
     monitoringFile->open(QIODevice::WriteOnly | QIODevice::Text);
     monitoringStream.setDevice( monitoringFile );
