@@ -14,6 +14,7 @@ DebugPin::DebugPin(QWidget *parent) :
     connect(&_updtaeTimer,SIGNAL(timeout()),this,SLOT(updateComponents()));
 
     connect( ComModule::getInstance(this), SIGNAL(newData(QByteArray)), this, SLOT(parseData(QByteArray)) );
+    this->setAttribute(Qt::WA_DeleteOnClose);
 }
 
 DebugPin::~DebugPin()
