@@ -21,7 +21,7 @@ SelfMonitoring::SelfMonitoring(QObject *parent) :
 void SelfMonitoring::updateRam()
 {
     QProcess process;
-    process.start("/bin/bash -c  \"pidstat -r | grep polybox | awk '{print $8}' | tr -d '\n' | tr ',' '.' \"");
+    process.start("/bin/bash -c  \"pidstat -r | grep polybox | awk '{print $7}' | tr -d '\n' | tr ',' '.' \"");
     process.waitForFinished();
     this->ramHistory.append( process.readAllStandardOutput().toFloat() );
 }

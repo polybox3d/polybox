@@ -46,7 +46,7 @@ void ComputerMonitoring::updateCpu()
     /**  apt-get install sysstat **/
 
     QProcess process;
-    process.start("/bin/bash -c  \"mpstat | grep all | awk '{print $12}' | tr -d '\n' | tr ',' '.' \"");
+    process.start("/bin/bash -c  \"mpstat | grep all | awk '{print $11}' | tr -d '\n' | tr ',' '.' \"");
     process.waitForFinished();
     _cpu = (100.0-process.readAllStandardOutput().toFloat());
     this->cpuHistory.append( _cpu );
@@ -56,17 +56,26 @@ void ComputerMonitoring::updateDisk()
 {
     /* Retreive disk info.*/
     QProcess process;
-    process.start("/bin/bash -c  \"df | grep ^/dev\"");
+    process.start(QString("/bin/bash -c  \"df -B")+QString(DISK_UNIT)+" | grep ^/dev\"");
     process.waitForFinished();
+    Disk disk;
 
-    _diskUsage.clear();
+    _disk.clear();
     foreach( QString line, process.readAllStandardOutput().split('\n'))
     {
         QStringList values = line.split(" ", QString::SkipEmptyParts);
         if ( !values.isEmpty())
         {
-            _diskUsage.append(values.at(2).toInt());
+            disk.path = values.at(0);
+            disk.mount = values.at(5);
+            disk.space_available = values.at(3).left(values.at(3).count()-1).toDouble();
+            disk.space_max = values.at(1).left(values.at(1).count()-1).toDouble();
+            _disk.append(disk);
         }
+    }
+    foreach( Disk d, _disk)
+    {
+        diskHistory[d.path].append(d.space_max - d.space_available);
     }
 
 }
@@ -86,16 +95,7 @@ void ComputerMonitoring::start()
     process.waitForFinished();
     _ramMax = process.readAllStandardOutput().toInt();
 
-    process.start("/bin/bash -c  \"df | grep ^/dev\"");
-    process.waitForFinished();
-    foreach( QString line, process.readAllStandardOutput().split('\n'))
-    {
-        QStringList values = line.split(" ", QString::SkipEmptyParts);
-        if ( !values.isEmpty())
-        {
-            _diskCapacity.append(values.at(1).toInt());
-        }
-    }
+    updateDisk();
 
 
     _updateTimer.start( Config::computerMonitoringDelay() );
@@ -143,21 +143,18 @@ float ComputerMonitoring::cpu() const
 {
     return _cpu;
 }
-
-QList<int> ComputerMonitoring::diskCapacity() const
+double ComputerMonitoring::diskUsage(QString path)
 {
-    return _diskCapacity;
+    return diskHistory[path].last();
+
 }
 
-QList<int> ComputerMonitoring::diskUsage() const
+QList<Disk> ComputerMonitoring::disk()
 {
-    return _diskUsage;
-}
-QStringList ComputerMonitoring::diskLabel() const
-{
-    QProcess process;
+    return _disk;
+    /*QProcess process;
     process.start("/bin/bash -c  \"df | grep ^/dev\" | awk '{print $6}' \"");
-    process.waitForFinished();
+    process.waitForFinished();*/
     //return process.readAllStandardOutput().split('\n');
 }
 

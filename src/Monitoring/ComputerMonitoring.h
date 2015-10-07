@@ -8,10 +8,22 @@
 #include <QProcess>
 #include <iostream>
 #include <fstream>
+#include <QMap>
 
 using namespace std;
 
 #include "Config.h"
+
+#define DISK_UNIT 'G'
+
+typedef struct Disk_
+{
+    QString label;
+    QString path;
+    QString mount;
+    double space_available;
+    double space_max;
+} Disk;
 
 class ComputerMonitoring : public QObject
 {
@@ -19,12 +31,14 @@ class ComputerMonitoring : public QObject
     Q_OBJECT
 public:
     static ComputerMonitoring* getInstance();
+
     int ramCurrent() const;
     int ramMax() const;
     float cpu() const;
-    QList<int> diskCapacity() const;
-    QList<int> diskUsage() const;
-    QStringList diskLabel() const;
+
+    QList<Disk> disk();
+    double diskUsage(QString path);
+
     int lanSpeed() const;
     void start();
     void stop();
@@ -33,6 +47,7 @@ public:
     QFile* monitoringFile;
     QTextStream monitoringStream;
 
+    QMap< QString, QVector<double> >diskHistory;
     QVector<double> ramHistory;
     QVector<double> cpuHistory;
 
@@ -53,8 +68,7 @@ private:
     int _ramMax;
     float _cpu;
 
-    QList<int> _diskCapacity;
-    QList<int> _diskUsage;
+    QList<Disk> _disk;
     int _lanSpeed;
 
     QTimer _updateTimer;

@@ -63,6 +63,18 @@ void MonitoringPage::initializeComputerGraphs()
     ui->cpuPlot->yAxis->setRange(0,100);
 
     ui->cpuPlot->replot();
+
+    /** DISKS **/
+    ui->diskPlot->addGraph();
+    ui->diskPlot->graph(0)->setData( xAxis, ComputerMonitoring::getInstance()->diskHistory[ui->diskBox->currentData().toString()] );
+
+    ui->diskPlot->xAxis->setLabel("m");
+    ui->diskPlot->yAxis->setLabel(QString(DISK_UNIT));
+    ui->diskPlot->graph(0)->setBrush(QBrush(QColor(95,255,135,128) ));
+    ui->diskPlot->graph(0)->setPen(QPen(QColor(95,220,135) ));
+    ui->diskPlot->yAxis->setRange(0,100);
+
+    ui->diskPlot->replot();
 }
 void MonitoringPage::initializeSelfInfos()
 {
@@ -115,7 +127,9 @@ QVector<double> MonitoringPage::generateXAxis(int items)
 
 void MonitoringPage::updateComputer()
 {
+    _update = true;
     _currentComputerTick++;
+    // RAM
     ui->ramBar->setValue(ComputerMonitoring::getInstance()->ramCurrent());
     ui->ramDisplay->setText( QString::number(ComputerMonitoring::getInstance()->ramCurrent()/(1000.0*1000.0),'g',2)
                              +" GB / "
@@ -126,13 +140,30 @@ void MonitoringPage::updateComputer()
     ui->ramPlot->xAxis->rescale(true);
     ui->ramPlot->replot();
 
+    // CPU
     ui->cpuPlot->graph(0)->addData( _currentComputerTick/60.0, (double)ComputerMonitoring::getInstance()->cpu());
     ui->cpuPlot->xAxis->rescale(true);
     ui->cpuPlot->replot();
 
     ui->cpuBar->setValue(ComputerMonitoring::getInstance()->cpu());
 
+    //DISKS
+    ui->diskBox->clear();
+
+    foreach(Disk d, ComputerMonitoring::getInstance()->disk())
+    {
+        ui->diskBox->addItem( d.mount, d.path );
+    }
+    double d_used = ComputerMonitoring::getInstance()->diskUsage( ui->diskBox->currentData().toString() );
+    ui->diskBar->setValue(d_used);
+    ui->diskPlot->graph(0)->addData( _currentComputerTick/60.0, d_used );
+    ui->diskPlot->xAxis->rescale(true);
+    ui->diskPlot->replot();
+
+    ui->cpuBar->setValue( d_used );
+
     _currentComputerTick++;
+    _update = false;
 }
 
 void MonitoringPage::updateSelf()
@@ -163,4 +194,12 @@ void MonitoringPage::updateSelf()
 MonitoringPage::~MonitoringPage()
 {
     delete ui;
+}
+
+void MonitoringPage::on_diskBox_currentIndexChanged(int index)
+{
+    if ( _update )
+        return;
+//    ui->diskBar->setMaximum(ComputerMonitoring::getInstance()->);
+    this->updateComputer();
 }

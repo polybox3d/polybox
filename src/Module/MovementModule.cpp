@@ -29,6 +29,7 @@ MovementModule::MovementModule(QObject *parent) :
     _x_min = _x_max = _x_home = false;
     _y_min = _y_max = _y_home = false;
     _z_min = _z_max = _z_home = false;
+    connect(Polyplexer::getInstance(), SIGNAL(dataBasicReady(QByteArray)),this,SLOT(parseMCode(QByteArray)));
 }
 
 void MovementModule::sendWatchEndstop()
@@ -53,7 +54,7 @@ void MovementModule::stopWatchEndstop()
 bool MovementModule::data2endstop( QString section, int start_pos )
 {
     int colon = section.indexOf(":", start_pos);
-    return (section[colon+1] == 'L');
+    return (section[colon+1] == 'H');
 }
 
 void MovementModule::parseMCode(QByteArray stream)

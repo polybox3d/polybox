@@ -26,6 +26,9 @@ public slots:
     void updateComputer();
     void updateSelf();
 
+private slots:
+    void on_diskBox_currentIndexChanged(int index);
+
 private:
     void initializeComputerGraphs();
     void initializeSelfGraphs();
@@ -34,6 +37,7 @@ private:
 
     int _currentComputerTick;
     int _currentSelfTick;
+    bool _update;
 };
 
 #endif // MONITORINGPAGE_H
