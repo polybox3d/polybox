@@ -33,6 +33,7 @@ private:
     void initializeComputerGraphs();
     void initializeSelfGraphs();
     void initializeSelfInfos();
+    void swapDiskGraph(Disk disk);
     Ui::MonitoringPage *ui;
 
     int _currentComputerTick;

@@ -148,6 +148,16 @@ double ComputerMonitoring::diskUsage(QString path)
     return diskHistory[path].last();
 
 }
+Disk ComputerMonitoring::getDiskByPath(QString path)
+{
+    foreach (Disk d, _disk)
+    {
+        if ( d.path.compare( path ) == 0)
+        {
+            return d;
+        }
+    }
+}
 
 QList<Disk> ComputerMonitoring::disk()
 {

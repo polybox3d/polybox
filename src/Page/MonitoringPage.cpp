@@ -17,6 +17,8 @@ MonitoringPage::MonitoringPage(QWidget *parent) :
 
     ui->cpuInfo->setText(ComputerMonitoring::getInstance()->getCPUInfo());
 
+    ui->diskBar->setValue(0);
+
     initializeComputerGraphs();
     initializeSelfGraphs();
     initializeSelfInfos();
@@ -148,22 +150,51 @@ void MonitoringPage::updateComputer()
     ui->cpuBar->setValue(ComputerMonitoring::getInstance()->cpu());
 
     //DISKS
+    QString current_disk_selected = ui->diskBox->currentData().toString();
     ui->diskBox->clear();
-
+    bool need_swap_disk = true;
+    Disk d_selected;
     foreach(Disk d, ComputerMonitoring::getInstance()->disk())
     {
         ui->diskBox->addItem( d.mount, d.path );
+        // The current selected disk doesnt exist anymore, so we swap disk for the graph
+        if ( d.path.compare(current_disk_selected) == 0 )
+        {
+            need_swap_disk = false;
+            d_selected = d;
+        }
     }
-    double d_used = ComputerMonitoring::getInstance()->diskUsage( ui->diskBox->currentData().toString() );
-    ui->diskBar->setValue(d_used);
-    ui->diskPlot->graph(0)->addData( _currentComputerTick/60.0, d_used );
-    ui->diskPlot->xAxis->rescale(true);
-    ui->diskPlot->replot();
+    if ( need_swap_disk )
+    {
+        swapDiskGraph( ComputerMonitoring::getInstance()->getDiskByPath( ui->diskBox->currentData().toString()) );
+    }
+    else
+    {
+        ui->diskBox->setCurrentText(d_selected.mount);
+        ui->diskPlot->graph(0)->addData( _currentComputerTick/60.0, ComputerMonitoring::getInstance()->diskUsage( d_selected.path ) );
+        ui->diskPlot->xAxis->rescale(true);
+        ui->diskPlot->replot();
+    }
 
-    ui->cpuBar->setValue( d_used );
 
     _currentComputerTick++;
     _update = false;
+}
+void MonitoringPage::swapDiskGraph(Disk disk)
+{
+     ui->diskBox->setCurrentText( disk.mount );
+     double d_used = ComputerMonitoring::getInstance()->diskUsage( disk.path );
+;
+     QVector<double> xAxis = generateXAxis( _currentComputerTick );
+
+     ui->diskBar->setMaximum( disk.space_max );
+     ui->diskBar->setValue(d_used);
+     ui->diskPlot->graph(0)->clearData();
+     ui->diskPlot->graph(0)->setData( xAxis, ComputerMonitoring::getInstance()->diskHistory[disk.path] );
+     //ui->diskPlot->graph(0)->addData( _currentComputerTick/60.0, d_used );
+     ui->diskPlot->xAxis->rescale(true);
+     ui->diskPlot->replot();
+
 }
 
 void MonitoringPage::updateSelf()
@@ -200,6 +231,6 @@ void MonitoringPage::on_diskBox_currentIndexChanged(int index)
 {
     if ( _update )
         return;
-//    ui->diskBar->setMaximum(ComputerMonitoring::getInstance()->);
-    this->updateComputer();
+
+    swapDiskGraph( ComputerMonitoring::getInstance()->getDiskByPath( ui->diskBox->currentData().toString()) );
 }

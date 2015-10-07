@@ -37,6 +37,7 @@ public:
     float cpu() const;
 
     QList<Disk> disk();
+    Disk getDiskByPath( QString path);
     double diskUsage(QString path);
 
     int lanSpeed() const;
