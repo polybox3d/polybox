@@ -14,7 +14,6 @@ class AxisControlDock;
 class AxisControlDock : public QDockWidget
 {
     Q_OBJECT
-
 public:
     explicit AxisControlDock(QWidget *parent = 0);
     ~AxisControlDock();

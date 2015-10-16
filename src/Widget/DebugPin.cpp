@@ -10,8 +10,8 @@ DebugPin::DebugPin(QWidget *parent) :
     setupComponents();
 
 
-    _updtaeTimer.start(500);
-    connect(&_updtaeTimer,SIGNAL(timeout()),this,SLOT(updateComponents()));
+    _updateTimer.start(500);
+    connect(&_updateTimer,SIGNAL(timeout()),this,SLOT(updateComponents()));
 
     connect( ComModule::getInstance(this), SIGNAL(newData(QByteArray)), this, SLOT(parseData(QByteArray)) );
     this->setAttribute(Qt::WA_DeleteOnClose);

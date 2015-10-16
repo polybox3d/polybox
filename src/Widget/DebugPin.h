@@ -40,7 +40,7 @@ private slots:
 
 private:
     Ui::DebugPin *ui;
-    QTimer _updtaeTimer;
+    QTimer _updateTimer;
 
     void setupComponents();
 };
